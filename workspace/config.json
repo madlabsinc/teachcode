@@ -1,14 +1,14 @@
 [
 	{
-		"task": "Hey there folks, welcome to the world of programming\nTask-1.\nPrint \'Hello World\' to the console using the pre-built print function",
+		"task": "Hey there folks, welcome to the world of programming\nTask-1.\nPrint Hello World to the console using the pre-built print function",
 		"op": "Hello World"
 	},
 	{
-		"task": "\nNow let\'s focus on variables\nUnlike other programming languages, Python has no command for declaring a variable.A variable is created the moment you first assign a value to it.\nAlso consider these variable naming conventions\n\n1.A variable name must start with a letter or the underscore character\n2.A variable name cannot start with a number\n3.A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ )\n3.Variable names are case-sensitive (age, Age and AGE are three different variables)\nTask-2\nConsider these variable names:-\nvariable\nsum@\nproduct_of_12\n12_product\nJust print out the correct variable names in order",
+		"task": "\nNow lets focus on variables\nUnlike other programming languages, Python has no command for declaring a variable.A variable is created the moment you first assign a value to it.\nAlso consider these variable naming conventions\n\n1.A variable name must start with a letter or the underscore character\n2.A variable name cannot start with a number\n3.A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ )\n3.Variable names are case-sensitive (age, Age and AGE are three different variables)\nTask-2\nConsider these variable names:-\nvariable\nsum@\nproduct_of_12\n12_product\nJust print out the correct variable names in order",
 		"op": "variable\nproduct_of_12"
 	},
 	{
-		"task": "\nKeep it up!\nStrings represent a group of characters.String literals in python are surrounded by either single quotation marks, or double quotation marks.Python provides various prebuilt functions to deal with strings, say to find the length of a string, convert it to lower case etc.\nTask-3\nDeclare a variable str and initialize it with \'hello world\' Print it in upper case and also it\'s length in order.",
+		"task": "\nKeep it up!\nStrings represent a group of characters.String literals in python are surrounded by either single quotation marks, or double quotation marks.Python provides various prebuilt functions to deal with strings, say to find the length of a string, convert it to lower case etc.\nTask-3\nDeclare a variable str and initialize it with hello world Print it in upper case and also the length in order",
 		"op": "HELLO WORLD\n11"
 	}
 ]
