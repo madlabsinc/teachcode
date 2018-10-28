@@ -19,12 +19,12 @@ program
 .command('init')
 .action(initialize);
 
-///program
-//.command('submit <filename>')
-//.action(submitTask);
+program
+.command('submit <filename>')
+.action(submitTask);
 
-//program
-//.command('fetchtask')
-//.action(fetchTask);
+program
+.command('fetchtask')
+.action(fetchTask);
 
 program.parse(process.argv);
