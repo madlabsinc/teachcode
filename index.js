@@ -14,6 +14,7 @@ const exercises = require('./workspace/config');
 let initialize = require('./lib/initializeTasks');
 let fetchTask = require('./lib/fetchTask');
 let submitTask = require('./lib/submitTask');
+let showKeys = require('./lib/showKeys');
 
 program
 .command('init')
@@ -24,7 +25,10 @@ program
 .action(submitTask);
 
 program
-.command('fetchtask')
+.command('fetchtask <key>')
 .action(fetchTask);
+
+program.command('keys')
+.action(showKeys);
 
 program.parse(process.argv);
