@@ -1,14 +1,21 @@
 {
-  "name": "Teach-Code",
-  "version": "1.0.0",
+  "name": "teach-code",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "bin": "./index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+     "node.js",
+     "commander.js",
+     "inquirer.js",
+     "shell.js",
+	 "cli",
+	 "python3"
+    ],
+  "author": "James George <jamesgeorge998001@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "chalk": "^2.4.1",
