@@ -28,7 +28,7 @@ program
 .command('fetchtask <key>')
 .action(fetchTask);
 
-program.command('keys')
+program.command('showkeys')
 .action(showKeys);
 
 program.parse(process.argv);
