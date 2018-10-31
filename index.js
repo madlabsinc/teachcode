@@ -21,7 +21,7 @@ program
 .action(initialize);
 
 program
-.command('submit <filename>')
+.command('submit')
 .action(submitTask);
 
 program
