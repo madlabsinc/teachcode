@@ -16,7 +16,11 @@
 		"op": "solutions/task4.py" 
 	},
 	{
-		"task": "\n Impressive! On to the next task ... \n Conditional Statements are statements that execute when the given condition is TRUE. \n Conditional statements are implemented using if-else statements. Here's your task: \n\n Task 5 \n Store values 20 to the variable 'a', then print 'Odd' if it is odd. Else, print 'Even' if it is an even number.",
+		"task": "\n Impressive! On to the next task ... \n Conditional Statements are statements that execute when the given condition is TRUE. \n Conditional statements are implemented using if-else statements. Here's your task: \n\n Task 5 \n Store value 20 to the variable 'a', then print 'Odd' if it is odd. Else, print 'Even' if it is an even number.",
 		"op": "/solutions/task5.py"
+	},
+	{
+		"task": "\n Awesome! Let's move on to Loops. \n Loop is an important statement which is used for repetition of the same code as and when required. \n This task will surely test what you have learnt till now from the previous tasks! \n\n Task 6 \n Syntax of for loop: \n  for loop_control_variable in range(start, step, stop): \n \t Loop Body(indented)\n Here's your task:  \n\n Task- 6 \n Print even numbers from 1 to 10 (including 10) using for loop.",
+		"op": "/solutions/task6.py"
 	}
 ]
