@@ -8,7 +8,7 @@ const shell = require('shelljs');
 const fs = require('fs');
 const { PythonShell } = require('python-shell');
 const showBanner = require('./utils/banner');
-const exercises = require('./workspace/config');
+const exercises = require('./lib/workspace/config');
 
 // Linking excercise files
 let initialize = require('./lib/initializeTasks');
