@@ -10,5 +10,9 @@
 	{
 		"task": "\nKeep it up!\nStrings represent a group of characters.String literals in python are surrounded by either single quotation marks, or double quotation marks.Python provides various prebuilt functions to deal with strings, say to find the length of a string, convert it to lower case etc.\nTask-3\nDeclare a variable str and initialize it with hello world Print it in upper case and also the length in order",
 		"op": "solutions/task3.py"
+	},
+	{
+		"task": "\nGreat work! Let's move on .... \n Operators are used to perform operations on variables and values. \n There are many types of operators: \n 1. Arithmetic Operator \n 2. Assignment Operator \n 3. Comparison Operator \n 4. Logical Operator \n 5. Bitwise Operator \n Enough talk, let's do the task. \n Task 4 \n Initialize three variables a, b,c with values 35, 30, 20 respectively. \n Your task is to print the sum and average of these three numbers.",
+		"op": "solutions/task4.py" 
 	}
 ]
