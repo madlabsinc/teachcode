@@ -12,7 +12,11 @@
 		"op": "solutions/task3.py"
 	},
 	{
-		"task": "\nGreat work! Let's move on .... \n Operators are used to perform operations on variables and values. \n There are many types of operators: \n 1. Arithmetic Operator \n 2. Assignment Operator \n 3. Comparison Operator \n 4. Logical Operator \n 5. Bitwise Operator \n Enough talk, let's do the task. \n Task 4 \n Initialize three variables a, b,c with values 35, 30, 20 respectively. \n Your task is to print the sum and average of these three numbers.",
+		"task": "\nGreat work! Let's move on .... \n Operators are used to perform operations on variables and values. \n There are many types of operators: \n 1. Arithmetic Operator \n 2. Assignment Operator \n 3. Comparison Operator \n 4. Logical Operator \n 5. Bitwise Operator \n Enough talk, let's do the task. \n\n Task 4 \n Initialize three variables a, b,c with values 35, 30, 20 respectively. \n Your task is to print the sum and average of these three numbers.",
 		"op": "solutions/task4.py" 
+	},
+	{
+		"task": "\n Impressive! On to the next task ... \n Conditional Statements are statements that execute when the given condition is TRUE. \n Conditional statements are implemented using if-else statements. Here's your task: \n\n Task 5 \n Store values 20 to the variable 'a', then print 'Odd' if it is odd. Else, print 'Even' if it is an even number.",
+		"op": "/solutions/task5.py"
 	}
 ]
