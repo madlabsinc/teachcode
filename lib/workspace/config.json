@@ -82,5 +82,41 @@
 	{
 		"task": "\nWow! That's impressive! \n Let's learn List Comprehensions. \n List comprehensions provide a concise way to create lists. \n It consists of brackets containing an expression followed by a for clause, then zero or more for or if clauses.\n The result will be a new list resulting from evaluating the expression in the context of the for and if clauses which follow it. \n Syntax: [ expression for item in list if conditional ] \n This is equivalent to what you did in the previous task. \n\n Task 21 \n Store numbers 1 to 10 in a list and print the odd numbers using List Comprehensions.",
 		"op": "solutions/task21.py"
+	},
+	{
+		"task": "\n Let's deal with lists some more. There are many operations that can be performed on Lists. \n They are: \n 1. Checking whether the element exists in the list using 'in' keyword. \n 2. To determine length of the list using len() \n 3. To add items using append() \n 4. To insert at specific index using insert() \n 5. To remove a particular element using remove(element) \n 6. Pop() - Removes at specified index or by default, the last one. \n 7. del keyword removes the specified index. \n 8.  clear() - Empties the whole list. \n Here's your task.(Quite a hectic task!) \n\n Task 22 \n Create a list with the values 'one', 'two', 'three'. Your task is to do the following: \n 1. Search for the element one and print 'Found!' if found, else print 'Not Found!' \n 2. Print the length of the list \n 3. Add 'four' to the list using append() \n 4. Insert 'five' at index 1 using insert() \n 5. Remove 'one' from the list using remove() \n 6. Remove the value at index 0 using pop() \n 7. Delete the second element of the list using del \n 8. Empty the remaining list and print 'Empty!' \n Use a function display() to display the list after each and every operation.",
+		"op": "/solutions/task22.py"
+	},
+	{
+		"task": "\n Awesome! Now you have mastered the basics of Lists. \n Let's go to the next one: Tuples. \n A tuple is a collection which is ordered and unchangeable. In Python tuples are written with round brackets (). The only difference between List and Tuple is that you cannot modify the values of the list once created. \n That means you cannot add or remove elements to the tuple. \n This makes your next task easier :) \n\n Task 23 \n Create a tuple with values 100,200,300 and perform the following operations: \n 1. Print each value of the tuple using for loop. \n 2. Check if '200' exists in the tuple using in keyword and print 'Found!' else print 'Not Found!'. \n 3. Print the length of the tuple.",
+		"op": "/solutions/task23.py"
+	},
+	{
+		"task": "\n Now let's move on to the next one: Dictionaries. \nA dictionary is a collection which is unordered, changeable and indexed. In Python dictionaries are written with curly brackets{}, and they have keys and values. \n  Syntax: {key:value, key2:value2}\n Unlike Tuples, you can modify the values here, like this, dictionary_name['key']= new_value \n To print only the keys, \n for i in dictionary_name: \n\tprint(i) \n To print only the values, \n for i in dict_name: \n\tprint(dict_name[i]) \n To print both key and value, \n for i,j in dict_name.items(): \n\tprint(i,j) \n Here's your task: \n\n Task 24 \n Initialize a dictionary with the key:values : 1:'one', 2:'two', 3: 'three' Your task is to print the elements of the dictionary(1. Keys only, 2. Values only, 3. Both key and values together) and print the length of the dictionary. Also, add the key:value pair, 4:'four' directly by assigning them to the dictionary, and print the updated dictionary(keys and values)",
+		"op": "/solutions/task24.py"
+	},
+	{
+		"task": "\n We have come to the last section of Python basics. \n Congrats on reaching the 25th Task! \n Next topic is Exception Handling \n When an error occurs, or exception as we call it, Python will normally stop and generate an error message. These exceptions can be handled using the try statement. \n Eg: try: \n\tprint(i) \n except: \n\tprint('An Exception Occured') \n When the try block raises an error, the except block statement gets executed. Without this try-except block, the program may crash. \n Here's your task: \n\n Task 25 \n Try printing the value of 1/0 and print 'Zero Division not possible' in the except block.",
+		"op": "/solutions/task25.py"
+	},
+	{
+		"task": "\n Congrats on Completing the tasks. Hope you are having a great go. Here are some bonus tasks. \n\n Task 26 \n Factorial Program. Print the factorial of 6 using whatever you have learnt from the previous tasks. \n Do not use the in-built functions.",
+		"op": "/solutions/task26.py"
+	},
+	{
+		"task": "\n Impressive! Let's go to the next one. \n\n Task 27 \n Pattern Printing \n Print the following pattern \n * \n ** \n *** \n ****",
+		"op": "/solutions/task27.py"
+	},
+	{
+		"task": "\n Now let's move on to the next one. \n\n Task 28 \n Multiplication Table \n Print the multiples of 5 in order from 1 to 10.",
+		"op": "/solutions/task28.py"
+	},
+	{
+		"task": "\n You are one task away from completing this... Great to see you progress... \n Next task: \n\n Task 29 \n Prime Number \n Check whether 103 is prime or not and print 'Prime!' if prime else print 'Not Prime!'",
+		"op": "/solutions/task29.py"
+	},
+	{
+		"task": "\n Congrats!! You have reached the last task!!! \n Next task: \n\n Task 30 (the last one! :) ) \n\n Task 30 \n Palindrome \n Check whether a string 'civic' is palindrome or not. Print 'Palindrome!' if yes, else print 'Not Palindrome!'",
+		"op": "/solutions/task30.py"
 	}
 ]
