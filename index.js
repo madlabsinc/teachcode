@@ -15,6 +15,7 @@ let initialize = require('./lib/initializeTasks');
 let fetchTask = require('./lib/fetchTask');
 let submitTask = require('./lib/submitTask');
 let showKeys = require('./lib/showKeys');
+let showCommands = require('./lib/showCommands');
 
 
 program
@@ -33,7 +34,13 @@ program
 .command('fetchtask <key>')
 .action(fetchTask);
 
-program.command('showkeys')
+program
+.command('showkeys')
 .action(showKeys);
+
+program
+.command('showcommands')
+.action(showCommands);
+
 
 program.parse(process.argv);

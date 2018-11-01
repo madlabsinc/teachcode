@@ -8,18 +8,19 @@
     "start": "node index.js"
   },
   "keywords": [
-     "node.js",
-     "commander.js",
-     "inquirer.js",
-     "shell.js",
-	 "cli",
-	 "python3"
-    ],
+    "node.js",
+    "commander.js",
+    "inquirer.js",
+    "shell.js",
+    "cli",
+    "python3"
+  ],
   "author": "James George <jamesgeorge998001@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "chalk": "^2.4.1",
     "clear": "^0.1.0",
+    "cli-table": "^0.3.1",
     "commander": "^2.18.0",
     "elegant-spinner": "^1.0.1",
     "figlet": "^1.2.1",
