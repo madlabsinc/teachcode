@@ -13,7 +13,7 @@ let showBanner = () => {
       return;
     }
     console.log(chalk.redBright(data));
-    console.log(chalk.yellow('Learn python effectively...\n'));
+    console.log(chalk.yellow(' Learn python effectively...\t\t\tPowered by MadHacks\n'));
   });
   }, 50);
 
