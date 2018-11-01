@@ -10,5 +10,113 @@
 	{
 		"task": "\nKeep it up!\nStrings represent a group of characters.String literals in python are surrounded by either single quotation marks, or double quotation marks.Python provides various prebuilt functions to deal with strings, say to find the length of a string, convert it to lower case etc.\nTask-3\nDeclare a variable str and initialize it with hello world Print it in upper case and also the length in order",
 		"op": "solutions/task3.py"
+	},
+	{
+		"task": "\nGreat work! Let's move on .... \n Operators are used to perform operations on variables and values. \n There are many types of operators: \n 1. Arithmetic Operator \n 2. Assignment Operator \n 3. Comparison Operator \n 4. Logical Operator \n 5. Bitwise Operator \n Enough talk, let's do the task. \n\n Task 4 \n Initialize three variables a, b,c with values 35, 30, 20 respectively. \n Your task is to print the sum and average of these three numbers.",
+		"op": "solutions/task4.py" 
+	},
+	{
+		"task": "\n Impressive! On to the next task ... \n Conditional Statements are statements that execute when the given condition is TRUE. \n Conditional statements are implemented using if-else statements. Here's your task: \n\n Task 5 \n Store value 20 to the variable 'a', then print 'Odd' if it is odd. Else, print 'Even' if it is an even number.",
+		"op": "/solutions/task5.py"
+	},
+	{
+		"task": "\n Awesome! Let's move on to Loops. \n Loop is an important statement which is used for repetition of the same code as and when required. \n This task will surely test what you have learnt till now from the previous tasks! \n\n Task 6 \n Syntax of for loop: \n  for loop_control_variable in range(start, step, stop): \n \t Loop Body(indented)\n Here's your task:  \n\n Task- 6 \n Print even numbers from 1 to 10 (including 10) using for loop.",
+		"op": "/solutions/task6.py"
+	},
+	{
+		"task": "\n Let's move on to while loop now. This loop works similiar to that of a for loop. \n Syntax of while loop: \n while condition:\n\tLoop Body(Indented statements). \n\n Task 7 \n Your task is to print the squares of the numbers from 1 to 10. Use while loop to do the task.",
+		"op": "/solutions/task7.py"
+	},
+	{
+		"task": "\n Great work! Let's move on to break and continue statements. \n Break statements are used to break out of the loop when required and continue statements are used to skip the current iteration according to the condition given. \n\n Task 8: \n Print the values from 10 to 20 but skip the value 15 and stop the iteration at value 18. ",
+		"op": "/solutions/task8.py"
+	},
+	{
+		"task": "\n Let's move on to Logical Operators. Logical Operators are 'and', 'or', 'not'. \n And operator returns true if both the conditions(operands) are true. \n Or operator returns true if any one of the conditions is True. \n Not operator negates the boolean value returned by the expression \n\n Task 9 \n Rahul scores 90, 85,70, 75, 80 in his exams. The grading criteria for an exam is given below(based on average): \n A+ => 91 -100 \n A => 81-90 \n B => 71-80 \n C => 61- 70 \n D => 51- 60 \n F => 50 & Less than 50. \n Calculate and print his average as well as the grade.",
+		"op": "/solutions/task9.py"
+	},
+	{
+		"task": "\n Awesome! Let's move on to Type Conversion in Python. \n Type Conversion is used to directly convert one datatype to another which is useful in day-to day programming. \n For example, you may want to find the average as an integer without that long trailing numbers after the decimal point. For this, we can use type conversion. \n\n Task 10 \n Initialise three variables with the values 60,100,200 and find the average. Print the average as an integer.",
+		"op": "/solutions/task10.py"
+	},
+	{
+		"task": "\n Now let's move on to Type Coercion in Python. \n Coercion happens in the case of binary operations: if you do x+y , and x and y have different types, \n they are coerced into a single type before performing the operation. \n\n Task 11 \n Initialize two numbers with values 10 and 12.506. Add them and print their sum and average. (This is the way how Python handles two datatypes by default).",
+		"op": "/solutions/task11.py"
+	},
+	{
+		"task": "\n Wonderful progress! Let's move on ... \n Now that you have learnt strings, let's move on to some in-built functions for strings. \n They are: \n 1.strip() - To remove any whitespace from beginning or the end \n 2. len() - To find the length of the string \n 3. lower() - Returns the string in lower case \n 4. upper() - Returns the string in upper case \n 5. replace() - To replace the value in the string with another value. \n\n Task 12 \n Store a string, ' This is Cool!' \n Your task is to \n 1. Remove the white spaces at the beginning and the end and print it. \n 2. Find the length of the string and print it. \n 3. Print it in upper case. \n 4. Print it in lowercase \n 5. Replace T with t and print it.",
+		"op": "/solutions/task12.py"
+	},
+	{
+		"task": "\n Great! Now, let's learn about String Slicing. \n To slice a string means to split a string into a substring. \n A string is a character array which has index starting from 0. \n To print the string, you can either directly print it or use it to print a part of it. \n Eg: \n b='Hello' \n print(b[1:4]) \n This prints the characters from index 1 to 4 (4 not included). Here's your task: \n\n Task 13 \n Print the substring 'day' in 'Friday'.",
+		"op": "/solutions/task13.py"
+	},
+	{
+		"task": "\n Let's deal with strings again. The last character of the string can be accessed at the index -1. Use this logic to do the following task. \n Task 14 \n Reverse the string 'AJCE' and print it using for loop.",
+		"op": "/solutions/task14.py"
+	},
+	{
+		"task": "\n Great. You have now mastered the basics of strings. \n Let's move on to the next topic: Functions. \n Functions are block of statements that execute a particular task. \n Functions are very useful in programs to shorten the length of the program, by not writing the same thing over and over again. \n You can pass values to a function, which are known as arguments. \n Syntax: \n def func_name(arguments): \n\tFunction Body \n The function body executes only when it is called, like this, func_name(arguments) \n Now, here's your task:\n\n Task 15\n Define a function that calculates area of a square. Pass the value side which is initialized to 20 and print the area by using the function.",
+		"op": "/solutions/task15.py"
+	},
+	{
+		"task": "\n Awesome! Let's move on to the next topic: Default Parameters. \n The default parameters are used when you don't pass any values to the function. \n Eg: \n def func_name(default value=0): \n\tFunction Body \n When no value is passed, the default value of the argument is 0. Here's your task: \n\n Task 16 \n Define a function to check whether a number is divisible by 3 or not. Set the default value to 3.\n Pass the value 16 to the function and in the next statement, call the function without any argument. \n Print 'Divisible' if divisible by 3 else print 'Not Divisible'",
+		"op": "/solutions/task16.py"
+	},
+	{
+		"task": "\n Let's move on to return values. \n Return values are values that are returned after the function performs the required function. \n Syntax: return(value) \n Here's your next task: \n\n Task 17 \n Write a function that returns the (17*Value) and print the return value of the function. Pass the value 14 to the function and store the return value into a variable 'a' \n Print the value of 'a'",
+		"op": "/solutions/task17.py"
+	},
+	{
+		"task": "\n Awesome! You have mastered the basics of Functions. Let's move on to the next topic: Modules. \n A Module is a file consisting of Python code. A module can define functions, classes and variables. A module can also include runnable code.\n Most commonly used modules are: math, time, os. \n In order to use their functions, we can import them like: import module_name and use the functions defined inside the module by modulename.func_name(). Here's your task: \n\n Task 18 \n Use the time module to print the current local time of your desktop. \n Output Example: Thu Nov  1 18:42:18 2018",
+		"op": "/solutions/task18.py"
+	},
+	{
+		"task": "\n Impressive! Let's learn about the module math. \n 'math' module gives access to mathematical functions used to calculate cos, sin values, min, max, exp. \n Here's your task: \n\n Task 19 \n Write a program to define a function which returns the square root of the value passed to it. Return the square root and print it. Import math module and use sqrt(). \n Pass the value 3364.",
+		"op": "/solutions/task19.py"
+	},
+	{
+		"task": "\n Great work! You have reached the 20th Task!! \n You have mastered the basics of modules. \n Now let's move on to the next topic: Collection Data Types. \n There are 4 collection datatypes. Let's begin with Lists. \n A list is a collection which is ordered and which can be changed. \n List elements are enclosed with Square Brackets []. Eg: randomlist = ['one','two'] \n List stores the values in an order. It start with an index 0. \n To access the first element in the list, you have to use list[0]. The first element is always stored in the index 0. \n For traversing through a list, you can use a for loop. Eg: for i in list_name: \n\tprint(i) \n Here's your task: \n\n Task 20 \n Create a list with elements 1 to 10 and traverse through the list and print the even numbers.",
+		"op": "/solutions/task20.py"
+	},
+	{
+		"task": "\nWow! That's impressive! \n Let's learn List Comprehensions. \n List comprehensions provide a concise way to create lists. \n It consists of brackets containing an expression followed by a for clause, then zero or more for or if clauses.\n The result will be a new list resulting from evaluating the expression in the context of the for and if clauses which follow it. \n Syntax: [ expression for item in list if conditional ] \n This is equivalent to what you did in the previous task. \n\n Task 21 \n Store numbers 1 to 10 in a list and print the odd numbers using List Comprehensions.",
+		"op": "solutions/task21.py"
+	},
+	{
+		"task": "\n Let's deal with lists some more. There are many operations that can be performed on Lists. \n They are: \n 1. Checking whether the element exists in the list using 'in' keyword. \n 2. To determine length of the list using len() \n 3. To add items using append() \n 4. To insert at specific index using insert() \n 5. To remove a particular element using remove(element) \n 6. Pop() - Removes at specified index or by default, the last one. \n 7. del keyword removes the specified index. \n 8.  clear() - Empties the whole list. \n Here's your task.(Quite a hectic task!) \n\n Task 22 \n Create a list with the values 'one', 'two', 'three'. Your task is to do the following: \n 1. Search for the element one and print 'Found!' if found, else print 'Not Found!' \n 2. Print the length of the list \n 3. Add 'four' to the list using append() \n 4. Insert 'five' at index 1 using insert() \n 5. Remove 'one' from the list using remove() \n 6. Remove the value at index 0 using pop() \n 7. Delete the second element of the list using del \n 8. Empty the remaining list and print 'Empty!' \n Use a function display() to display the list after each and every operation.",
+		"op": "/solutions/task22.py"
+	},
+	{
+		"task": "\n Awesome! Now you have mastered the basics of Lists. \n Let's go to the next one: Tuples. \n A tuple is a collection which is ordered and unchangeable. In Python tuples are written with round brackets (). The only difference between List and Tuple is that you cannot modify the values of the list once created. \n That means you cannot add or remove elements to the tuple. \n This makes your next task easier :) \n\n Task 23 \n Create a tuple with values 100,200,300 and perform the following operations: \n 1. Print each value of the tuple using for loop. \n 2. Check if '200' exists in the tuple using in keyword and print 'Found!' else print 'Not Found!'. \n 3. Print the length of the tuple.",
+		"op": "/solutions/task23.py"
+	},
+	{
+		"task": "\n Now let's move on to the next one: Dictionaries. \nA dictionary is a collection which is unordered, changeable and indexed. In Python dictionaries are written with curly brackets{}, and they have keys and values. \n  Syntax: {key:value, key2:value2}\n Unlike Tuples, you can modify the values here, like this, dictionary_name['key']= new_value \n To print only the keys, \n for i in dictionary_name: \n\tprint(i) \n To print only the values, \n for i in dict_name: \n\tprint(dict_name[i]) \n To print both key and value, \n for i,j in dict_name.items(): \n\tprint(i,j) \n Here's your task: \n\n Task 24 \n Initialize a dictionary with the key:values : 1:'one', 2:'two', 3: 'three' Your task is to print the elements of the dictionary(1. Keys only, 2. Values only, 3. Both key and values together) and print the length of the dictionary. Also, add the key:value pair, 4:'four' directly by assigning them to the dictionary, and print the updated dictionary(keys and values)",
+		"op": "/solutions/task24.py"
+	},
+	{
+		"task": "\n We have come to the last section of Python basics. \n Congrats on reaching the 25th Task! \n Next topic is Exception Handling \n When an error occurs, or exception as we call it, Python will normally stop and generate an error message. These exceptions can be handled using the try statement. \n Eg: try: \n\tprint(i) \n except: \n\tprint('An Exception Occured') \n When the try block raises an error, the except block statement gets executed. Without this try-except block, the program may crash. \n Here's your task: \n\n Task 25 \n Try printing the value of 1/0 and print 'Zero Division not possible' in the except block.",
+		"op": "/solutions/task25.py"
+	},
+	{
+		"task": "\n Congrats on Completing the tasks. Hope you are having a great go. Here are some bonus tasks. \n\n Task 26 \n Factorial Program. Print the factorial of 6 using whatever you have learnt from the previous tasks. \n Do not use the in-built functions.",
+		"op": "/solutions/task26.py"
+	},
+	{
+		"task": "\n Impressive! Let's go to the next one. \n\n Task 27 \n Pattern Printing \n Print the following pattern \n * \n ** \n *** \n ****",
+		"op": "/solutions/task27.py"
+	},
+	{
+		"task": "\n Now let's move on to the next one. \n\n Task 28 \n Multiplication Table \n Print the multiples of 5 in order from 1 to 10.",
+		"op": "/solutions/task28.py"
+	},
+	{
+		"task": "\n You are one task away from completing this... Great to see you progress... \n Next task: \n\n Task 29 \n Prime Number \n Check whether 103 is prime or not and print 'Prime!' if prime else print 'Not Prime!'",
+		"op": "/solutions/task29.py"
+	},
+	{
+		"task": "\n Congrats!! You have reached the last task!!! \n Next task: \n\n Task 30 (the last one! :) ) \n\n Task 30 \n Palindrome \n Check whether a string 'civic' is palindrome or not. Print 'Palindrome!' if yes, else print 'Not Palindrome!'",
+		"op": "/solutions/task30.py"
 	}
 ]
