@@ -46,5 +46,41 @@
 	{
 		"task": "\n Wonderful progress! Let's move on ... \n Now that you have learnt strings, let's move on to some in-built functions for strings. \n They are: \n 1.strip() - To remove any whitespace from beginning or the end \n 2. len() - To find the length of the string \n 3. lower() - Returns the string in lower case \n 4. upper() - Returns the string in upper case \n 5. replace() - To replace the value in the string with another value. \n\n Task 12 \n Store a string, ' This is Cool!' \n Your task is to \n 1. Remove the white spaces at the beginning and the end and print it. \n 2. Find the length of the string and print it. \n 3. Print it in upper case. \n 4. Print it in lowercase \n 5. Replace T with t and print it.",
 		"op": "/solutions/task12.py"
+	},
+	{
+		"task": "\n Great! Now, let's learn about String Slicing. \n To slice a string means to split a string into a substring. \n A string is a character array which has index starting from 0. \n To print the string, you can either directly print it or use it to print a part of it. \n Eg: \n b='Hello' \n print(b[1:4]) \n This prints the characters from index 1 to 4 (4 not included). Here's your task: \n\n Task 13 \n Print the substring 'day' in 'Friday'.",
+		"op": "/solutions/task13.py"
+	},
+	{
+		"task": "\n Let's deal with strings again. The last character of the string can be accessed at the index -1. Use this logic to do the following task. \n Task 14 \n Reverse the string 'AJCE' and print it using for loop.",
+		"op": "/solutions/task14.py"
+	},
+	{
+		"task": "\n Great. You have now mastered the basics of strings. \n Let's move on to the next topic: Functions. \n Functions are block of statements that execute a particular task. \n Functions are very useful in programs to shorten the length of the program, by not writing the same thing over and over again. \n You can pass values to a function, which are known as arguments. \n Syntax: \n def func_name(arguments): \n\tFunction Body \n The function body executes only when it is called, like this, func_name(arguments) \n Now, here's your task:\n\n Task 15\n Define a function that calculates area of a square. Pass the value side which is initialized to 20 and print the area by using the function.",
+		"op": "/solutions/task15.py"
+	},
+	{
+		"task": "\n Awesome! Let's move on to the next topic: Default Parameters. \n The default parameters are used when you don't pass any values to the function. \n Eg: \n def func_name(default value=0): \n\tFunction Body \n When no value is passed, the default value of the argument is 0. Here's your task: \n\n Task 16 \n Define a function to check whether a number is divisible by 3 or not. Set the default value to 3.\n Pass the value 16 to the function and in the next statement, call the function without any argument. \n Print 'Divisible' if divisible by 3 else print 'Not Divisible'",
+		"op": "/solutions/task16.py"
+	},
+	{
+		"task": "\n Let's move on to return values. \n Return values are values that are returned after the function performs the required function. \n Syntax: return(value) \n Here's your next task: \n\n Task 17 \n Write a function that returns the (17*Value) and print the return value of the function. Pass the value 14 to the function and store the return value into a variable 'a' \n Print the value of 'a'",
+		"op": "/solutions/task17.py"
+	},
+	{
+		"task": "\n Awesome! You have mastered the basics of Functions. Let's move on to the next topic: Modules. \n A Module is a file consisting of Python code. A module can define functions, classes and variables. A module can also include runnable code.\n Most commonly used modules are: math, time, os. \n In order to use their functions, we can import them like: import module_name and use the functions defined inside the module by modulename.func_name(). Here's your task: \n\n Task 18 \n Use the time module to print the current local time of your desktop. \n Output Example: Thu Nov  1 18:42:18 2018",
+		"op": "/solutions/task18.py"
+	},
+	{
+		"task": "\n Impressive! Let's learn about the module math. \n 'math' module gives access to mathematical functions used to calculate cos, sin values, min, max, exp. \n Here's your task: \n\n Task 19 \n Write a program to define a function which returns the square root of the value passed to it. Return the square root and print it. Import math module and use sqrt(). \n Pass the value 3364.",
+		"op": "/solutions/task19.py"
+	},
+	{
+		"task": "\n Great work! You have reached the 20th Task!! \n You have mastered the basics of modules. \n Now let's move on to the next topic: Collection Data Types. \n There are 4 collection datatypes. Let's begin with Lists. \n A list is a collection which is ordered and which can be changed. \n List elements are enclosed with Square Brackets []. Eg: randomlist = ['one','two'] \n List stores the values in an order. It start with an index 0. \n To access the first element in the list, you have to use list[0]. The first element is always stored in the index 0. \n For traversing through a list, you can use a for loop. Eg: for i in list_name: \n\tprint(i) \n Here's your task: \n\n Task 20 \n Create a list with elements 1 to 10 and traverse through the list and print the even numbers.",
+		"op": "/solutions/task20.py"
+	},
+	{
+		"task": "\nWow! That's impressive! \n Let's learn List Comprehensions. \n List comprehensions provide a concise way to create lists. \n It consists of brackets containing an expression followed by a for clause, then zero or more for or if clauses.\n The result will be a new list resulting from evaluating the expression in the context of the for and if clauses which follow it. \n Syntax: [ expression for item in list if conditional ] \n This is equivalent to what you did in the previous task. \n\n Task 21 \n Store numbers 1 to 10 in a list and print the odd numbers using List Comprehensions.",
+		"op": "solutions/task21.py"
 	}
 ]
