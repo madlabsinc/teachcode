@@ -22,5 +22,29 @@
 	{
 		"task": "\n Awesome! Let's move on to Loops. \n Loop is an important statement which is used for repetition of the same code as and when required. \n This task will surely test what you have learnt till now from the previous tasks! \n\n Task 6 \n Syntax of for loop: \n  for loop_control_variable in range(start, step, stop): \n \t Loop Body(indented)\n Here's your task:  \n\n Task- 6 \n Print even numbers from 1 to 10 (including 10) using for loop.",
 		"op": "/solutions/task6.py"
+	},
+	{
+		"task": "\n Let's move on to while loop now. This loop works similiar to that of a for loop. \n Syntax of while loop: \n while condition:\n\tLoop Body(Indented statements). \n\n Task 7 \n Your task is to print the squares of the numbers from 1 to 10. Use while loop to do the task.",
+		"op": "/solutions/task7.py"
+	},
+	{
+		"task": "\n Great work! Let's move on to break and continue statements. \n Break statements are used to break out of the loop when required and continue statements are used to skip the current iteration according to the condition given. \n\n Task 8: \n Print the values from 10 to 20 but skip the value 15 and stop the iteration at value 18. ",
+		"op": "/solutions/task8.py"
+	},
+	{
+		"task": "\n Let's move on to Logical Operators. Logical Operators are 'and', 'or', 'not'. \n And operator returns true if both the conditions(operands) are true. \n Or operator returns true if any one of the conditions is True. \n Not operator negates the boolean value returned by the expression \n\n Task 9 \n Rahul scores 90, 85,70, 75, 80 in his exams. The grading criteria for an exam is given below(based on average): \n A+ => 91 -100 \n A => 81-90 \n B => 71-80 \n C => 61- 70 \n D => 51- 60 \n F => 50 & Less than 50. \n Calculate and print his average as well as the grade.",
+		"op": "/solutions/task9.py"
+	},
+	{
+		"task": "\n Awesome! Let's move on to Type Conversion in Python. \n Type Conversion is used to directly convert one datatype to another which is useful in day-to day programming. \n For example, you may want to find the average as an integer without that long trailing numbers after the decimal point. For this, we can use type conversion. \n\n Task 10 \n Initialise three variables with the values 60,100,200 and find the average. Print the average as an integer.",
+		"op": "/solutions/task10.py"
+	},
+	{
+		"task": "\n Now let's move on to Type Coercion in Python. \n Coercion happens in the case of binary operations: if you do x+y , and x and y have different types, \n they are coerced into a single type before performing the operation. \n\n Task 11 \n Initialize two numbers with values 10 and 12.506. Add them and print their sum and average. (This is the way how Python handles two datatypes by default).",
+		"op": "/solutions/task11.py"
+	},
+	{
+		"task": "\n Wonderful progress! Let's move on ... \n Now that you have learnt strings, let's move on to some in-built functions for strings. \n They are: \n 1.strip() - To remove any whitespace from beginning or the end \n 2. len() - To find the length of the string \n 3. lower() - Returns the string in lower case \n 4. upper() - Returns the string in upper case \n 5. replace() - To replace the value in the string with another value. \n\n Task 12 \n Store a string, ' This is Cool!' \n Your task is to \n 1. Remove the white spaces at the beginning and the end and print it. \n 2. Find the length of the string and print it. \n 3. Print it in upper case. \n 4. Print it in lowercase \n 5. Replace T with t and print it.",
+		"op": "/solutions/task12.py"
 	}
 ]

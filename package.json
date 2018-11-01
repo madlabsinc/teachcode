@@ -8,13 +8,13 @@
     "start": "node index.js"
   },
   "keywords": [
-     "node.js",
-     "commander.js",
-     "inquirer.js",
-     "shell.js",
-	 "cli",
-	 "python3"
-    ],
+    "node.js",
+    "commander.js",
+    "inquirer.js",
+    "shell.js",
+    "cli",
+    "python3"
+  ],
   "author": "James George <jamesgeorge998001@gmail.com>",
   "license": "ISC",
   "dependencies": {
