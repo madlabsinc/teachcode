@@ -5,15 +5,15 @@
 	},
 	{
 		"task": "\nNow lets focus on variables\nUnlike other programming languages, Python has no command for declaring a variable.A variable is created the moment you first assign a value to it.\nAlso consider these variable naming conventions\n\n1.A variable name must start with a letter or the underscore character\n2.A variable name cannot start with a number\n3.A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ )\n3.Variable names are case-sensitive (age, Age and AGE are three different variables)\nTask-2\nConsider these variable names:-\nvariable\nsum@\nproduct_of_12\n12_product\nJust print out the correct variable names in order",
-		"op": "solutions/task2.py"
+		"op": "/solutions/task2.py"
 	},
 	{
 		"task": "\nKeep it up!\nStrings represent a group of characters.String literals in python are surrounded by either single quotation marks, or double quotation marks.Python provides various prebuilt functions to deal with strings, say to find the length of a string, convert it to lower case etc.\nTask-3\nDeclare a variable str and initialize it with hello world Print it in upper case and also the length in order",
-		"op": "solutions/task3.py"
+		"op": "/solutions/task3.py"
 	},
 	{
 		"task": "\nGreat work! Let's move on .... \n Operators are used to perform operations on variables and values. \n There are many types of operators: \n 1. Arithmetic Operator \n 2. Assignment Operator \n 3. Comparison Operator \n 4. Logical Operator \n 5. Bitwise Operator \n Enough talk, let's do the task. \n\n Task 4 \n Initialize three variables a, b,c with values 35, 30, 20 respectively. \n Your task is to print the sum and average of these three numbers.",
-		"op": "solutions/task4.py" 
+		"op": "/solutions/task4.py"
 	},
 	{
 		"task": "\n Impressive! On to the next task ... \n Conditional Statements are statements that execute when the given condition is TRUE. \n Conditional statements are implemented using if-else statements. Here's your task: \n\n Task 5 \n Store value 20 to the variable 'a', then print 'Odd' if it is odd. Else, print 'Even' if it is an even number.",
