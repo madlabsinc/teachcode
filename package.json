@@ -1,6 +1,6 @@
 {
   "name": "teach-code",
-  "version": "0.0.9",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "bin": "./index.js",

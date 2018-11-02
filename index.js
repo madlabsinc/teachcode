@@ -19,7 +19,7 @@ let showCommands = require('./lib/showCommands');
 
 
 program
-.version('0.0.5', '-v --version')
+.version('1.0.0', '-v --version')
 .description('Learn python the effective way.');
 
 program
