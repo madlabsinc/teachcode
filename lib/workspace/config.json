@@ -20,7 +20,7 @@
 		"op": "/solutions/task5.py"
 	},
 	{
-		"task": "\n Awesome! Let's move on to Loops. \n Loop is an important statement which is used for repetition of the same code as and when required. \n This task will surely test what you have learnt till now from the previous tasks! \n\n Task 6 \n Syntax of for loop: \n  for loop_control_variable in range(start, step, stop): \n \t Loop Body(indented)\n Here's your task:  \n\n Task- 6 \n Print even numbers from 1 to 10 (including 10) using for loop.",
+		"task": "\n Awesome! Let's move on to Loops. \n Loop is an important statement which is used for repetition of the same code as and when required. \n This task will surely test what you have learnt till now from the previous tasks! \n\n Task 6 \n Syntax of for loop: \n  for loop_control_variable in range(start, stop, step): \n \t Loop Body(indented)\n Here's your task:  \n\n Task- 6 \n Print even numbers from 1 to 10 (including 10) using for loop.",
 		"op": "/solutions/task6.py"
 	},
 	{
@@ -44,7 +44,7 @@
 		"op": "/solutions/task11.py"
 	},
 	{
-		"task": "\n Wonderful progress! Let's move on ... \n Now that you have learnt strings, let's move on to some in-built functions for strings. \n They are: \n 1.strip() - To remove any whitespace from beginning or the end \n 2. len() - To find the length of the string \n 3. lower() - Returns the string in lower case \n 4. upper() - Returns the string in upper case \n 5. replace() - To replace the value in the string with another value. \n\n Task 12 \n Store a string, ' This is Cool!' \n Your task is to \n 1. Remove the white spaces at the beginning and the end and print it. \n 2. Find the length of the string and print it. \n 3. Print it in upper case. \n 4. Print it in lowercase \n 5. Replace T with t and print it.",
+		"task": "\n Wonderful progress! Let's move on ... \n Now that you have learnt strings, let's move on to some in-built functions for strings. \n They are: \n 1.strip() - To remove any whitespace from beginning or the end \n 2. len() - To find the length of the string \n 3. lower() - Returns the string in lower case \n 4. upper() - Returns the string in upper case \n 5. replace() - To replace the value in the string with another value. \n\n Task 12 \n Store a string, ' This is Cool!' \n Your task is to \n 1. Remove the white spaces at the beginning and the end and print it. \n 2. Find the length of the string and print it. \n 3. Print it in lower case. \n 4. Print it in upper case \n 5. Replace T with t and print it.",
 		"op": "/solutions/task12.py"
 	},
 	{
