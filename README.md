@@ -16,3 +16,7 @@ The user is provided with 30 tasks guideing them through the basics of python. H
 - ``` teach-code submit ``` submits the current solution and gives you the next key to proceed if your solution meets all the test cases
 - ``` teach-code showkeys ``` shows you all the keys 
 - ``` teach-code showcommands ``` shows you all the commands available for reference
+
+## License
+
+> GNU GPL V3
