@@ -19,4 +19,4 @@ The user is provided with 30 tasks guideing them through the basics of python. H
 
 ## License
 
-> GNU GPL V3
+Licensed under `GNU General Public License V3.0`
