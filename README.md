@@ -2,6 +2,10 @@
 
 A console based application to teach Python for beginners in the end familiarising with command line interfaces.
 
+## Installation
+
+`npm install -g teach-code`
+
 ## How to use
 
 The user is provided with 30 tasks guideing them through the basics of python. He/she gets a key to access the next task if the current task meets all the test cases. There is also the provision to revisit previously submitted tasks, but it can't be worked on again.
