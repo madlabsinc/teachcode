@@ -16,11 +16,12 @@ let fetchTask = require('./lib/fetchTask');
 let submitTask = require('./lib/submitTask');
 let showKeys = require('./lib/showKeys');
 let showCommands = require('./lib/showCommands');
+let versionInfo = require('./lib/versionInfo');
 
 
 program
-.version('1.0.0', '-v --version')
-.description('Learn python the effective way.');
+.command('version')
+.action(versionInfo);
 
 program
 .command('init')
