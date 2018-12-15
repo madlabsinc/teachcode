@@ -1,11 +1,13 @@
 {
   "name": "teach-code",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
   "bin": "./index.js",
   "scripts": {
-    "start": "node index.js"
   },
   "keywords": [
     "node.js",
@@ -16,7 +18,11 @@
     "python3"
   ],
   "author": "James George <jamesgeorge998001@gmail.com>",
-  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamesgeorge007/teach-code/issues"
+  },
+  "homepage": "https://github.com/jamesgeorge007/teach-code#readme",
+  "license": "GPL-3.0",
   "dependencies": {
     "chalk": "^2.4.1",
     "clear": "^0.1.0",
