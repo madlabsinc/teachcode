@@ -21,7 +21,7 @@ let versionInfo = require('./lib/versionInfo');
 
 program
 .command('version')
-.decription('Outputs version and local development environment information')
+.description('Outputs version and local development environment information')
 .action(versionInfo);
 
 program
