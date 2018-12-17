@@ -46,6 +46,7 @@ program
 
 program
 .command('showcommands')
+.description('Shows all commands available')
 .action(showCommands);
 
 
