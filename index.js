@@ -31,11 +31,12 @@ program
 
 program
 .command('submit')
-.description('Submit current task')
+.description('Submits current task')
 .action(submitTask);
 
 program
 .command('fetchtask <key>')
+.description('Fetches any task as per the key supplied')
 .action(fetchTask);
 
 program
