@@ -26,11 +26,12 @@ program
 
 program
 .command('init')
-.description('Initialize challenges');
+.description('Initialize challenges')
 .action(initialize);
 
 program
 .command('submit')
+.description('Submit current task')
 .action(submitTask);
 
 program
