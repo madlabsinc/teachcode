@@ -41,6 +41,7 @@ program
 
 program
 .command('showkeys')
+.description('Shows keys of all the completed tasks')
 .action(showKeys);
 
 program
