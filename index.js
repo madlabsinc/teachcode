@@ -26,6 +26,7 @@ program
 
 program
 .command('init')
+.description('Initialize challenges');
 .action(initialize);
 
 program
