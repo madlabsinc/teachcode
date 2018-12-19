@@ -4,6 +4,7 @@
 
 // Importing depedencies
 const program = require('commander');
+const chalk - require('chalk');
 const shell = require('shelljs');
 const fs = require('fs');
 const { PythonShell } = require('python-shell');
@@ -49,6 +50,13 @@ program
 .description('Shows all commands available')
 .action(showCommands);
 
+program
+  .arguments('<command>')
+  .action((cmd) => {
+    program.outputHelp()
+    console.log(`  ` + chalk.red(`\n  Unknown command ${chalk.yellow(cmd)}.`))
+    console.log()
+});
 
 program.parse(process.argv);
 
