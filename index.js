@@ -4,7 +4,7 @@
 
 // Importing depedencies
 const program = require('commander');
-const chalk - require('chalk');
+const chalk = require('chalk');
 const shell = require('shelljs');
 const fs = require('fs');
 const { PythonShell } = require('python-shell');
