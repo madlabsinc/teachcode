@@ -8,7 +8,7 @@ const chalk = require('chalk');
 
 // Linking excercise files
 let initialize = require('./lib/commands/initializeTasks');
-let fetchTask = require('./lib/fetchTask');
+let fetchTask = require('./lib/commands/fetchTask');
 let submitTask = require('./lib/submitTask');
 let showKeys = require('./lib/showKeys');
 let showCommands = require('./lib/showCommands');
