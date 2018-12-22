@@ -55,6 +55,7 @@ program
 
 program.parse(process.argv);
 
+// Outputs help if no argument is provided
 if(!program.args.length){
 	program.help();
 }
