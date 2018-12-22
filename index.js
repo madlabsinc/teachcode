@@ -5,11 +5,6 @@
 // Importing depedencies
 const program = require('commander');
 const chalk = require('chalk');
-const shell = require('shelljs');
-const fs = require('fs');
-const { PythonShell } = require('python-shell');
-const showBanner = require('./utils/banner');
-const exercises = require('./lib/workspace/config');
 
 // Linking excercise files
 let initialize = require('./lib/initializeTasks');
