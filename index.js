@@ -10,7 +10,7 @@ const chalk = require('chalk');
 let initialize = require('./lib/commands/initializeTasks');
 let fetchTask = require('./lib/commands/fetchTask');
 let submitTask = require('./lib/commands/submitTask');
-let showKeys = require('./lib/showKeys');
+let showKeys = require('./lib/commands/showKeys');
 let showCommands = require('./lib/showCommands');
 let versionInfo = require('./lib/versionInfo');
 
