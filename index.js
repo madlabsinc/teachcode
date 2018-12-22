@@ -7,7 +7,7 @@ const program = require('commander');
 const chalk = require('chalk');
 
 // Linking excercise files
-let initialize = require('./lib/initializeTasks');
+let initialize = require('./lib/commands/initializeTasks');
 let fetchTask = require('./lib/fetchTask');
 let submitTask = require('./lib/submitTask');
 let showKeys = require('./lib/showKeys');
