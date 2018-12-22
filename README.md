@@ -1,4 +1,4 @@
-[![NPM](https://nodei.co/npm/scaffold-static.png)](https://nodei.co/npm/teach-code/)
+[![NPM](https://nodei.co/npm/teach-code.png)](https://nodei.co/npm/teach-code/)
 
 # Teach-Code
 
