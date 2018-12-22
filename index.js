@@ -14,7 +14,7 @@ let showKeys = require('./lib/commands/showkeys');
 let showCommands = require('./lib/commands/showcommands');
 let versionInfo = require('./lib/commands/versioninfo');
 
-
+// Defines various commands and corresponding action handlers
 program
 .command('version')
 .description('Outputs version and local development environment information')
@@ -45,6 +45,7 @@ program
 .description('Shows all commands available')
 .action(showCommands);
 
+// Validates any random command fired in  
 program
   .arguments('<command>')
   .action((cmd) => {
