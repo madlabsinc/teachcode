@@ -32,7 +32,7 @@
     "inquirer": "^6.2.0",
     "log-update": "^2.3.0",
     "os": "^0.1.1",
-    "python-shell": "^1.0.6",
+    "python-shell": "^1.0.7",
     "shelljs": "^0.8.2"
   }
 }
