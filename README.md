@@ -5,7 +5,7 @@
   <h1 align="center">Teach-Code</h1>
 </p>
 
-A tool to develop and improve a student’s programming skills by introducing the earliest lessons of coding.
+> A tool to develop and improve a student’s programming skills by introducing the earliest lessons of coding.
 
 ## Installation
 
