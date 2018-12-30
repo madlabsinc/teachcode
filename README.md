@@ -5,7 +5,7 @@
   <h1 align="center">Teach-Code</h1>
 </p>
 
-A console based application to teach Python for beginners in the end familiarising with command line interfaces.
+A tool to develop and improve a student’s programming skills by introducing the earliest lessons of coding.
 
 ## Installation
 
