@@ -1,5 +1,7 @@
 [![NPM](https://nodei.co/npm/teach-code.png)](https://nodei.co/npm/teach-code/)
 
+![image](./assets/image.png)
+
 # Teach-Code
 
 A console based application to teach Python for beginners in the end familiarising with command line interfaces.
