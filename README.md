@@ -1,7 +1,8 @@
 [![NPM](https://nodei.co/npm/teach-code.png)](https://nodei.co/npm/teach-code/)
 
-![image](./assets/image.png)
-
+<p align="center">
+  <img src="./assets/image.png" width="80" height="80">
+</p>
 # Teach-Code
 
 A console based application to teach Python for beginners in the end familiarising with command line interfaces.
