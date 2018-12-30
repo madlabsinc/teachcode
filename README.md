@@ -1,7 +1,7 @@
 [![NPM](https://nodei.co/npm/teach-code.png)](https://nodei.co/npm/teach-code/)
 
 <p align="center">
-  <img src="./assets/image.png" width="240" height="240">
+  <img src="https://imgur.com/a/7hTDjV9" width="240" height="240">
   <h1 align="center">Teach-Code</h1>
 </p>
 
