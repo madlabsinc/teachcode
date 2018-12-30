@@ -2,7 +2,7 @@
 
 <p align="center">
   <img src="./assets/image.png" width="240" height="240">
-  <h1>Teach-Code</h1>
+  <h1 align="center">Teach-Code</h1>
 </p>
 
 A console based application to teach Python for beginners in the end familiarising with command line interfaces.
