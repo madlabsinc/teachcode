@@ -8,7 +8,8 @@
   },
   "bin": "./index.js",
   "scripts": {
-    "lint": "jshint .|| true"
+    "test": "node ./node_modules/mocha/bin/mocha test/main_test.js",
+    "lint": "jshint ."
   },
   "keywords": [
     "node.js",
