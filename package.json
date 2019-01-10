@@ -7,7 +7,9 @@
     "lib": "lib"
   },
   "bin": "./index.js",
-  "scripts": {},
+  "scripts": {
+    "lint": "jshint .|| true"
+  },
   "keywords": [
     "node.js",
     "commander.js",
@@ -34,5 +36,9 @@
     "os": "^0.1.1",
     "python-shell": "^1.0.7",
     "shelljs": "^0.8.2"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.7",
+    "mocha": "^5.2.0"
   }
 }
