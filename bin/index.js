@@ -7,12 +7,12 @@ const program = require('commander');
 const chalk = require('chalk');
 
 // Linking excercise files
-let initialize = require('./lib/commands/init');
-let fetchTask = require('./lib/commands/fetchtask');
-let submitTask = require('./lib/commands/submit');
-let showKeys = require('./lib/commands/showkeys');
-let showCommands = require('./lib/commands/showcommands');
-let versionInfo = require('./lib/commands/versioninfo');
+let initialize = require('../lib/commands/init');
+let fetchTask = require('../lib/commands/fetch-task');
+let submitTask = require('../lib/commands/submit');
+let showKeys = require('../lib/commands/show-keys');
+let showCommands = require('../lib/commands/show-commands');
+let versionInfo = require('../lib/commands/version-info');
 
 // Defines commands and corresponding action handlers
 program

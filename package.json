@@ -6,7 +6,7 @@
   "directories": {
     "lib": "lib"
   },
-  "bin": "./index.js",
+  "bin": "./bin/index.js",
   "scripts": {
     "test": "node ./node_modules/mocha/bin/mocha test/main_test.js",
     "lint": "jshint ."
