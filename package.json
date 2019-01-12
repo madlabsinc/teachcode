@@ -9,7 +9,7 @@
   "bin": "./bin/index.js",
   "scripts": {
     "test": "node ./node_modules/mocha/bin/mocha test/main_test.js",
-    "lint": "jshint ."
+    "lint": "node ./node_modules/jshint/bin/jshint ./lib ./bin"
   },
   "keywords": [
     "node.js",
