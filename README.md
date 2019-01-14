@@ -26,6 +26,14 @@ The user is provided with 30 tasks guideing them through the basics of python. H
 - `teach-code showkeys` shows you all the keys 
 - `teach-code showcommands` shows you all the commands available for reference
 
+## Available Commands
+
+* `teach-code init`
+* `teach-code fetchtask <key>`
+* `teach-code submit`
+* `teach-code showkeys`
+* `teach-code showcommands`
+
 ## License
 
 Licensed under `GNU General Public License V3.0`
