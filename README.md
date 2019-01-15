@@ -28,11 +28,13 @@ The user is provided with 30 tasks guideing them through the basics of python. H
 
 ## Available Commands
 
-* `teach-code init`
-* `teach-code fetchtask <key>`
-* `teach-code submit`
-* `teach-code showkeys`
-* `teach-code showcommands`
+| command | description |                                                                                                
+| -------------- |  ---------------- |
+| `teach-code init` | Initializes all the tasks |
+| `teach-code fetchtask <key>` | Fetches the task correponding to key provided |
+| `teach-code submit` | Submits the current task |
+| `teach-code showkeys` | Shows all the keys grabbed |
+| `teach-code showcommands` | Lists all the available commands |
 
 ## License
 
