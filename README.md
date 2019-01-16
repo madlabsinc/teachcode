@@ -36,6 +36,10 @@ The user is provided with 30 tasks guideing them through the basics of python. H
 | `teach-code showkeys` | Shows all the keys grabbed |
 | `teach-code showcommands` | Lists all the available commands |
 
+## Demo
+
+[![asciicast](https://asciinema.org/a/Dt6tL9vo6wAWqhh7nvwEFTMqA.svg)](https://asciinema.org/a/Dt6tL9vo6wAWqhh7nvwEFTMqA)
+
 ## License
 
 Licensed under `GNU General Public License V3.0`
