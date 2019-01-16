@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/madlabsinc/teachcode.svg?branch=master)](https://travis-ci.com/madlabsinc/teachcode)
 [![npm version](https://badgen.net/npm/v/teach-code)](https://www.npmjs.com/package/teach-code)
 [![downloads](https://badgen.net/npm/dm/teach-code)](https://www.npmjs.com/package/teach-code)
 [![PRs Welcome](https://img.shields.io/badge/PRs%20-welcome-brightgreen.svg)](https://github.com/madlabsinc/Teach-Code/pull/new)
