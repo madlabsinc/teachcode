@@ -1,6 +1,6 @@
 [
 	{
-		"task": "Hey there folks, welcome to the world of programming\n Task 1:-\n Print Hello World to the console using the pre-built print function",
+		"task": "Hey there folks, welcome to the world of programming\n Task 1:-\n Print Hello World to the console",
 		"op": "/solutions/task1.js"
 	}
 ]
