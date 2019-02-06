@@ -22,7 +22,7 @@ The user is provided with 30 tasks guiding them through the basic constructs of 
 - Navigate to the `Teach-Code-solutions` directory.
 - Copy and paste the command as instructed within the initial screen `teach-code fetchtask <key>`.
 - Hurray :+1: you've got your first task.
-- Write your solution within a file that is auto-created For instance, `task<task_number>.py)` for Python.
+- Write your solution within a file that is auto-created. For instance, `task<task_number>.py` for Python.
 - `teach-code submit` submits the current solution and gives you the next key to proceed if your solution meets all the test cases.
 - `teach-code showkeys` shows you all the keys. 
 - `teach-code showcommands` shows you all the commands available for reference.
