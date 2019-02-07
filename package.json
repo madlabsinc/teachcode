@@ -11,6 +11,10 @@
     "test": "node ./node_modules/mocha/bin/mocha test/main_test.js",
     "lint": "node ./node_modules/jshint/bin/jshint ./lib ./bin"
   },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
   "keywords": [
     "node.js",
     "commander.js",
@@ -40,6 +44,7 @@
   },
   "devDependencies": {
     "jshint": "^2.9.7",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "pre-commit": "^1.2.2"
   }
 }
