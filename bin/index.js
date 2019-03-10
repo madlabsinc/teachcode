@@ -7,12 +7,12 @@ const program = require('commander');
 const chalk = require('chalk');
 
 // Linking excercise files
-let initialize = require('../lib/commands/init');
-let fetchTask = require('../lib/commands/fetch-task');
-let submitTask = require('../lib/commands/submit');
-let showKeys = require('../lib/commands/show-keys');
-let showCommands = require('../lib/commands/show-commands');
-let versionInfo = require('../lib/commands/version-info');
+const { initialize } = require('../lib/commands/init');
+const { fetchTask } = require('../lib/commands/tasks');
+const { submitTask } = require('../lib/commands/submit');
+const { showKeys } = require('../lib/commands/keys');
+const { showCommands } = require('../lib/commands/commands');
+const { versionInfo } = require('../lib/commands/version');
 
 // Defines commands and corresponding action handlers
 program
@@ -45,7 +45,7 @@ program
 .description('Shows all commands available')
 .action(showCommands);
 
-// Validates any random command fired in  
+// Validates any random command fired in
 program
   .arguments('<command>')
   .action((cmd) => {
