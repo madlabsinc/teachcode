@@ -1,6 +1,16 @@
 [
 	{
-		"task": "Hey there folks, welcome to the world of programming\n Task 1:-\n Print Hello World to the console",
+		"task": "Hey there folks, you have chosen JS Path! \n Here's your first task! All the best...\n Task 1:-\n Print Hello World to the console",
 		"op": "/solutions/task1.js"
+	},
+
+	{
+		"task": "Great! Now's let's move on to variables. Variables are used to store data values \n Task 2:-\n Declare a variable to store the value 18 and print the value.",
+		"op": "/solutions/task2.js"
+	},
+	
+	{
+		"task": "Let's move on to strings. Strings represent a set of characters written within quotes. \n Task 3:-\n Declare a variable to store the value 'JS is cool!' and print it.",
+		"op": "/solutions/task3.js"
 	}
 ]
