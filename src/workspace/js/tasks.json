@@ -12,5 +12,14 @@
 	{
 		"task": "Let's move on to strings. Strings represent a set of characters written within quotes. \n Task 3:-\n Declare a variable to store the value 'JS is cool!' and print it.",
 		"op": "/solutions/task3.js"
+	},
+
+	{
+		"task": "Keep it up! Let's move on to String methods. There are a variety of methods for string manipulation in JS. Some of them are: \n 1. length - To find the length of the string. \n 2. indexOf() - Returns the first occurence of a specified text in a string. \n 3. slice() - extracts a part of a string and returns the extracted part. \n 4. replace() - replaces a specified value with another value in a string. \n 5. concat() - to join two or more strings. \n 6. trim() - removes the white space from both sides of the string. \n Task 4:-\n Obtain the following output for the string ' Hey, this is Task 4 of JS Path! ' \n Output: \n Length of the string \n Display the index of first occurence of 'Task' \n Slice the string for displaying 'JS' \n Replace JS with Python \n Concatenate '!' to the end of the string. \n Remove the whitespaces from the beginning and end of the string.",
+		"op": "/solutions/task4.js"
+	},
+	{
+		"task": "Impressive! Let's move on to the next topic:  Operators. \n There are a variety of operators. Let's move on to Arithmetic Operators: +,-,*,/,%, **. \n Here's your task:\n Task 5:- \n Take 25 & 33 as your operands and print their sum, difference, product, quotient, remainder, 25^2.",
+		"op": "/solutions/task5.js"
 	}
 ]
