@@ -47,6 +47,10 @@
 	{
 		"task": "Great work! Let's move on to another loop, the do while loop. Unlike other loops, this one is an exit controlled loop, i.e, it executes at least once. It checks the condition only at the exit. \n Syntax: do{\n loop block\n}(while(condition)); \n Here's your task: \nTask 10:-\n Iterate through the numbers 1 to 20 and print whether the number is odd or even. \n Here's the sample output: \n 1 is odd. \n2 is even. ....\n20 is even.",
 		"op": "/solutions/task10.js"
+	},
+
+	{
+		"task": "Awesome! Let's now move on to break and continue statements. \n break statement is used to break out of the loop when required. It stops the iteration when used in loops. \n continue statments are used to skip the current iteration. \n The difference between these statements is that in the case of break statement, the iteration stops and breaks out of loop, whereas, in the case of continue, the iteration is skipped but the loop continues to execute. \n Here's your task: \n Task 11:- \n Print numbers from 1 to 15. Skip the iteration if the number is a multiple of 3 and break out of the loop when it reaches 13."
 	}
 
 ]
