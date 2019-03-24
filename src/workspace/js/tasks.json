@@ -38,5 +38,15 @@
 		"task": "Great! Let's move on to Loops now. Loops are used to repeat the same code without writing it over and over again. \n Let's start with for loop. Syntax: \n for (initialization; condition; update)\n{// code block to be executed} \n Here's your task: \n Task 8:- \n Print the multiples of 4 from 1 to 12 using for loop.",
 		"op": "/solutions/task8.js"
 	}, 
+	
+	{
+		"task": "Let's move on to another loop, the while loop, along with the if-else blocks. while loop is also an entry controlled loop, i.e, it checks the condition first before it starts executing. If-else blocks are used to compare the values and execute according to the conditions given. \n Syntax: \n while(condition) \n {block of statements; update statement;} \n Here's your task: \n Task 9:- \n Print the numbers from 1 to 50. Print Buzz if the number is a multiple of 5.",
+		"op": "/solutions/task9.js"
+	},
+
+	{
+		"task": "Great work! Let's move on to another loop, the do while loop. Unlike other loops, this one is an exit controlled loop, i.e, it executes at least once. It checks the condition only at the exit. \n Syntax: do{\n loop block\n}(while(condition)); \n Here's your task: \nTask 10:-\n Iterate through the numbers 1 to 20 and print whether the number is odd or even. \n Here's the sample output: \n 1 is odd. \n2 is even. ....\n20 is even.",
+		"op": "/solutions/task10.js"
+	}
 
 ]
