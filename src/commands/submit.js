@@ -140,10 +140,9 @@ let validateSolution = solutionFile => {
         process.exit(1);
       }
     }
-  } /* jshint ignore:start */ else {
+  } else {
     // TODO: Validation for JS solutions
   }
-  /* jshint ignore:end */
 };
 
 exports.submitTask = async () => {

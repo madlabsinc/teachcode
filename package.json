@@ -36,10 +36,8 @@
     "clear": "^0.1.0",
     "cli-table3": "^0.5.1",
     "commander": "^2.18.0",
-    "elegant-spinner": "^1.0.1",
     "figlet": "^1.2.1",
     "inquirer": "^6.2.0",
-    "log-update": "^2.3.0",
     "os": "^0.1.1",
     "python-shell": "^1.0.7",
     "shelljs": "^0.8.2"
@@ -48,7 +46,6 @@
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "jshint": "^2.9.7",
     "mocha": "^5.2.0",
     "pre-commit": "^1.2.2",
     "prettier": "^1.17.1"
