@@ -1,22 +1,24 @@
 'use strict';
 
+const chalk = require('chalk');
 const clear = require('clear');
 const figlet = require('figlet');
-const chalk = require('chalk');
+const { promisify } = require('util');
 
-exports.showBanner = () => {
+const printTitle = promisify(figlet);
+
+exports.showBanner = async () => {
   clear();
-  setTimeout(() => {
-    figlet('Teach-Code', (err, data) => {
-      if (err) {
-        console.log('Something went wrong...');
-        console.dir(err);
-        return;
-      }
-      console.log(chalk.redBright(data));
-      console.log(
-        chalk.yellow(' Learn python effectively...\t\t\tPowered by MadHacks\n'),
-      );
-    });
-  }, 50);
+  try {
+    const data = await printTitle('TeachCode');
+    console.log(chalk.redBright(data));
+    console.log(
+      chalk.yellow(
+        ` Learn to code effectively ${`\t`.repeat(4)} Powered by MadHacks\n`,
+      ),
+    );
+  } catch (err) {
+    console.err(err);
+    process.exit(1);
+  }
 };
