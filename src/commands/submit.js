@@ -146,140 +146,131 @@ let validateSolution = solutionFile => {
   /* jshint ignore:end */
 };
 
-exports.submitTask = () => {
-  showBanner();
-  setTimeout(() => {
-    if (program.args.length > 1) {
-      console.log(
-        chalk.red(`\n ${chalk.yellow('submit')} don't take in any arguments`),
-      );
-      process.exit(1);
-    }
+exports.submitTask = async () => {
+  await showBanner();
+  if (program.args.length > 1) {
+    console.log(
+      chalk.red(`\n ${chalk.yellow('submit')} don't take in any arguments`),
+    );
+    process.exit(1);
+  }
 
-    if (!fs.existsSync(process.cwd() + '/config.json')) {
-      console.log(
-        chalk.red(
-          ' Make sure that you are within the Teach-Code-solutions directory!\n',
-        ),
-      );
-      console.log(
-        chalk.magentaBright(
-          '\tcd Teach-Code-solutions may resolve the issue!\n',
-        ),
-      );
-      process.exit(1);
-    }
+  if (!fs.existsSync(process.cwd() + '/config.json')) {
+    console.log(
+      chalk.red(
+        ' Make sure that you are within the Teach-Code-solutions directory!\n',
+      ),
+    );
+    console.log(
+      chalk.magentaBright('\tcd Teach-Code-solutions may resolve the issue!\n'),
+    );
+    process.exit(1);
+  }
 
-    userData = fs.readFileSync(process.cwd() + '/config.json', 'utf8');
-    userDataJSON = JSON.parse(userData);
+  userData = fs.readFileSync(process.cwd() + '/config.json', 'utf8');
+  userDataJSON = JSON.parse(userData);
 
-    learningTrack = userDataJSON.track;
+  learningTrack = userDataJSON.track;
 
-    if (learningTrack === 'Python') {
-      exercises = require('../workspace/python/tasks');
-      solutionFile =
-        __dirname +
-        '/../workspace/python' +
-        exercises[userDataJSON.taskCount].op;
-      fileExtension = 'py';
-    } else {
-      exercises = require('../workspace/js/tasks');
-      solutionFile =
-        __dirname + '/../workspace/js' + exercises[userDataJSON.taskCount].op;
-      fileExtension = 'js';
-    }
+  if (learningTrack === 'Python') {
+    exercises = require('../workspace/python/tasks');
+    solutionFile =
+      __dirname + '/../workspace/python' + exercises[userDataJSON.taskCount].op;
+    fileExtension = 'py';
+  } else {
+    exercises = require('../workspace/js/tasks');
+    solutionFile =
+      __dirname + '/../workspace/js' + exercises[userDataJSON.taskCount].op;
+    fileExtension = 'js';
+  }
 
-    if (userDataJSON.taskCount !== exercises.length) {
-      console.log(
-        chalk.green(
-          `\nUser: ${
-            userDataJSON.username
-          }\t\t\t\t\t\tProgress: ${userDataJSON.taskCount + 1}/${
-            exercises.length
-          }`,
-        ),
-      );
-    } else {
-      console.log(
-        chalk.greenBright(
-          `\n  Congrats ${
-            userDataJSON.username
-          } you've made it through!\n  All tasks completed!\n`,
-        ),
-      );
-      process.exit(1);
-    }
+  if (userDataJSON.taskCount !== exercises.length) {
+    console.log(
+      chalk.green(
+        `\nUser: ${
+          userDataJSON.username
+        }\t\t\t\t\t\tProgress: ${userDataJSON.taskCount + 1}/${
+          exercises.length
+        }`,
+      ),
+    );
+  } else {
+    console.log(
+      chalk.greenBright(
+        `\n  Congrats ${
+          userDataJSON.username
+        } you've made it through!\n  All tasks completed!\n`,
+      ),
+    );
+    process.exit(1);
+  }
 
-    if (userDataJSON.files.length === 0) {
-      console.log(chalk.red('\n Use fetchtask to fetch your very first task'));
-      process.exit(1);
-    }
+  if (userDataJSON.files.length === 0) {
+    console.log(chalk.red('\n Use fetchtask to fetch your very first task'));
+    process.exit(1);
+  }
 
-    if (userDataJSON.taskCount === userDataJSON.files.length) {
-      console.log(chalk.yellow('\nTask already submitted!\n'));
-      process.exit(1);
-    }
+  if (userDataJSON.taskCount === userDataJSON.files.length) {
+    console.log(chalk.yellow('\nTask already submitted!\n'));
+    process.exit(1);
+  }
 
-    let submittedFile = userDataJSON.files[userDataJSON.files.length - 1];
-    let submittedFileContent = fs
-      .readFileSync(submittedFile, 'utf8')
-      .toString()
-      .split('');
+  let submittedFile = userDataJSON.files[userDataJSON.files.length - 1];
+  let submittedFileContent = fs
+    .readFileSync(submittedFile, 'utf8')
+    .toString()
+    .split('');
 
-    if (submittedFileContent.length === 0) {
-      console.log(
-        chalk.red(
-          `\n Solution file task${userDataJSON.taskCount +
-            1}.${fileExtension} is empty!\n`,
-        ),
-      );
-      process.exit(1);
-    }
+  if (submittedFileContent.length === 0) {
+    console.log(
+      chalk.red(
+        `\n Solution file task${userDataJSON.taskCount +
+          1}.${fileExtension} is empty!\n`,
+      ),
+    );
+    process.exit(1);
+  }
 
-    if (learningTrack === 'Python') {
-      PythonShell.run(submittedFile, null, (err, result) => {
+  if (learningTrack === 'Python') {
+    PythonShell.run(submittedFile, null, (err, result) => {
+      if (err) {
+        console.log(
+          chalk.red(
+            '\n\tOops there is something wrong with the syntax part!\n',
+          ),
+        );
+        console.log(err.toString());
+        process.exit(1);
+      }
+
+      PythonShell.run(solutionFile, null, (err, solution) => {
         if (err) {
-          console.log(
-            chalk.red(
-              '\n\tOops there is something wrong with the syntax part!\n',
-            ),
-          );
-          console.log(err.toString());
+          console.log(chalk.red('  ' + err.toString()));
           process.exit(1);
         }
 
-        PythonShell.run(solutionFile, null, (err, solution) => {
-          if (err) {
-            console.log(chalk.red('  ' + err.toString()));
-            process.exit(1);
-          }
-
-          if (
-            typeof result === 'undefined' ||
-            typeof solution === 'undefined'
-          ) {
-            console.log(
-              chalk.red(
-                `\n Kindly have a look at task${
-                  userDataJSON.taskCount
-                }.${fileExtension}`,
-              ),
-            );
-            process.exit(1);
-          }
-          validateSolution(submittedFile);
-          checkSolution(result, solution);
-        });
+        if (typeof result === 'undefined' || typeof solution === 'undefined') {
+          console.log(
+            chalk.red(
+              `\n Kindly have a look at task${
+                userDataJSON.taskCount
+              }.${fileExtension}`,
+            ),
+          );
+          process.exit(1);
+        }
+        validateSolution(submittedFile);
+        checkSolution(result, solution);
       });
-    } else {
-      exec(`node ${submittedFile}`, (err, result) => {
+    });
+  } else {
+    exec(`node ${submittedFile}`, (err, result) => {
+      if (err) throw err;
+      exec(`node ${solutionFile}`, (err, solution) => {
         if (err) throw err;
-        exec(`node ${solutionFile}`, (err, solution) => {
-          if (err) throw err;
-          validateSolution(submittedFile);
-          checkSolution(result, solution);
-        });
+        validateSolution(submittedFile);
+        checkSolution(result, solution);
       });
-    }
-  }, 100);
+    });
+  }
 };
