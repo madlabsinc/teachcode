@@ -20,7 +20,7 @@
   },
   "lint-staged": {
     "linters": {
-      "src/**": "npm run lint:fix"
+      "src/**/*.js": "npm run lint:fix"
     }
   },
   "keywords": [
