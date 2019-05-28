@@ -13,10 +13,16 @@
     "lint": "eslint ./src",
     "lint:fix": "eslint --fix ./src"
   },
-  "pre-commit": [
-    "lint",
-    "test"
-  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "src/**": "npm run lint:fix"
+    }
+  },
   "keywords": [
     "node.js",
     "commander.js",
@@ -46,8 +52,9 @@
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
     "mocha": "^5.2.0",
-    "pre-commit": "^1.2.2",
     "prettier": "^1.17.1"
   }
 }
