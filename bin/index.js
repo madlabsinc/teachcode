@@ -2,23 +2,19 @@
 
 'use strict';
 
-// Importing depedencies
-const program = require('commander');
 const chalk = require('chalk');
+const program = require('commander');
 
-// Linking excercise files
+const { version } = require('../package');
+
 const { initialize } = require('../src/commands/init');
 const { fetchTask } = require('../src/commands/tasks');
 const { submitTask } = require('../src/commands/submit');
 const { showKeys } = require('../src/commands/keys');
 const { showCommands } = require('../src/commands/commands');
-const { versionInfo } = require('../src/commands/version');
 
-// Defines commands and corresponding action handlers
-program
-.command('version')
-.description('Outputs version and local development environment information')
-.action(versionInfo);
+// Defining all the available commands
+program.version(version).usage('<command> [options]');
 
 program
 .command('init')
