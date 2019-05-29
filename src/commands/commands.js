@@ -7,7 +7,6 @@ const Table = require('cli-table3');
 const program = require('commander');
 
 let userData;
-let userDataJSON;
 
 const showCommands = async () => {
   await showBanner();
@@ -26,12 +25,10 @@ const showCommands = async () => {
   }
 
   userData = fs.readFileSync(process.cwd() + '/config.json', 'utf8');
-  userDataJSON = JSON.parse(userData);
+  const { userName, taskCount } = JSON.parse(userData);
   console.log(
     chalk.green(
-      `\nUser: ${
-        userDataJSON.username
-      }\t\t\t\t\t\tProgress: ${userDataJSON.taskCount + 1}/30\n`,
+      `\nUser: ${userName}${`\t`.repeat(6)}Progress: ${taskCount + 1}/30\n`,
     ),
   );
 

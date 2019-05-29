@@ -9,7 +9,6 @@ const program = require('commander');
 
 let exercises;
 let userData;
-let userDataJSON;
 let fileName;
 let learningTrack;
 
@@ -37,27 +36,26 @@ const fetchTask = async key => {
   }
 
   userData = fs.readFileSync(process.cwd() + '/config.json', 'utf8');
-  userDataJSON = JSON.parse(userData);
-  learningTrack = userDataJSON.track;
+  const { userName, userSubmittedFiles, taskCount, keys } = JSON.parse(
+    userData,
+  );
 
   if (learningTrack === 'Python') {
-    fileName = `task${userDataJSON.taskCount + 1}.py`;
+    fileName = `task${taskCount + 1}.py`;
     exercises = require('../workspace/python/tasks');
   } else {
-    fileName = `task${userDataJSON.taskCount + 1}.js`;
+    fileName = `task${taskCount + 1}.js`;
     exercises = require('../workspace/js/tasks');
   }
 
-  for (let index = 0; index < userDataJSON.keys.length - 1; index++) {
-    if (userDataJSON.keys[index] === key) {
+  for (let index = 0; index < keys.length - 1; index++) {
+    if (keys[index] === key) {
       console.log(
         chalk.yellowBright('\n\n This task is already completed! \n\n'),
       );
       console.log(
         chalk.green(
-          `\nUser: ${
-            userDataJSON.username
-          }\t\t\t\t\t\tProgress: ${userDataJSON.taskCount + 1}/${
+          `\nUser: ${userName}${`\t`.repeat(4)}Progress: ${taskCount + 1}/${
             exercises.length
           }`,
         ),
@@ -67,26 +65,23 @@ const fetchTask = async key => {
     }
   }
 
-  if (userDataJSON.taskCount === exercises.length) {
+  if (taskCount === exercises.length) {
     console.log(chalk.redBright('\nNo more tasks available!'));
     process.exit(1);
   }
 
-  if (userDataJSON.keys[userDataJSON.keys.length - 1] === key) {
-    userDataJSON.files.push(fileName);
-    userData = JSON.stringify(userDataJSON);
+  if (keys.slice(-1).pop() === key) {
+    userSubmittedFiles.push(fileName);
     fs.writeFileSync(process.cwd() + '/config.json', userData);
 
     console.log(
       chalk.cyan(
-        `\nUser: ${
-          userDataJSON.username
-        }\t\t\t\t\t\tProgress: ${userDataJSON.taskCount + 1}/${
+        `\nUser: ${userName}${`\t`.repeat(6)}Progress: ${taskCount + 1}/${
           exercises.length
         }`,
       ),
     );
-    console.log(chalk.green(`\n${exercises[userDataJSON.taskCount].task}\n`));
+    console.log(chalk.green(`\n${exercises[taskCount].task}\n`));
 
     if (os.platform() !== 'win32') shell.exec(`touch ${fileName}`);
     else shell.exec(`notepad ${fileName}`);

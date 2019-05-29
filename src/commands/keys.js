@@ -6,7 +6,6 @@ const chalk = require('chalk');
 const program = require('commander');
 
 let userData;
-let userDataJSON;
 
 const showKeys = async () => {
   await showBanner();
@@ -23,24 +22,22 @@ const showKeys = async () => {
   }
 
   userData = fs.readFileSync(process.cwd() + '/config.json', 'utf8');
-  userDataJSON = JSON.parse(userData);
+  const { keys, userName, taskCount } = JSON.parse(userData);
 
   console.log(
     chalk.green(
-      `\nUser: ${
-        userDataJSON.username
-      }\t\t\t\t\t\tProgress: ${userDataJSON.taskCount + 1}/30`,
+      `\nUser: ${userName}${`\t`.repeat(6)}Progress: ${taskCount + 1}/30`,
     ),
   );
 
-  if (userDataJSON.keys.length === 0) {
+  if (keys.length === 0) {
     console.log(
       chalk.magentaBright(
         '\n  Looks like this is your very first task. Fire in TeachCode fetchtask to start out!\n',
       ),
     );
   } else {
-    userDataJSON.keys.map((item, key) => {
+    keys.map((item, key) => {
       console.log(chalk.green(`\n Task-${key + 1}: ${item}`));
     });
   }
