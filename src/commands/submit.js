@@ -12,9 +12,7 @@ const keyStore = '123456789abcedefghijklmnopqrstuvwxyz';
 
 let exercises;
 let userData;
-let userDataJSON;
 let generatedKey;
-let learningTrack;
 let solutionFile;
 let fileExtension;
 
@@ -57,33 +55,38 @@ const validationKeys = [
   '[::',
 ];
 
-const pushToRepo = async () => {
-  let commitMsg = `solution for task${userDataJSON.taskCount}.${fileExtension}`;
+const pushToRepo = async task => {
+  let commitMsg = `solution for task${task}.${fileExtension}`;
+
   const gitCommands = [
     'git add --all',
     `git commit -m "${commitMsg}"`,
     'git push origin master',
   ];
-  await Promise.all(
-    gitCommands.map(async command => {
-      await shell.exec(command, { silent: true }, err => {
-        if (err) throw err;
-      });
-    }),
-  );
+
+  gitCommands.map(async command => {
+    await shell.exec(command, { silent: true }, err => {
+      if (err) throw err;
+    });
+  });
 };
 
-const checkSolution = async (submittedFileContent, solutionFileContent) => {
+const checkSolution = async (
+  submittedFileContent,
+  solutionFileContent,
+  taskCount,
+  keys,
+) => {
   try {
     if (submittedFileContent.toString() === solutionFileContent.toString()) {
-      userDataJSON.taskCount += 1;
+      taskCount += 1;
 
       try {
-        await pushToRepo();
+        await pushToRepo(taskCount);
       } catch (err) {
         throw err;
       }
-      if (userDataJSON.taskCount === exercises.length) {
+      if (taskCount === exercises.length) {
         console.log(chalk.greenBright("\n  Hurray you've done it!\n"));
         console.log(
           chalk.cyanBright(' Info: ') +
@@ -94,8 +97,7 @@ const checkSolution = async (submittedFileContent, solutionFileContent) => {
 
       generatedKey = generateKey();
 
-      userDataJSON.keys.push(generatedKey);
-      userData = JSON.stringify(userDataJSON);
+      keys.push(generatedKey);
 
       fs.writeFileSync(process.cwd() + '/config.json', userData);
       console.log(
@@ -115,7 +117,7 @@ const checkSolution = async (submittedFileContent, solutionFileContent) => {
   } catch (err) {
     console.log(
       chalk.red(
-        `\n There's something wrong with the file task${userDataJSON.taskCount +
+        `\n There's something wrong with the file task${taskCount +
           1}.${fileExtension}\n`,
       ),
     );
@@ -123,13 +125,13 @@ const checkSolution = async (submittedFileContent, solutionFileContent) => {
   }
 };
 
-const validateSolution = solutionFile => {
+const validateSolution = (track, taskCount, solutionFile) => {
   let fileContent = fs.readFileSync(solutionFile, 'utf8').toString();
 
   // Validation for tasks submitted
-  if (learningTrack === 'Python') {
-    if (userDataJSON.taskCount >= 2) {
-      if (fileContent.includes(validationKeys[userDataJSON.taskCount - 2])) {
+  if (track === 'Python') {
+    if (taskCount >= 2) {
+      if (fileContent.includes(validationKeys[taskCount - 2])) {
         return;
       } else {
         console.log(
@@ -167,28 +169,24 @@ const submitTask = async () => {
   }
 
   userData = fs.readFileSync(process.cwd() + '/config.json', 'utf8');
-  userDataJSON = JSON.parse(userData);
+  const { keys, userName, userSubmittedFiles, track, taskCount } = JSON.parse(
+    userData,
+  );
 
-  learningTrack = userDataJSON.track;
-
-  if (learningTrack === 'Python') {
+  if (track === 'Python') {
     exercises = require('../workspace/python/tasks');
-    solutionFile =
-      __dirname + '/../workspace/python' + exercises[userDataJSON.taskCount].op;
+    solutionFile = __dirname + '/../workspace/python' + exercises[taskCount].op;
     fileExtension = 'py';
   } else {
     exercises = require('../workspace/js/tasks');
-    solutionFile =
-      __dirname + '/../workspace/js' + exercises[userDataJSON.taskCount].op;
+    solutionFile = __dirname + '/../workspace/js' + exercises[taskCount].op;
     fileExtension = 'js';
   }
 
-  if (userDataJSON.taskCount !== exercises.length) {
+  if (taskCount !== exercises.length) {
     console.log(
       chalk.green(
-        `\nUser: ${
-          userDataJSON.username
-        }\t\t\t\t\t\tProgress: ${userDataJSON.taskCount + 1}/${
+        `\nUser: ${userName}${`\t`.repeat(6)}Progress: ${taskCount + 1}/${
           exercises.length
         }`,
       ),
@@ -196,41 +194,38 @@ const submitTask = async () => {
   } else {
     console.log(
       chalk.greenBright(
-        `\n  Congrats ${
-          userDataJSON.username
-        } you've made it through!\n  All tasks completed!\n`,
+        `\n  Congrats ${userName} you've made it through!\n  All tasks completed!\n`,
       ),
     );
     process.exit(1);
   }
 
-  if (userDataJSON.files.length === 0) {
+  if (!userSubmittedFiles.length) {
     console.log(chalk.red('\n Use fetchtask to fetch your very first task'));
     process.exit(1);
   }
 
-  if (userDataJSON.taskCount === userDataJSON.files.length) {
+  if (taskCount === userSubmittedFiles.length) {
     console.log(chalk.yellow('\nTask already submitted!\n'));
     process.exit(1);
   }
 
-  let submittedFile = userDataJSON.files[userDataJSON.files.length - 1];
+  let submittedFile = userSubmittedFiles.slice(-1).pop();
   let submittedFileContent = fs
     .readFileSync(submittedFile, 'utf8')
     .toString()
     .split('');
 
-  if (submittedFileContent.length === 0) {
+  if (!submittedFileContent.length) {
     console.log(
       chalk.red(
-        `\n Solution file task${userDataJSON.taskCount +
-          1}.${fileExtension} is empty!\n`,
+        `\n Solution file task${taskCount + 1}.${fileExtension} is empty!\n`,
       ),
     );
     process.exit(1);
   }
 
-  if (learningTrack === 'Python') {
+  if (track === 'Python') {
     PythonShell.run(submittedFile, null, (err, result) => {
       if (err) {
         console.log(
@@ -251,15 +246,13 @@ const submitTask = async () => {
         if (typeof result === 'undefined' || typeof solution === 'undefined') {
           console.log(
             chalk.red(
-              `\n Kindly have a look at task${
-                userDataJSON.taskCount
-              }.${fileExtension}`,
+              `\n Kindly have a look at task${taskCount}.${fileExtension}`,
             ),
           );
           process.exit(1);
         }
-        validateSolution(submittedFile);
-        checkSolution(result, solution);
+        validateSolution(track, taskCount, submittedFile);
+        checkSolution(result, solution, taskCount, keys);
       });
     });
   } else {
@@ -267,8 +260,8 @@ const submitTask = async () => {
       if (err) throw err;
       exec(`node ${solutionFile}`, (err, solution) => {
         if (err) throw err;
-        validateSolution(submittedFile);
-        checkSolution(result, solution);
+        validateSolution(track, taskCount, submittedFile);
+        checkSolution(result, solution, taskCount, keys);
       });
     });
   }

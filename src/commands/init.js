@@ -75,7 +75,13 @@ const initTasks = async () => {
   shell.cd('Teach-Code-solutions');
   console.log(
     chalk.green(
-      '\n Welcome to Teach-Code\n\n\t\t Points to ponder \n\n 1. Solution files are auto-created\n 2. Print out exactly what is required as given in the task\n 3.You can vew the previuosly submitted tasks anytime \n\n Give your name below and type in:-\n',
+      `\n Welcome to Teach-Code${`\n`.repeat(2)}${`\t`.repeat(
+        2,
+      )} Points to ponder ${`\n`.repeat(
+        4,
+      )} 1. Solution files are auto-created\n 2. Print out exactly what is required as given in the task\n 3.You can vew the previously submitted tasks anytime ${`\n`.repeat(
+        4,
+      )} Give your name below and type in:-\n`,
     ),
   );
   inquirer
@@ -107,9 +113,9 @@ const initTasks = async () => {
           }
           fs.writeFileSync(
             process.cwd() + '/config.json',
-            `{\n "track": "${choice.track}",\n "username": "${
+            `{\n "track": "${choice.track}",\n "userName": "${
               answer.username
-            }",\n "taskCount": ${taskCount},\n "keys": ["5e06b81d-e9ac-4321-8a97-4785ffce8146"]\n,\n "files": []}`,
+            }",\n "taskCount": ${taskCount},\n "keys": ["5e06b81d-e9ac-4321-8a97-4785ffce8146"]\n,\n "userSubmittedFiles": []}`,
           );
           createRepo();
         });
