@@ -9,7 +9,7 @@ const program = require('commander');
 let userData;
 let userDataJSON;
 
-exports.showCommands = async () => {
+const showCommands = async () => {
   await showBanner();
   if (program.args.length > 1) {
     console.log(
@@ -56,3 +56,5 @@ exports.showCommands = async () => {
   );
   console.log(commands.toString());
 };
+
+module.exports = showCommands;

@@ -7,11 +7,11 @@ const program = require('commander');
 
 const { version } = require('../package');
 
-const { initialize } = require('../src/commands/init');
-const { fetchTask } = require('../src/commands/tasks');
-const { submitTask } = require('../src/commands/submit');
-const { showKeys } = require('../src/commands/keys');
-const { showCommands } = require('../src/commands/commands');
+const initTasks = require('../src/commands/init');
+const fetchTask = require('../src/commands/tasks');
+const showCommands = require('../src/commands/commands');
+const showKeys = require('../src/commands/keys');
+const submitTask = require('../src/commands/submit');
 
 // Defining all the available commands
 program.version(version).usage('<command> [options]');
@@ -19,7 +19,7 @@ program.version(version).usage('<command> [options]');
 program
 .command('init')
 .description('Initialize challenges')
-.action(initialize);
+.action(initTasks);
 
 program
 .command('submit')

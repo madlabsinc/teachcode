@@ -13,7 +13,7 @@ let userDataJSON;
 let fileName;
 let learningTrack;
 
-exports.fetchTask = async key => {
+const fetchTask = async key => {
   await showBanner();
   if (program.args.length > 2) {
     console.log(
@@ -96,3 +96,5 @@ exports.fetchTask = async key => {
     );
   }
 };
+
+module.exports = fetchTask;

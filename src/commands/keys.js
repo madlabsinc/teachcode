@@ -8,7 +8,7 @@ const program = require('commander');
 let userData;
 let userDataJSON;
 
-exports.showKeys = async () => {
+const showKeys = async () => {
   await showBanner();
   if (program.args.length > 1) {
     console.log(
@@ -24,6 +24,7 @@ exports.showKeys = async () => {
 
   userData = fs.readFileSync(process.cwd() + '/config.json', 'utf8');
   userDataJSON = JSON.parse(userData);
+
   console.log(
     chalk.green(
       `\nUser: ${
@@ -45,3 +46,5 @@ exports.showKeys = async () => {
   }
   console.log('\n');
 };
+
+module.exports = showKeys;

@@ -43,7 +43,7 @@ let createRepo = () => {
     });
 };
 
-exports.initialize = async () => {
+const initTasks = async () => {
   await showBanner();
   if (program.args.length > 1) {
     console.log(
@@ -115,3 +115,5 @@ exports.initialize = async () => {
         });
     });
 };
+
+module.exports = initTasks;
