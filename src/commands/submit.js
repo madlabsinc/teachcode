@@ -18,7 +18,7 @@ let learningTrack;
 let solutionFile;
 let fileExtension;
 
-let generateKey = () => {
+const generateKey = () => {
   let key = '';
   for (let i = 0; i < 36; i++)
     key += keyStore.charAt(Math.floor(Math.random() * keyStore.length));
@@ -57,7 +57,7 @@ const validationKeys = [
   '[::',
 ];
 
-let pushToRepo = async () => {
+const pushToRepo = async () => {
   let commitMsg = `solution for task${userDataJSON.taskCount}.${fileExtension}`;
   const gitCommands = [
     'git add --all',
@@ -73,7 +73,7 @@ let pushToRepo = async () => {
   );
 };
 
-let checkSolution = async (submittedFileContent, solutionFileContent) => {
+const checkSolution = async (submittedFileContent, solutionFileContent) => {
   try {
     if (submittedFileContent.toString() === solutionFileContent.toString()) {
       userDataJSON.taskCount += 1;
@@ -123,7 +123,7 @@ let checkSolution = async (submittedFileContent, solutionFileContent) => {
   }
 };
 
-let validateSolution = solutionFile => {
+const validateSolution = solutionFile => {
   let fileContent = fs.readFileSync(solutionFile, 'utf8').toString();
 
   // Validation for tasks submitted
@@ -145,7 +145,7 @@ let validateSolution = solutionFile => {
   }
 };
 
-exports.submitTask = async () => {
+const submitTask = async () => {
   await showBanner();
   if (program.args.length > 1) {
     console.log(
@@ -273,3 +273,5 @@ exports.submitTask = async () => {
     });
   }
 };
+
+module.exports = submitTask;
