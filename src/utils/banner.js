@@ -10,7 +10,7 @@ const printTitle = promisify(figlet);
 exports.showBanner = async () => {
   clear();
   try {
-    const data = await printTitle('TeachCode');
+    const data = await printTitle('teachcode');
     console.log(chalk.redBright(data));
     console.log(
       chalk.yellow(

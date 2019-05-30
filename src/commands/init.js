@@ -1,17 +1,24 @@
 'use strict';
 
-const { showBanner } = require('../utils/banner');
+const chalk = require('chalk');
+const { execSync } = require('child_process');
 const fs = require('fs');
 const inquirer = require('inquirer');
-const chalk = require('chalk');
-const shell = require('shelljs');
-const os = require('os');
-const program = require('commander');
 
-let taskCount = 0;
-let initialKey = '5e06b81d-e9ac-4321-8a97-4785ffce8146';
+const { showBanner } = require('../utils/banner');
 
-let createRepo = () => {
+// Key for the very first task
+let key = '5e06b81d-e9ac-4321-8a97-4785ffce8146';
+
+const userConfig = {
+  learningTrack: '',
+  userName: '',
+  taskCount: 0,
+  keys: [],
+  userSubmittedFiles: [],
+};
+
+/* const createRepo = () => {
   const API_URL = 'https://api.github.com/user/repos';
   let repoUrl;
   inquirer
@@ -26,7 +33,7 @@ let createRepo = () => {
       shell.exec(
         `git init && curl --silent --output /dev/null -u ${
           info.username
-        } ${API_URL} -d '{"name": "Teach-Code-solutions"}'`,
+        } ${API_URL} -d '{"name": "teachcode-solutions"}'`,
         err => {
           if (err) throw err;
           repoUrl = `https://www.github.com/${
@@ -41,40 +48,37 @@ let createRepo = () => {
         ),
       );
     });
+}; */
+
+const validateInput = userInput => {
+  if (!userInput) {
+    console.log('Name is required');
+    return false;
+  } else {
+    return true;
+  }
 };
 
 const initTasks = async () => {
   await showBanner();
-  if (program.args.length > 1) {
-    console.log(
-      chalk.red(`\n ${chalk.yellow('init')} don't take in any arguments`),
-    );
-    process.exit(1);
-  }
 
-  // Warning the user if he/she fires in the command again.
   if (
-    fs.existsSync(process.cwd() + '/Teach-Code-solutions') ||
-    fs.existsSync(process.cwd() + '/config.json')
+    fs.existsSync(`${process.cwd()}/teachcode-solutions`) ||
+    fs.existsSync(`${process.cwd()}/config.json`)
   ) {
     console.log(
-      chalk.red(
+      chalk.redBright(
         `\n  It seems that there is already a ${chalk.yellow(
           'Teach-Code-solutions',
         )} directory or ${chalk.yellow('config.json')} file existing in path\n`,
       ),
     );
-    console.log(chalk.magentaBright('  Exiting!!\n'));
+    console.log(chalk.redBright('  Exiting!!\n'));
     process.exit(1);
   }
 
-  if (os.platform() !== 'win32')
-    shell.exec(`mkdir ${process.cwd()}/Teach-Code-solutions`);
-  else shell.exec(`mkdir Teach-Code-solutions`);
-
-  shell.cd('Teach-Code-solutions');
   console.log(
-    chalk.green(
+    chalk.greenBright(
       `\n Welcome to Teach-Code${`\n`.repeat(2)}${`\t`.repeat(
         2,
       )} Points to ponder ${`\n`.repeat(
@@ -84,42 +88,35 @@ const initTasks = async () => {
       )} Give your name below and type in:-\n`,
     ),
   );
-  inquirer
-    .prompt([
-      {
-        name: 'track',
-        type: 'list',
-        message: 'Choose your track',
-        choices: ['Python', 'JavaScript'],
-      },
-    ])
-    .then(choice => {
-      inquirer
-        .prompt([
-          {
-            name: 'username',
-            type: 'input',
-            message: "What's your name:-",
-          },
-        ])
-        .then(answer => {
-          if (answer.username === '') {
-            console.log(chalk.red('\nName is required!\n'));
-            shell.cd('../');
-            if (process.platform !== 'win32')
-              shell.exec('rm -r Teach-Code-solutions');
-            else shell.exec('rmdir Teach-Code-solutions');
-            process.exit(1);
-          }
-          fs.writeFileSync(
-            process.cwd() + '/config.json',
-            `{\n "track": "${choice.track}",\n "userName": "${
-              answer.username
-            }",\n "taskCount": ${taskCount},\n "keys": ["5e06b81d-e9ac-4321-8a97-4785ffce8146"]\n,\n "userSubmittedFiles": []}`,
-          );
-          createRepo();
-        });
-    });
+
+  const { learningTrackOfChoice } = await inquirer.prompt([
+    {
+      name: 'learningTrackOfChoice',
+      type: 'list',
+      message: 'Choose your track',
+      choices: ['Python', 'JavaScript'],
+    },
+  ]);
+
+  const { userName } = await inquirer.prompt([
+    {
+      name: 'userName',
+      type: 'input',
+      message: "What's your name:-",
+      validate: validateInput,
+    },
+  ]);
+
+  // Setting up initial user-data config.
+  userConfig.learningTrack = learningTrackOfChoice;
+  userConfig.userName = userName;
+  userConfig.keys.push(key);
+
+  execSync(`mkdir -p ${process.cwd()}/teachcode-solutions`);
+  fs.writeFileSync(
+    `teachcode-solutions/config.json`,
+    JSON.stringify(userConfig),
+  );
 };
 
 module.exports = initTasks;
