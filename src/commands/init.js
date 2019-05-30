@@ -5,7 +5,9 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const inquirer = require('inquirer');
 
+const { createRepository } = require('../utils/github');
 const { showBanner } = require('../utils/banner');
+const validateInput = require('../utils/validate');
 
 // Key for the very first task
 let key = '5e06b81d-e9ac-4321-8a97-4785ffce8146';
@@ -16,47 +18,6 @@ const userConfig = {
   taskCount: 0,
   keys: [],
   userSubmittedFiles: [],
-};
-
-/* const createRepo = () => {
-  const API_URL = 'https://api.github.com/user/repos';
-  let repoUrl;
-  inquirer
-    .prompt([
-      {
-        name: 'username',
-        type: 'input',
-        message: 'Your GitHub username:-',
-      },
-    ])
-    .then(info => {
-      shell.exec(
-        `git init && curl --silent --output /dev/null -u ${
-          info.username
-        } ${API_URL} -d '{"name": "teachcode-solutions"}'`,
-        err => {
-          if (err) throw err;
-          repoUrl = `https://www.github.com/${
-            info.username
-          }/Teach-Code-solutions`;
-          shell.exec(`git remote add origin ${repoUrl}`);
-        },
-      );
-      console.log(
-        chalk.cyanBright(
-          `\n  cd Teach-Code-solutions\n  teach-code fetchtask ${initialKey}\n`,
-        ),
-      );
-    });
-}; */
-
-const validateInput = userInput => {
-  if (!userInput) {
-    console.log('Name is required');
-    return false;
-  } else {
-    return true;
-  }
 };
 
 const initTasks = async () => {
@@ -117,6 +78,14 @@ const initTasks = async () => {
     `teachcode-solutions/config.json`,
     JSON.stringify(userConfig),
   );
+
+  process.chdir('teachcode-solutions');
+
+  try {
+    createRepository();
+  } catch (err) {
+    throw err;
+  }
 };
 
 module.exports = initTasks;

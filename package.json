@@ -42,11 +42,11 @@
     "clear": "^0.1.0",
     "cli-table3": "^0.5.1",
     "commander": "^2.18.0",
+    "execa": "^1.0.0",
     "figlet": "^1.2.1",
     "inquirer": "^6.2.0",
     "os": "^0.1.1",
-    "python-shell": "^1.0.7",
-    "shelljs": "^0.8.2"
+    "python-shell": "^1.0.7"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
