@@ -5,13 +5,11 @@ const { PythonShell } = require('python-shell');
 const { exec } = require('child_process');
 const fs = require('fs');
 const chalk = require('chalk');
-const program = require('commander');
-const shell = require('shelljs');
 
 const keyStore = '123456789abcedefghijklmnopqrstuvwxyz';
 
 let exercises;
-let userData;
+let userConfig;
 let generatedKey;
 let solutionFile;
 let fileExtension;
@@ -55,7 +53,7 @@ const validationKeys = [
   '[::',
 ];
 
-const pushToRepo = async task => {
+/* const pushToRepo = async task => {
   let commitMsg = `solution for task${task}.${fileExtension}`;
 
   const gitCommands = [
@@ -77,20 +75,25 @@ const checkSolution = async (
   taskCount,
   keys,
 ) => {
+}; */
+
+const checkSolution = async (submittedFileContent, solutionFileContent) => {
+  let { taskCount, keys } = userConfig;
+
   try {
     if (submittedFileContent.toString() === solutionFileContent.toString()) {
       taskCount += 1;
 
       try {
-        await pushToRepo(taskCount);
+        // await pushToRepo(taskCount);
       } catch (err) {
         throw err;
       }
       if (taskCount === exercises.length) {
         console.log(chalk.greenBright("\n  Hurray you've done it!\n"));
         console.log(
-          chalk.cyanBright(' Info: ') +
-            chalk.yellowBright('No more tasks available!'),
+          chalk.cyan.bold(' Info: ') +
+            chalk.yellow.bold('No more tasks available!'),
         );
         process.exit(1);
       }
@@ -98,10 +101,11 @@ const checkSolution = async (
       generatedKey = generateKey();
 
       keys.push(generatedKey);
+      userConfig.taskCount = taskCount;
 
-      fs.writeFileSync(process.cwd() + '/config.json', userData);
+      fs.writeFileSync('./config.json', JSON.stringify(userConfig));
       console.log(
-        chalk.greenBright(
+        chalk.green.bold(
           "\n  Hurray you've done it!\n  Key to access the next task: " +
             generatedKey +
             '\n',
@@ -109,27 +113,28 @@ const checkSolution = async (
       );
     } else {
       console.log(
-        chalk.yellowBright(
+        chalk.yellow.bold(
           "\n  The solution doesn't meet all the output requirements. Have a look again!\n",
         ),
       );
     }
   } catch (err) {
     console.log(
-      chalk.red(
+      chalk.yellow.bold(
         `\n There's something wrong with the file task${taskCount +
           1}.${fileExtension}\n`,
       ),
     );
-    console.log('\n' + err);
+    console.log(chalk.red.bold(' ' + err));
   }
 };
 
-const validateSolution = (track, taskCount, solutionFile) => {
+const validateSolution = solutionFile => {
   let fileContent = fs.readFileSync(solutionFile, 'utf8').toString();
+  let { learningTrack, taskCount } = userConfig;
 
   // Validation for tasks submitted
-  if (track === 'Python') {
+  if (learningTrack === 'Python') {
     if (taskCount >= 2) {
       if (fileContent.includes(validationKeys[taskCount - 2])) {
         return;
@@ -149,31 +154,25 @@ const validateSolution = (track, taskCount, solutionFile) => {
 
 const submitTask = async () => {
   await showBanner();
-  if (program.args.length > 1) {
-    console.log(
-      chalk.red(`\n ${chalk.yellow('submit')} don't take in any arguments`),
-    );
-    process.exit(1);
-  }
 
-  if (!fs.existsSync(process.cwd() + '/config.json')) {
+  if (!fs.existsSync(`${process.cwd()}/config.json`)) {
     console.log(
-      chalk.red(
+      chalk.red.bold(
         ' Make sure that you are within the Teach-Code-solutions directory!\n',
       ),
     );
     console.log(
-      chalk.magentaBright('\tcd Teach-Code-solutions may resolve the issue!\n'),
+      chalk.magenta.bold('\tcd Teach-Code-solutions may resolve the issue!\n'),
     );
     process.exit(1);
   }
 
-  userData = fs.readFileSync(process.cwd() + '/config.json', 'utf8');
-  const { keys, userName, userSubmittedFiles, track, taskCount } = JSON.parse(
-    userData,
+  userConfig = JSON.parse(
+    fs.readFileSync(process.cwd() + '/config.json', 'utf8'),
   );
+  let { userName, userSubmittedFiles, learningTrack, taskCount } = userConfig;
 
-  if (track === 'Python') {
+  if (learningTrack === 'Python') {
     exercises = require('../workspace/python/tasks');
     solutionFile = __dirname + '/../workspace/python' + exercises[taskCount].op;
     fileExtension = 'py';
@@ -193,7 +192,7 @@ const submitTask = async () => {
     );
   } else {
     console.log(
-      chalk.greenBright(
+      chalk.green.bold(
         `\n  Congrats ${userName} you've made it through!\n  All tasks completed!\n`,
       ),
     );
@@ -225,11 +224,11 @@ const submitTask = async () => {
     process.exit(1);
   }
 
-  if (track === 'Python') {
+  if (learningTrack === 'Python') {
     PythonShell.run(submittedFile, null, (err, result) => {
       if (err) {
         console.log(
-          chalk.red(
+          chalk.red.bold(
             '\n\tOops there is something wrong with the syntax part!\n',
           ),
         );
@@ -239,20 +238,20 @@ const submitTask = async () => {
 
       PythonShell.run(solutionFile, null, (err, solution) => {
         if (err) {
-          console.log(chalk.red('  ' + err.toString()));
+          console.log(chalk.red.bold('  ' + err.toString()));
           process.exit(1);
         }
 
         if (typeof result === 'undefined' || typeof solution === 'undefined') {
           console.log(
-            chalk.red(
+            chalk.red.bold(
               `\n Kindly have a look at task${taskCount}.${fileExtension}`,
             ),
           );
           process.exit(1);
         }
-        validateSolution(track, taskCount, submittedFile);
-        checkSolution(result, solution, taskCount, keys);
+        validateSolution(submittedFile);
+        checkSolution(result, solution);
       });
     });
   } else {
@@ -260,8 +259,8 @@ const submitTask = async () => {
       if (err) throw err;
       exec(`node ${solutionFile}`, (err, solution) => {
         if (err) throw err;
-        validateSolution(track, taskCount, submittedFile);
-        checkSolution(result, solution, taskCount, keys);
+        validateSolution(submittedFile);
+        checkSolution(result, solution);
       });
     });
   }
