@@ -53,30 +53,6 @@ const validationKeys = [
   '[::',
 ];
 
-/* const pushToRepo = async task => {
-  let commitMsg = `solution for task${task}.${fileExtension}`;
-
-  const gitCommands = [
-    'git add --all',
-    `git commit -m "${commitMsg}"`,
-    'git push origin master',
-  ];
-
-  gitCommands.map(async command => {
-    await shell.exec(command, { silent: true }, err => {
-      if (err) throw err;
-    });
-  });
-};
-
-const checkSolution = async (
-  submittedFileContent,
-  solutionFileContent,
-  taskCount,
-  keys,
-) => {
-}; */
-
 const checkSolution = async (submittedFileContent, solutionFileContent) => {
   let { taskCount, keys } = userConfig;
 
