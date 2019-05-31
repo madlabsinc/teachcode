@@ -10,7 +10,7 @@ const { showBanner } = require('../utils/banner');
 const validateInput = require('../utils/validate');
 
 // Key for the very first task
-let key = '5e06b81d-e9ac-4321-8a97-4785ffce8146';
+let key = '5e06b81de9ac43218a974785ffce8146';
 
 const userConfig = {
   learningTrack: '',
@@ -40,13 +40,13 @@ const initTasks = async () => {
 
   console.log(
     chalk.greenBright(
-      `\n Welcome to Teach-Code${`\n`.repeat(2)}${`\t`.repeat(
+      `\n Welcome to teachcode${`\n`.repeat(2)}${`\t`.repeat(
         2,
       )} Points to ponder ${`\n`.repeat(
         4,
-      )} 1. Solution files are auto-created\n 2. Print out exactly what is required as given in the task\n 3.You can vew the previously submitted tasks anytime ${`\n`.repeat(
+      )} 1. Solution files are auto-created\n 2. Print out exactly what is required as given in the task\n 3. You have the provision to view previously submitted tasks ${`\n`.repeat(
         4,
-      )} Give your name below and type in:-\n`,
+      )}`,
     ),
   );
 
@@ -73,12 +73,10 @@ const initTasks = async () => {
   userConfig.userName = userName;
   userConfig.keys.push(key);
 
-  try {
-    await createRepository();
-  } catch (err) {
+  await createRepository().catch(err => {
     console.error(chalk.redBright(err));
     process.exit(1);
-  }
+  });
 
   execSync(`mkdir -p ${process.cwd()}/teachcode-solutions`);
   fs.writeFileSync(
@@ -87,7 +85,13 @@ const initTasks = async () => {
   );
 
   process.chdir('teachcode-solutions');
-  configureLocalRepo();
+  await configureLocalRepo();
+
+  console.log();
+  console.log(chalk.green.bold(' Perform the following:-'));
+  console.log();
+  console.log(chalk.cyanBright('1. cd teachcode-solutions'));
+  console.log(chalk.green(`2. teachcode fetchtask ${key}`));
 };
 
 module.exports = initTasks;

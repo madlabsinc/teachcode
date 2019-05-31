@@ -183,7 +183,10 @@ const submitTask = async () => {
   }
 
   if (!userSubmittedFiles.length) {
-    console.log(chalk.red('\n Use fetchtask to fetch your very first task'));
+    console.log();
+    console.log(
+      chalk.cyan(' Warning: Use fetchtask to fetch your very first task'),
+    );
     process.exit(1);
   }
 

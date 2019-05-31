@@ -11,9 +11,9 @@ exports.showBanner = async () => {
   clear();
   try {
     const data = await printTitle('teachcode');
-    console.log(chalk.redBright(data));
+    console.log(chalk.red.bold(data));
     console.log(
-      chalk.yellow(
+      chalk.yellowBright(
         ` Learn to code effectively ${`\t`.repeat(4)} Powered by MadHacks\n`,
       ),
     );
