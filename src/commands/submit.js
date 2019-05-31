@@ -82,7 +82,10 @@ const checkSolution = async (submittedFileContent, solutionFileContent) => {
       }
 
       generatedKey = generateKey();
+
+      // Updating config.json information.
       keys.push(generatedKey);
+      userConfig.taskCount = taskCount;
 
       fs.writeFileSync('./config.json', JSON.stringify(userConfig));
       console.log(
