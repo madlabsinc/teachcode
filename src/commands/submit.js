@@ -1,10 +1,12 @@
 'use strict';
 
-const { showBanner } = require('../utils/banner');
-const { PythonShell } = require('python-shell');
+const chalk = require('chalk');
 const { exec } = require('child_process');
 const fs = require('fs');
-const chalk = require('chalk');
+const { PythonShell } = require('python-shell');
+
+const { showBanner } = require('../utils/banner');
+const { pushToRemote } = require('../utils/github');
 
 const keyStore = '123456789abcedefghijklmnopqrstuvwxyz';
 
@@ -55,16 +57,11 @@ const validationKeys = [
 
 const checkSolution = async (submittedFileContent, solutionFileContent) => {
   let { taskCount, keys } = userConfig;
-
   try {
     if (submittedFileContent.toString() === solutionFileContent.toString()) {
       taskCount += 1;
+      await pushToRemote(taskCount);
 
-      try {
-        // await pushToRepo(taskCount);
-      } catch (err) {
-        throw err;
-      }
       if (taskCount === exercises.length) {
         console.log(chalk.greenBright("\n  Hurray you've done it!\n"));
         console.log(
@@ -75,9 +72,7 @@ const checkSolution = async (submittedFileContent, solutionFileContent) => {
       }
 
       generatedKey = generateKey();
-
       keys.push(generatedKey);
-      userConfig.taskCount = taskCount;
 
       fs.writeFileSync('./config.json', JSON.stringify(userConfig));
       console.log(
@@ -96,12 +91,11 @@ const checkSolution = async (submittedFileContent, solutionFileContent) => {
     }
   } catch (err) {
     console.log(
-      chalk.yellow.bold(
-        `\n There's something wrong with the file task${taskCount +
-          1}.${fileExtension}\n`,
+      chalk.red.bold(
+        `\n There is something wrong with task${taskCount +
+          1}.${fileExtension}`,
       ),
     );
-    console.log(chalk.red.bold(' ' + err));
   }
 };
 
