@@ -39,18 +39,18 @@ const configureLocalRepo = async () => {
   await execa.shell(`git remote add origin ${repoUrl}`);
 };
 
-const pushToRemote = async taskCount => {
-  try {
-    await execa.shell('git add .');
-    await execa.shell(`git commit -m "solution for task-${taskCount}"`);
-    await execAsync('git push origin master', { silent: 'true' });
-  } catch (err) {
-    throw err;
-  }
+const makeLocalCommit = async taskCount => {
+  await execa.shell('git add .');
+  await execa.shell(`git commit -m "solution for task-${taskCount}"`);
+};
+
+const pushToRemote = async () => {
+  await execAsync('git push origin master', { silent: 'true' });
 };
 
 module.exports = {
   createRepository,
-  pushToRemote,
   configureLocalRepo,
+  makeLocalCommit,
+  pushToRemote,
 };

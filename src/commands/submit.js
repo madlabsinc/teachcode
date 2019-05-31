@@ -6,7 +6,7 @@ const fs = require('fs');
 const { PythonShell } = require('python-shell');
 
 const { showBanner } = require('../utils/banner');
-const { pushToRemote } = require('../utils/github');
+const { makeLocalCommit, pushToRemote } = require('../utils/github');
 
 const keyStore = '123456789abcedefghijklmnopqrstuvwxyz';
 
@@ -60,7 +60,17 @@ const checkSolution = async (submittedFileContent, solutionFileContent) => {
   try {
     if (submittedFileContent.toString() === solutionFileContent.toString()) {
       taskCount += 1;
-      await pushToRemote(taskCount);
+      await makeLocalCommit(taskCount);
+
+      let condition = true;
+      do {
+        try {
+          await pushToRemote();
+          break;
+        } catch (err) {
+          // Handle err
+        }
+      } while (condition);
 
       if (taskCount === exercises.length) {
         console.log(chalk.greenBright("\n  Hurray you've done it!\n"));
