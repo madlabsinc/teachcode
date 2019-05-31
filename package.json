@@ -46,7 +46,8 @@
     "figlet": "^1.2.1",
     "inquirer": "^6.2.0",
     "os": "^0.1.1",
-    "python-shell": "^1.0.7"
+    "python-shell": "^1.0.7",
+    "shelljs": "^0.8.3"
   },
   "devDependencies": {
     "eslint": "^5.16.0",

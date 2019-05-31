@@ -5,7 +5,7 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const inquirer = require('inquirer');
 
-const { createRepository } = require('../utils/github');
+const { createRepository, configureLocalRepo } = require('../utils/github');
 const { showBanner } = require('../utils/banner');
 const validateInput = require('../utils/validate');
 
@@ -73,6 +73,13 @@ const initTasks = async () => {
   userConfig.userName = userName;
   userConfig.keys.push(key);
 
+  try {
+    await createRepository();
+  } catch (err) {
+    console.error(chalk.redBright(err));
+    process.exit(1);
+  }
+
   execSync(`mkdir -p ${process.cwd()}/teachcode-solutions`);
   fs.writeFileSync(
     `teachcode-solutions/config.json`,
@@ -80,12 +87,7 @@ const initTasks = async () => {
   );
 
   process.chdir('teachcode-solutions');
-
-  try {
-    createRepository();
-  } catch (err) {
-    throw err;
-  }
+  configureLocalRepo();
 };
 
 module.exports = initTasks;
