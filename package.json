@@ -1,5 +1,5 @@
 {
-  "name": "teachcode",
+  "name": "teach-code",
   "version": "1.1.5",
   "description": "A tool to develop and improve a student’s programming skills by introducing the earliest lessons of coding.",
   "main": "./bin/index.js",
@@ -7,7 +7,9 @@
     "bin",
     "src"
   ],
-  "bin": "./bin/index.js",
+  "bin": {
+  "teachcode":"./bin/index.js"
+  },
   "scripts": {
     "test": "node ./node_modules/mocha/bin/mocha test/main_test.js",
     "lint": "eslint ./src",
