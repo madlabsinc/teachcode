@@ -28,6 +28,14 @@ const userConfig = {
   userSubmittedFiles: [],
 };
 
+const showInstructions = () => {
+  console.log();
+  console.log(chalk.green.bold(' Perform the following:-'));
+  console.log();
+  console.log(chalk.cyanBright('1. cd teachcode-solutions'));
+  console.log(chalk.green(`2. teachcode fetchtask ${key}`));
+};
+
 const initTasks = async () => {
   await showBanner();
 
@@ -89,6 +97,7 @@ const initTasks = async () => {
 
   if (shouldCreateRepository) {
     await createRepository();
+
     execSync(`mkdir -p ${process.cwd()}/teachcode-solutions`);
     fs.writeFileSync(
       `teachcode-solutions/config.json`,
@@ -98,14 +107,11 @@ const initTasks = async () => {
     process.chdir('teachcode-solutions');
     await configureLocalRepo();
 
-    console.log();
-    console.log(chalk.green.bold(' Perform the following:-'));
-    console.log();
-    console.log(chalk.cyanBright('1. cd teachcode-solutions'));
-    console.log(chalk.green(`2. teachcode fetchtask ${key}`));
+    showInstructions();
   } else {
     // Clone the remote repository
     await cloneRepository();
+    showInstructions();
   }
 };
 

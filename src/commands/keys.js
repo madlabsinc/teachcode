@@ -3,18 +3,11 @@
 const { showBanner } = require('../utils/banner');
 const fs = require('fs');
 const chalk = require('chalk');
-const program = require('commander');
 
 let userData;
 
 const showKeys = async () => {
   await showBanner();
-  if (program.args.length > 1) {
-    console.log(
-      chalk.red(`\n ${chalk.yellow('showkeys')} don't take in any arguments`),
-    );
-    process.exit(1);
-  }
 
   if (!fs.existsSync(process.cwd() + '/config.json')) {
     console.log(chalk.red("Config file doesn't exist!\n"));
