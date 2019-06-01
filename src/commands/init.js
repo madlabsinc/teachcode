@@ -28,11 +28,13 @@ const userConfig = {
   userSubmittedFiles: [],
 };
 
-const showInstructions = () => {
+const showInstructions = kickStart => {
   console.log();
   console.log(chalk.green.bold(' Perform the following:-'));
   console.log();
   console.log(chalk.cyanBright('1. cd teachcode-solutions'));
+
+  key = kickStart ? key : '<key>';
   console.log(chalk.green(`2. teachcode fetchtask ${key}`));
 };
 
@@ -43,20 +45,24 @@ const initTasks = async () => {
     fs.existsSync(`${process.cwd()}/teachcode-solutions`) ||
     fs.existsSync(`${process.cwd()}/config.json`)
   ) {
+    console.log();
     console.log(
       chalk.redBright(
-        `\n  It seems that there is already a ${chalk.yellow(
+        `  It seems that there is already a ${chalk.yellow(
           'Teach-Code-solutions',
-        )} directory or ${chalk.yellow('config.json')} file existing in path\n`,
+        )} directory or ${chalk.yellow('config.json')} file existing in path`,
       ),
     );
-    console.log(chalk.redBright('  Exiting!!\n'));
+    console.log();
+    console.log(chalk.redBright('  Exiting!!'));
+    console.log();
     process.exit(1);
   }
 
+  console.log();
   console.log(
     chalk.greenBright(
-      `\n Welcome to teachcode${`\n`.repeat(2)}${`\t`.repeat(
+      ` Welcome to teachcode${`\n`.repeat(2)}${`\t`.repeat(
         2,
       )} Points to ponder ${`\n`.repeat(
         4,
@@ -95,8 +101,12 @@ const initTasks = async () => {
   // Check if the remote repository already exists.
   let shouldCreateRepository = await checkIfRepositoryExists();
 
+  // Tracks whether the user is just starting out.
+  let kickStart;
+
   if (shouldCreateRepository) {
     await createRepository();
+    kickStart = true;
 
     execSync(`mkdir -p ${process.cwd()}/teachcode-solutions`);
     fs.writeFileSync(
@@ -106,13 +116,12 @@ const initTasks = async () => {
 
     process.chdir('teachcode-solutions');
     await configureLocalRepo();
-
-    showInstructions();
   } else {
     // Clone the remote repository
     await cloneRepository();
-    showInstructions();
+    kickStart = false;
   }
+  showInstructions(kickStart);
 };
 
 module.exports = initTasks;
