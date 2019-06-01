@@ -76,11 +76,7 @@ const checkSolution = async (submittedFileContent, solutionFileContent) => {
           await pushToRemote();
           break;
         } catch (err) {
-          console.log();
-          console.log(
-            chalk.red.bold(' Error: something wrong with the local commits'),
-          );
-          process.exit(1);
+          // The method gets invoked again as invalid credentials were provided.
         }
       } while (condition);
 
@@ -208,7 +204,9 @@ const submitTask = async () => {
 
   if (taskCount === userSubmittedFiles.length) {
     console.log();
-    console.log(chalk.cyan(' Info: Task already submitted!'));
+    console.log(
+      chalk.cyan.bold(' Info: ') + chalk.yellow.bold('Task already submitted!'),
+    );
     console.log();
     process.exit(1);
   }

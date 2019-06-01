@@ -32,10 +32,10 @@ const showInstructions = kickStart => {
   console.log();
   console.log(chalk.green.bold(' Perform the following:-'));
   console.log();
-  console.log(chalk.cyanBright('1. cd teachcode-solutions'));
+  console.log(chalk.cyan.bold(' 1. cd teachcode-solutions'));
 
   key = kickStart ? key : '<key>';
-  console.log(chalk.green(`2. teachcode fetchtask ${key}`));
+  console.log(chalk.cyan.bold(` 2. teachcode fetchtask ${key}`));
 };
 
 const initTasks = async () => {

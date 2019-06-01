@@ -1,6 +1,7 @@
 'use strict';
 
 const axios = require('axios');
+const chalk = require('chalk');
 const execa = require('execa');
 const inquirer = require('inquirer');
 const { promisify } = require('util');
@@ -54,6 +55,13 @@ const createRepository = async () => {
 
   // Create a new repository.
   await execa.shell(`curl ${options}`, { stdio: 'inherit' });
+
+  // Ensure repository creation.
+  if (await checkIfRepositoryExists()) {
+    console.log(chalk.red.bold('Error: Invalid credentials'));
+    console.log();
+    await createRepository();
+  }
 };
 
 const configureLocalRepo = async () => {

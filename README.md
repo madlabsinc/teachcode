@@ -37,10 +37,6 @@ The user is provided with 30 tasks guiding them through the basic constructs of 
 | `teachcode showkeys` | Shows all the keys grabbed |
 | `teachcode showcommands` | Lists all the available commands |
 
-## Demo
-
-[![asciicast](https://asciinema.org/a/Dt6tL9vo6wAWqhh7nvwEFTMqA.svg)](https://asciinema.org/a/Dt6tL9vo6wAWqhh7nvwEFTMqA)
-
 ## License
 
 Licensed under `GNU General Public License V3.0`
