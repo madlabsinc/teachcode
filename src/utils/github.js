@@ -50,19 +50,10 @@ const cloneRepository = async () => {
 
 const createRepository = async () => {
   const API_URL = 'https://api.github.com/user/repos';
-  console.log(GHUserName);
   const options = `--silent --output /dev/null -u ${GHUserName} ${API_URL} -d '{"name":"teachcode-solutions"}'`;
 
-  let condition = true;
   // Create a new repository.
-  do {
-    try {
-      await execa.shell(`curl ${options}`, { stdio: 'inherit' });
-      break;
-    } catch (err) {
-      // Handle err
-    }
-  } while (condition);
+  await execa.shell(`curl ${options}`, { stdio: 'inherit' });
 };
 
 const configureLocalRepo = async () => {

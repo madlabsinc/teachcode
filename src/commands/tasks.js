@@ -15,12 +15,14 @@ const fetchTask = async key => {
   if (!fs.existsSync(process.cwd() + '/config.json')) {
     console.log(
       chalk.red.bold(
-        ' Make sure that you are within the teachcode-solutions directory!\n',
+        ' Make sure that you are within the teachcode-solutions directory!',
       ),
     );
+    console.log();
     console.log(
-      chalk.magenta.bold('\tcd teachcode-solutions may resolve the issue!\n'),
+      chalk.cyan.bold('\tcd teachcode-solutions may resolve the issue!'),
     );
+    console.log();
     process.exit(1);
   }
 
@@ -56,20 +58,26 @@ const fetchTask = async key => {
   });
 
   if (taskAlreadyCompleted[0]) {
-    console.log(chalk.yellow.bold('\n This task is already completed!\n'));
+    console.log();
+    console.log(chalk.yellow.bold(' This task is already completed!'));
+    console.log();
+    console.log();
     console.log(
       chalk.green.bold(
-        `\nUser: ${userName}${`\t`.repeat(4)}Progress: ${taskCount + 1}/${
+        `User: ${userName}${`\t`.repeat(4)}Progress: ${taskCount + 1}/${
           exercises.length
         }`,
       ),
     );
-    console.log(chalk.green(`\n${exercises[taskAlreadyCompleted[1]].task}\n`));
+    console.log();
+    console.log(chalk.green(`${exercises[taskAlreadyCompleted[1]].task}`));
+    console.log();
     process.exit(1);
   }
 
   if (taskCount === exercises.length) {
-    console.log(chalk.red.bold('\nNo more tasks available!'));
+    console.log();
+    console.log(chalk.red.bold('No more tasks available!'));
     process.exit(1);
   }
 
@@ -80,21 +88,27 @@ const fetchTask = async key => {
 
     fs.writeFileSync('./config.json', JSON.stringify(userConfig));
 
+    console.log();
     console.log(
       chalk.cyan.bold(
-        `\nUser: ${userName}${`\t`.repeat(6)}Progress: ${taskCount + 1}/${
+        `User: ${userName}${`\t`.repeat(6)}Progress: ${taskCount + 1}/${
           exercises.length
         }`,
       ),
     );
-    console.log(chalk.green(`\n${exercises[taskCount].task}\n`));
+    // Displaying respective task within the the console screen.
+    console.log();
+    console.log(chalk.green(`${exercises[taskCount].task}`));
+    console.log();
 
     let createCmd = process.platform !== 'win32' ? 'touch' : 'notepad';
     execSync(`${createCmd} ${fileName}`);
   } else {
+    console.log();
     console.log(
-      chalk.red.bold("\nMake sure that you've grabbed the key correctly!\n"),
+      chalk.red.bold("Make sure that you've grabbed the key correctly!"),
     );
+    console.log();
   }
 };
 

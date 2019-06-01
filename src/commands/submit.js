@@ -59,7 +59,15 @@ const checkSolution = async (submittedFileContent, solutionFileContent) => {
   let { taskCount, keys } = userConfig;
   try {
     if (submittedFileContent.toString() === solutionFileContent.toString()) {
+      generatedKey = generateKey();
+
+      // Updating config.json information.
       taskCount += 1;
+      keys.push(generatedKey);
+
+      userConfig = Object.assign({}, userConfig, { taskCount, keys });
+      fs.writeFileSync('./config.json', JSON.stringify(userConfig));
+
       await makeLocalCommit(taskCount);
 
       let condition = true;
@@ -77,7 +85,9 @@ const checkSolution = async (submittedFileContent, solutionFileContent) => {
       } while (condition);
 
       if (taskCount === exercises.length) {
-        console.log(chalk.greenBright("\n  Hurray you've done it!\n"));
+        console.log();
+        console.log(chalk.greenBright("  Hurray you've done it!"));
+        console.log();
         console.log(
           chalk.cyan.bold(' Info: ') +
             chalk.yellow.bold('No more tasks available!'),
@@ -85,32 +95,28 @@ const checkSolution = async (submittedFileContent, solutionFileContent) => {
         process.exit(1);
       }
 
-      generatedKey = generateKey();
-
-      // Updating config.json information.
-      keys.push(generatedKey);
-      userConfig.taskCount = taskCount;
-
-      fs.writeFileSync('./config.json', JSON.stringify(userConfig));
+      console.log();
       console.log(
         chalk.green.bold(
-          "\n  Hurray you've done it!\n  Key to access the next task: " +
-            generatedKey +
-            '\n',
+          "  Hurray you've done it!\n  Key to access the next task: " +
+            generatedKey,
         ),
       );
+      console.log();
     } else {
+      console.log();
       console.log(
         chalk.yellow.bold(
-          "\n  The solution doesn't meet all the output requirements. Have a look again!\n",
+          "  The solution doesn't meet all the output requirements. Have a look again!",
         ),
       );
+      console.log();
     }
   } catch (err) {
+    console.log();
     console.log(
       chalk.red.bold(
-        `\n There is something wrong with task${taskCount +
-          1}.${fileExtension}`,
+        ` There is something wrong with task${taskCount + 1}.${fileExtension}`,
       ),
     );
   }
@@ -126,9 +132,10 @@ const validateSolution = solutionFile => {
       if (fileContent.includes(validationKeys[taskCount - 2])) {
         return;
       } else {
+        console.log();
         console.log(
           chalk.red.bold(
-            '\n Make sure that you use the required constructs as provided',
+            ' Make sure that you use the required constructs as provided',
           ),
         );
         process.exit(1);
@@ -145,12 +152,14 @@ const submitTask = async () => {
   if (!fs.existsSync(`${process.cwd()}/config.json`)) {
     console.log(
       chalk.red.bold(
-        ' Make sure that you are within the Teach-Code-solutions directory!\n',
+        ' Make sure that you are within the Teach-Code-solutions directory!',
       ),
     );
+    console.log();
     console.log(
-      chalk.magenta.bold('\tcd Teach-Code-solutions may resolve the issue!\n'),
+      chalk.magenta.bold('\tcd Teach-Code-solutions may resolve the issue!'),
     );
+    console.log();
     process.exit(1);
   }
 
@@ -170,19 +179,22 @@ const submitTask = async () => {
   }
 
   if (taskCount !== exercises.length) {
+    console.log();
     console.log(
       chalk.green(
-        `\nUser: ${userName}${`\t`.repeat(6)}Progress: ${taskCount + 1}/${
+        `User: ${userName}${`\t`.repeat(6)}Progress: ${taskCount + 1}/${
           exercises.length
         }`,
       ),
     );
   } else {
+    console.log();
     console.log(
       chalk.green.bold(
-        `\n  Congrats ${userName} you've made it through!\n  All tasks completed!\n`,
+        `  Congrats ${userName} you've made it through!\n  All tasks completed!`,
       ),
     );
+    console.log();
     process.exit(1);
   }
 
@@ -195,7 +207,9 @@ const submitTask = async () => {
   }
 
   if (taskCount === userSubmittedFiles.length) {
-    console.log(chalk.yellow('\nTask already submitted!\n'));
+    console.log();
+    console.log(chalk.cyan(' Info: Task already submitted!'));
+    console.log();
     process.exit(1);
   }
 
@@ -206,22 +220,26 @@ const submitTask = async () => {
     .split('');
 
   if (!submittedFileContent.length) {
+    console.log();
     console.log(
       chalk.red(
-        `\n Solution file task${taskCount + 1}.${fileExtension} is empty!\n`,
+        ` Solution file task${taskCount + 1}.${fileExtension} is empty!`,
       ),
     );
+    console.log();
     process.exit(1);
   }
 
   if (learningTrack === 'Python') {
     PythonShell.run(submittedFile, null, (err, result) => {
       if (err) {
+        console.log();
         console.log(
           chalk.red.bold(
-            '\n\tOops there is something wrong with the syntax part!\n',
+            '  Oops there is something wrong with the syntax part!',
           ),
         );
+        console.log();
         console.log(err.toString());
         process.exit(1);
       }
@@ -233,9 +251,10 @@ const submitTask = async () => {
         }
 
         if (typeof result === 'undefined' || typeof solution === 'undefined') {
+          console.log();
           console.log(
             chalk.red.bold(
-              `\n Kindly have a look at task${taskCount}.${fileExtension}`,
+              ` Kindly have a look at task${taskCount}.${fileExtension}`,
             ),
           );
           process.exit(1);
