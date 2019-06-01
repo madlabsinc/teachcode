@@ -4,19 +4,17 @@ const { showBanner } = require('../utils/banner');
 const fs = require('fs');
 const chalk = require('chalk');
 
-let userData;
-
 const showKeys = async () => {
   await showBanner();
 
-  if (!fs.existsSync(process.cwd() + '/config.json')) {
+  if (!fs.existsSync(`${process.cwd()}/config.json`)) {
     console.log(chalk.red("Config file doesn't exist!"));
     console.log();
     process.exit(1);
   }
 
-  userData = fs.readFileSync(process.cwd() + '/config.json', 'utf8');
-  const { keys, userName, taskCount } = JSON.parse(userData);
+  let userConfig = fs.readFileSync(process.cwd() + '/config.json', 'utf8');
+  const { keys, userName, taskCount } = JSON.parse(userConfig);
 
   console.log();
   console.log(
