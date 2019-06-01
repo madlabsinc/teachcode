@@ -68,7 +68,11 @@ const checkSolution = async (submittedFileContent, solutionFileContent) => {
           await pushToRemote();
           break;
         } catch (err) {
-          // Handle err
+          console.log();
+          console.log(
+            chalk.red.bold(' Error: something wrong with the local commits'),
+          );
+          process.exit(1);
         }
       } while (condition);
 
