@@ -5,7 +5,15 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const inquirer = require('inquirer');
 
-const { createRepository, configureLocalRepo } = require('../utils/github');
+// GitHub workflow helper methods.
+const {
+  checkIfRepositoryExists,
+  cloneRepository,
+  createRepository,
+  configureLocalRepo,
+  initializeGHWorkFlow,
+} = require('../utils/github');
+
 const { showBanner } = require('../utils/banner');
 const validateInput = require('../utils/validate');
 
@@ -73,25 +81,32 @@ const initTasks = async () => {
   userConfig.userName = userName;
   userConfig.keys.push(key);
 
-  await createRepository().catch(err => {
-    console.error(chalk.redBright(err));
-    process.exit(1);
-  });
+  // Prompt for GitHub username.
+  await initializeGHWorkFlow();
 
-  execSync(`mkdir -p ${process.cwd()}/teachcode-solutions`);
-  fs.writeFileSync(
-    `teachcode-solutions/config.json`,
-    JSON.stringify(userConfig),
-  );
+  // Check if the remote repository already exists.
+  let shouldCreateRepository = await checkIfRepositoryExists();
 
-  process.chdir('teachcode-solutions');
-  await configureLocalRepo();
+  if (shouldCreateRepository) {
+    await createRepository();
+    execSync(`mkdir -p ${process.cwd()}/teachcode-solutions`);
+    fs.writeFileSync(
+      `teachcode-solutions/config.json`,
+      JSON.stringify(userConfig),
+    );
 
-  console.log();
-  console.log(chalk.green.bold(' Perform the following:-'));
-  console.log();
-  console.log(chalk.cyanBright('1. cd teachcode-solutions'));
-  console.log(chalk.green(`2. teachcode fetchtask ${key}`));
+    process.chdir('teachcode-solutions');
+    await configureLocalRepo();
+
+    console.log();
+    console.log(chalk.green.bold(' Perform the following:-'));
+    console.log();
+    console.log(chalk.cyanBright('1. cd teachcode-solutions'));
+    console.log(chalk.green(`2. teachcode fetchtask ${key}`));
+  } else {
+    // Clone the remote repository
+    await cloneRepository();
+  }
 };
 
 module.exports = initTasks;
