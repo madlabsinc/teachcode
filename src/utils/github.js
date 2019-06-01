@@ -50,23 +50,11 @@ const cloneRepository = async () => {
 
 const createRepository = async () => {
   const API_URL = 'https://api.github.com/user/repos';
-  // const options = `--silent --output /dev/null -u ${GHUserName} ${API_URL} -d '{"name":"teachcode-solutions"}'`;
-  const data = {
-    user: GHUserName,
-    name: 'teachcode-solutions',
-  };
-  const config = {
-    headers: {
-      u: GHUserName,
-    },
-  };
+  console.log(GHUserName);
+  const options = `--silent --output /dev/null -u ${GHUserName} ${API_URL} -d '{"name":"teachcode-solutions"}'`;
+
   // Create a new repository.
-  // await execa.shell(`curl ${options}`, { stdio: 'inherit' });
-  try {
-    await axios.post(API_URL, data, config);
-  } catch (err) {
-    throw err;
-  }
+  await execa.shell(`curl ${options}`, { stdio: 'inherit' });
 };
 
 const configureLocalRepo = async () => {
