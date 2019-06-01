@@ -1,5 +1,6 @@
 'use strict';
 
+const axios = require('axios');
 const execa = require('execa');
 const inquirer = require('inquirer');
 const { promisify } = require('util');
@@ -12,7 +13,7 @@ const validateInput = require('../utils/validate');
 // Global reference to the GitHub username.
 let GHUserName;
 
-const createRepository = async () => {
+const initializeGHWorkFlow = async () => {
   const { userName } = await inquirer.prompt({
     name: 'userName',
     message: 'GitHub username:-',
@@ -20,13 +21,52 @@ const createRepository = async () => {
     validate: validateInput,
   });
 
+  // Holding global reference to the GitHub username.
   GHUserName = userName;
 
-  const API_URL = 'https://api.github.com/user/repos';
-  const options = `--silent --output /dev/null -u ${userName} ${API_URL} -d '{"name":"teachcode-solutions"}'`;
+  // Check if the remote repository already exists and act accordingly.
+  await checkIfRepositoryExists();
+};
 
+const checkIfRepositoryExists = async () => {
+  const API_URL = `https://api.github.com/repos/${GHUserName}/teachcode-solutions`;
+  let repoShouldBeCreated;
+
+  // Checking whether the remote repository exists.
+  try {
+    await axios.get(API_URL);
+    repoShouldBeCreated = false;
+  } catch (err) {
+    // Repository should be created.
+    repoShouldBeCreated = true;
+  }
+  return repoShouldBeCreated;
+};
+
+const cloneRepository = async () => {
+  const repoUrl = `https://github.com/${GHUserName}/teachcode-solutions`;
+  await execa.shell(`git clone ${repoUrl}`);
+};
+
+const createRepository = async () => {
+  const API_URL = 'https://api.github.com/user/repos';
+  // const options = `--silent --output /dev/null -u ${GHUserName} ${API_URL} -d '{"name":"teachcode-solutions"}'`;
+  const data = {
+    user: GHUserName,
+    name: 'teachcode-solutions',
+  };
+  const config = {
+    headers: {
+      u: GHUserName,
+    },
+  };
   // Create a new repository.
-  await execa.shell(`curl ${options}`, { stdio: 'inherit' });
+  // await execa.shell(`curl ${options}`, { stdio: 'inherit' });
+  try {
+    await axios.post(API_URL, data, config);
+  } catch (err) {
+    throw err;
+  }
 };
 
 const configureLocalRepo = async () => {
@@ -49,8 +89,11 @@ const pushToRemote = async () => {
 };
 
 module.exports = {
-  createRepository,
+  checkIfRepositoryExists,
+  cloneRepository,
   configureLocalRepo,
+  createRepository,
+  initializeGHWorkFlow,
   makeLocalCommit,
   pushToRemote,
 };
