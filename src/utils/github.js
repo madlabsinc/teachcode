@@ -53,8 +53,16 @@ const createRepository = async () => {
   console.log(GHUserName);
   const options = `--silent --output /dev/null -u ${GHUserName} ${API_URL} -d '{"name":"teachcode-solutions"}'`;
 
+  let condition = true;
   // Create a new repository.
-  await execa.shell(`curl ${options}`, { stdio: 'inherit' });
+  do {
+    try {
+      await execa.shell(`curl ${options}`, { stdio: 'inherit' });
+      break;
+    } catch (err) {
+      // Handle err
+    }
+  } while (condition);
 };
 
 const configureLocalRepo = async () => {
