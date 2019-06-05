@@ -12,6 +12,8 @@
   },
   "scripts": {
     "test": "node ./node_modules/mocha/bin/mocha test/main_test.js",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
     "lint": "eslint ./src",
     "lint:fix": "eslint --fix ./src"
   },
@@ -50,7 +52,8 @@
     "inquirer": "^6.2.0",
     "os": "^0.1.1",
     "python-shell": "^1.0.7",
-    "shelljs": "^0.8.3"
+    "shelljs": "^0.8.3",
+    "vuepress": "^0.14.11"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
