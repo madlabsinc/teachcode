@@ -24,18 +24,22 @@ The user is provided with 30 tasks guiding them through the basic constructs of 
 - Hurray :+1: you've got your first task.
 - Write your solution within a file that is auto-created. For instance, `task<task_number>.py` for Python.
 - `teachcode submit` submits the current solution and gives you the next key to proceed if your solution meets all the test cases.
-- `teachcode showkeys` shows you all the keys. 
+- `teachcode showkeys` shows you all the keys.
 - `teachcode showcommands` shows you all the commands available for reference.
 
 ## Available Commands
 
 | command | description |                                                                                                
 | -------------- |  ---------------- |
-| `teachcode init` | Initializes all the tasks |
-| `teachcode fetchtask <key>` | Fetches the task correponding to key provided |
-| `teachcode submit` | Submits the current task |
-| `teachcode showkeys` | Shows all the keys grabbed |
-| `teachcode showcommands` | Lists all the available commands |
+| teachcode init | Initializes all the tasks |
+| teachcode fetchtask <key> | Fetches the task correponding to key provided |
+| teachcode submit | Submits the current task |
+| teachcode showkeys | Shows all the keys grabbed |
+| teachcode showcommands | Lists all the available commands |
+
+## Contributing
+
+Contributions of any kind are warm welcome. Make sure that you go through these [guidelines](https://teachcode.surge.sh/guide/contributing)
 
 ## License
 

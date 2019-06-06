@@ -1,5 +1,6 @@
 
 module.exports = {
+    base: '/teachcode/',
     title: 'teachcode',
     description: 'Learn to code effectively',
     head: [
@@ -13,7 +14,12 @@ module.exports = {
         ],
         sidebar: {
             '/guide/': [{
-                title: 'Guide'
+                title: 'Guide',
+                children: [
+                  'installation',
+                  'commands',
+                  'contributing'
+                ]
             }],
         },
         docsDir: 'docs',

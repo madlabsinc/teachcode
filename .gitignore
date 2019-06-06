@@ -8,6 +8,9 @@ yarn-error.log*
 # VS-Code config
 .vscode
 
+# vuepress dist
+docs/.vuepress/dist
+
 # Runtime data
 pids
 *.pid
