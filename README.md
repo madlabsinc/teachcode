@@ -16,16 +16,20 @@
 
 ## How to use
 
-The user is provided with 30 tasks guiding them through the basic constructs of a preferred programming language. He/she gets a key to access the next task if the current task meets all the test cases. There is also the provision to revisit previously submitted tasks, but it can't be worked on again.
+The user is required to solve 30 tasks which takes him/her through the basic constructs of a programming language of choice. The tasks are such that the complexity goes on increasing based on the user progress. Also, he/she can't move forward unless the current task is completed since the progress is governed by a unique key that gets generated on successful completion. Previously submitted tasks can be viewed as required by the user but can't be worked on again.
 
-- Navigate to a directory of your choice and fire in `teachcode init`.
-- Navigate to the `teachcode-solutions` directory.
-- Copy and paste the command as instructed within the initial screen `teachcode fetchtask <key>`.
+- It expects you to have a GitHub account. Make sure that you create one if that's not the case.
+- Navigate to a directory of your choice and type in `teachcode init`.
+- Follow the instructions as being prompted.
+- Now type in `cd teachcode-solutions`.
+- Grab the initial key and type in `teachcode fetchtask <key>`.
 - Hurray :tada: you've got your first task.
-- Write your solution within a file that is auto-created. For instance, `task<task_number>.py` for Python.
-- `teachcode submit` submits the current solution and gives you the next key to proceed if your solution meets all the test cases.
-- `teachcode showkeys` shows you all the keys.
-- `teachcode showcommands` shows you all the commands available for reference.
+- Now you can find a `config.json` and `task1.py` (language of choice) file within the `teachcode-solutions` directory.
+- Open up your favourite editor and code up the solution.
+- Now type in `teachcode submit`.
+- Enter your Git credentials when prompted.
+- If the current solution satisfies all test cases, you'll get the key to proceed with.
+- Grab the key and type in `teachcode fetchtask <key>`.
 
 ## Available Commands
 
