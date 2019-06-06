@@ -39,7 +39,7 @@ The user is provided with 30 tasks guiding them through the basic constructs of 
 
 ## Contributing
 
-Contributions of any kind are warm welcome. Make sure that you go through these [guidelines](https://teachcode.surge.sh/guide/contributing)
+Contributions of any kind are warm welcome. Make sure that you go through these [guidelines](https://teachcode.surge.sh/guide/contributing.html#guidelines)
 
 ## License
 
