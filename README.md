@@ -21,7 +21,7 @@ The user is provided with 30 tasks guiding them through the basic constructs of 
 - Navigate to a directory of your choice and fire in `teachcode init`.
 - Navigate to the `teachcode-solutions` directory.
 - Copy and paste the command as instructed within the initial screen `teachcode fetchtask <key>`.
-- Hurray :+1: you've got your first task.
+- Hurray :tada: you've got your first task.
 - Write your solution within a file that is auto-created. For instance, `task<task_number>.py` for Python.
 - `teachcode submit` submits the current solution and gives you the next key to proceed if your solution meets all the test cases.
 - `teachcode showkeys` shows you all the keys.
@@ -39,7 +39,7 @@ The user is provided with 30 tasks guiding them through the basic constructs of 
 
 ## Contributing
 
-Contributions of any kind are warm welcome. Make sure that you go through these [guidelines](https://teachcode.surge.sh/guide/contributing.html#guidelines)
+Contributions of any kind are welcomed. Make sure that you go through these [guidelines](https://teachcode.madhacks.co/guide/contributing.html#guidelines)
 
 ## License
 

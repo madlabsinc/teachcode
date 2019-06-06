@@ -9,10 +9,10 @@ title: 'Contributing'
 1. Fork and clone the repository.
 2. Navigate to the project directory.
 3. Now install the dependencies with `npm install`
-4. Create a symlink with `npm link` which enables `teachcode` to be accessed globally.
-5. Make your desired changes.
-6. Make sure that you run `npm run lint` eventhough there is a `pre-commit` hook configured for the purpose.
-7. If everything seems to be fine locally, you may push it to the remote repository by switching to another branch and proposing a Pull Request to the base fork.
+4. Type in `npm link` which creates a symlink and thereby allowing `teachcode` to be accessed globally.
+5. Make your life changing changes.
+6. Ensure that your code is free from linting errors and is as per prettier conventions by typing in `npm run lint`.
+7. Now you may push it to the remote repository by switching over to another branch and finally proposing a Pull Request to the base fork.
 
 
 ## Points to ponder
