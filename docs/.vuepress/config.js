@@ -1,6 +1,5 @@
 
 module.exports = {
-    base: '/teachcode/',
     title: 'teachcode',
     description: 'Learn to code effectively',
     head: [
