@@ -11,7 +11,7 @@
     "teachcode": "./bin/index.js"
   },
   "scripts": {
-    "test": "node ./node_modules/mocha/bin/mocha test/main_test.js",
+    "test": "mocha test/index.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "lint": "eslint ./src",
