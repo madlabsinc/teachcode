@@ -76,6 +76,7 @@ const checkSolution = async (submittedFileContent, solutionFileContent) => {
           await pushToRemote();
           break;
         } catch (err) {
+          console.log(chalk.red.bold('Error: Invalid credentials'));
           // The method gets invoked again as invalid credentials were provided.
         }
       } while (condition);
