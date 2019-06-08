@@ -4,8 +4,8 @@ const chalk = require('chalk');
 const { exec } = require('child_process');
 const fs = require('fs');
 const { PythonShell } = require('python-shell');
+const showBanner = require('node-banner');
 
-const { showBanner } = require('../utils/banner');
 const { makeLocalCommit, pushToRemote } = require('../utils/github');
 
 const keyStore = '123456789abcedefghijklmnopqrstuvwxyz';
@@ -143,7 +143,11 @@ const validateSolution = solutionFile => {
 };
 
 const submitTask = async () => {
-  await showBanner();
+  await showBanner(
+    'teachcode',
+    ` Learn to code effectively ${`\t`.repeat(4)} Powered by MadHacks`,
+  );
+  console.log();
 
   if (!fs.existsSync(`${process.cwd()}/config.json`)) {
     console.log(

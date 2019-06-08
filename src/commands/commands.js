@@ -1,12 +1,16 @@
 'use strict';
 
-const { showBanner } = require('../utils/banner');
 const fs = require('fs');
 const chalk = require('chalk');
+const showBanner = require('node-banner');
 const Table = require('cli-table3');
 
 const showCommands = async () => {
-  await showBanner();
+  await showBanner(
+    'teachcode',
+    ` Learn to code effectively ${`\t`.repeat(4)} Powered by MadHacks`,
+  );
+  console.log();
 
   if (!fs.existsSync(`${process.cwd()}/config.json`)) {
     console.log(chalk.red("Config file doesn't exist!\n"));

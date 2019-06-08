@@ -4,6 +4,7 @@ const chalk = require('chalk');
 const { execSync } = require('child_process');
 const fs = require('fs');
 const inquirer = require('inquirer');
+const showBanner = require('node-banner');
 
 // GitHub workflow helper methods.
 const {
@@ -14,7 +15,6 @@ const {
   initializeGHWorkFlow,
 } = require('../utils/github');
 
-const { showBanner } = require('../utils/banner');
 const validateInput = require('../utils/validate');
 
 // Key for the very first task
@@ -39,7 +39,11 @@ const showInstructions = kickStart => {
 };
 
 const initTasks = async () => {
-  await showBanner();
+  await showBanner(
+    'teachcode',
+    ` Learn to code effectively ${`\t`.repeat(4)} Powered by MadHacks`,
+  );
+  console.log();
 
   if (
     fs.existsSync(`${process.cwd()}/teachcode-solutions`) ||

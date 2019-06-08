@@ -44,16 +44,13 @@
   "dependencies": {
     "axios": "^0.19.0",
     "chalk": "^2.4.1",
-    "clear": "^0.1.0",
     "cli-table3": "^0.5.1",
     "commander": "^2.18.0",
     "execa": "^1.0.0",
-    "figlet": "^1.2.1",
     "inquirer": "^6.2.0",
-    "os": "^0.1.1",
+    "node-banner": "^1.2.1",
     "python-shell": "^1.0.7",
-    "shelljs": "^0.8.3",
-    "vuepress": "^0.14.11"
+    "shelljs": "^0.8.3"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
@@ -62,6 +59,7 @@
     "husky": "^2.3.0",
     "lint-staged": "^8.1.7",
     "mocha": "^5.2.0",
-    "prettier": "^1.17.1"
+    "prettier": "^1.17.1",
+    "vuepress": "^1.0.0"
   }
 }

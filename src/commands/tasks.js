@@ -3,11 +3,14 @@
 const chalk = require('chalk');
 const { execSync } = require('child_process');
 const fs = require('fs');
-
-const { showBanner } = require('../utils/banner');
+const showBanner = require('node-banner');
 
 const fetchTask = async key => {
-  await showBanner();
+  await showBanner(
+    'teachcode',
+    ` Learn to code effectively ${`\t`.repeat(4)} Powered by MadHacks`,
+  );
+  console.log();
 
   let exercises;
   let fileName;
