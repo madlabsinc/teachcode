@@ -4,6 +4,12 @@ const fs = require('fs');
 const chalk = require('chalk');
 const showBanner = require('node-banner');
 
+/**
+ * Shows a list of keys that the user has hold of
+ *
+ * @returns {Promise<void>}
+ */
+
 const showKeys = async () => {
   await showBanner(
     'teachcode',

@@ -5,6 +5,13 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const showBanner = require('node-banner');
 
+/**
+ * Fetch the respective task corresponding to the supplied key
+ *
+ * @param {String} key - key that corresponds to a specific task
+ * @returns {Promise<void>}
+ */
+
 const fetchTask = async key => {
   await showBanner(
     'teachcode',

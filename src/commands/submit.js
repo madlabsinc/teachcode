@@ -55,6 +55,14 @@ const validationKeys = [
   '[::',
 ];
 
+/**
+ * Compares the user submitted solution (result) with that of the predefined version
+ *
+ * @param {String} submittedFileContent - Content of the submitted solution file
+ * @param {String} solutionFileContent - Predefined solution file content
+ * @returns {Promise<void>}
+ */
+
 const checkSolution = async (submittedFileContent, solutionFileContent) => {
   let { taskCount, keys } = userConfig;
   try {
@@ -119,6 +127,13 @@ const checkSolution = async (submittedFileContent, solutionFileContent) => {
   }
 };
 
+/**
+ * Validates if the solution meets all the criteria
+ *
+ * @param {any} solutionFile - User submitted file
+ * @returns {Void}
+ */
+
 const validateSolution = solutionFile => {
   let fileContent = fs.readFileSync(solutionFile, 'utf8').toString();
   let { learningTrack, taskCount } = userConfig;
@@ -142,6 +157,12 @@ const validateSolution = solutionFile => {
     // TODO: Validation for JS solutions
   }
 };
+
+/**
+ * Solution submission logic
+ *
+ * @returns {Void}
+ */
 
 const submitTask = async () => {
   await showBanner(

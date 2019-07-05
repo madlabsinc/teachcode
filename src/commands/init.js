@@ -28,6 +28,13 @@ const userConfig = {
   userSubmittedFiles: [],
 };
 
+/**
+ * Displays the initial instructions
+ *
+ * @param {Boolean} kickStart - Identifies if the user is just starting out
+ * @returns {Void}
+ */
+
 const showInstructions = kickStart => {
   console.log();
   console.log(chalk.green.bold(' Perform the following:-'));
@@ -37,6 +44,12 @@ const showInstructions = kickStart => {
   key = kickStart ? key : '<key>';
   console.log(chalk.cyan.bold(` 2. teachcode fetchtask ${key}`));
 };
+
+/**
+ * Initialize all the tasks
+ *
+ * @returns {Promise<void>}
+ */
 
 const initTasks = async () => {
   await showBanner(

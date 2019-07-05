@@ -5,6 +5,12 @@ const chalk = require('chalk');
 const showBanner = require('node-banner');
 const Table = require('cli-table3');
 
+/**
+ * Lists all the available commands in tabular format
+ *
+ * @returns {Promise<void>}
+ */
+
 const showCommands = async () => {
   await showBanner(
     'teachcode',
