@@ -1,13 +1,17 @@
-[![Build Status](https://travis-ci.com/madlabsinc/teachcode.svg?branch=master)](https://travis-ci.com/madlabsinc/teachcode)
-[![npm version](https://badgen.net/npm/v/teach-code)](https://www.npmjs.com/package/teach-code)
-[![downloads](https://badgen.net/npm/dm/teach-code)](https://www.npmjs.com/package/teach-code)
-[![PRs Welcome](https://img.shields.io/badge/PRs%20-welcome-brightgreen.svg)](https://github.com/madlabsinc/Teach-Code/pull/new)
-[![Mentioned in Awesome VuePress](https://awesome.re/mentioned-badge.svg)](https://github.com/ulivz/awesome-vuepress)
-
 <p align="center">
-  <img src="https://i.imgur.com/BuMZB6C.png" width="240" height="240">
+  <a href="https://teachcode.madhacks.co"><img src="https://i.imgur.com/BuMZB6C.png" width="240" height="240"></a>
   <h1 align="center">teachcode</h1>
 </p>
+
+<p align="center">
+	<a href=""https://travis-ci.com/madlabsinc/teachcode><img src="https://travis-ci.com/madlabsinc/teachcode.svg?branch=master" alt="Build Status" /></a>
+	<a href="https://www.npmjs.com/package/teachcode"><img src="https://badgen.net/npm/v/teachcode" alt="npm version" /></a>
+	<a href="https://www.npmjs.com/package/teachcode"><img src="https://badgen.net/npm/dm/teachcode" alt="Downloads" /></a>
+	<a href="https://github.com/madlabsinc/teachcode/pull/new"><img src="https://img.shields.io/badge/PRs%20-welcome-brightgreen.svg" alt="PRs Welcome" /></a>
+	<a href="https://github.com/prettier/prettier"><img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg" alt="code style: prettier" /></a>
+	<a href="https://github.com/ulivz/awesome-vuepress"><img src="https://awesome.re/mentioned-badge.svg" alt="Mentioned in Awesome-VuePress" /></a>
+</p>
+
 
 > A tool to develop and improve a student’s programming skills by introducing the earliest lessons of coding.
 
