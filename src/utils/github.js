@@ -43,17 +43,15 @@ const initializeGHWorkFlow = async () => {
 
 const checkIfRepositoryExists = async () => {
   const API_URL = `https://api.github.com/repos/${GHUserName}/teachcode-solutions`;
-  let repoShouldBeCreated;
 
   // Checking whether the remote repository exists.
   try {
     await axios.get(API_URL);
-    repoShouldBeCreated = false;
+    return false;
   } catch (err) {
     // Repository should be created.
-    repoShouldBeCreated = true;
+    return true;
   }
-  return repoShouldBeCreated;
 };
 
 /**
