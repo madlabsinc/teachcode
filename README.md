@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-	<a href=""https://travis-ci.com/madlabsinc/teachcode><img src="https://travis-ci.com/madlabsinc/teachcode.svg?branch=master" alt="Build Status" /></a>
+	<a href="https://travis-ci.com/madlabsinc/teachcode"><img src="https://travis-ci.com/madlabsinc/teachcode.svg?branch=master" alt="Build Status" /></a>
 	<a href="https://www.npmjs.com/package/teach-code"><img src="https://badgen.net/npm/v/teach-code" alt="npm version" /></a>
 	<a href="https://www.npmjs.com/package/teach-code"><img src="https://badgen.net/npm/dm/teach-code" alt="Downloads" /></a>
 	<a href="https://github.com/madlabsinc/teachcode/pull/new"><img src="https://img.shields.io/badge/PRs%20-welcome-brightgreen.svg" alt="PRs Welcome" /></a>
