@@ -1,6 +1,10 @@
 [
-	{
-		"task": "Hey there folks, welcome to the world of programming\n Task 1:-\n Print Hello World to the console",
-		"op": "/solutions/task1.js"
-	}
+  {
+    "task": "Hey there folks, welcome to the world of programming\n Task 1:-\n Print Hello World to the console",
+    "op": "/solutions/task1.js"
+  },
+  {
+    "task": "Great work, here is the next one\n Task 2:-\n Assign Hello World to the variable message, then print it to the console",
+    "op": "/solutions/task2.js"
+  }
 ]
