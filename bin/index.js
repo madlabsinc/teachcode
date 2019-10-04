@@ -17,42 +17,40 @@ const submitTask = require('../src/commands/submit');
 program.version(version).usage('<command> [options]');
 
 program
-.command('init')
-.description('Initialize challenges')
-.action(initTasks);
+  .command('init')
+  .description('Initialize challenges')
+  .action(initTasks);
 
 program
-.command('submit')
-.description('Submits current task')
-.action(submitTask);
+  .command('submit')
+  .description('Submits current task')
+  .action(submitTask);
 
 program
-.command('fetchtask <key>')
-.description('Fetches any task as per the key supplied')
-.action(fetchTask);
+  .command('fetchtask <key>')
+  .description('Fetches any task as per the key supplied')
+  .action(fetchTask);
 
 program
-.command('showkeys')
-.description('Shows keys of all the completed tasks')
-.action(showKeys);
+  .command('showkeys')
+  .description('Shows keys of all the completed tasks')
+  .action(showKeys);
 
 program
-.command('showcommands')
-.description('Shows all commands available')
-.action(showCommands);
+  .command('showcommands')
+  .description('Shows all commands available')
+  .action(showCommands);
 
 // Validates any random command fired in
-program
-  .arguments('<command>')
-  .action((cmd) => {
-    program.outputHelp();
-    console.log(`  ` + chalk.red(`\n  Unknown command ${chalk.yellow(cmd)}.`));
-    console.log();
+program.arguments('<command>').action(cmd => {
+  program.outputHelp();
+  console.log(`  ` + chalk.red(`\n  Unknown command ${chalk.yellow(cmd)}.`));
+  console.log();
 });
 
 program.parse(process.argv);
 
 // Outputs help if no argument is provided
-if(!program.args.length){
-	program.help();
+if (!program.args.length) {
+  program.help();
 }

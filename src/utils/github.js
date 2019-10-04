@@ -9,7 +9,7 @@ const shell = require('shelljs');
 
 const execAsync = promisify(shell.exec);
 
-const validateInput = require('../utils/validate');
+const validate = require('../utils/validate');
 
 // Global reference to the GitHub username.
 let GHUserName;
@@ -25,7 +25,7 @@ const initializeGHWorkFlow = async () => {
     name: 'userName',
     message: 'GitHub username:-',
     type: 'input',
-    validate: validateInput,
+    validate,
   });
 
   // Holding global reference to the GitHub username.
