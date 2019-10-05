@@ -15,7 +15,7 @@ const {
   initializeGHWorkFlow,
 } = require('../utils/github');
 
-const validateInput = require('../utils/validate');
+const validate = require('../utils/validate');
 
 // Key for the very first task
 let key = '5e06b81de9ac43218a974785ffce8146';
@@ -103,7 +103,7 @@ const initTasks = async () => {
       name: 'userName',
       type: 'input',
       message: "What's your name:-",
-      validate: validateInput,
+      validate,
     },
   ]);
 

@@ -14,8 +14,8 @@
     "test": "mocha test/index.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "lint": "eslint ./src",
-    "lint:fix": "eslint --fix ./src"
+    "lint": "eslint src bin",
+    "lint:fix": "eslint --fix src bin"
   },
   "husky": {
     "hooks": {
