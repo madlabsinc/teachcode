@@ -14,7 +14,10 @@ const showKeys = require('../src/commands/keys');
 const submitTask = require('../src/commands/submit');
 
 // Defining all the available commands
-program.version(version).usage('<command> [options]');
+program
+  .name('teachcode')
+  .version(version)
+  .usage('<command> [options]');
 
 program
   .command('init')
