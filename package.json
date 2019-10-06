@@ -14,8 +14,8 @@
     "test": "ava test/index.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "lint": "eslint src bin",
-    "lint:fix": "eslint --fix src bin"
+    "lint": "eslint src bin test",
+    "lint:fix": "eslint --fix src bin test"
   },
   "husky": {
     "hooks": {
