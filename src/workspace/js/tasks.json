@@ -55,7 +55,7 @@
     },
 
     {
-        "task": "Keep up the good work! The next topic we will cover is functions. Functions are sections of code that exicute other code and make it reuseable. \nIn ES6 there are 2 main ways to declare a function, the function keyword and arrow functions.\n Syntax: function name(params) {\n   code\n} \nTask 12: Declare an function using the keyword that when given 2 numbers will add them together, then print out the result. The number pairs you need to test are 1+2, 10+15, 100+400",
+        "task": "Keep up the good work! The next topic we will cover is functions. Functions are sections of code that execute other code and make it reusable. \nIn ES6 there are 2 main ways to declare a function, the function keyword and arrow functions.\n Syntax: function name(params) {\n   code\n} \nTask 12: Declare a function using the respective keyword that when given 2 numbers will add them together, then print out the result. The number pairs you need to test are 1+2, 10+15, 100+400",
         "op": "/solutions/task12.js"
     }
 ]
