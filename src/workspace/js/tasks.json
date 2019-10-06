@@ -63,5 +63,11 @@
         // Task 11
         "task": "Awesome! Let's now move on to break and continue statements. \n break statement is used to break out of the loop when required. It stops the iteration when used in loops. \n continue statments are used to skip the current iteration. \n The difference between these statements is that in the case of break statement, the iteration stops and breaks out of loop, whereas, in the case of continue, the iteration is skipped but the loop continues to execute. \n Here's your task: \n Task 11:- \n Print numbers from 1 to 15. Skip the iteration if the number is a multiple of 3 and break out of the loop when it reaches 13.",
         "op": "/solutions/task11.js"
+    },
+
+    {
+        // Task 12
+        "task": "Keep up the good work! The next topic we will cover is functions. Functions are sections of code that exicute other code and make it reuseable. \nIn ES6 there are 2 main ways to declare a function, the function keyword and arrow functions.\n Syntax: function name(params) {\n   code\n} \nTask 12: Declare an function using the keyword that when given 2 numbers will add them together, then print out the result. The number pairs you need to test are 1+2, 10+15, 100+400",
+        "op": "/solutions/task12.js"
     }
 ]
