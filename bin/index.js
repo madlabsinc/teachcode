@@ -46,14 +46,13 @@ program
 program.arguments('<command>').action(cmd => {
   program.outputHelp();
   const commands = ['init', 'submit', 'fetchtask', 'showkeys', 'showcommands'];
-  
+
   // Get a suggestion from didyoumean.js based on the input.
   const suggestion = didYouMean(cmd, commands);
   console.log(`  ` + chalk.red(`\n  Unknown command ${chalk.yellow(cmd)}.`));
   if (suggestion) console.log(`  Did you mean ${suggestion}?`);
   console.log();
 });
-
 
 program.parse(process.argv);
 
