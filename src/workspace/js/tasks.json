@@ -1,56 +1,61 @@
 [
-	{
-		"task": "Hey there folks, you have chosen JS Path! \n Here's your first task! All the best...\n Task 1:-\n Print Hello World to the console",
-		"op": "/solutions/task1.js"
-	},
+    {
+        "task": "Hey there folks, you have chosen JS Path! \n Here's your first task! All the best...\n Task 1:-\n Print Hello World to the console",
+        "op": "/solutions/task1.js"
+    },
 
-	{
-		"task": "Great! Now's let's move on to variables. Variables are used to store data values \n Task 2:-\n Declare a variable to store the value 18 and print the value.",
-		"op": "/solutions/task2.js"
-	},
-	
-	{
-		"task": "Let's move on to strings. Strings represent a set of characters written within quotes. \n Task 3:-\n Declare a variable to store the value 'JS is cool!' and print it.",
-		"op": "/solutions/task3.js"
-	},
+    {
+        "task": "Great! Now's let's move on to variables. Variables are used to store data values \n Task 2:-\n Declare a variable to store the value 18 and print the value.",
+        "op": "/solutions/task2.js"
+    },
 
-	{
-		"task": "Keep it up! Let's move on to String methods. There are a variety of methods for string manipulation in JS. Some of them are: \n 1. length - To find the length of the string. \n 2. indexOf() - Returns the first occurence of a specified text in a string. \n 3. slice() - extracts a part of a string and returns the extracted part. \n 4. replace() - replaces a specified value with another value in a string. \n 5. concat() - to join two or more strings. \n 6. trim() - removes the white space from both sides of the string. \n Task 4:-\n Obtain the following output for the string ' Hey, this is Task 4 of JS Path! ' \n Output: \n Length of the string \n Display the index of first occurence of 'Task' \n Slice the string for displaying 'JS' \n Replace JS with Python \n Concatenate '!' to the end of the string. \n Remove the whitespaces from the beginning and end of the string.",
-		"op": "/solutions/task4.js"
-	},
-	
-	{
-		"task": "Impressive! Let's move on to the next topic:  Operators. \n There are a variety of operators. Let's move on to Arithmetic Operators: +,-,*,/,%, **. \n Here's your task:\n Task 5:- \n Take 25 & 33 as your operands and print their sum, difference, product, quotient, remainder, 25^2.",
-		"op": "/solutions/task5.js"
-	},
+    {
+        "task": "Let's move on to strings. Strings represent a set of characters written within quotes. \n Task 3:-\n Declare a variable to store the value 'JS is cool!' and print it.",
+        "op": "/solutions/task3.js"
+    },
 
-	{
-		"task": "Awesome! Let's move on to Comparison Operators. They are used to compare two values. They return true or false according to the value of their operands. They are: ==, ===, !=, >, <, >=, <=. Here's your task:\n Task 6:-\n Use 44 & 29 as your operands. Compare them using the Comparison operators in the same order and print the value which they return.",
-		"op": "/solutions/task6.js"
-	}, 
-	
-	{
-		"task": "Now, let's move on to Logical Operators. They too return true or false according to the value of their operands. They are : \n && - returns true if both operands are true \n || - returns true if any of the operands are true \n ! - negates whatever the statement inside is. \n Here's your task: \n Task 7:- \n Use 34,23,1 as your operands. Check whether\n 1. 34>23 and 34<1 \n 2. 34<23 or 34>1 \n 3. not 23<34",
-		"op":"/solutions/task7.js"
-	},
-	
-	{
-		"task": "Great! Let's move on to Loops now. Loops are used to repeat the same code without writing it over and over again. \n Let's start with for loop. Syntax: \n for (initialization; condition; update)\n{// code block to be executed} \n Here's your task: \n Task 8:- \n Print the multiples of 4 from 1 to 12 using for loop.",
-		"op": "/solutions/task8.js"
-	}, 
-	
-	{
-		"task": "Let's move on to another loop, the while loop, along with the if-else blocks. while loop is also an entry controlled loop, i.e, it checks the condition first before it starts executing. If-else blocks are used to compare the values and execute according to the conditions given. \n Syntax: \n while(condition) \n {block of statements; update statement;} \n Here's your task: \n Task 9:- \n Print the numbers from 1 to 50. Print Buzz if the number is a multiple of 5.",
-		"op": "/solutions/task9.js"
-	},
+    {
+        "task": "Keep it up! Let's move on to String methods. There are a variety of methods for string manipulation in JS. Some of them are: \n 1. length - To find the length of the string. \n 2. indexOf() - Returns the first occurence of a specified text in a string. \n 3. slice() - extracts a part of a string and returns the extracted part. \n 4. replace() - replaces a specified value with another value in a string. \n 5. concat() - to join two or more strings. \n 6. trim() - removes the white space from both sides of the string. \n Task 4:-\n Obtain the following output for the string ' Hey, this is Task 4 of JS Path! ' \n Output: \n Length of the string \n Display the index of first occurence of 'Task' \n Slice the string for displaying 'JS' \n Replace JS with Python \n Concatenate '!' to the end of the string. \n Remove the whitespaces from the beginning and end of the string.",
+        "op": "/solutions/task4.js"
+    },
 
-	{
-		"task": "Great work! Let's move on to another loop, the do while loop. Unlike other loops, this one is an exit controlled loop, i.e, it executes at least once. It checks the condition only at the exit. \n Syntax: do{\n loop block\n}(while(condition)); \n Here's your task: \nTask 10:-\n Iterate through the numbers 1 to 20 and print whether the number is odd or even. \n Here's the sample output: \n 1 is odd. \n2 is even. ....\n20 is even.",
-		"op": "/solutions/task10.js"
-	},
+    {
+        "task": "Impressive! Let's move on to the next topic:  Operators. \n There are a variety of operators. Let's move on to Arithmetic Operators: +,-,*,/,%, **. \n Here's your task:\n Task 5:- \n Take 25 & 33 as your operands and print their sum, difference, product, quotient, remainder, 25^2.",
+        "op": "/solutions/task5.js"
+    },
 
-	{
-		"task": "Awesome! Let's now move on to break and continue statements. \n break statement is used to break out of the loop when required. It stops the iteration when used in loops. \n continue statments are used to skip the current iteration. \n The difference between these statements is that in the case of break statement, the iteration stops and breaks out of loop, whereas, in the case of continue, the iteration is skipped but the loop continues to execute. \n Here's your task: \n Task 11:- \n Print numbers from 1 to 15. Skip the iteration if the number is a multiple of 3 and break out of the loop when it reaches 13."
-	}
+    {
+        "task": "Awesome! Let's move on to Comparison Operators. They are used to compare two values. They return true or false according to the value of their operands. They are: ==, ===, !=, >, <, >=, <=. Here's your task:\n Task 6:-\n Use 44 & 29 as your operands. Compare them using the Comparison operators in the same order and print the value which they return.",
+        "op": "/solutions/task6.js"
+    },
 
+    {
+        "task": "Now, let's move on to Logical Operators. They too return true or false according to the value of their operands. They are : \n && - returns true if both operands are true \n || - returns true if any of the operands are true \n ! - negates whatever the statement inside is. \n Here's your task: \n Task 7:- \n Use 34,23,1 as your operands. Check whether\n 1. 34>23 and 34<1 \n 2. 34<23 or 34>1 \n 3. not 23<34",
+        "op": "/solutions/task7.js"
+    },
+
+    {
+        "task": "Great! Let's move on to Loops now. Loops are used to repeat the same code without writing it over and over again. \n Let's start with for loop. Syntax: \n for (initialization; condition; update)\n{// code block to be executed} \n Here's your task: \n Task 8:- \n Print the multiples of 4 from 1 to 12 using for loop.",
+        "op": "/solutions/task8.js"
+    },
+
+    {
+        "task": "Let's move on to another loop, the while loop, along with the if-else blocks. while loop is also an entry controlled loop, i.e, it checks the condition first before it starts executing. If-else blocks are used to compare the values and execute according to the conditions given. \n Syntax: \n while(condition) \n {block of statements; update statement;} \n Here's your task: \n Task 9:- \n Print the numbers from 1 to 50. Print Buzz if the number is a multiple of 5.",
+        "op": "/solutions/task9.js"
+    },
+
+    {
+        "task": "Great work! Let's move on to another loop, the do while loop. Unlike other loops, this one is an exit controlled loop, i.e, it executes at least once. It checks the condition only at the exit. \n Syntax: do{\n loop block\n}(while(condition)); \n Here's your task: \nTask 10:-\n Iterate through the numbers 1 to 20 and print whether the number is odd or even. \n Here's the sample output: \n 1 is odd. \n2 is even. ....\n20 is even.",
+        "op": "/solutions/task10.js"
+    },
+
+    {
+        "task": "Awesome! Let's now move on to break and continue statements. \n break statement is used to break out of the loop when required. It stops the iteration when used in loops. \n continue statments are used to skip the current iteration. \n The difference between these statements is that in the case of break statement, the iteration stops and breaks out of loop, whereas, in the case of continue, the iteration is skipped but the loop continues to execute. \n Here's your task: \n Task 11:- \n Print numbers from 1 to 15. Skip the iteration if the number is a multiple of 3 and break out of the loop when it reaches 13.",
+        "op": "/solutions/task11.js"
+    },
+
+    {
+        "task": "Keep up the good work! The next topic we will cover is functions. Functions are sections of code that execute other code and make it reusable. \nIn ES6 there are 2 main ways to declare a function, the function keyword and arrow functions.\n Syntax: function name(params) {\n   code\n} \nTask 12: Declare a function using the respective keyword that when given 2 numbers will add them together, then print out the result. The number pairs you need to test are 1+2, 10+15, 100+400",
+        "op": "/solutions/task12.js"
+    }
 ]
