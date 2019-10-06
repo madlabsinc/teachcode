@@ -4,6 +4,7 @@
 
 const chalk = require('chalk');
 const program = require('commander');
+const didYouMean = require('didyoumean');
 
 const { version } = require('../package');
 
@@ -44,9 +45,13 @@ program
 // Validates any random command fired in
 program.arguments('<command>').action(cmd => {
   program.outputHelp();
+  const commands = ['init', 'submit', 'fetchtask', 'showkeys', 'showcommands'];
+  const suggestion = didYouMean(cmd, commands);
   console.log(`  ` + chalk.red(`\n  Unknown command ${chalk.yellow(cmd)}.`));
+  if (suggestion) console.log(`  Did you mean ${suggestion}?`);
   console.log();
 });
+
 
 program.parse(process.argv);
 
