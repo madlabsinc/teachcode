@@ -37,7 +37,7 @@ const showKeys = async () => {
     console.log();
     console.log(
       chalk.magentaBright(
-        '  Looks like this is your very first task. Fire in TeachCode fetchtask to start out!',
+        '  Looks like this is your very first task. Fire in teachcode fetchtask to start out!',
       ),
     );
     console.log();
