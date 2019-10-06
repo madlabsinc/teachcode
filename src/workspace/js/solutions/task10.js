@@ -1,4 +1,4 @@
-var s = 1;
+let s = 1;
 do {
   if (s % 2 === 0) {
     console.log(s + ' is even.');
