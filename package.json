@@ -11,7 +11,7 @@
     "teachcode": "./bin/index.js"
   },
   "scripts": {
-    "test": "mocha test/index.js",
+    "test": "ava test/index.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "lint": "eslint src bin",
@@ -53,12 +53,12 @@
     "shelljs": "^0.8.3"
   },
   "devDependencies": {
+    "ava": "^2.4.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-prettier": "^3.1.0",
     "husky": "^2.3.0",
     "lint-staged": "^8.1.7",
-    "mocha": "^5.2.0",
     "prettier": "^1.17.1",
     "vuepress": "^1.0.0"
   }
