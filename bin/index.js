@@ -42,16 +42,22 @@ program
   .description('Shows all commands available')
   .action(showCommands);
 
+const suggestCommands = cmd => {
+  const availableCommands = program.commands.map(c => c._name);
+
+  // Get a suggestion from didyoumean.js based on the input.
+  const suggestion = didYouMean(cmd, availableCommands);
+  if (suggestion) {
+    console.log(`  ` + chalk.red(`Did you mean ${chalk.yellow(suggestion)}?`));
+  }
+};
+
 // Validates any random command fired in
 program.arguments('<command>').action(cmd => {
   program.outputHelp();
-  const commands = ['init', 'submit', 'fetchtask', 'showkeys', 'showcommands'];
-
-  // Get a suggestion from didyoumean.js based on the input.
-  const suggestion = didYouMean(cmd, commands);
   console.log(`  ` + chalk.red(`\n  Unknown command ${chalk.yellow(cmd)}.`));
-  if (suggestion) console.log(`  Did you mean ${suggestion}?`);
   console.log();
+  suggestCommands(cmd);
 });
 
 program.parse(process.argv);
