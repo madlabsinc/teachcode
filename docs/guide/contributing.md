@@ -12,7 +12,8 @@ title: 'Contributing'
 4. Type in `npm link` which creates a symlink and thereby allowing `teachcode` to be accessed globally.
 5. Make your life changing changes.
 6. Ensure that your code is free from linting errors and is as per prettier conventions by typing in `npm run lint`.
-7. Now you may push it to the remote repository by switching over to another branch and finally proposing a Pull Request to the base fork.
+7. We use [commitlint conventional naming rules](https://www.npmjs.com/package/@commitlint/config-conventional#rules) for our commits, make sure to follow them.
+8. Now you may push it to the remote repository by switching over to another branch and finally proposing a Pull Request to the base fork.
 
 
 ## Points to ponder
