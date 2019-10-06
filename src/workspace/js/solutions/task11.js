@@ -1,4 +1,4 @@
-var i = 1;
+let i = 1;
 while (i <= 15) {
   if (i % 3 === 0) {
     i++;

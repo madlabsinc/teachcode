@@ -1,5 +1,5 @@
-var a = 25;
-var b = 33;
+const a = 25;
+const b = 33;
 console.log(a + b);
 console.log(a - b);
 console.log(a * b);

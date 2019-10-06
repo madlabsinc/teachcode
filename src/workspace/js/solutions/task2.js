@@ -1,2 +1,2 @@
-var str = 18;
+const str = 18;
 console.log(str);
