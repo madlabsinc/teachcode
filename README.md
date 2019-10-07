@@ -54,8 +54,8 @@ Users are required to solve 30 tasks that take them through the basic constructs
 
 ## Contributing
 
-Contributions of any kind are welcomed. Make sure that you go through these [guidelines](https://teachcode.madhacks.co/guide/contributing.html#guidelines)
+Contributions of any kind are welcomed. Make sure that you go through these [guidelines](https://teachcode.madhacks.co/guide/contributing.html#guidelines).
 
 ## License
 
-Licensed under `GNU General Public License V3.0`
+Licensed under `GNU General Public License V3.0`.
