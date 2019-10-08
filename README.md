@@ -54,7 +54,7 @@ Users are required to solve 30 tasks that take them through the basic constructs
 
 ## Contributing
 
-Contributions of any kind are welcomed. Make sure that you go through these [guidelines](https://teachcode.madhacks.co/guide/contributing.html#guidelines).
+Contributions of any kind are welcomed. Make sure that you go through these [guidelines](https://teachcode.madlabs.xyz/guide/contributing.html).
 
 ## License
 
