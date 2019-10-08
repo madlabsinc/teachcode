@@ -46,18 +46,10 @@ const showInstructions = kickStart => {
 };
 
 /**
- * Initialize all the tasks
- *
- * @returns {Promise<void>}
+ * Checks if there already is a directory called 'teachcode-solutions' in the present working directory
+ * and errors out if that is the case.
  */
-
-const initTasks = async () => {
-  await showBanner(
-    'teachcode',
-    ` Learn to code effectively ${`\t`.repeat(4)} Powered by MadHacks`,
-  );
-  console.log();
-
+const checkIfDirExists = () => {
   if (
     fs.existsSync(`${process.cwd()}/teachcode-solutions`) ||
     fs.existsSync(`${process.cwd()}/config.json`)
@@ -75,6 +67,22 @@ const initTasks = async () => {
     console.log();
     process.exit(1);
   }
+};
+
+/**
+ * Initialize all the tasks
+ *
+ * @returns {Promise<void>}
+ */
+
+const initTasks = async () => {
+  await showBanner(
+    'teachcode',
+    ` Learn to code effectively ${`\t`.repeat(4)} Powered by MadHacks`,
+  );
+  console.log();
+
+  checkIfDirExists();
 
   console.log();
   console.log(
