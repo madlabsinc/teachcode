@@ -11,9 +11,13 @@ test('shows up help message without any args', async t => {
   t.snapshot(stdout);
 });
 
-['-V', '--version'].forEach(function(i) {
-  test('shows version with arg ' + i, async t => {
-    const { stdout } = await execa(rootCommand, [i]);
-    t.snapshot(stdout);
-  });
+test('shows version with arg -V', async t => {
+  const { stdout } = await execa(rootCommand, ["-V"]);
+  t.snapshot(stdout);
 });
+
+test('shows version with arg --version', async t => {
+  const { stdout } = await execa(rootCommand, ["--version"]);
+  t.snapshot(stdout);
+});
+
