@@ -57,5 +57,20 @@
     {
         "task": "Keep up the good work! The next topic we will cover is functions. Functions are sections of code that execute other code and make it reusable. \nIn ES6 there are 2 main ways to declare a function, the function keyword and arrow functions.\n Syntax: function name(params) {\n   code\n} \nTask 12: Declare a function using the respective keyword that when given 2 numbers will add them together, then print out the result. The number pairs you need to test are 1+2, 10+15, 100+400",
         "op": "/solutions/task12.js"
-    }
+    }, 
+
+    {
+        "task": "Fantastic! Now let's move on to arrays. \n Arrays are used to store multiple values in a single variable. It can be thought of as a collection of things of the same type. Like, a collection of roll numbers. \n Arrays are declared using []. Eg: let rollno = [1,2,3] \n Here's your task: \n Task 13 \n Store the values 45,23,767,921 into an array and print the values of the array which are greater than 23. Use arrayname.length to get the length of the array.",
+        "op": "/solutions/task13.js"
+    },
+
+    {
+        "task": "Now, let's move on to array methods. \n Arrays have a variety of methods which is of a lot of help in day-to-day tasks. \n Let's get to know them: 1. pop() - Used to remove the last item from the array. \n 2. push() - Used to insert an element to the end of the array. \n 3. shift() - Used to remove the first item from the array. \n 4. splice() - Used to replace the old elements with new elements to the array. \n 5. concat() - to merge two arrays. \n 6. sort() - to sort an array \n 7. reverse() - to reverse an array. \n 8. map() - creates a new array by performing a function on each element. \n Phew! That's a lot of methods. Let's now work with each of them with the help of this task. \n Task 14 \n Create an array with the values ABC, GHI, DEF and JKL. Do the following. 1. Remove JKL from the array.\n 2. Insert PQR into the array. \n 3. Remove ABC from the array. \n 4. Replace the values DEF and PQR with WER and ERT \n 5. Create another array with values 1,2,3 and merge it with the current array. \n 6. Sort the array. \n 7. Reverse the order of elements of the array. \n 8. Create another array with elements of the second array with elements doubled and print the newly created array. \n Print the output in every case.",
+        "op":"/solutions/task14.js"
+    },
+    
+    {
+        "task": "Fantastic! Let's now move on to objects. \n Objects are similar to variables except that they can take multiple values at a time. The values are written as name:value pairs. \n For eg: var car = {type:'Fiat', model:'500', color:'white'} \n Here's your task: \n Task 15 \n Create an object person with age: 75 and gender: female. Print the year of birth with the help of her age along with her gender.",
+        "op":"/solutions/task15.js"
+    },
 ]
