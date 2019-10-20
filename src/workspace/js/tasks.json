@@ -73,4 +73,19 @@
         "task": "Fantastic! Let's now move on to objects. \n Objects are similar to variables except that they can take multiple values at a time. The values are written as name:value pairs. \n For eg: var car = {type:'Fiat', model:'500', color:'white'} \n Here's your task: \n Task 15 \n Create an object person with age: 75 and gender: female. Print the year of birth with the help of her age along with her gender.",
         "op":"/solutions/task15.js"
     },
+
+    {
+        "task": "Now's let's learn about another object called the Math object. It allows you to perform mathematical operations. \n 1. Math.round() - Returns the nearest integer value by rounding off. \n 2. Math.pow(x,y) - Returns the power of x to the value y. \n 3. Math.sqrt() - Returns the square root. \n 4. Math.random() - Returns a random value between 0 and 1. \n 5. Math.ceil() - Returns the value rounded up to the nearest integer. \n 6. Math.floor() - Returns the value rounded down to the nearest integer. \n Here's your task: \n Task 16 \n 1. Print the rounded value of 5.57. \n 2. Find the value of 6^3 and print it. \n 3. Find the square root of 841. \n 4. Print the rounded up value of 5.3 \n 5. Print the rounded down value of 5.3",
+        "op":"/solutions/task16.js"
+    },
+
+    {
+        "task":"Awesome! Let's now move on to switch statement. The switch statement is used to perform different operations based on different inputs. \n Syntax: \n switch(variable) { \n case 1: \n do something \n break; \n case 2: \n do something else \n break; .... \n default: \n Print invalid choice \n} \n Here's your task: \n Task 17 \n Receive the current day as a number using the Date.getDay() which returns the values 0-6 (0 - Sunday, 1 - Monday, etc). Based on the value received, print the day on the basis of the value returned. Use switch statement.",
+        "op":"/solutions/task17.js"
+    },
+
+    {
+        "task":"Impressive! Let's now move on to Type Conversion. \n Variables can be converted to other datatypes using the in-built function or is converted automatically by JS. \n Here's your task: \n Task 18 \n Convert the boolean values true and false to string and print their type using the typeof function. Now store true and false in other variables and print their type. Note the difference in types.",
+        "op":"/solutions/task18.js"
+    }
 ]
