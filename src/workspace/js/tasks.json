@@ -87,5 +87,41 @@
     {
         "task":"Impressive! Let's now move on to Type Conversion. \n Variables can be converted to other datatypes using the in-built function or is converted automatically by JS. \n Here's your task: \n Task 18 \n Convert the boolean values true and false to string and print their type using the typeof function. Now store true and false in other variables and print their type. Note the difference in types.",
         "op":"/solutions/task18.js"
+    },
+
+    {
+        "task": "Awesome! Let's understand scope of a variable. \n Scopes define the value of the variable according to which it is defined. It can be of global or local scope.\n Global scope means that the variable can be accessed from any block of the program. Local scope means that the variable can only be accessed by the block in which it is declared in. \n To illustrate this, let's do the next task. \n Task 19 \n Declare a variable inside a function and set a value 4 to it and print it inside the function. Declare the variable with the same name outside the function block with the value 10 and print it there. \n Note the different values of the same variable printed based on its scope.",
+        "op":"/solutions/task19.js"
+    },
+
+    {
+        "task": "Now, let's move on to Javascript reduce method. \n The reduce() is used to apply a function to each element in the array to reduce the array to a single value. \n Let's now find the sum of elements of an array without using the loops. This can be done using the reduce() method. \n Syntax: array.reduce(function(total, currentValue, currentIndex, arr), initialValue) \n Here's your task: \n Task 20 \n Find the sum of elements of an array with values 11.21, 19.21, 46.21. Do not use any loops. Use reduce().",
+        "op":"/solutions/task20.js"
+    },
+
+    {
+        "task": "Fantastic! Let's now move on to Javascript filter() method. \n The name itself describes it's purpose. It is used to filter elements of the array according to a particular condition. \n Syntax: let newArray = array.filter(function(item) { \n return condition;\n });\n Task 21 \n Use the filter() to find the values of the array containing values 1,3,4,6,8,9 that are divisible by 3 and print the values as output. Do not use any loops or if statements to find the solution. Use filter function only.",
+        "op":"/solutions/task21.js"
+    }, 
+
+    {
+        "task": "Impressive! Let's move on to some other array method, the indexOf() method. \n This method searches for the given element from the given starting index and returns the index of the element if found or -1 if not found. \n Syntax: array.indexOf(item, start) \n Here's your task: \n Task 22 \n Store values 3,9,12,15,18 into an array and search for the element 15 starting from index 2 and then print its index. Then search for 14 starting from index 1 and print the value returned.",
+        "op":"/solutions/task22.js"
+    },
+
+    {
+        "task": "Great work! Let's now learn about keys() method. This is used for returning properties of an object or an array. \n This method returns values that are keys of the key value pair stored. \n Syntax: Object.keys(obj) \n Here's your task: \n Task 23 \n Create an object with key-value pairs \n name: 'ABC', education: 'CSE' and print the values of the keys of the object. \n Also define an array with values A,B,C. Use keys() to obtain the properties of that array and print them.",
+        "op":"/solutions/task23.js"
+    },
+
+    {
+        "task": "Now let's move on to JSON methods. The first one is JSON.parse(). It is used to parse a string written in JSON format and return a JavaScript object. \n Syntax: JSON.parse(string, function) \n Here's your task: \n Task 24 \n Create a JSON object\n var text = '{ 'name':'John', 'age':'39', 'city':'New York'}';\n Use the parse() to replace the value of city with Capital Case.",
+        "op": "/solutions/task24.js"
+    },
+
+    {
+        "task": "Great! The second one is JSON.stringify(). This method is used to convert JS Objects into strings. \n Syntax: JSON.stringify(obj, replacer, space) \n Here's your task: \n Task 25 \n Create an object {x: 5, y: 6} and convert it into a string using stringify() and print the returned value.",
+        "op": "/solutions/task25.js"
     }
+
 ]
