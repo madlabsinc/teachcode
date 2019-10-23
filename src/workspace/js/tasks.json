@@ -122,6 +122,31 @@
     {
         "task": "Great! The second one is JSON.stringify(). This method is used to convert JS Objects into strings. \n Syntax: JSON.stringify(obj, replacer, space) \n Here's your task: \n Task 25 \n Create an object {x: 5, y: 6} and convert it into a string using stringify() and print the returned value.",
         "op": "/solutions/task25.js"
-    }
+    },
+
+    {
+        "task": "Awesome! Let's now move on to includes() method. This is used to check whether if an element is present in an array or a string. \n Task 26 \n Create an array with elements Mission, Vision, & Dedication. Search the array for the elements Mission & Success. Print the value returned. Note that it is CASE SENSITIVE.",
+        "op": "/solutions/task26.js"
+    },
+
+    {
+        "task": "Fantastic! Here are some extras! Let's learn for of loop & foreach loop. \n We had learned for in loop before.\n foreach is an method that is available only in Array objects. It allows you to iterate through elements of an array. \n for of is a new way for iterating collections. Its introduced in ES6.\n For for of to work on an collection, the collection must have an [Symbol.iterator] property.\n Here's your task: \n Task 27 \n Create an array with elements abc,bcd,def. Loop through it using foreach, for of, for in loops. \n Note the difference in output.",
+        "op": "/solutions/task27.js"
+    },
+
+   {
+       "task": "Amazing! Let's now move on to split() and join() methods. \n split() is used to split the string into an array by specifying a delimiter. \n join() is used to join the array elements into a string based on a delimiter. \n Here's your task: \n Task 28 \n Create a variable with the string JS is AWESOME! and split it on the basis of blank spaces. \n Print the splitted array elements. \n Then create another array with element , I, love, JS! and convert it into a string and print it.",
+       "op":"/solutions/task28.js"
+   },
+
+   {
+       "task": "Great! Let's now move on to some more String Manipulation methods. \n startsWith(), endsWith(), substring(), substr()\n startsWith is used to check whether the string starts with a particular substring or not \n endsWith is used to check whether the string ends with a particular substring or not. \n substring is used to extract a particular part of a string. \n substr is also used to extract a particular part of the string except that it prints including the end index element. \n Here's your task: \n Task 29 \n Initialize a variable with the string Hello, I am a novice JS Developer. and check whether the string starts with Hello and whether it ends with Develop. Print the output. Then initialize another string with the value I am a Polyglot and extract the word Polyglot and print it. Then extract -  am a Polyglot and print it. Use substring() and substr() to obtain the output.",
+       "op":"/solutions/task29.js"
+   }, 
+
+   {
+       "task": "Congrats! You have made it to the last task! \n Here's the task: \n Task 30 \n Use setInterval(), clearInterval(), and setTimeout() to print the values 1 to 5 with an interval from 1000 to 6000.",
+       "op":"/solutions/task30.js"
+   }
 
 ]
