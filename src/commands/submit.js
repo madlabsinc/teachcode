@@ -278,7 +278,14 @@ const submitTask = async () => {
     });
   } else {
     exec(`node ${submittedFile}`, (err, result) => {
-      if (err) throw err;
+      if (err) {
+        console.log(
+          chalk.red.bold(
+            '  Oops there is something wrong with the syntax part!',
+          ),
+        );
+        process.exit(1);
+      }
       exec(`node ${solutionFile}`, (err, solution) => {
         if (err) throw err;
         validateSolution(submittedFile);
