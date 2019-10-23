@@ -6,15 +6,6 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 const showBanner = require('node-banner');
 
-// GitHub workflow helper methods.
-const {
-  checkIfRepositoryExists,
-  cloneRepository,
-  createRepository,
-  configureLocalRepo,
-  initializeGHWorkFlow,
-} = require('../utils/github');
-
 const validate = require('../utils/validate');
 
 // Key for the very first task
@@ -35,13 +26,11 @@ const userConfig = {
  * @returns {Void}
  */
 
-const showInstructions = kickStart => {
+const showInstructions = () => {
   console.log();
   console.log(chalk.green.bold(' Perform the following:-'));
   console.log();
   console.log(chalk.cyan.bold(' 1. cd teachcode-solutions'));
-
-  key = kickStart ? key : '<key>';
   console.log(chalk.cyan.bold(` 2. teachcode fetchtask ${key}`));
 };
 
@@ -112,33 +101,14 @@ const initTasks = async () => {
   userConfig.userName = userName;
   userConfig.keys.push(key);
 
-  // Prompt for GitHub username.
-  await initializeGHWorkFlow();
+  execSync(`mkdir -p ${process.cwd()}/teachcode-solutions`);
+  fs.writeFileSync(
+    `teachcode-solutions/config.json`,
+    JSON.stringify(userConfig),
+  );
 
-  // Check if the remote repository already exists.
-  let shouldCreateRepository = await checkIfRepositoryExists();
-
-  // Tracks whether the user is just starting out.
-  let kickStart;
-
-  if (shouldCreateRepository) {
-    await createRepository();
-    kickStart = true;
-
-    execSync(`mkdir -p ${process.cwd()}/teachcode-solutions`);
-    fs.writeFileSync(
-      `teachcode-solutions/config.json`,
-      JSON.stringify(userConfig),
-    );
-
-    process.chdir('teachcode-solutions');
-    await configureLocalRepo();
-  } else {
-    // Clone the remote repository
-    await cloneRepository();
-    kickStart = false;
-  }
-  showInstructions(kickStart);
+  process.chdir('teachcode-solutions');
+  showInstructions();
 };
 
 module.exports = initTasks;

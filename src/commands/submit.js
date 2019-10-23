@@ -6,8 +6,6 @@ const fs = require('fs');
 const { PythonShell } = require('python-shell');
 const showBanner = require('node-banner');
 
-const { makeLocalCommit, pushToRemote } = require('../utils/github');
-
 const keyStore = '123456789abcedefghijklmnopqrstuvwxyz';
 
 let exercises;
@@ -79,19 +77,6 @@ const checkSolution = async (submittedFileContent, solutionFileContent) => {
         keys,
       };
       fs.writeFileSync('./config.json', JSON.stringify(userConfig));
-
-      await makeLocalCommit(taskCount);
-
-      let condition = true;
-      do {
-        try {
-          await pushToRemote();
-          break;
-        } catch (err) {
-          console.log(chalk.red.bold('Error: Invalid credentials'));
-          // The method gets invoked again as invalid credentials were provided.
-        }
-      } while (condition);
 
       if (taskCount === exercises.length) {
         console.log();
