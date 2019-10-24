@@ -1,6 +1,5 @@
-function add(a, b) {
-  console.log(a + b);
+let no = [45, 23, 767, 921];
+
+for (let i = 0; i < no.length; i++) {
+  if (no[i] > 23) console.log(no[i]);
 }
-add(1, 2);
-add(10, 15);
-add(100, 400);
