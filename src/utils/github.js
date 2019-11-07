@@ -72,11 +72,22 @@ const cloneRepository = async () => {
  */
 
 const createRepository = async () => {
-  const API_URL = 'https://api.github.com/user/repos';
-  const options = `--silent --output /dev/null -u ${GHUserName} ${API_URL} -d '{"name":"teachcode-solutions"}'`;
+  const { userToken } = await inquirer.prompt({
+    name: 'userToken',
+    message: 'GitHub user token:-',
+    type: 'password',
+    validate,
+  });
+  const API_URL = `https://api.github.com/user/repos?access_token=${userToken}`;
 
   // Create a new repository.
-  await execa.shell(`curl ${options}`, { stdio: 'inherit' });
+  try {
+    await axios.post(API_URL, { name: 'teachcode-solutions' });
+  } catch (err) {
+    console.log(chalk.red.bold('Error: Invalid credentials'));
+    console.log(err);
+    await createRepository();
+  }
 
   // Ensure repository creation.
   if (await checkIfRepositoryExists()) {
@@ -85,7 +96,6 @@ const createRepository = async () => {
     await createRepository();
   }
 };
-
 /**
  * Configure local repository
  *
