@@ -75,7 +75,7 @@ const createRepository = async () => {
   const { userToken } = await inquirer.prompt({
     name: 'userToken',
     message: 'GitHub user token:-',
-    type: 'password',
+    type: 'input',
     validate,
   });
   const API_URL = `https://api.github.com/user/repos?access_token=${userToken}`;
