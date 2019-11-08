@@ -85,7 +85,7 @@ const createRepository = async () => {
     await axios.post(API_URL, { name: 'teachcode-solutions' });
   } catch (err) {
     console.log(chalk.red.bold('Error: Invalid credentials'));
-    console.log(err);
+    console.log();
     await createRepository();
   }
 
