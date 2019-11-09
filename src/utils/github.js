@@ -4,10 +4,6 @@ const axios = require('axios');
 const chalk = require('chalk');
 const execa = require('execa');
 const inquirer = require('inquirer');
-const { promisify } = require('util');
-const shell = require('shelljs');
-
-const execAsync = promisify(shell.exec);
 
 const validate = require('../utils/validate');
 
@@ -131,7 +127,7 @@ const makeLocalCommit = async taskCount => {
  */
 
 const pushToRemote = async () => {
-  await execAsync('git push origin master', { silent: 'true' });
+  await execa.shell('git push origin master');
 };
 
 module.exports = {
