@@ -37,7 +37,7 @@ const userConfig = {
 
 const showInstructions = kickStart => {
   console.log();
-  console.log(chalk.green.bold(' Perform the following:-'));
+  console.log(chalk.green.bold(' Perform the following steps:-'));
   console.log();
   console.log(chalk.cyan.bold(' 1. cd teachcode-solutions'));
 
