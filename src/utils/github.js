@@ -5,7 +5,7 @@ const chalk = require('chalk');
 const execa = require('execa');
 const inquirer = require('inquirer');
 
-const validate = require('../utils/validate');
+const validate = require('./validate');
 
 // Global reference to the GitHub username.
 let GHUserName;
@@ -27,8 +27,26 @@ const initializeGHWorkFlow = async () => {
   // Holding global reference to the GitHub username.
   GHUserName = userName;
 
-  // Check if the remote repository already exists and act accordingly.
-  await checkIfRepositoryExists();
+  // Check if it is a valid username
+  if (!(await checkIfValidUser())) {
+    await initializeGHWorkFlow();
+  }
+};
+
+/**
+ * Checks if the remote repository exists
+ *
+ * @returns {Promise<boolean>}
+ */
+
+const checkIfValidUser = async () => {
+  const API_URL = `https://api.github.com/users/${GHUserName}`;
+  try {
+    await axios.get(API_URL);
+    return true;
+  } catch (err) {
+    return false;
+  }
 };
 
 /**
@@ -102,7 +120,7 @@ const configureLocalRepo = async () => {
   const repoUrl = `https://github.com/${GHUserName}/teachcode-solutions`;
 
   // Initialize an empty git repo.
-  await execa('git', ['init']);
+  await execa.shell('git init');
 
   // Set the remote url.
   await execa.shell(`git remote add origin ${repoUrl}`);
