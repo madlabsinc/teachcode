@@ -1,6 +1,6 @@
 {
   "name": "teach-code",
-  "version": "1.2.5-beta.0",
+  "version": "1.2.5",
   "description": "A tool to develop and improve a student’s programming skills by introducing the earliest lessons of coding.",
   "main": "./bin/index.js",
   "files": [
