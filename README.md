@@ -25,6 +25,14 @@
 
 `npm install -g teach-code`
 
+## Demo video
+
+<a href="https://asciinema.org/a/Dt6tL9vo6wAWqhh7nvwEFTMqA" target="_blank" rel="noreferrer noopener">
+	<img src="./.readme/demo-video-screenshot.png" alt="Demo video screenshot" />
+</a>
+
+Check out the demo video here: https://asciinema.org/a/Dt6tL9vo6wAWqhh7nvwEFTMqA
+
 ## How to use
 
 Users are required to solve 30 tasks that take them through the basic constructs of the programming language of their choice. The tasks are designed in such a way that the complexity increases as users progress through the tasks. Users can't move forward until the current task is completed (since the progress is determined by a unique key that is generated upon successful completion). Previously submitted tasks can be viewed as desired by the user but can't be worked on again.
