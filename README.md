@@ -1,6 +1,7 @@
 <p align="center">
   <a href="https://teachcode.madhacks.co"><img src="https://i.imgur.com/BuMZB6C.png" width="240" height="240"></a>
   <h1 align="center">teachcode</h1>
+  <p> A tool to develop and improve a student’s programming skills by introducing the earliest lessons of coding. </p>
 </p>
 
 <p align="center">
@@ -22,9 +23,6 @@
 **Chat: _[Telegram](https://t.me/teachcode_cli)_**
 
 **Donate: _[PayPal](https://www.paypal.me/jamesgeorge007), [Patreon](https://www.patreon.com/jamesgeorge007)_**
-
-
-> A tool to develop and improve a student’s programming skills by introducing the earliest lessons of coding.
 
 ## Installation
 
