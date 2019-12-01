@@ -17,6 +17,12 @@
 	<a href='https://www.buymeacoffee.com/jamesgeorge007' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/orange_img.png' border='0' alt='Buy Me a Coffee' /></a>
 </p>
 
+---
+
+**Chat: _[Telegram](https://t.me/teachcode_cli)_**
+
+**Donate: _[PayPal](https://www.paypal.me/jamesgeorge007), [Patreon](https://www.patreon.com/jamesgeorge007)_**
+
 
 > A tool to develop and improve a student’s programming skills by introducing the earliest lessons of coding.
 
