@@ -12,6 +12,7 @@
 	<a href="https://github.com/prettier/prettier"><img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg" alt="code style: prettier" /></a>
 	<a href="https://github.com/ulivz/awesome-vuepress"><img src="https://awesome.re/mentioned-badge.svg" alt="Mentioned in Awesome-VuePress" /></a>
 	<a title="Chat on Telegram" href="https://t.me/teachcode_cli"><img src="https://img.shields.io/badge/chat-Telegram-blueviolet?logo=Telegram"/></a>
+	<br />
 	<a href="https://twitter.com/intent/follow?screen_name=teachcode_cli"><img align="right" src="https://img.shields.io/twitter/follow/teachcode_cli.svg?style=social&label=Follow%20@teachcode_cli" alt="Follow on Twitter"></a	
 </p>
 
