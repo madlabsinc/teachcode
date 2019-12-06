@@ -59,7 +59,7 @@ const promptAccessTokenCreation = async () => {
     {
       name: 'openInBrowser',
       type: 'confirm',
-      message: ' Open browser to read instructions? ',
+      message: 'Open browser to read instructions?',
       default: true,
     },
   ]);
