@@ -45,6 +45,29 @@ const showInstructions = kickStart => {
   console.log(chalk.cyan.bold(` 2. teachcode fetchtask ${key}`));
 };
 
+const promptAccessTokenCreation = async () => {
+  const instructionUrl =
+    'https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line';
+  console.log();
+  console.log(
+    chalk.greenBright(
+      'You need to have a personal access token for using GitHub command line.\nIf you do not have one, you can follow the instructions to create a token.\n',
+    ),
+  );
+  const { accessTokenLinkChoice } = await inquirer.prompt([
+    {
+      name: 'accessTokenLinkChoice',
+      type: 'list',
+      message: ' Open browser to read instructions? ',
+      choices: ['Yes', 'No'],
+    },
+  ]);
+  if (accessTokenLinkChoice === 'Yes') {
+    // open link in default browser
+    console.log(instructionUrl);
+  }
+};
+
 /**
  * Initialize all the tasks
  *
@@ -122,6 +145,7 @@ const initTasks = async () => {
   let kickStart;
 
   if (shouldCreateRepository) {
+    await promptAccessTokenCreation();
     await createRepository();
     kickStart = true;
 
