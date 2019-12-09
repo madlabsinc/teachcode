@@ -47,7 +47,7 @@ const showInstructions = kickStart => {
 };
 
 const promptAccessTokenCreation = async () => {
-  const instructionUrl =
+  const instructionsUrl =
     'https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line';
   console.log();
   console.log(
@@ -60,12 +60,11 @@ const promptAccessTokenCreation = async () => {
       name: 'openInBrowser',
       type: 'confirm',
       message: 'Open browser to read instructions?',
-      default: true,
     },
   ]);
-  if (openInBrowser === true) {
-    // open link in default browser
-    await open(instructionUrl);
+  if (openInBrowser) {
+    // open link in the default browser
+    await open(instructionsUrl);
   }
 };
 
