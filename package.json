@@ -51,7 +51,8 @@
     "execa": "^1.0.0",
     "inquirer": "^6.2.0",
     "node-banner": "^1.3.2",
-    "python-shell": "^1.0.7"
+    "python-shell": "^1.0.7",
+    "open": "^7.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",

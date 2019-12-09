@@ -5,6 +5,7 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const inquirer = require('inquirer');
 const showBanner = require('node-banner');
+const open = require('open');
 
 // GitHub workflow helper methods.
 const {
@@ -43,6 +44,28 @@ const showInstructions = kickStart => {
 
   key = kickStart ? key : '<key>';
   console.log(chalk.cyan.bold(` 2. teachcode fetchtask ${key}`));
+};
+
+const promptAccessTokenCreation = async () => {
+  const instructionsUrl =
+    'https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line';
+  console.log();
+  console.log(
+    chalk.greenBright(
+      'You are required to have a personal access token for consuming the GitHub API.\nIf you do not have one, please follow these instructions.\n',
+    ),
+  );
+  const { openInBrowser } = await inquirer.prompt([
+    {
+      name: 'openInBrowser',
+      type: 'confirm',
+      message: 'Open browser to read instructions?',
+    },
+  ]);
+  if (openInBrowser) {
+    // open link in the default browser
+    await open(instructionsUrl);
+  }
 };
 
 /**
@@ -122,6 +145,7 @@ const initTasks = async () => {
   let kickStart;
 
   if (shouldCreateRepository) {
+    await promptAccessTokenCreation();
     await createRepository();
     kickStart = true;
 
