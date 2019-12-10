@@ -11,16 +11,16 @@ test('shows up help message without any args', async t => {
   t.snapshot(stdout);
 });
 
-const macro = async (t, input) => {
-  const { stdout } = await execa(rootCommand, [input]);
+const matchSnapshot = async (t, arg) => {
+  const { stdout } = await execa(rootCommand, [arg]);
   t.snapshot(stdout);
 };
 
-test('shows version with arg --version', macro, '--version');
-test('shows version with arg -V', macro, '-V');
-test('shows help with arg -h', macro, '-h');
-test('shows help with arg --help', macro, '--help');
-test('shows command usage with unknown command', macro, 'junkcmd');
+test('shows version with arg --version', matchSnapshot, '--version');
+test('shows version with arg -V', matchSnapshot, '-V');
+test('shows help with arg -h', matchSnapshot, '-h');
+test('shows help with arg --help', matchSnapshot, '--help');
+test('shows command usage with unknown command', matchSnapshot, 'junkcmd');
 
 test('rejects promise due to error with arg -a', async t => {
   const { stderr } = await execa(rootCommand, ['-a'], { reject: false });
