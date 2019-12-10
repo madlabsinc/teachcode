@@ -11,12 +11,18 @@ test('shows up help message without any args', async t => {
   t.snapshot(stdout);
 });
 
-test('shows version with arg -V', async t => {
-  const { stdout } = await execa(rootCommand, ['-V']);
+const matchSnapshot = async (t, arg) => {
+  const { stdout } = await execa(rootCommand, [arg]);
   t.snapshot(stdout);
-});
+};
 
-test('shows version with arg --version', async t => {
-  const { stdout } = await execa(rootCommand, ['--version']);
-  t.snapshot(stdout);
+test('shows version with arg --version', matchSnapshot, '--version');
+test('shows version with arg -V', matchSnapshot, '-V');
+test('shows help with arg -h', matchSnapshot, '-h');
+test('shows help with arg --help', matchSnapshot, '--help');
+test('shows command usage with unknown command', matchSnapshot, 'junkcmd');
+
+test('rejects promise due to error with arg -a', async t => {
+  const { stderr } = await execa(rootCommand, ['-a'], { reject: false });
+  t.snapshot(stderr);
 });
