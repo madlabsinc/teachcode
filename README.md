@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://teachcode.madhacks.co"><img src="https://i.imgur.com/BuMZB6C.png" width="240" height="240"></a>
+  <a href="https://teachcode.madlabs.xyz/"><img src="https://i.imgur.com/BuMZB6C.png" width="240" height="240"></a>
   <h1 align="center">teachcode</h1>
   <p align="center"> A tool to develop and improve a student’s programming skills by introducing the earliest lessons of coding. </p>
 </p>
