@@ -46,7 +46,11 @@ const fetchTask = async key => {
     taskCount,
     keys,
   } = userConfig;
-
+  
+  if(!key){
+    key = keys.slice(-1).pop();
+  }
+  
   if (learningTrack === 'Python') {
     fileName = `task${taskCount + 1}.py`;
     exercises = require('../workspace/python/tasks');
