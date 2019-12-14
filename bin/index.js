@@ -31,7 +31,7 @@ program
   .action(submitTask);
 
 program
-  .command('fetchtask <key>')
+  .command('fetchtask [key]')
   .description('Fetches any task as per the key supplied')
   .action(fetchTask);
 

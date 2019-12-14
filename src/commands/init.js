@@ -43,7 +43,7 @@ const showInstructions = kickStart => {
   console.log(chalk.cyan.bold(' 1. cd teachcode-solutions'));
 
   key = kickStart ? key : '<key>';
-  console.log(chalk.cyan.bold(` 2. teachcode fetchtask ${key}`));
+  console.log(chalk.cyan.bold(` 2. teachcode fetchtask`));
 };
 
 const promptAccessTokenCreation = async () => {
