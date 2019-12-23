@@ -11,12 +11,12 @@
     "teachcode": "./bin/index.js"
   },
   "scripts": {
+    "lint": "eslint src bin test",
+    "lint:fix": "eslint --fix src bin test",
     "pretest": "npm run lint",
     "test": "ava test/index.js",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "lint": "eslint src bin test",
-    "lint:fix": "eslint --fix src bin test"
+    "docs:build": "vuepress build docs"
   },
   "husky": {
     "hooks": {
