@@ -11,6 +11,7 @@
     "teachcode": "./bin/index.js"
   },
   "scripts": {
+    "pretest": "npm run lint",
     "test": "ava test/index.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
