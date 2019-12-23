@@ -4,7 +4,4 @@ node_js:
  - 9
  - 8
 install:
- - "npm install"
-script:
- -  "npm run lint"
- - "npm test"
+  - "npm install"
