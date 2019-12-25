@@ -11,10 +11,10 @@ Users are required to solve 30 tasks that take them through the basic constructs
 - Follow the instructions as prompted.
 - Now type in `cd teachcode-solutions`.
 - Grab the initial key and type in `teachcode fetchtask <key>`.
-- Hurray :tada: you've got your first task.
+- Hurray, :tada: you've got your first task.
 - Now you can find a `config.json` and `task1.py` (language of choice) file within the `teachcode-solutions` directory.
-- Open up your favourite editor and code up the solution.
+- Open up your favorite editor and code up the solution.
 - Now type in `teachcode submit`.
 - Enter your Git credentials when prompted.
-- If the current solution satisfies all test cases, you'll get the key to proceed with.
+- If the current solution satisfies all test cases, you'll get the key to proceed farther.
 - Grab the key and type in `teachcode fetchtask <key>`.
