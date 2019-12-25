@@ -19,5 +19,5 @@ title: 'Contributing'
 ## Points to ponder
 
 1. Make sure that you submit an issue first if you have something in mind that you're willing to work on.
-2. Follow a `rebase` strategy in order to update your remote branch with the latest changes.
+2. Follow a `rebase` strategy to update your remote branch with the latest changes.
 3. Prefix your branch names with `feat/`, `docs/` or `hotfix/` for feature proposals, docs-related and bug fixes, respectively.
