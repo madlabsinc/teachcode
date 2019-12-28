@@ -14,7 +14,7 @@
     "lint": "eslint src bin test",
     "lint:fix": "eslint --fix src bin test",
     "pretest": "npm run lint",
-    "test": "ava test/index.js",
+    "test": "ava test/*.js",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
   },
