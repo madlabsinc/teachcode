@@ -19,7 +19,7 @@
     "docs:build": "vuepress build docs"
   },
   "ava": {
-    "snapshotDir": "__snapshots__"
+    "snapshotDir": "__e2e__/__snapshots__"
   },
   "husky": {
     "hooks": {
