@@ -8,7 +8,11 @@ const fs = require('fs');
 const rootCommand = path.join(process.cwd(), 'bin/index.js');
 const configFilePath = path.join(process.cwd(), 'config.json');
 
-const configWithoutKeys = { userName: 'TestJsonNoKeys', taskCount: 0, keys: [] };
+const configWithoutKeys = {
+  userName: 'TestJsonNoKeys',
+  taskCount: 0,
+  keys: [],
+};
 const configWithMultipleKeys = {
   userName: 'TestJsonMultipleKeys',
   taskCount: 2,
