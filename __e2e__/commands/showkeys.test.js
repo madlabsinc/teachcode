@@ -9,12 +9,12 @@ const rootCommand = path.join(process.cwd(), 'bin/index.js');
 const configFilePath = path.join(process.cwd(), 'config.json');
 
 const configWithoutKeys = {
-  userName: 'TestJsonNoKeys',
+  userName: 'configWithoutKeys',
   taskCount: 0,
   keys: [],
 };
 const configWithMultipleKeys = {
-  userName: 'TestJsonMultipleKeys',
+  userName: 'configWithMultipleKeys',
   taskCount: 2,
   keys: ['testkey1', 'testkey2'],
 };
