@@ -14,7 +14,7 @@ const validConfigJson = {
 };
 
 test.serial('no config file for showcommands', async t => {
-  if (fs.existsSync(configFilePath)) await execa('rm', ['config.json']);
+  if (fs.existsSync(configFilePath)) fs.unlinkSync(configFilePath);
   const { stdout } = await execa(rootCommand, ['showcommands'], {
     reject: false,
   });
@@ -23,9 +23,7 @@ test.serial('no config file for showcommands', async t => {
 
 test.serial('config file present for showcommands', async t => {
   fs.writeFileSync('config.json', JSON.stringify(validConfigJson));
-  const { stdout } = await execa(rootCommand, ['showcommands'], {
-    reject: false,
-  });
+  const { stdout } = await execa(rootCommand, ['showcommands']);
   t.snapshot(stdout);
-  await execa('rm', ['config.json']);
+  fs.unlinkSync(configFilePath);
 });

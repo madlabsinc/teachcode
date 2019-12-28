@@ -21,21 +21,21 @@ const configWithMultipleKeys = {
 
 // tests are serial as we are creating different temp config files for each tests
 test.serial('no config file', async t => {
-  if (fs.existsSync(configFilePath)) await execa('rm', ['config.json']);
+  if (fs.existsSync(configFilePath)) fs.unlinkSync(configFilePath);
   const { stdout } = await execa(rootCommand, ['showkeys'], { reject: false });
   t.snapshot(stdout);
 });
 
 test.serial('no keys in config file', async t => {
   fs.writeFileSync('config.json', JSON.stringify(configWithoutKeys));
-  const { stdout } = await execa(rootCommand, ['showkeys'], { reject: false });
+  const { stdout } = await execa(rootCommand, ['showkeys']);
   t.snapshot(stdout);
-  await execa('rm', ['config.json']);
+  fs.unlinkSync(configFilePath);
 });
 
 test.serial('multiple keys in config file', async t => {
   fs.writeFileSync('config.json', JSON.stringify(configWithMultipleKeys));
-  const { stdout } = await execa(rootCommand, ['showkeys'], { reject: false });
+  const { stdout } = await execa(rootCommand, ['showkeys']);
   t.snapshot(stdout);
-  await execa('rm', ['config.json']);
+  fs.unlinkSync(configFilePath);
 });
