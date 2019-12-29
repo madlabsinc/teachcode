@@ -28,7 +28,7 @@ const createUserConfig = (
   keysNumber,
   filesNumber,
 ) => {
-  var userConfig = userDefaultConfig;
+  let userConfig = userDefaultConfig;
   userConfig['learningTrack'] = trackName;
   for (let i = 0; i < keysNumber; i++)
     userConfig['keys'].push('testKey' + (i + 1));
@@ -68,7 +68,7 @@ test.skip('incorrect key for fetchtask', async t => {
 
 test.serial('display completed task with fetchtask key', async t => {
   t.assert(learningTracksInfo.length > 0);
-  for (var index = 0; index < learningTracksInfo; index += 1) {
+  for (let index = 0; index < learningTracksInfo; index += 1) {
     const learningTrack = learningTracksInfo[index];
     const trackName = learningTrack['trackName'];
     const fileExtension = learningTrack['fileExtension'];
