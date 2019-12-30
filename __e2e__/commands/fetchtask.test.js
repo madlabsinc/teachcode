@@ -129,9 +129,7 @@ test.serial('display next task with fetchtask', async t => {
     const fileExtension = learningTrack['fileExtension'];
     const userConfig = createUserConfig(trackName, fileExtension, 6, 5);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig));
-    const { stdout } = await execa(rootCommand, ['fetchtask'], {
-      reject: false,
-    });
+    const { stdout } = await execa(rootCommand, ['fetchtask']);
     t.snapshot(stdout);
     fs.unlinkSync(configFilePath);
   }
