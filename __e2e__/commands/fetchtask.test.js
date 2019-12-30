@@ -78,9 +78,7 @@ test.serial('display completed task with fetchtask key', async t => {
     const fileExtension = learningTrack['fileExtension'];
     let userConfig = createUserConfig(trackName, fileExtension, 6, 5);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig));
-    const { stdout } = await execa(rootCommand, ['fetchtask', 'testKey2'], {
-      reject: false,
-    });
+    const { stdout } = await execa(rootCommand, ['fetchtask', 'testKey2']);
     t.snapshot(stdout);
     fs.unlinkSync(configFilePath);
   }
@@ -96,9 +94,7 @@ test.serial('display incomplete task with fetchtask key', async t => {
     const fileExtension = learningTrack['fileExtension'];
     let userConfig = createUserConfig(trackName, fileExtension, 6, 5);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig));
-    const { stdout } = await execa(rootCommand, ['fetchtask', 'testKey6'], {
-      reject: false,
-    });
+    const { stdout } = await execa(rootCommand, ['fetchtask', 'testKey6']);
     t.snapshot(stdout);
     fs.unlinkSync(configFilePath);
   }

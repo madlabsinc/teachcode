@@ -113,7 +113,7 @@ const fetchTask = async key => {
     console.log();
     console.log(chalk.green(`${exercises[taskAlreadyCompleted[1]].task}`));
     console.log();
-    process.exit(1);
+    return;
   }
 
   if (keys.slice(-1).pop() === key) {
