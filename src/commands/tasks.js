@@ -47,10 +47,6 @@ const fetchTask = async key => {
     keys,
   } = userConfig;
 
-  if (!key) {
-    key = keys.slice(-1).pop();
-  }
-
   if (learningTrack === 'Python') {
     fileName = `task${taskCount + 1}.py`;
     exercises = require('../workspace/python/tasks');
@@ -60,7 +56,38 @@ const fetchTask = async key => {
   }
 
   // Holding reference to keys of all the completed tasks
-  let previousKeys = keys.slice(0, keys.length - 1);
+  let previousKeys = keys.slice(
+    0,
+    // when all tasks have been completed, taskCount === keys.length
+    keys.length - (taskCount !== keys.length ? 1 : 0),
+  );
+
+  // check for incorrect key
+  let incorrectKey = true;
+  keys.some(item => {
+    if (item === key) {
+      incorrectKey = false;
+    }
+  });
+
+  if (key && incorrectKey) {
+    console.log();
+    console.log(
+      chalk.red.bold("Make sure that you've grabbed the key correctly!"),
+    );
+    console.log();
+    process.exit(1);
+  }
+
+  if (!key && taskCount === exercises.length) {
+    console.log();
+    console.log(chalk.red.bold('No more tasks available!'));
+    process.exit(1);
+  }
+
+  if (!key && taskCount < exercises.length) {
+    key = keys.slice(-1).pop();
+  }
 
   let taskAlreadyCompleted = [];
 
@@ -89,12 +116,6 @@ const fetchTask = async key => {
     process.exit(1);
   }
 
-  if (taskCount === exercises.length) {
-    console.log();
-    console.log(chalk.red.bold('No more tasks available!'));
-    process.exit(1);
-  }
-
   if (keys.slice(-1).pop() === key) {
     if (userSubmittedFiles.indexOf(fileName) === -1) {
       userSubmittedFiles.push(fileName);
@@ -117,12 +138,6 @@ const fetchTask = async key => {
 
     let createCmd = process.platform !== 'win32' ? 'touch' : 'notepad';
     execSync(`${createCmd} ${fileName}`);
-  } else {
-    console.log();
-    console.log(
-      chalk.red.bold("Make sure that you've grabbed the key correctly!"),
-    );
-    console.log();
   }
 };
 

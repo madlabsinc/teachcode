@@ -49,7 +49,7 @@ test.serial('no config file for fetchtask', async t => {
   t.snapshot(stdout);
 });
 
-test.skip('incorrect key for fetchtask', async t => {
+test.serial('incorrect key for fetchtask', async t => {
   let snap = null;
   t.assert(learningTracksInfo.length > 0);
   for (let index in learningTracksInfo) {
@@ -58,7 +58,11 @@ test.skip('incorrect key for fetchtask', async t => {
     const fileExtension = learningTrack['fileExtension'];
     const userConfig = createUserConfig(trackName, fileExtension, 30, 30);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig));
-    const { stdout } = await execa(rootCommand, ['fetchtask', 'testKey0']);
+    const { stdout } = await execa(
+      rootCommand,
+      ['fetchtask', 'incorrectTestKey'],
+      { reject: false },
+    );
     fs.unlinkSync(configFilePath);
     if (snap) t.true(snap === stdout);
     snap = stdout;
@@ -68,7 +72,7 @@ test.skip('incorrect key for fetchtask', async t => {
 
 test.serial('display completed task with fetchtask key', async t => {
   t.assert(learningTracksInfo.length > 0);
-  for (let index = 0; index < learningTracksInfo; index += 1) {
+  for (let index = 0; index < learningTracksInfo.length; index++) {
     const learningTrack = learningTracksInfo[index];
     const trackName = learningTrack['trackName'];
     const fileExtension = learningTrack['fileExtension'];
@@ -83,6 +87,7 @@ test.serial('display completed task with fetchtask key', async t => {
 });
 
 // giving incorrect snapshot
+// ******************************
 test.serial('display incomplete task with fetchtask key', async t => {
   t.assert(learningTracksInfo.length > 0);
   for (let index in learningTracksInfo) {
@@ -99,7 +104,7 @@ test.serial('display incomplete task with fetchtask key', async t => {
   }
 });
 
-test.skip('no more tasks available', async t => {
+test.serial('no more tasks available', async t => {
   let snap = null;
   t.assert(learningTracksInfo.length > 0);
   for (let index in learningTracksInfo) {
@@ -119,6 +124,7 @@ test.skip('no more tasks available', async t => {
 });
 
 // giving incorrect snapshots
+// *****************************
 test.serial('display next task with fetchtask', async t => {
   t.assert(learningTracksInfo.length > 0);
   for (let index in learningTracksInfo) {
