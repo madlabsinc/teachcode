@@ -63,8 +63,11 @@ test.serial('incorrect key for fetchtask', async t => {
       { reject: false },
     );
     fs.unlinkSync(configFilePath);
-    if (snap) t.true(snap === stdout);
-    snap = stdout;
+    if (snap) {
+      t.true(snap === stdout);
+    } else {
+      snap = stdout;
+    }
   }
   t.snapshot(snap);
 });
@@ -110,8 +113,11 @@ test.serial('no more tasks available', async t => {
     const { stdout } = await execa(rootCommand, ['fetchtask'], {
       reject: false,
     });
-    if (snap) t.assert(snap === stdout);
-    else snap = stdout;
+    if (snap) {
+      t.assert(snap === stdout);
+    } else {
+      snap = stdout;
+    }
     fs.unlinkSync(configFilePath);
   }
   t.snapshot(snap);
