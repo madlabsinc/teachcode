@@ -8,7 +8,6 @@ const fs = require('fs');
 const rootCommand = path.join(process.cwd(), 'bin/index.js');
 const configFilePath = path.join(process.cwd(), 'config.json');
 
-// learning track python, javascript
 const learningTracksInfo = [
   { trackName: 'Python', fileExtension: 'py' },
   { trackName: 'JavaScript', fileExtension: 'js' },
@@ -84,8 +83,6 @@ test.serial('display completed task with fetchtask key', async t => {
   }
 });
 
-// giving incorrect snapshot
-// ******************************
 test.serial('display incomplete task with fetchtask key', async t => {
   t.assert(learningTracksInfo.length > 0);
   for (let index in learningTracksInfo) {
@@ -97,6 +94,7 @@ test.serial('display incomplete task with fetchtask key', async t => {
     const { stdout } = await execa(rootCommand, ['fetchtask', 'testKey6']);
     t.snapshot(stdout);
     fs.unlinkSync(configFilePath);
+    fs.unlinkSync(path.join(process.cwd(), 'task6.' + fileExtension));
   }
 });
 
@@ -119,8 +117,6 @@ test.serial('no more tasks available', async t => {
   t.snapshot(snap);
 });
 
-// giving incorrect snapshots
-// *****************************
 test.serial('display next task with fetchtask', async t => {
   t.assert(learningTracksInfo.length > 0);
   for (let index in learningTracksInfo) {
@@ -132,5 +128,6 @@ test.serial('display next task with fetchtask', async t => {
     const { stdout } = await execa(rootCommand, ['fetchtask']);
     t.snapshot(stdout);
     fs.unlinkSync(configFilePath);
+    fs.unlinkSync(path.join(process.cwd(), 'task6.' + fileExtension));
   }
 });
