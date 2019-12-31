@@ -29,12 +29,14 @@ const createUserConfig = (
 ) => {
   let userConfig = userDefaultConfig;
   userConfig['learningTrack'] = trackName;
-  for (let i = 0; i < keysNumber; i++)
+  for (let i = 0; i < keysNumber; i++) {
     userConfig['keys'].push('testKey' + (i + 1));
-  for (let i = 0; i < filesNumber; i++)
+  }
+  for (let i = 0; i < filesNumber; i++) {
     userConfig['userSubmittedFiles'].push(
       'task' + (i + 1) + '.' + fileExtension,
     );
+  }
   userConfig['taskCount'] = filesNumber;
 
   return userConfig;
