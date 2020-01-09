@@ -30,12 +30,10 @@ const createUserConfig = (
   let userConfig = userDefaultConfig;
   userConfig['learningTrack'] = trackName;
   for (let i = 0; i < keysNumber; i++) {
-    userConfig['keys'].push('testKey' + (i + 1));
+    userConfig['keys'].push(`testKey${i + 1}`);
   }
   for (let i = 0; i < filesNumber; i++) {
-    userConfig['userSubmittedFiles'].push(
-      'task' + (i + 1) + '.' + fileExtension,
-    );
+    userConfig['userSubmittedFiles'].push(`task${i + 1}.${fileExtension}`);
   }
   userConfig['taskCount'] = filesNumber;
 
@@ -54,9 +52,7 @@ test.serial('incorrect key for fetchtask', async t => {
   let snap = null;
   t.assert(learningTracksInfo.length > 0);
   for (let index in learningTracksInfo) {
-    const learningTrack = learningTracksInfo[index];
-    const trackName = learningTrack['trackName'];
-    const fileExtension = learningTrack['fileExtension'];
+    let { trackName, fileExtension } = learningTracksInfo[index];
     const userConfig = createUserConfig(trackName, fileExtension, 30, 30);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig));
     const { stdout } = await execa(
@@ -76,10 +72,8 @@ test.serial('incorrect key for fetchtask', async t => {
 
 test.serial('display completed task with fetchtask key', async t => {
   t.assert(learningTracksInfo.length > 0);
-  for (let index = 0; index < learningTracksInfo.length; index++) {
-    const learningTrack = learningTracksInfo[index];
-    const trackName = learningTrack['trackName'];
-    const fileExtension = learningTrack['fileExtension'];
+  for (let index in learningTracksInfo) {
+    let { trackName, fileExtension } = learningTracksInfo[index];
     let userConfig = createUserConfig(trackName, fileExtension, 6, 5);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig));
     const { stdout } = await execa(rootCommand, ['fetchtask', 'testKey2']);
@@ -91,15 +85,13 @@ test.serial('display completed task with fetchtask key', async t => {
 test.serial('display incomplete task with fetchtask key', async t => {
   t.assert(learningTracksInfo.length > 0);
   for (let index in learningTracksInfo) {
-    const learningTrack = learningTracksInfo[index];
-    const trackName = learningTrack['trackName'];
-    const fileExtension = learningTrack['fileExtension'];
+    let { trackName, fileExtension } = learningTracksInfo[index];
     let userConfig = createUserConfig(trackName, fileExtension, 6, 5);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig));
     const { stdout } = await execa(rootCommand, ['fetchtask', 'testKey6']);
     t.snapshot(stdout);
     fs.unlinkSync(configFilePath);
-    fs.unlinkSync(path.join(process.cwd(), 'task6.' + fileExtension));
+    fs.unlinkSync(path.join(process.cwd(), `task6.${fileExtension}`));
   }
 });
 
@@ -107,9 +99,7 @@ test.serial('no more tasks available', async t => {
   let snap = null;
   t.assert(learningTracksInfo.length > 0);
   for (let index in learningTracksInfo) {
-    const learningTrack = learningTracksInfo[index];
-    const trackName = learningTrack['trackName'];
-    const fileExtension = learningTrack['fileExtension'];
+    let { trackName, fileExtension } = learningTracksInfo[index];
     const userConfig = createUserConfig(trackName, fileExtension, 30, 30);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig));
     const { stdout } = await execa(rootCommand, ['fetchtask'], {
@@ -128,14 +118,12 @@ test.serial('no more tasks available', async t => {
 test.serial('display next task with fetchtask', async t => {
   t.assert(learningTracksInfo.length > 0);
   for (let index in learningTracksInfo) {
-    const learningTrack = learningTracksInfo[index];
-    const trackName = learningTrack['trackName'];
-    const fileExtension = learningTrack['fileExtension'];
+    let { trackName, fileExtension } = learningTracksInfo[index];
     const userConfig = createUserConfig(trackName, fileExtension, 6, 5);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig));
     const { stdout } = await execa(rootCommand, ['fetchtask']);
     t.snapshot(stdout);
     fs.unlinkSync(configFilePath);
-    fs.unlinkSync(path.join(process.cwd(), 'task6.' + fileExtension));
+    fs.unlinkSync(path.join(process.cwd(), `task6.${fileExtension}`));
   }
 });

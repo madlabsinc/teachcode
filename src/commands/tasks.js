@@ -55,15 +55,7 @@ const fetchTask = async key => {
     exercises = require('../workspace/js/tasks');
   }
 
-  // check for incorrect key if key is provided
-  let incorrectKey = true;
-  keys.some(item => {
-    if (item === key) {
-      incorrectKey = false;
-    }
-  });
-
-  if (key && incorrectKey) {
+  if (key && !keys.includes(key)) {
     console.log();
     console.log(
       chalk.red.bold("Make sure that you've grabbed the key correctly!"),
