@@ -42,14 +42,10 @@ const fetchTask = async key => {
   const {
     learningTrack,
     userName,
-    userSubmittedFiles,
     taskCount,
     keys,
+    userSubmittedFiles,
   } = userConfig;
-
-  if (!key) {
-    key = keys.slice(-1).pop();
-  }
 
   if (learningTrack === 'Python') {
     fileName = `task${taskCount + 1}.py`;
@@ -59,10 +55,31 @@ const fetchTask = async key => {
     exercises = require('../workspace/js/tasks');
   }
 
-  // Holding reference to keys of all the completed tasks
-  let previousKeys = keys.slice(0, keys.length - 1);
+  if (key && !keys.includes(key)) {
+    console.log();
+    console.log(
+      chalk.red.bold("Make sure that you've grabbed the key correctly!"),
+    );
+    console.log();
+    process.exit(1);
+  }
+
+  // check if no more tasks are available (no key provided)
+  if (!key && taskCount === exercises.length) {
+    console.log();
+    console.log(chalk.red.bold('No more tasks available!'));
+    process.exit(1);
+  }
+
+  // in case no key is provided, make the last key as the key
+  if (!key) {
+    key = keys.slice(-1).pop();
+  }
 
   let taskAlreadyCompleted = [];
+
+  // Holding reference to keys of all the completed tasks
+  let previousKeys = keys.slice(0, taskCount);
 
   previousKeys.some((item, index) => {
     if (item === key) {
@@ -78,21 +95,16 @@ const fetchTask = async key => {
     console.log();
     console.log(
       chalk.green.bold(
-        `User: ${userName}${`\t`.repeat(4)}Progress: ${taskCount + 1}/${
-          exercises.length
-        }`,
+        `User: ${userName}${`\t`.repeat(4)}Progress: ${Math.min(
+          taskCount + 1,
+          30,
+        )}/${exercises.length}`,
       ),
     );
     console.log();
     console.log(chalk.green(`${exercises[taskAlreadyCompleted[1]].task}`));
     console.log();
-    process.exit(1);
-  }
-
-  if (taskCount === exercises.length) {
-    console.log();
-    console.log(chalk.red.bold('No more tasks available!'));
-    process.exit(1);
+    return;
   }
 
   if (keys.slice(-1).pop() === key) {
@@ -105,9 +117,10 @@ const fetchTask = async key => {
     console.log();
     console.log(
       chalk.cyan.bold(
-        `User: ${userName}${`\t`.repeat(6)}Progress: ${taskCount + 1}/${
-          exercises.length
-        }`,
+        `User: ${userName}${`\t`.repeat(6)}Progress: ${Math.min(
+          taskCount + 1,
+          30,
+        )}/${exercises.length}`,
       ),
     );
     // Displaying respective task within the the console screen.
@@ -117,12 +130,6 @@ const fetchTask = async key => {
 
     let createCmd = process.platform !== 'win32' ? 'touch' : 'notepad';
     execSync(`${createCmd} ${fileName}`);
-  } else {
-    console.log();
-    console.log(
-      chalk.red.bold("Make sure that you've grabbed the key correctly!"),
-    );
-    console.log();
   }
 };
 
