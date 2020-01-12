@@ -20,7 +20,7 @@ const showKeys = async () => {
   if (!fs.existsSync(`${process.cwd()}/config.json`)) {
     console.log(chalk.red("Config file doesn't exist!"));
     console.log();
-    process.exit(1);
+    return process.exit(1);
   }
 
   let userConfig = fs.readFileSync(process.cwd() + '/config.json', 'utf8');

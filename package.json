@@ -12,7 +12,7 @@
   },
   "scripts": {
     "lint": "eslint src bin __e2e__",
-    "lint:fix": "eslint --fix src bin __e2e__",
+    "lint:fix": "eslint --fix src bin __e2e__ __tests__",
     "pretest": "npm run lint",
     "test": "ava --serial",
     "docs:dev": "vuepress dev docs",
