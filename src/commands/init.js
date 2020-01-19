@@ -101,7 +101,7 @@ const initTasks = async () => {
   userConfig.userName = userName;
   userConfig.keys.push(key);
 
-  execSync(`mkdir -p teachcode-solutions`);
+  execSync(`mkdir teachcode-solutions`);
   fs.writeFileSync(
     `teachcode-solutions/config.json`,
     JSON.stringify(userConfig),
