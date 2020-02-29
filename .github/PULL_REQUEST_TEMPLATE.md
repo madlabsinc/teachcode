@@ -1,28 +1,18 @@
-## Description
+<!-- Thanks for submitting a pull request! Please provide enough information so that others can review your pull request. -->
 
-Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change.
+**What kind of change does this PR introduce?**
+<!-- E.g. a bugfix, feature, refactoring, build related change, etc… -->
 
-Fixes # (issue)
+**Did you add tests for your changes?**
 
-#### Type of change
+**If relevant, did you update the documentation?**
 
-Please delete options that are not relevant.
+**Summary**
 
-- [ ] Bug fix (non-breaking change which fixes an issue)
-- [ ] New feature (non-breaking change which adds functionality)
-- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] This change requires a documentation update
+<!-- Explain the **motivation** for making this change. What existing problem does the pull request solve? -->
+<!-- Try to link to an open issue for more information. -->
 
-## Did you add tests for your changes?
+**Does this PR introduce a breaking change?**
+<!-- If this PR introduces a breaking change, please describe the impact and a migration path for existing applications. -->
 
-
-#### If relevant, did you update the documentation?
-
-
-
-## Does this PR introduce a breaking change?
-
-
-## Other information
-
-
+**Other information**
