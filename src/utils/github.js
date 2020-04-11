@@ -92,7 +92,7 @@ const createRepository = async () => {
     type: 'input',
     validate,
   });
-  
+
   const API_URL = `https://api.github.com/user/repos`;
   axios.defaults.headers.common['Authorization'] = `token ${userToken}`;
   // Create a new repository.
