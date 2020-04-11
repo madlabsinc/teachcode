@@ -76,19 +76,22 @@ const fetchTask = async key => {
     key = keys.slice(-1).pop();
   }
 
-  let taskAlreadyCompleted = [];
+  let taskInfo = {};
 
   // Holding reference to keys of all the completed tasks
   let previousKeys = keys.slice(0, taskCount);
 
   previousKeys.some((item, index) => {
     if (item === key) {
-      taskAlreadyCompleted = [true, index];
+      taskInfo = {
+        completed: true,
+        count: index,
+      };
       return true;
     }
   });
 
-  if (taskAlreadyCompleted[0]) {
+  if (taskInfo.completed) {
     console.log();
     console.log(chalk.yellow.bold(' This task is already completed!'));
     console.log();
@@ -102,7 +105,7 @@ const fetchTask = async key => {
       ),
     );
     console.log();
-    console.log(chalk.green(`${exercises[taskAlreadyCompleted[1]].task}`));
+    console.log(chalk.green(`${exercises[taskInfo.count].task}`));
     console.log();
     return;
   }
