@@ -71,7 +71,7 @@ const fetchTask = async key => {
     process.exit(1);
   }
 
-  // in case no key is provided, make the last key as the key
+  // In case no key is provided, fetch the next task
   if (!key) {
     key = keys.slice(-1).pop();
   }
