@@ -40,7 +40,8 @@ const initializeGHWorkFlow = async () => {
  */
 
 const checkIfValidUser = async () => {
-  const API_URL = `https://api.github.com/users/${GHUserName}`;
+    const API_URL = `https://api.github.com/user/repos`;
+  axios.defaults.headers.common['Authorization'] = `token ${userToken}`;
   try {
     await axios.get(API_URL);
     return true;
