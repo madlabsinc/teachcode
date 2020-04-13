@@ -11,7 +11,7 @@ const Table = require('cli-table3');
  * @returns {Promise<void>}
  */
 
-const showCommands = async () => {
+const help = async () => {
   await showBanner(
     'teachcode',
     ` Learn to code effectively ${`\t`.repeat(4)} Powered by MadHacks`,
@@ -49,11 +49,8 @@ const showCommands = async () => {
     {
       'teachcode showkeys': 'View any tasks by grabbing their keys',
     },
-    {
-      'teachcode showcommands': 'Lists all the commands',
-    },
   );
   console.log(commands.toString());
 };
 
-module.exports = showCommands;
+module.exports = help;
