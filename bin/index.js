@@ -10,7 +10,6 @@ const { version } = require('../package');
 
 const initTasks = require('../src/commands/init');
 const fetchTask = require('../src/commands/tasks');
-
 const showKeys = require('../src/commands/keys');
 const submitTask = require('../src/commands/submit');
 
