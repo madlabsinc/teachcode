@@ -21,7 +21,7 @@ const validate = require('../utils/validate');
 // Key for the very first task
 let key = '5e06b81de9ac43218a974785ffce8146';
 
-const userConfig = {
+let userConfig = {
   learningTrack: '',
   userName: '',
   taskCount: 0,
@@ -36,13 +36,11 @@ const userConfig = {
  * @returns {Void}
  */
 
-const showInstructions = kickStart => {
+const showInstructions = () => {
   console.log();
   console.log(chalk.green.bold(' Perform the following steps:-'));
   console.log();
   console.log(chalk.cyan.bold(' 1. cd teachcode-solutions'));
-
-  key = kickStart ? key : '<key>';
   console.log(chalk.cyan.bold(` 2. teachcode fetchtask`));
 };
 
@@ -131,9 +129,12 @@ const initTasks = async () => {
   ]);
 
   // Setting up initial user-data config.
-  userConfig.learningTrack = learningTrackOfChoice;
-  userConfig.userName = userName;
-  userConfig.keys.push(key);
+  userConfig = {
+    ...userConfig,
+    learningTrack: learningTrackOfChoice,
+    userName,
+    keys: userConfig.keys.push(key),
+  };
 
   // Prompt for GitHub username.
   await initializeGHWorkFlow();
@@ -141,13 +142,9 @@ const initTasks = async () => {
   // Check if the remote repository already exists.
   let shouldCreateRepository = await checkIfRepositoryExists();
 
-  // Tracks whether the user is just starting out.
-  let kickStart;
-
   if (shouldCreateRepository) {
     await promptAccessTokenCreation();
     await createRepository();
-    kickStart = true;
 
     execSync(`mkdir -p teachcode-solutions`);
     fs.writeFileSync(
@@ -160,9 +157,8 @@ const initTasks = async () => {
   } else {
     // Clone the remote repository
     await cloneRepository();
-    kickStart = false;
   }
-  showInstructions(kickStart);
+  showInstructions();
 };
 
 module.exports = initTasks;
