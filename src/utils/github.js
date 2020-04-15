@@ -4,6 +4,7 @@ const axios = require('axios');
 const chalk = require('chalk');
 const execa = require('execa');
 const inquirer = require('inquirer');
+const ora = require('ora');
 
 const validate = require('./validate');
 
@@ -29,6 +30,9 @@ const initializeGHWorkFlow = async () => {
 
   // Check if it is a valid username
   if (!(await checkIfValidUser())) {
+    console.log();
+    console.log(chalk.red.bold(` ${userName} isn't a valid GitHub username`));
+    console.log();
     await initializeGHWorkFlow();
   }
 };
@@ -114,10 +118,12 @@ const configureLocalRepo = async () => {
   const repoUrl = `https://github.com/${GHUserName}/teachcode-solutions`;
 
   // Initialize an empty git repo.
-  await execa.shell('git init');
+  await execa.shell('git init', { cwd: 'teachcode-solutions' });
 
   // Set the remote url.
-  await execa.shell(`git remote add origin ${repoUrl}`);
+  await execa.shell(`git remote add origin ${repoUrl}`, {
+    cwd: 'teachcode-solutions',
+  });
 };
 
 /**
@@ -139,7 +145,14 @@ const makeLocalCommit = async taskCount => {
  */
 
 const pushToRemote = async () => {
-  await execa.shell('git push origin master');
+  const spinner = ora('Pushing to GitHub').start();
+  try {
+    await execa.shell('git push origin master');
+  } catch (err) {
+    spinner.fail('Something went wrong');
+    throw err;
+  }
+  spinner.succeed('Saved user progress');
 };
 
 module.exports = {

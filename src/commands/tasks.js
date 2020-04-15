@@ -22,7 +22,7 @@ const fetchTask = async key => {
   let exercises;
   let fileName;
 
-  if (!fs.existsSync(process.cwd() + '/config.json')) {
+  if (!fs.existsSync('./config.json')) {
     console.log(
       chalk.red.bold(
         ' Make sure that you are within the teachcode-solutions directory!',
@@ -30,7 +30,7 @@ const fetchTask = async key => {
     );
     console.log();
     console.log(
-      chalk.cyan.bold('\tcd teachcode-solutions may resolve the issue!'),
+      chalk.cyan.bold(' cd teachcode-solutions may resolve the issue!'),
     );
     console.log();
     process.exit(1);

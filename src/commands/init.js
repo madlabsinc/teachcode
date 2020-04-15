@@ -1,11 +1,12 @@
 'use strict';
 
 const chalk = require('chalk');
-const { execSync } = require('child_process');
+const { shellSync } = require('execa');
 const fs = require('fs');
 const inquirer = require('inquirer');
 const showBanner = require('node-banner');
 const open = require('open');
+const ora = require('ora');
 
 // GitHub workflow helper methods.
 const {
@@ -43,6 +44,12 @@ const showInstructions = () => {
   console.log(chalk.cyan.bold(' 1. cd teachcode-solutions'));
   console.log(chalk.cyan.bold(` 2. teachcode fetchtask`));
 };
+
+/**
+ * Opens up the default browser with information concerning
+ * access token creation as required
+ * @returns {Promise<void>}
+ */
 
 const promptAccessTokenCreation = async () => {
   const instructionsUrl =
@@ -87,13 +94,10 @@ const initTasks = async () => {
     console.log(
       chalk.redBright(
         `  It seems that there is already a ${chalk.yellow(
-          'Teach-Code-solutions',
+          'teachcode-solutions',
         )} directory or ${chalk.yellow('config.json')} file existing in path`,
       ),
     );
-    console.log();
-    console.log(chalk.redBright('  Exiting!!'));
-    console.log();
     process.exit(1);
   }
 
@@ -133,8 +137,9 @@ const initTasks = async () => {
     ...userConfig,
     learningTrack: learningTrackOfChoice,
     userName,
-    keys: userConfig.keys.push(key),
   };
+
+  userConfig.keys.push(key);
 
   // Prompt for GitHub username.
   await initializeGHWorkFlow();
@@ -146,17 +151,22 @@ const initTasks = async () => {
     await promptAccessTokenCreation();
     await createRepository();
 
-    execSync(`mkdir -p teachcode-solutions`);
+    shellSync(`mkdir teachcode-solutions`);
     fs.writeFileSync(
-      `teachcode-solutions/config.json`,
+      'teachcode-solutions/config.json',
       JSON.stringify(userConfig, null, 2),
     );
-
-    process.chdir('teachcode-solutions');
     await configureLocalRepo();
   } else {
-    // Clone the remote repository
-    await cloneRepository();
+    const spinner = ora('Fetching user progress').start();
+    try {
+      // Clone the remote repository
+      await cloneRepository();
+    } catch (err) {
+      spinner.fail('Something went wrong');
+      throw err;
+    }
+    spinner.stop();
   }
   showInstructions();
 };

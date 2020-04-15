@@ -186,9 +186,7 @@ const submitTask = async () => {
     process.exit(1);
   }
 
-  userConfig = JSON.parse(
-    fs.readFileSync(process.cwd() + '/config.json', 'utf8'),
-  );
+  userConfig = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
   let { userName, userSubmittedFiles, learningTrack, taskCount } = userConfig;
 
   if (learningTrack === 'Python') {
