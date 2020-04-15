@@ -103,13 +103,6 @@ const createRepository = async () => {
     console.log();
     await createRepository();
   }
-
-  // Ensure repository creation.
-  if (await checkIfRepositoryExists()) {
-    console.log(chalk.red.bold('Error: Invalid credentials'));
-    console.log();
-    await createRepository();
-  }
 };
 /**
  * Configure local repository
