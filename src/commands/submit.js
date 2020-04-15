@@ -78,7 +78,7 @@ const checkSolution = async (submittedFileContent, solutionFileContent) => {
         taskCount,
         keys,
       };
-      fs.writeFileSync('./config.json', JSON.stringify(userConfig));
+      fs.writeFileSync('./config.json', JSON.stringify(userConfig, null, 2));
 
       await makeLocalCommit(taskCount);
 

@@ -152,7 +152,7 @@ const initTasks = async () => {
     execSync(`mkdir -p teachcode-solutions`);
     fs.writeFileSync(
       `teachcode-solutions/config.json`,
-      JSON.stringify(userConfig),
+      JSON.stringify(userConfig, null, 2),
     );
 
     process.chdir('teachcode-solutions');
