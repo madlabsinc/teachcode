@@ -50,10 +50,9 @@ Users are required to solve 30 tasks that take them through the basic constructs
 | command | description |
 | -------------- |  ---------------- |
 | teachcode init | Initializes all the tasks |
-| teachcode fetchtask [key] | Fetches the task correponding to key if provided (defaults to the very next task) |
+| teachcode fetchtask [key] | Fetches the task correponding to the key if provided (defaults to the very next task) |
 | teachcode submit | Submits the current task |
 | teachcode showkeys | Shows all the keys grabbed |
-| teachcode showcommands | Lists all the available commands |
 
 ## Contributing
 
