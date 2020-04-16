@@ -52,7 +52,7 @@ Users are required to solve 30 tasks that take them through the basic constructs
 | teachcode init | Initializes all the tasks |
 | teachcode fetchtask [key] | Fetches the task correponding to the key if provided (defaults to the very next task) |
 | teachcode submit | Submits the current task |
-| teachcode showkeys | Shows all the keys grabbed |
+| teachcode showkeys | Lists all the keys associated with the submitted tasks |
 
 ## Contributing
 

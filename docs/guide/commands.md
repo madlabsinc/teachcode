@@ -9,10 +9,9 @@ title: 'Available Commands'
  | command | description |                                                                                                
  | -------------- |  ---------------- |
  | teachcode init | Initializes all the tasks |
- | teachcode fetchtask \<key\> | Fetches the task correponding to key provided |
+ | teachcode fetchtask \[key\] | Fetches the task correponding to the key if provided (Defaults to the very next task) |
  | teachcode submit | Submits the current task |
- | teachcode showkeys | Shows all the keys grabbed |
- | teachcode showcommands | Lists all the available commands |
+ | teachcode showkeys | Lists all the keys associated with the submitted tasks |
 
 ## Versioning And Help
 
