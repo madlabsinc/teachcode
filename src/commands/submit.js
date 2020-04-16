@@ -106,7 +106,11 @@ const checkSolution = async (submittedFileContent, solutionFileContent) => {
 
       console.log();
       console.log(
-        chalk.green.bold("  Hurray you've done it!\n  Move to the next task"),
+        chalk.green.bold(
+          `  Hurray you've done it!\n  Move to the next task with ${chalk.yellow.bold(
+            'teachcode fetchtask',
+          )}`,
+        ),
       );
       console.log();
     } else {

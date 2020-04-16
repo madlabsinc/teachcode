@@ -93,9 +93,11 @@ const initTasks = async () => {
     console.log();
     console.log(
       chalk.redBright(
-        `  It seems that there is already a ${chalk.yellow(
+        `  It seems that there is already a ${chalk.yellow.bold(
           'teachcode-solutions',
-        )} directory or ${chalk.yellow('config.json')} file existing in path`,
+        )} directory or ${chalk.yellow.bold(
+          'config.json',
+        )} file existing in path`,
       ),
     );
     process.exit(1);

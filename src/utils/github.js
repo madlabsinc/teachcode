@@ -145,6 +145,7 @@ const makeLocalCommit = async taskCount => {
  */
 
 const pushToRemote = async () => {
+  console.log();
   const spinner = ora('Pushing to GitHub').start();
   try {
     await execa.shell('git push origin master');
