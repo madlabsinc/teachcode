@@ -115,7 +115,7 @@ const fetchTask = async key => {
       userSubmittedFiles.push(fileName);
     }
 
-    fs.writeFileSync('./config.json', JSON.stringify(userConfig));
+    fs.writeFileSync('./config.json', JSON.stringify(userConfig, null, 2));
 
     console.log();
     console.log(
