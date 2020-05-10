@@ -42,9 +42,9 @@
   ],
   "author": "James George <jamesgeorge998001@gmail.com>",
   "bugs": {
-    "url": "https://github.com/jamesgeorge007/teach-code/issues"
+    "url": "https://github.com/madlabsinc/teach-code/issues"
   },
-  "homepage": "https://github.com/jamesgeorge007/teach-code#readme",
+  "homepage": "https://github.com/madlabsinc/teach-code#readme",
   "license": "GPL-3.0",
   "dependencies": {
     "axios": "^0.19.0",
