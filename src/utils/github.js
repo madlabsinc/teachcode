@@ -93,7 +93,7 @@ const createRepository = async () => {
   const { userToken } = await inquirer.prompt({
     name: 'userToken',
     message: 'GitHub user token:-',
-    type: 'input',
+    type: 'password',
     validate,
   });
 
