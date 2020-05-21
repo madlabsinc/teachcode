@@ -4,7 +4,6 @@ const axios = require('axios');
 const chalk = require('chalk');
 const execa = require('execa');
 const inquirer = require('inquirer');
-const ora = require('ora');
 
 const validate = require('./validate');
 
@@ -146,14 +145,7 @@ const makeLocalCommit = async taskCount => {
 
 const pushToRemote = async () => {
   console.log();
-  const spinner = ora('Pushing to GitHub').start();
-  try {
-    await execa.shell('git push origin master');
-  } catch (err) {
-    spinner.fail('Something went wrong');
-    throw err;
-  }
-  spinner.succeed('Saved user progress');
+  await execa.shell('git push origin master', { stdio: 'inherit' });
 };
 
 module.exports = {
