@@ -54,7 +54,7 @@ test.serial('incorrect key for fetchtask', async t => {
   for (let index in learningTracksInfo) {
     let { trackName, fileExtension } = learningTracksInfo[index];
     const userConfig = createUserConfig(trackName, fileExtension, 30, 30);
-    fs.writeFileSync(configFilePath, JSON.stringify(userConfig));
+    fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
     const { stdout } = await execa(
       rootCommand,
       ['fetchtask', 'incorrectTestKey'],
@@ -75,7 +75,7 @@ test.serial('display completed task with fetchtask key', async t => {
   for (let index in learningTracksInfo) {
     let { trackName, fileExtension } = learningTracksInfo[index];
     let userConfig = createUserConfig(trackName, fileExtension, 6, 5);
-    fs.writeFileSync(configFilePath, JSON.stringify(userConfig));
+    fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
     const { stdout } = await execa(rootCommand, ['fetchtask', 'testKey2']);
     t.snapshot(stdout);
     fs.unlinkSync(configFilePath);
@@ -87,7 +87,7 @@ test.serial('display incomplete task with fetchtask key', async t => {
   for (let index in learningTracksInfo) {
     let { trackName, fileExtension } = learningTracksInfo[index];
     let userConfig = createUserConfig(trackName, fileExtension, 6, 5);
-    fs.writeFileSync(configFilePath, JSON.stringify(userConfig));
+    fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
     const { stdout } = await execa(rootCommand, ['fetchtask', 'testKey6']);
     t.snapshot(stdout);
     fs.unlinkSync(configFilePath);
@@ -101,7 +101,7 @@ test.serial('no more tasks available', async t => {
   for (let index in learningTracksInfo) {
     let { trackName, fileExtension } = learningTracksInfo[index];
     const userConfig = createUserConfig(trackName, fileExtension, 30, 30);
-    fs.writeFileSync(configFilePath, JSON.stringify(userConfig));
+    fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
     const { stdout } = await execa(rootCommand, ['fetchtask'], {
       reject: false,
     });

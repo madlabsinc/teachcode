@@ -10,7 +10,6 @@ const { version } = require('../package');
 
 const initTasks = require('../src/commands/init');
 const fetchTask = require('../src/commands/tasks');
-const showCommands = require('../src/commands/commands');
 const showKeys = require('../src/commands/keys');
 const submitTask = require('../src/commands/submit');
 
@@ -32,18 +31,13 @@ program
 
 program
   .command('fetchtask [key]')
-  .description('Fetches any task as per the key supplied')
+  .description('Fetch tasks to be worked upon')
   .action(fetchTask);
 
 program
   .command('showkeys')
   .description('Shows keys of all the completed tasks')
   .action(showKeys);
-
-program
-  .command('showcommands')
-  .description('Shows all commands available')
-  .action(showCommands);
 
 const suggestCommands = cmd => {
   const availableCommands = program.commands.map(c => c._name);

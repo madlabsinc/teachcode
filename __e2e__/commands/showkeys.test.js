@@ -27,14 +27,17 @@ test.serial('no config file', async t => {
 });
 
 test.serial('no keys in config file', async t => {
-  fs.writeFileSync('config.json', JSON.stringify(configWithoutKeys));
+  fs.writeFileSync('config.json', JSON.stringify(configWithoutKeys, null, 2));
   const { stdout } = await execa(rootCommand, ['showkeys']);
   t.snapshot(stdout);
   fs.unlinkSync(configFilePath);
 });
 
 test.serial('multiple keys in config file', async t => {
-  fs.writeFileSync('config.json', JSON.stringify(configWithMultipleKeys));
+  fs.writeFileSync(
+    'config.json',
+    JSON.stringify(configWithMultipleKeys, null, 2),
+  );
   const { stdout } = await execa(rootCommand, ['showkeys']);
   t.snapshot(stdout);
   fs.unlinkSync(configFilePath);

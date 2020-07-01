@@ -17,13 +17,13 @@ const showKeys = async () => {
   );
   console.log();
 
-  if (!fs.existsSync(`${process.cwd()}/config.json`)) {
+  if (!fs.existsSync(`./config.json`)) {
     console.log(chalk.red("Config file doesn't exist!"));
     console.log();
     process.exit(1);
   }
 
-  let userConfig = fs.readFileSync(process.cwd() + '/config.json', 'utf8');
+  let userConfig = fs.readFileSync('./config.json', 'utf8');
   const { keys, userName, taskCount } = JSON.parse(userConfig);
 
   console.log();

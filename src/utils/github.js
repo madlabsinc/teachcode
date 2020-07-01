@@ -29,6 +29,9 @@ const initializeGHWorkFlow = async () => {
 
   // Check if it is a valid username
   if (!(await checkIfValidUser())) {
+    console.log();
+    console.log(chalk.red.bold(` ${userName} isn't a valid GitHub username`));
+    console.log();
     await initializeGHWorkFlow();
   }
 };
@@ -89,22 +92,16 @@ const createRepository = async () => {
   const { userToken } = await inquirer.prompt({
     name: 'userToken',
     message: 'GitHub user token:-',
-    type: 'input',
+    type: 'password',
     validate,
   });
-  const API_URL = `https://api.github.com/user/repos?access_token=${userToken}`;
 
+  const API_URL = `https://api.github.com/user/repos`;
+  axios.defaults.headers.common['Authorization'] = `token ${userToken}`;
   // Create a new repository.
   try {
     await axios.post(API_URL, { name: 'teachcode-solutions' });
   } catch (err) {
-    console.log(chalk.red.bold('Error: Invalid credentials'));
-    console.log();
-    await createRepository();
-  }
-
-  // Ensure repository creation.
-  if (await checkIfRepositoryExists()) {
     console.log(chalk.red.bold('Error: Invalid credentials'));
     console.log();
     await createRepository();
@@ -120,10 +117,12 @@ const configureLocalRepo = async () => {
   const repoUrl = `https://github.com/${GHUserName}/teachcode-solutions`;
 
   // Initialize an empty git repo.
-  await execa.shell('git init');
+  await execa.shell('git init', { cwd: 'teachcode-solutions' });
 
   // Set the remote url.
-  await execa.shell(`git remote add origin ${repoUrl}`);
+  await execa.shell(`git remote add origin ${repoUrl}`, {
+    cwd: 'teachcode-solutions',
+  });
 };
 
 /**
@@ -145,7 +144,8 @@ const makeLocalCommit = async taskCount => {
  */
 
 const pushToRemote = async () => {
-  await execa.shell('git push origin master');
+  console.log();
+  await execa.shell('git push origin master', { stdio: 'inherit' });
 };
 
 module.exports = {

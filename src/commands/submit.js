@@ -78,7 +78,7 @@ const checkSolution = async (submittedFileContent, solutionFileContent) => {
         taskCount,
         keys,
       };
-      fs.writeFileSync('./config.json', JSON.stringify(userConfig));
+      fs.writeFileSync('./config.json', JSON.stringify(userConfig, null, 2));
 
       await makeLocalCommit(taskCount);
 
@@ -106,7 +106,11 @@ const checkSolution = async (submittedFileContent, solutionFileContent) => {
 
       console.log();
       console.log(
-        chalk.green.bold("  Hurray you've done it!\n  Move to the next task"),
+        chalk.green.bold(
+          `  Hurray you've done it!\n  Move to the next task with ${chalk.yellow.bold(
+            'teachcode fetchtask',
+          )}`,
+        ),
       );
       console.log();
     } else {
@@ -186,9 +190,7 @@ const submitTask = async () => {
     process.exit(1);
   }
 
-  userConfig = JSON.parse(
-    fs.readFileSync(process.cwd() + '/config.json', 'utf8'),
-  );
+  userConfig = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
   let { userName, userSubmittedFiles, learningTrack, taskCount } = userConfig;
 
   if (learningTrack === 'Python') {

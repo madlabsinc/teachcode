@@ -1,11 +1,12 @@
 'use strict';
 
 const chalk = require('chalk');
-const { execSync } = require('child_process');
+const { shellSync } = require('execa');
 const fs = require('fs');
 const inquirer = require('inquirer');
 const showBanner = require('node-banner');
 const open = require('open');
+const ora = require('ora');
 
 // GitHub workflow helper methods.
 const {
@@ -21,7 +22,7 @@ const validate = require('../utils/validate');
 // Key for the very first task
 let key = '5e06b81de9ac43218a974785ffce8146';
 
-const userConfig = {
+let userConfig = {
   learningTrack: '',
   userName: '',
   taskCount: 0,
@@ -36,15 +37,19 @@ const userConfig = {
  * @returns {Void}
  */
 
-const showInstructions = kickStart => {
+const showInstructions = () => {
   console.log();
   console.log(chalk.green.bold(' Perform the following steps:-'));
   console.log();
   console.log(chalk.cyan.bold(' 1. cd teachcode-solutions'));
-
-  key = kickStart ? key : '<key>';
   console.log(chalk.cyan.bold(` 2. teachcode fetchtask`));
 };
+
+/**
+ * Opens up the default browser with information concerning
+ * access token creation as required
+ * @returns {Promise<void>}
+ */
 
 const promptAccessTokenCreation = async () => {
   const instructionsUrl =
@@ -88,14 +93,13 @@ const initTasks = async () => {
     console.log();
     console.log(
       chalk.redBright(
-        `  It seems that there is already a ${chalk.yellow(
-          'Teach-Code-solutions',
-        )} directory or ${chalk.yellow('config.json')} file existing in path`,
+        `  It seems that there is already a ${chalk.yellow.bold(
+          'teachcode-solutions',
+        )} directory or ${chalk.yellow.bold(
+          'config.json',
+        )} file existing in path`,
       ),
     );
-    console.log();
-    console.log(chalk.redBright('  Exiting!!'));
-    console.log();
     process.exit(1);
   }
 
@@ -131,8 +135,12 @@ const initTasks = async () => {
   ]);
 
   // Setting up initial user-data config.
-  userConfig.learningTrack = learningTrackOfChoice;
-  userConfig.userName = userName;
+  userConfig = {
+    ...userConfig,
+    learningTrack: learningTrackOfChoice,
+    userName,
+  };
+
   userConfig.keys.push(key);
 
   // Prompt for GitHub username.
@@ -141,28 +149,28 @@ const initTasks = async () => {
   // Check if the remote repository already exists.
   let shouldCreateRepository = await checkIfRepositoryExists();
 
-  // Tracks whether the user is just starting out.
-  let kickStart;
-
   if (shouldCreateRepository) {
     await promptAccessTokenCreation();
     await createRepository();
-    kickStart = true;
 
-    execSync(`mkdir -p teachcode-solutions`);
+    shellSync(`mkdir teachcode-solutions`);
     fs.writeFileSync(
-      `teachcode-solutions/config.json`,
-      JSON.stringify(userConfig),
+      'teachcode-solutions/config.json',
+      JSON.stringify(userConfig, null, 2),
     );
-
-    process.chdir('teachcode-solutions');
     await configureLocalRepo();
   } else {
-    // Clone the remote repository
-    await cloneRepository();
-    kickStart = false;
+    const spinner = ora('Fetching user progress').start();
+    try {
+      // Clone the remote repository
+      await cloneRepository();
+    } catch (err) {
+      spinner.fail('Something went wrong');
+      throw err;
+    }
+    spinner.stop();
   }
-  showInstructions(kickStart);
+  showInstructions();
 };
 
 module.exports = initTasks;

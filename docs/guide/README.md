@@ -4,7 +4,7 @@
 
 ## How it works
 
-Users are required to solve 30 tasks that take them through the basic constructs of the programming language of their choice. The tasks are designed in such a way that the complexity increases as users progress through the tasks. Users can't move forward until the current task is completed (since the progress is determined by a unique key that is generated upon successful completion). Previously submitted tasks can be viewed as desired by the user but can't be worked on again.
+Users are required to solve 30 tasks that take them through the basic constructs of the programming language of their choice. The tasks are designed in such a way that the complexity increases as users progress through the tasks. Users can't move forward until the current task is completed. Previously submitted tasks can be viewed as desired by the user but can't be worked on again.
 
 - `teachcode` expects you to have a GitHub account. Make sure that you create one if that's not the case.
 - Navigate to the directory of your choice and type in `teachcode init`. After typing the command, the following window would appear in your terminal
@@ -23,12 +23,7 @@ Users are required to solve 30 tasks that take them through the basic constructs
 
 <br />
 
-- After entering your Github user token, you would get the following screen. Now type in `cd teachcode-solutions`.
-- Grab the initial key and type in `teachcode fetchtask <key>`.
-
-<br />
-
-![image](https://user-images.githubusercontent.com/59525675/71777005-669ccd80-2fc0-11ea-8cc3-ea1c729c18da.png)
+- After entering your Github user token, you would get the following screen. Now type in `cd teachcode-solutions` followed by `teachcode fetchtask`.
 
 <br />
 
@@ -52,11 +47,11 @@ Users are required to solve 30 tasks that take them through the basic constructs
 - Now type in `teachcode submit`.
 - Enter your Git credentials when prompted.
 - If the current solution satisfies all test cases, you'll get the key to proceed farther.
-- Grab the key and type in `teachcode fetchtask <key>`.  
+- Now type in `teachcode fetchtask`.  
 - Solve all 30 question, to complete the task 
 
 
-*In case you forget your key, just type in `teachcode showkeys` to see the list of all keys*
+*In case you want to revisit any of the previously submitted tasks, grab the associated key by typing in `teachcode showkeys` followed by `teachcode fetchtask <key>`*
 - That's all folks, good luck :+1:
 
 

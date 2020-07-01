@@ -22,7 +22,7 @@ const fetchTask = async key => {
   let exercises;
   let fileName;
 
-  if (!fs.existsSync(process.cwd() + '/config.json')) {
+  if (!fs.existsSync('./config.json')) {
     console.log(
       chalk.red.bold(
         ' Make sure that you are within the teachcode-solutions directory!',
@@ -30,7 +30,7 @@ const fetchTask = async key => {
     );
     console.log();
     console.log(
-      chalk.cyan.bold('\tcd teachcode-solutions may resolve the issue!'),
+      chalk.cyan.bold(' cd teachcode-solutions may resolve the issue!'),
     );
     console.log();
     process.exit(1);
@@ -71,24 +71,27 @@ const fetchTask = async key => {
     process.exit(1);
   }
 
-  // in case no key is provided, make the last key as the key
+  // In case no key is provided, fetch the next task
   if (!key) {
     key = keys.slice(-1).pop();
   }
 
-  let taskAlreadyCompleted = [];
+  let taskInfo = {};
 
   // Holding reference to keys of all the completed tasks
   let previousKeys = keys.slice(0, taskCount);
 
   previousKeys.some((item, index) => {
     if (item === key) {
-      taskAlreadyCompleted = [true, index];
+      taskInfo = {
+        completed: true,
+        count: index,
+      };
       return true;
     }
   });
 
-  if (taskAlreadyCompleted[0]) {
+  if (taskInfo.completed) {
     console.log();
     console.log(chalk.yellow.bold(' This task is already completed!'));
     console.log();
@@ -102,7 +105,7 @@ const fetchTask = async key => {
       ),
     );
     console.log();
-    console.log(chalk.green(`${exercises[taskAlreadyCompleted[1]].task}`));
+    console.log(chalk.green(`${exercises[taskInfo.count].task}`));
     console.log();
     return;
   }
@@ -112,7 +115,7 @@ const fetchTask = async key => {
       userSubmittedFiles.push(fileName);
     }
 
-    fs.writeFileSync('./config.json', JSON.stringify(userConfig));
+    fs.writeFileSync('./config.json', JSON.stringify(userConfig, null, 2));
 
     console.log();
     console.log(
