@@ -179,12 +179,12 @@ const submitTask = async () => {
   if (!fs.existsSync(`${process.cwd()}/config.json`)) {
     console.log(
       chalk.red.bold(
-        ' Make sure that you are within the Teach-Code-solutions directory!',
+        ' Make sure that you are within the teachcode-solutions directory!',
       ),
     );
     console.log();
     console.log(
-      chalk.magenta.bold('\tcd Teach-Code-solutions may resolve the issue!'),
+      chalk.magenta.bold('\tcd teachcode-solutions may resolve the issue!'),
     );
     console.log();
     process.exit(1);
