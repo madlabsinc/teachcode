@@ -1,152 +1,92 @@
 [
-    {
-        "task": "Hey there folks, you have chosen JS Path! \n Here's your first task! All the best...\n Task 1:-\n Print Hello World to the console",
-        "op": "/solutions/task1.js"
-    },
-
-    {
-        "task": "Great! Now's let's move on to variables. Variables are used to store data values \n Task 2:-\n Declare a variable to store the value 18 and print the value.",
-        "op": "/solutions/task2.js"
-    },
-
-    {
-        "task": "Let's move on to strings. Strings represent a set of characters written within quotes. \n Task 3:-\n Declare a variable to store the value 'JS is cool!' and print it.",
-        "op": "/solutions/task3.js"
-    },
-
-    {
-        "task": "Keep it up! Let's move on to String methods. There are a variety of methods for string manipulation in JS. Some of them are: \n 1. length - To find the length of the string. \n 2. indexOf() - Returns the first occurence of a specified text in a string. \n 3. slice() - extracts a part of a string and returns the extracted part. \n 4. replace() - replaces a specified value with another value in a string. \n 5. concat() - to join two or more strings. \n 6. trim() - removes the white space from both sides of the string. \n Task 4:-\n Obtain the following output for the string ' Hey, this is Task 4 of JS Path! ' \n Output: \n Length of the string \n Display the index of first occurence of 'Task' \n Slice the string for displaying 'JS' \n Replace JS with Python \n Concatenate '!' to the end of the string. \n Remove the whitespaces from the beginning and end of the string.",
-        "op": "/solutions/task4.js"
-    },
-
-    {
-        "task": "Impressive! Let's move on to the next topic:  Operators. \n There are a variety of operators. Let's move on to Arithmetic Operators: +,-,*,/,%, **. \n Here's your task:\n Task 5:- \n Take 25 & 33 as your operands and print their sum, difference, product, quotient, remainder, 25^2.",
-        "op": "/solutions/task5.js"
-    },
-
-    {
-        "task": "Awesome! Let's move on to Comparison Operators. They are used to compare two values. They return true or false according to the value of their operands. They are: ==, ===, !=, >, <, >=, <=. Here's your task:\n Task 6:-\n Use 44 & 29 as your operands. Compare them using the Comparison operators in the same order and print the value which they return.",
-        "op": "/solutions/task6.js"
-    },
-
-    {
-        "task": "Now, let's move on to Logical Operators. They too return true or false according to the value of their operands. They are : \n && - returns true if both operands are true \n || - returns true if any of the operands are true \n ! - negates whatever the statement inside is. \n Here's your task: \n Task 7:- \n Use 34,23,1 as your operands. Check whether\n 1. 34>23 and 34<1 \n 2. 34<23 or 34>1 \n 3. not 23<34",
-        "op": "/solutions/task7.js"
-    },
-
-    {
-        "task": "Great! Let's move on to Loops now. Loops are used to repeat the same code without writing it over and over again. \n Let's start with for loop. Syntax: \n for (initialization; condition; update)\n{// code block to be executed} \n Here's your task: \n Task 8:- \n Print the multiples of 4 from 1 to 12 using for loop.",
-        "op": "/solutions/task8.js"
-    },
-
-    {
-        "task": "Let's move on to another loop, the while loop, along with the if-else blocks. while loop is also an entry controlled loop, i.e, it checks the condition first before it starts executing. If-else blocks are used to compare the values and execute according to the conditions given. \n Syntax: \n while(condition) \n {block of statements; update statement;} \n Here's your task: \n Task 9:- \n Print the numbers from 1 to 50. Print Buzz if the number is a multiple of 5.",
-        "op": "/solutions/task9.js"
-    },
-
-    {
-        "task": "Great work! Let's move on to another loop, the do while loop. Unlike other loops, this one is an exit controlled loop, i.e, it executes at least once. It checks the condition only at the exit. \n Syntax: do{\n loop block\n}(while(condition)); \n Here's your task: \nTask 10:-\n Iterate through the numbers 1 to 20 and print whether the number is odd or even. \n Here's the sample output: \n 1 is odd. \n2 is even. ....\n20 is even.",
-        "op": "/solutions/task10.js"
-    },
-
-    {
-        "task": "Awesome! Let's now move on to break and continue statements. \n break statement is used to break out of the loop when required. It stops the iteration when used in loops. \n continue statments are used to skip the current iteration. \n The difference between these statements is that in the case of break statement, the iteration stops and breaks out of loop, whereas, in the case of continue, the iteration is skipped but the loop continues to execute. \n Here's your task: \n Task 11:- \n Print numbers from 1 to 15. Skip the iteration if the number is a multiple of 3 and break out of the loop when it reaches 13.",
-        "op": "/solutions/task11.js"
-    }, 
-
-    {
-        "task": "Fantastic! Now let's move on to arrays. \n Arrays are used to store multiple values in a single variable. It can be thought of as a collection of things of the same type. Like, a collection of roll numbers. \n Arrays are declared using []. Eg: let rollno = [1,2,3] \n Here's your task: \n Task 13 \n Store the values 45,23,767,921 into an array and print the values of the array which are greater than 23. Use arrayname.length to get the length of the array.",
-        "op": "/solutions/task12.js"
-    },
-
-    {
-        "task": "Now, let's move on to array methods. \n Arrays have a variety of methods which is of a lot of help in day-to-day tasks. \n Let's get to know them: 1. pop() - Used to remove the last item from the array. \n 2. push() - Used to insert an element to the end of the array. \n 3. shift() - Used to remove the first item from the array. \n 4. splice() - Used to replace the old elements with new elements to the array. \n 5. concat() - to merge two arrays. \n 6. sort() - to sort an array \n 7. reverse() - to reverse an array. \n 8. map() - creates a new array by performing a function on each element. \n Phew! That's a lot of methods. Let's now work with each of them with the help of this task. \n Task 14 \n Create an array with the values ABC, GHI, DEF and JKL. Do the following. 1. Remove JKL from the array.\n 2. Insert PQR into the array. \n 3. Remove ABC from the array. \n 4. Replace the values DEF and PQR with WER and ERT \n 5. Create another array with values 1,2,3 and merge it with the current array. \n 6. Sort the array. \n 7. Reverse the order of elements of the array. \n 8. Create another array with elements of the second array with elements doubled and print the newly created array. \n Print the output in every case.",
-        "op":"/solutions/task13.js"
-    },
-
-    {
-        "task": "Keep up the good work! The next topic we will cover is functions. Functions are sections of code that execute other code and make it reusable. \nIn ES6 there are 2 main ways to declare a function, the function keyword and arrow functions.\n Syntax: function name(params) {\n   code\n} \nTask 12: Declare a function using the respective keyword that when given 2 numbers will add them together, then print out the result. The number pairs you need to test are 1+2, 10+15, 100+400",
-        "op": "/solutions/task14.js"
-    },
-    
-    {
-        "task": "Fantastic! Let's now move on to objects. \n Objects are similar to variables except that they can take multiple values at a time. The values are written as name:value pairs. \n For eg: var car = {type:'Fiat', model:'500', color:'white'} \n Here's your task: \n Task 15 \n Create an object person with age: 75 and gender: female. Print the year of birth with the help of her age along with her gender.",
-        "op":"/solutions/task15.js"
-    },
-
-    {
-        "task": "Now's let's learn about another object called the Math object. It allows you to perform mathematical operations. \n 1. Math.round() - Returns the nearest integer value by rounding off. \n 2. Math.pow(x,y) - Returns the power of x to the value y. \n 3. Math.sqrt() - Returns the square root. \n 4. Math.random() - Returns a random value between 0 and 1. \n 5. Math.ceil() - Returns the value rounded up to the nearest integer. \n 6. Math.floor() - Returns the value rounded down to the nearest integer. \n Here's your task: \n Task 16 \n 1. Print the rounded value of 5.57. \n 2. Find the value of 6^3 and print it. \n 3. Find the square root of 841. \n 4. Print the rounded up value of 5.3 \n 5. Print the rounded down value of 5.3",
-        "op":"/solutions/task16.js"
-    },
-
-    {
-        "task":"Awesome! Let's now move on to switch statement. The switch statement is used to perform different operations based on different inputs. \n Syntax: \n switch(variable) { \n case 1: \n do something \n break; \n case 2: \n do something else \n break; .... \n default: \n Print invalid choice \n} \n Here's your task: \n Task 17 \n Receive the current day as a number using the Date.getDay() which returns the values 0-6 (0 - Sunday, 1 - Monday, etc). Based on the value received, print the day on the basis of the value returned. Use switch statement.",
-        "op":"/solutions/task17.js"
-    },
-
-    {
-        "task":"Impressive! Let's now move on to Type Conversion. \n Variables can be converted to other datatypes using the in-built function or is converted automatically by JS. \n Here's your task: \n Task 18 \n Convert the boolean values true and false to string and print their type using the typeof function. Now store true and false in other variables and print their type. Note the difference in types.",
-        "op":"/solutions/task18.js"
-    },
-
-    {
-        "task": "Awesome! Let's understand scope of a variable. \n Scopes define the value of the variable according to which it is defined. It can be of global or local scope.\n Global scope means that the variable can be accessed from any block of the program. Local scope means that the variable can only be accessed by the block in which it is declared in. \n To illustrate this, let's do the next task. \n Task 19 \n Declare a variable inside a function and set a value 4 to it and print it inside the function. Declare the variable with the same name outside the function block with the value 10 and print it there. \n Note the different values of the same variable printed based on its scope.",
-        "op":"/solutions/task19.js"
-    },
-
-    {
-        "task": "Now, let's move on to Javascript reduce method. \n The reduce() is used to apply a function to each element in the array to reduce the array to a single value. \n Let's now find the sum of elements of an array without using the loops. This can be done using the reduce() method. \n Syntax: array.reduce(function(total, currentValue, currentIndex, arr), initialValue) \n Here's your task: \n Task 20 \n Find the sum of elements of an array with values 11.21, 19.21, 46.21. Do not use any loops. Use reduce().",
-        "op":"/solutions/task20.js"
-    },
-
-    {
-        "task": "Fantastic! Let's now move on to Javascript filter() method. \n The name itself describes it's purpose. It is used to filter elements of the array according to a particular condition. \n Syntax: let newArray = array.filter(function(item) { \n return condition;\n });\n Task 21 \n Use the filter() to find the values of the array containing values 1,3,4,6,8,9 that are divisible by 3 and print the values as output. Do not use any loops or if statements to find the solution. Use filter function only.",
-        "op":"/solutions/task21.js"
-    }, 
-
-    {
-        "task": "Impressive! Let's move on to some other array method, the indexOf() method. \n This method searches for the given element from the given starting index and returns the index of the element if found or -1 if not found. \n Syntax: array.indexOf(item, start) \n Here's your task: \n Task 22 \n Store values 3,9,12,15,18 into an array and search for the element 15 starting from index 2 and then print its index. Then search for 14 starting from index 1 and print the value returned.",
-        "op":"/solutions/task22.js"
-    },
-
-    {
-        "task": "Great work! Let's now learn about keys() method. This is used for returning properties of an object or an array. \n This method returns values that are keys of the key value pair stored. \n Syntax: Object.keys(obj) \n Here's your task: \n Task 23 \n Create an object with key-value pairs \n name: 'ABC', education: 'CSE' and print the values of the keys of the object. \n Also define an array with values A,B,C. Use keys() to obtain the properties of that array and print them.",
-        "op":"/solutions/task23.js"
-    },
-
-    {
-        "task": "Now let's move on to JSON methods. The first one is JSON.parse(). It is used to parse a string written in JSON format and return a JavaScript object. \n Syntax: JSON.parse(string, function) \n Here's your task: \n Task 24 \n Create a JSON object\n var text = '{ 'name':'John', 'age':'39', 'city':'New York'}';\n Use the parse() to replace the value of city with Capital Case.",
-        "op": "/solutions/task24.js"
-    },
-
-    {
-        "task": "Great! The second one is JSON.stringify(). This method is used to convert JS Objects into strings. \n Syntax: JSON.stringify(obj, replacer, space) \n Here's your task: \n Task 25 \n Create an object {x: 5, y: 6} and convert it into a string using stringify() and print the returned value.",
-        "op": "/solutions/task25.js"
-    },
-
-    {
-        "task": "Awesome! Let's now move on to includes() method. This is used to check whether if an element is present in an array or a string. \n Task 26 \n Create an array with elements Mission, Vision, & Dedication. Search the array for the elements Mission & Success. Print the value returned. Note that it is CASE SENSITIVE.",
-        "op": "/solutions/task26.js"
-    },
-
-    {
-        "task": "Fantastic! Here are some extras! Let's learn for of loop & foreach loop. \n We had learned for in loop before.\n foreach is an method that is available only in Array objects. It allows you to iterate through elements of an array. \n for of is a new way for iterating collections. Its introduced in ES6.\n For for of to work on an collection, the collection must have an [Symbol.iterator] property.\n Here's your task: \n Task 27 \n Create an array with elements abc,bcd,def. Loop through it using foreach, for of, for in loops. \n Note the difference in output.",
-        "op": "/solutions/task27.js"
-    },
-
-   {
-       "task": "Amazing! Let's now move on to split() and join() methods. \n split() is used to split the string into an array by specifying a delimiter. \n join() is used to join the array elements into a string based on a delimiter. \n Here's your task: \n Task 28 \n Create a variable with the string JS is AWESOME! and split it on the basis of blank spaces. \n Print the splitted array elements. \n Then create another array with element , I, love, JS! and convert it into a string and print it.",
-       "op":"/solutions/task28.js"
-   },
-
-   {
-       "task": "Great! Let's now move on to some more String Manipulation methods. \n startsWith(), endsWith(), substring(), substr()\n startsWith is used to check whether the string starts with a particular substring or not \n endsWith is used to check whether the string ends with a particular substring or not. \n substring is used to extract a particular part of a string. \n substr is also used to extract a particular part of the string except that it prints including the end index element. \n Here's your task: \n Task 29 \n Initialize a variable with the string Hello, I am a novice JS Developer. and check whether the string starts with Hello and whether it ends with Develop. Print the output. Then initialize another string with the value I am a Polyglot and extract the word Polyglot and print it. Then extract -  am a Polyglot and print it. Use substring() and substr() to obtain the output.",
-       "op":"/solutions/task29.js"
-   }, 
-
-   {
-       "task": "Congrats! You have made it to the last task! \n Here's the task: \n Task 30 \n Use setInterval(), clearInterval(), and setTimeout() to print the values 1 to 5 with an interval from 1000 to 6000.",
-       "op":"/solutions/task30.js"
-   }
-
+  {
+    "task": "Hey there folks, you have chosen JS Path! \n Here's your first task! All the best...\n Task 1:-\n Print Hello World to the console"
+  },
+  {
+    "task": "Great! Now's let's move on to variables. Variables are used to store data values \n Task 2:-\n Declare a variable to store the value 18 and print the value."
+  },
+  {
+    "task": "Let's move on to strings. Strings represent a set of characters written within quotes. \n Task 3:-\n Declare a variable to store the value 'JS is cool!' and print it."
+  },
+  {
+    "task": "Keep it up! Let's move on to String methods. There are a variety of methods for string manipulation in JS. Some of them are: \n 1. length - To find the length of the string. \n 2. indexOf() - Returns the first occurence of a specified text in a string. \n 3. slice() - extracts a part of a string and returns the extracted part. \n 4. replace() - replaces a specified value with another value in a string. \n 5. concat() - to join two or more strings. \n 6. trim() - removes the white space from both sides of the string. \n Task 4:-\n Obtain the following output for the string ' Hey, this is Task 4 of JS Path! ' \n Output: \n Length of the string \n Display the index of first occurence of 'Task' \n Slice the string for displaying 'JS' \n Replace JS with Python \n Concatenate '!' to the end of the string. \n Remove the whitespaces from the beginning and end of the string."
+  },
+  {
+    "task": "Impressive! Let's move on to the next topic:  Operators. \n There are a variety of operators. Let's move on to Arithmetic Operators: +,-,*,/,%, **. \n Here's your task:\n Task 5:- \n Take 25 & 33 as your operands and print their sum, difference, product, quotient, remainder, 25^2."
+  },
+  {
+    "task": "Awesome! Let's move on to Comparison Operators. They are used to compare two values. They return true or false according to the value of their operands. They are: ==, ===, !=, >, <, >=, <=. Here's your task:\n Task 6:-\n Use 44 & 29 as your operands. Compare them using the Comparison operators in the same order and print the value which they return."
+  },
+  {
+    "task": "Now, let's move on to Logical Operators. They too return true or false according to the value of their operands. They are : \n && - returns true if both operands are true \n || - returns true if any of the operands are true \n ! - negates whatever the statement inside is. \n Here's your task: \n Task 7:- \n Use 34,23,1 as your operands. Check whether\n 1. 34>23 and 34<1 \n 2. 34<23 or 34>1 \n 3. not 23<34"
+  },
+  {
+    "task": "Great! Let's move on to Loops now. Loops are used to repeat the same code without writing it over and over again. \n Let's start with for loop. Syntax: \n for (initialization; condition; update)\n{// code block to be executed} \n Here's your task: \n Task 8:- \n Print the multiples of 4 from 1 to 12 using for loop."
+  },
+  {
+    "task": "Let's move on to another loop, the while loop, along with the if-else blocks. while loop is also an entry controlled loop, i.e, it checks the condition first before it starts executing. If-else blocks are used to compare the values and execute according to the conditions given. \n Syntax: \n while(condition) \n {block of statements; update statement;} \n Here's your task: \n Task 9:- \n Print the numbers from 1 to 50. Print Buzz if the number is a multiple of 5."
+  },
+  {
+    "task": "Great work! Let's move on to another loop, the do while loop. Unlike other loops, this one is an exit controlled loop, i.e, it executes at least once. It checks the condition only at the exit. \n Syntax: do{\n loop block\n}(while(condition)); \n Here's your task: \nTask 10:-\n Iterate through the numbers 1 to 20 and print whether the number is odd or even. \n Here's the sample output: \n 1 is odd. \n2 is even. ....\n20 is even."
+  },
+  {
+    "task": "Awesome! Let's now move on to break and continue statements. \n break statement is used to break out of the loop when required. It stops the iteration when used in loops. \n continue statments are used to skip the current iteration. \n The difference between these statements is that in the case of break statement, the iteration stops and breaks out of loop, whereas, in the case of continue, the iteration is skipped but the loop continues to execute. \n Here's your task: \n Task 11:- \n Print numbers from 1 to 15. Skip the iteration if the number is a multiple of 3 and break out of the loop when it reaches 13."
+  },
+  {
+    "task": "Fantastic! Now let's move on to arrays. \n Arrays are used to store multiple values in a single variable. It can be thought of as a collection of things of the same type. Like, a collection of roll numbers. \n Arrays are declared using []. Eg: let rollno = [1,2,3] \n Here's your task: \n Task 13 \n Store the values 45,23,767,921 into an array and print the values of the array which are greater than 23. Use arrayname.length to get the length of the array."
+  },
+  {
+    "task": "Now, let's move on to array methods. \n Arrays have a variety of methods which is of a lot of help in day-to-day tasks. \n Let's get to know them: 1. pop() - Used to remove the last item from the array. \n 2. push() - Used to insert an element to the end of the array. \n 3. shift() - Used to remove the first item from the array. \n 4. splice() - Used to replace the old elements with new elements to the array. \n 5. concat() - to merge two arrays. \n 6. sort() - to sort an array \n 7. reverse() - to reverse an array. \n 8. map() - creates a new array by performing a function on each element. \n Phew! That's a lot of methods. Let's now work with each of them with the help of this task. \n Task 14 \n Create an array with the values ABC, GHI, DEF and JKL. Do the following. 1. Remove JKL from the array.\n 2. Insert PQR into the array. \n 3. Remove ABC from the array. \n 4. Replace the values DEF and PQR with WER and ERT \n 5. Create another array with values 1,2,3 and merge it with the current array. \n 6. Sort the array. \n 7. Reverse the order of elements of the array. \n 8. Create another array with elements of the second array with elements doubled and print the newly created array. \n Print the output in every case."
+  },
+  {
+    "task": "Keep up the good work! The next topic we will cover is functions. Functions are sections of code that execute other code and make it reusable. \nIn ES6 there are 2 main ways to declare a function, the function keyword and arrow functions.\n Syntax: function name(params) {\n   code\n} \nTask 12: Declare a function using the respective keyword that when given 2 numbers will add them together, then print out the result. The number pairs you need to test are 1+2, 10+15, 100+400"
+  },
+  {
+    "task": "Fantastic! Let's now move on to objects. \n Objects are similar to variables except that they can take multiple values at a time. The values are written as name:value pairs. \n For eg: var car = {type:'Fiat', model:'500', color:'white'} \n Here's your task: \n Task 15 \n Create an object person with age: 75 and gender: female. Print the year of birth with the help of her age along with her gender."
+  },
+  {
+    "task": "Now's let's learn about another object called the Math object. It allows you to perform mathematical operations. \n 1. Math.round() - Returns the nearest integer value by rounding off. \n 2. Math.pow(x,y) - Returns the power of x to the value y. \n 3. Math.sqrt() - Returns the square root. \n 4. Math.random() - Returns a random value between 0 and 1. \n 5. Math.ceil() - Returns the value rounded up to the nearest integer. \n 6. Math.floor() - Returns the value rounded down to the nearest integer. \n Here's your task: \n Task 16 \n 1. Print the rounded value of 5.57. \n 2. Find the value of 6^3 and print it. \n 3. Find the square root of 841. \n 4. Print the rounded up value of 5.3 \n 5. Print the rounded down value of 5.3"
+  },
+  {
+    "task": "Awesome! Let's now move on to switch statement. The switch statement is used to perform different operations based on different inputs. \n Syntax: \n switch(variable) { \n case 1: \n do something \n break; \n case 2: \n do something else \n break; .... \n default: \n Print invalid choice \n} \n Here's your task: \n Task 17 \n Receive the current day as a number using the Date.getDay() which returns the values 0-6 (0 - Sunday, 1 - Monday, etc). Based on the value received, print the day on the basis of the value returned. Use switch statement."
+  },
+  {
+    "task": "Impressive! Let's now move on to Type Conversion. \n Variables can be converted to other datatypes using the in-built function or is converted automatically by JS. \n Here's your task: \n Task 18 \n Convert the boolean values true and false to string and print their type using the typeof function. Now store true and false in other variables and print their type. Note the difference in types."
+  },
+  {
+    "task": "Awesome! Let's understand scope of a variable. \n Scopes define the value of the variable according to which it is defined. It can be of global or local scope.\n Global scope means that the variable can be accessed from any block of the program. Local scope means that the variable can only be accessed by the block in which it is declared in. \n To illustrate this, let's do the next task. \n Task 19 \n Declare a variable inside a function and set a value 4 to it and print it inside the function. Declare the variable with the same name outside the function block with the value 10 and print it there. \n Note the different values of the same variable printed based on its scope."
+  },
+  {
+    "task": "Now, let's move on to Javascript reduce method. \n The reduce() is used to apply a function to each element in the array to reduce the array to a single value. \n Let's now find the sum of elements of an array without using the loops. This can be done using the reduce() method. \n Syntax: array.reduce(function(total, currentValue, currentIndex, arr), initialValue) \n Here's your task: \n Task 20 \n Find the sum of elements of an array with values 11.21, 19.21, 46.21. Do not use any loops. Use reduce()."
+  },
+  {
+    "task": "Fantastic! Let's now move on to Javascript filter() method. \n The name itself describes it's purpose. It is used to filter elements of the array according to a particular condition. \n Syntax: let newArray = array.filter(function(item) { \n return condition;\n });\n Task 21 \n Use the filter() to find the values of the array containing values 1,3,4,6,8,9 that are divisible by 3 and print the values as output. Do not use any loops or if statements to find the solution. Use filter function only."
+  },
+  {
+    "task": "Impressive! Let's move on to some other array method, the indexOf() method. \n This method searches for the given element from the given starting index and returns the index of the element if found or -1 if not found. \n Syntax: array.indexOf(item, start) \n Here's your task: \n Task 22 \n Store values 3,9,12,15,18 into an array and search for the element 15 starting from index 2 and then print its index. Then search for 14 starting from index 1 and print the value returned."
+  },
+  {
+    "task": "Great work! Let's now learn about keys() method. This is used for returning properties of an object or an array. \n This method returns values that are keys of the key value pair stored. \n Syntax: Object.keys(obj) \n Here's your task: \n Task 23 \n Create an object with key-value pairs \n name: 'ABC', education: 'CSE' and print the values of the keys of the object. \n Also define an array with values A,B,C. Use keys() to obtain the properties of that array and print them."
+  },
+  {
+    "task": "Now let's move on to JSON methods. The first one is JSON.parse(). It is used to parse a string written in JSON format and return a JavaScript object. \n Syntax: JSON.parse(string, function) \n Here's your task: \n Task 24 \n Create a JSON object\n var text = '{ 'name':'John', 'age':'39', 'city':'New York'}';\n Use the parse() to replace the value of city with Capital Case."
+  },
+  {
+    "task": "Great! The second one is JSON.stringify(). This method is used to convert JS Objects into strings. \n Syntax: JSON.stringify(obj, replacer, space) \n Here's your task: \n Task 25 \n Create an object {x: 5, y: 6} and convert it into a string using stringify() and print the returned value."
+  },
+  {
+    "task": "Awesome! Let's now move on to includes() method. This is used to check whether if an element is present in an array or a string. \n Task 26 \n Create an array with elements Mission, Vision, & Dedication. Search the array for the elements Mission & Success. Print the value returned. Note that it is CASE SENSITIVE."
+  },
+  {
+    "task": "Fantastic! Here are some extras! Let's learn for of loop & foreach loop. \n We had learned for in loop before.\n foreach is an method that is available only in Array objects. It allows you to iterate through elements of an array. \n for of is a new way for iterating collections. Its introduced in ES6.\n For for of to work on an collection, the collection must have an [Symbol.iterator] property.\n Here's your task: \n Task 27 \n Create an array with elements abc,bcd,def. Loop through it using foreach, for of, for in loops. \n Note the difference in output."
+  },
+  {
+    "task": "Amazing! Let's now move on to split() and join() methods. \n split() is used to split the string into an array by specifying a delimiter. \n join() is used to join the array elements into a string based on a delimiter. \n Here's your task: \n Task 28 \n Create a variable with the string JS is AWESOME! and split it on the basis of blank spaces. \n Print the splitted array elements. \n Then create another array with element , I, love, JS! and convert it into a string and print it."
+  },
+  {
+    "task": "Great! Let's now move on to some more String Manipulation methods. \n startsWith(), endsWith(), substring(), substr()\n startsWith is used to check whether the string starts with a particular substring or not \n endsWith is used to check whether the string ends with a particular substring or not. \n substring is used to extract a particular part of a string. \n substr is also used to extract a particular part of the string except that it prints including the end index element. \n Here's your task: \n Task 29 \n Initialize a variable with the string Hello, I am a novice JS Developer. and check whether the string starts with Hello and whether it ends with Develop. Print the output. Then initialize another string with the value I am a Polyglot and extract the word Polyglot and print it. Then extract -  am a Polyglot and print it. Use substring() and substr() to obtain the output."
+  },
+  {
+    "task": "Congrats! You have made it to the last task! \n Here's the task: \n Task 30 \n Use setInterval(), clearInterval(), and setTimeout() to print the values 1 to 5 with an interval from 1000 to 6000."
+  }
 ]

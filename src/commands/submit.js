@@ -5,6 +5,7 @@ const { exec } = require('child_process');
 const fs = require('fs');
 const { PythonShell } = require('python-shell');
 const showBanner = require('node-banner');
+const path = require('path');
 
 const { makeLocalCommit, pushToRemote } = require('../utils/github');
 
@@ -193,15 +194,15 @@ const submitTask = async () => {
   userConfig = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
   let { userName, userSubmittedFiles, learningTrack, taskCount } = userConfig;
 
-  if (learningTrack === 'Python') {
-    exercises = require('../workspace/python/tasks');
-    solutionFile = __dirname + '/../workspace/python' + exercises[taskCount].op;
-    fileExtension = 'py';
-  } else {
-    exercises = require('../workspace/js/tasks');
-    solutionFile = __dirname + '/../workspace/js' + exercises[taskCount].op;
-    fileExtension = 'js';
-  }
+  fileExtension = learningTrack === 'Python' ? 'py' : 'js';
+  const rootPath = path.join(__dirname, '..', 'workspace', fileExtension);
+  const tasksPath = path.join(rootPath, 'tasks');
+  solutionFile = path.join(
+    rootPath,
+    'solutions',
+    `${taskCount + 1}.${fileExtension}`,
+  );
+  exercises = require(tasksPath);
 
   if (taskCount !== exercises.length) {
     console.log();
