@@ -21,7 +21,7 @@
 
 ---
 
-**Chat: _[Telegram](https://t.me/teachcode_cli)_**
+**Chat: _[Telegram](https://t.me/teach_code)_**
 
 **Donate: _[PayPal](https://www.paypal.me/jamesgeorge007), [Patreon](https://www.patreon.com/jamesgeorge007)_**
 
