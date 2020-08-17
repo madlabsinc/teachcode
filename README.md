@@ -31,7 +31,7 @@
 
 ## How to use
 
-Users are required to solve 30 tasks that take them through the basic constructs of the programming language of their choice. The tasks are designed in such a way that the complexity increases as users progress through the tasks. Users can't move forward until the current task is completed. Previously submitted tasks can be viewed as desired by the user but can't be worked on again.
+Users are required to solve 30 tasks that take them through the basic constructs of the programming language of their choice. The tasks are designed in such a way that the complexity increases as users progress through the tasks. One can't move forward until the current task is completed. Previously submitted tasks can be viewed if he/she wants but can't be worked on again.
 
 - `teachcode` expects you to have a GitHub account. Make sure that you create one if that's not the case.
 - Navigate to the directory of your choice and type in `teachcode init`.
