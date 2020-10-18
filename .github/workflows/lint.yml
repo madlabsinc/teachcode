@@ -1,0 +1,14 @@
+name: lint
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up node 12
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: "12"
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v2
+      - run: npm install
+      - run: npm run test
