@@ -27,7 +27,7 @@ test.serial('no config file in the current path should error', async t => {
   t.true(stderr.includes(' Could not find config.json in the current path!'));
 });
 
-test.serial('no keys in config file', async t => {
+test.serial('shows up an appropriate log if the user is getting started', async t => {
   const configWithoutKeys = {
     userName: 'configWithoutKeys',
     taskCount: 0,
@@ -51,7 +51,7 @@ test.serial('no keys in config file', async t => {
   );
 });
 
-test.serial('multiple keys in config file', async t => {
+test.serial('displays the respective keys for the submitted tasks', async t => {
   const configWithMultipleKeys = {
     userName: 'configWithMultipleKeys',
     taskCount: 2,
