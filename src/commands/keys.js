@@ -18,7 +18,9 @@ const showKeys = async () => {
   console.log();
 
   if (!fs.existsSync(`./config.json`)) {
-    console.log(chalk.red("Config file doesn't exist!"));
+    console.error(
+      chalk.red(' Could not find config.json in the current path!'),
+    );
     console.log();
     process.exit(1);
   }
@@ -37,7 +39,7 @@ const showKeys = async () => {
     console.log();
     console.log(
       chalk.magentaBright(
-        '  Looks like this is your very first task. Fire in teachcode fetchtask to start out!',
+        '  Looks like this is your very first task. Type in teachcode fetchtask to get started!',
       ),
     );
     console.log();
