@@ -47,7 +47,7 @@ test.before(() => fs.mkdirSync(workDir));
 test.after(() => fs.rmdirSync(workDir, { recursive: true }));
 
 test.serial('no config file in the current path should error', async t => {
-  const { stderr, code } = await run(['fetchtask'], {
+  const { code, stderr } = await run(['fetchtask'], {
     cwd: workDir,
     reject: false,
   });
@@ -64,7 +64,7 @@ test.serial('supplying an invalid key should error', async t => {
     const userConfig = createUserConfig(trackName, fileExtension, 30, 30);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
 
-    const { stderr, code } = await run(['fetchtask', 'incorrectTestKey'], {
+    const { code, stderr } = await run(['fetchtask', 'incorrectTestKey'], {
       cwd: workDir,
       reject: false,
     });
@@ -84,7 +84,7 @@ test.serial('should be able to access a completed task', async t => {
     const userConfig = createUserConfig(trackName, fileExtension, 6, 5);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
 
-    const { stdout, code } = await run(['fetchtask', 'testKey2'], {
+    const { code, stdout } = await run(['fetchtask', 'testKey2'], {
       cwd: workDir,
     });
     const tasksDir =
