@@ -194,7 +194,7 @@ const submitTask = async () => {
   userConfig = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
   let { userName, userSubmittedFiles, learningTrack, taskCount } = userConfig;
 
-  fileExtension = learningTrack === 'Python' ? 'py' : 'js';
+  fileExtension = learningTrack === 'Python' ? 'python' : 'js';
   const rootPath = path.join(__dirname, '..', 'workspace', fileExtension);
   const tasksPath = path.join(rootPath, 'tasks');
   solutionFile = path.join(
@@ -221,7 +221,7 @@ const submitTask = async () => {
       ),
     );
     console.log();
-    process.exit(1);
+    process.exit(0);
   }
 
   if (!userSubmittedFiles.length) {
@@ -229,7 +229,7 @@ const submitTask = async () => {
     console.log(
       chalk.cyan(' Warning: Use fetchtask to fetch your very first task'),
     );
-    process.exit(1);
+    process.exit(0);
   }
 
   if (taskCount === userSubmittedFiles.length) {
@@ -238,7 +238,7 @@ const submitTask = async () => {
       chalk.cyan.bold(' Info: ') + chalk.yellow.bold('Task already submitted!'),
     );
     console.log();
-    process.exit(1);
+    process.exit(0);
   }
 
   let submittedFile = userSubmittedFiles.slice(-1).pop();

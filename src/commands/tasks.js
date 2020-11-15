@@ -23,14 +23,14 @@ const fetchTask = async key => {
   let fileName;
 
   if (!fs.existsSync('./config.json')) {
-    console.log(
-      chalk.red.bold(
-        ' Make sure that you are within the teachcode-solutions directory!',
-      ),
+    console.error(
+      chalk.red.bold(' Could not find config.json in the current path!'),
     );
     console.log();
     console.log(
-      chalk.cyan.bold(' cd teachcode-solutions may resolve the issue!'),
+      chalk.cyan.bold(
+        ' Make sure that you are within the teachcode-solutions directory!',
+      ),
     );
     console.log();
     process.exit(1);
@@ -57,8 +57,8 @@ const fetchTask = async key => {
 
   if (key && !keys.includes(key)) {
     console.log();
-    console.log(
-      chalk.red.bold("Make sure that you've grabbed the key correctly!"),
+    console.error(
+      chalk.red.bold('Make sure that you have grabbed the key correctly!'),
     );
     console.log();
     process.exit(1);
@@ -67,8 +67,8 @@ const fetchTask = async key => {
   // check if no more tasks are available (no key provided)
   if (!key && taskCount === exercises.length) {
     console.log();
-    console.log(chalk.red.bold('No more tasks available!'));
-    process.exit(1);
+    console.log(chalk.yellow.bold('No more tasks available!'));
+    process.exit(0);
   }
 
   // In case no key is provided, fetch the next task
