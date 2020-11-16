@@ -7,6 +7,7 @@ const { PythonShell } = require('python-shell');
 const showBanner = require('node-banner');
 const path = require('path');
 
+const logger = require('../utils/logger');
 const { makeLocalCommit, pushToRemote } = require('../utils/github');
 
 const keyStore = '123456789abcedefghijklmnopqrstuvwxyz';
@@ -83,52 +84,43 @@ const checkSolution = async (submittedFileContent, solutionFileContent) => {
 
       await makeLocalCommit(taskCount);
 
-      let condition = true;
+      // User is prompted for credentials unless they are valid
       do {
         try {
           await pushToRemote();
           break;
         } catch (err) {
-          console.log(chalk.red.bold('Error: Invalid credentials'));
-          // The method gets invoked again as invalid credentials were provided.
+          logger.error('Error: Invalid credentials');
         }
-      } while (condition);
+      } while (true); // eslint-disable-line
 
       if (taskCount === exercises.length) {
         console.log();
-        console.log(chalk.greenBright("  Hurray you've done it!"));
+        logger.success(` Hurray you've done it!`);
         console.log();
-        console.log(
-          chalk.cyan.bold(' Info: ') +
-            chalk.yellow.bold('No more tasks available!'),
-        );
-        process.exit(1);
+        logger.info(' Info: No more tasks available!');
+        process.exit(0);
       }
 
       console.log();
-      console.log(
-        chalk.green.bold(
-          `  Hurray you've done it!\n  Move to the next task with ${chalk.yellow.bold(
-            'teachcode fetchtask',
-          )}`,
-        ),
-      );
+      logger.success(` Hurray you've done it!`);
       console.log();
+      logger.success(
+        `Move to the next task with ${chalk.yellow.bold(
+          'teachcode fetchtask',
+        )}`,
+      );
     } else {
       console.log();
-      console.log(
-        chalk.yellow.bold(
-          "  The solution doesn't meet all the output requirements. Have a look again!",
-        ),
+      logger.warn(
+        `  The solution doesn't meet all the output requirements. Please have a look again!`,
       );
       console.log();
     }
   } catch (err) {
     console.log();
-    console.log(
-      chalk.red.bold(
-        ` There is something wrong with task${taskCount + 1}.${fileExtension}`,
-      ),
+    logger.error(
+      ` There is something wrong with task${taskCount + 1}.${fileExtension}`,
     );
   }
 };
@@ -151,10 +143,8 @@ const validateSolution = solutionFile => {
         return;
       } else {
         console.log();
-        console.log(
-          chalk.red.bold(
-            ' Make sure that you use the required constructs as provided',
-          ),
+        logger.error(
+          ' Make sure that you use the required constructs as provided',
         );
         process.exit(1);
       }
@@ -177,16 +167,8 @@ const submitTask = async () => {
   );
   console.log();
 
-  if (!fs.existsSync(`${process.cwd()}/config.json`)) {
-    console.log(
-      chalk.red.bold(
-        ' Make sure that you are within the teachcode-solutions directory!',
-      ),
-    );
-    console.log();
-    console.log(
-      chalk.magenta.bold('\tcd teachcode-solutions may resolve the issue!'),
-    );
+  if (!fs.existsSync('./config.json')) {
+    logger.error(' Could not find config.json in the current path!');
     console.log();
     process.exit(1);
   }
@@ -194,7 +176,7 @@ const submitTask = async () => {
   userConfig = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
   let { userName, userSubmittedFiles, learningTrack, taskCount } = userConfig;
 
-  fileExtension = learningTrack === 'Python' ? 'py' : 'js';
+  fileExtension = learningTrack === 'Python' ? 'python' : 'js';
   const rootPath = path.join(__dirname, '..', 'workspace', fileExtension);
   const tasksPath = path.join(rootPath, 'tasks');
   solutionFile = path.join(
@@ -206,39 +188,32 @@ const submitTask = async () => {
 
   if (taskCount !== exercises.length) {
     console.log();
-    console.log(
-      chalk.green(
-        `User: ${userName}${`\t`.repeat(6)}Progress: ${taskCount + 1}/${
-          exercises.length
-        }`,
-      ),
+    const progressInfo = `${taskCount + 1}/${exercises.length}`;
+    logger.success(
+      `User: ${userName}${`\t`.repeat(6)}Progress: ${progressInfo}`,
     );
   } else {
     console.log();
-    console.log(
-      chalk.green.bold(
-        `  Congrats ${userName} you've made it through!\n  All tasks completed!`,
-      ),
-    );
+
+    logger.success(`  Congrats ${userName} you've made it through!`);
     console.log();
-    process.exit(1);
+
+    logger.success('  All tasks completed!');
+    console.log();
+    process.exit(0);
   }
 
   if (!userSubmittedFiles.length) {
     console.log();
-    console.log(
-      chalk.cyan(' Warning: Use fetchtask to fetch your very first task'),
-    );
-    process.exit(1);
+    logger.info(' Warning: Use fetchtask to fetch your very first task');
+    process.exit(0);
   }
 
   if (taskCount === userSubmittedFiles.length) {
     console.log();
-    console.log(
-      chalk.cyan.bold(' Info: ') + chalk.yellow.bold('Task already submitted!'),
-    );
+    logger.info(' Info: Task already submitted!');
     console.log();
-    process.exit(1);
+    process.exit(0);
   }
 
   let submittedFile = userSubmittedFiles.slice(-1).pop();
@@ -249,10 +224,8 @@ const submitTask = async () => {
 
   if (!submittedFileContent.length) {
     console.log();
-    console.log(
-      chalk.red(
-        ` Solution file task${taskCount + 1}.${fileExtension} is empty!`,
-      ),
+    logger.error(
+      ` Solution file task${taskCount + 1}.${fileExtension} is empty!`,
     );
     console.log();
     process.exit(1);
@@ -262,28 +235,22 @@ const submitTask = async () => {
     PythonShell.run(submittedFile, null, (err, result) => {
       if (err) {
         console.log();
-        console.log(
-          chalk.red.bold(
-            '  Oops there is something wrong with the syntax part!',
-          ),
-        );
+        logger.error('  Oops there is something wrong with the syntax part!');
         console.log();
-        console.log(err.toString());
+        logger.error(err.toString());
         process.exit(1);
       }
 
       PythonShell.run(solutionFile, null, (err, solution) => {
         if (err) {
-          console.log(chalk.red.bold('  ' + err.toString()));
+          logger.error('  ' + err.toString());
           process.exit(1);
         }
 
         if (typeof result === 'undefined' || typeof solution === 'undefined') {
           console.log();
-          console.log(
-            chalk.red.bold(
-              ` Kindly have a look at task${taskCount}.${fileExtension}`,
-            ),
+          logger.error(
+            ` Please take a look at task${taskCount}.${fileExtension}`,
           );
           process.exit(1);
         }
@@ -294,11 +261,7 @@ const submitTask = async () => {
   } else {
     exec(`node ${submittedFile}`, (err, result) => {
       if (err) {
-        console.log(
-          chalk.red.bold(
-            '  Oops there is something wrong with the syntax part!',
-          ),
-        );
+        logger.error('  Oops there is something wrong with the syntax part!');
         process.exit(1);
       }
       exec(`node ${solutionFile}`, (err, solution) => {

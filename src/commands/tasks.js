@@ -1,14 +1,15 @@
 'use strict';
 
-const chalk = require('chalk');
-const { execSync } = require('child_process');
 const fs = require('fs');
+const path = require('path');
 const showBanner = require('node-banner');
+
+const logger = require('../utils/logger');
 
 /**
  * Fetch the respective task corresponding to the supplied key
  *
- * @param {String} key - key that corresponds to a specific task
+ * @param {String} key - key that corresponds to a task
  * @returns {Promise<void>}
  */
 
@@ -19,25 +20,18 @@ const fetchTask = async key => {
   );
   console.log();
 
-  let exercises;
-  let fileName;
-
   if (!fs.existsSync('./config.json')) {
-    console.log(
-      chalk.red.bold(
-        ' Make sure that you are within the teachcode-solutions directory!',
-      ),
-    );
+    logger.error(' Could not find config.json in the current path!');
     console.log();
-    console.log(
-      chalk.cyan.bold(' cd teachcode-solutions may resolve the issue!'),
+    logger.info(
+      ' Make sure that you are within the teachcode-solutions directory!',
     );
     console.log();
     process.exit(1);
   }
 
   // Reading the user-config information.
-  let userConfig = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+  const userConfig = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 
   const {
     learningTrack,
@@ -47,28 +41,40 @@ const fetchTask = async key => {
     userSubmittedFiles,
   } = userConfig;
 
-  if (learningTrack === 'Python') {
-    fileName = `task${taskCount + 1}.py`;
-    exercises = require('../workspace/python/tasks');
-  } else {
-    fileName = `task${taskCount + 1}.js`;
-    exercises = require('../workspace/js/tasks');
-  }
+  // Holds a reference to the file extensions corresponding to the learning track
+  const fileExtensionMap = {
+    Python: 'py',
+    JavaScript: 'js',
+  };
+
+  // For eg: task1.py
+  const fileName = `task${taskCount + 1}.${fileExtensionMap[learningTrack]}`;
+
+  const tasksDir =
+    learningTrack === 'Python' ? 'python' : fileExtensionMap[learningTrack];
+  const exercises = require(path.join(
+    __dirname,
+    '..',
+    'workspace',
+    tasksDir,
+    'tasks',
+  ));
+
+  // Progress information
+  const progressInfo = `${Math.min(taskCount + 1, 30)}/${exercises.length}`;
 
   if (key && !keys.includes(key)) {
     console.log();
-    console.log(
-      chalk.red.bold("Make sure that you've grabbed the key correctly!"),
-    );
+    logger.error('Make sure that you have grabbed the key correctly!');
     console.log();
     process.exit(1);
   }
 
-  // check if no more tasks are available (no key provided)
+  // Check if no more tasks are available (no key provided)
   if (!key && taskCount === exercises.length) {
     console.log();
-    console.log(chalk.red.bold('No more tasks available!'));
-    process.exit(1);
+    logger.warn(' No more tasks available!');
+    process.exit(0);
   }
 
   // In case no key is provided, fetch the next task
@@ -76,63 +82,50 @@ const fetchTask = async key => {
     key = keys.slice(-1).pop();
   }
 
-  let taskInfo = {};
+  // Fetch the key position within the user config if it is not the current task
+  const taskIdx = keys.slice(0, taskCount).indexOf(key);
 
-  // Holding reference to keys of all the completed tasks
-  let previousKeys = keys.slice(0, taskCount);
-
-  previousKeys.some((item, index) => {
-    if (item === key) {
-      taskInfo = {
-        completed: true,
-        count: index,
-      };
-      return true;
-    }
-  });
-
-  if (taskInfo.completed) {
+  if (taskIdx !== -1) {
     console.log();
-    console.log(chalk.yellow.bold(' This task is already completed!'));
+    logger.warn(' This task is already completed!');
+
     console.log();
     console.log();
-    console.log(
-      chalk.green.bold(
-        `User: ${userName}${`\t`.repeat(4)}Progress: ${Math.min(
-          taskCount + 1,
-          30,
-        )}/${exercises.length}`,
-      ),
+
+    // Display user name and progress information
+    logger.success(
+      `User: ${userName}${`\t`.repeat(4)}Progress: ${progressInfo}`,
     );
     console.log();
-    console.log(chalk.green(`${exercises[taskInfo.count].task}`));
+
+    // Display the task corresponding to the key supplied
+    logger.success(exercises[taskIdx].task);
     console.log();
     return;
   }
 
+  // Grab the key corresponding to the most recent task
   if (keys.slice(-1).pop() === key) {
-    if (userSubmittedFiles.indexOf(fileName) === -1) {
+    if (!userSubmittedFiles.includes(fileName)) {
       userSubmittedFiles.push(fileName);
     }
 
+    // Write back the updated config
     fs.writeFileSync('./config.json', JSON.stringify(userConfig, null, 2));
 
+    // Display user name and progress information
     console.log();
-    console.log(
-      chalk.cyan.bold(
-        `User: ${userName}${`\t`.repeat(6)}Progress: ${Math.min(
-          taskCount + 1,
-          30,
-        )}/${exercises.length}`,
-      ),
+    logger.success(
+      `User: ${userName}${`\t`.repeat(6)}Progress: ${progressInfo}`,
     );
-    // Displaying respective task within the the console screen.
+
+    // Display the task
     console.log();
-    console.log(chalk.green(`${exercises[taskCount].task}`));
+    logger.success(exercises[taskCount].task);
     console.log();
 
-    let createCmd = process.platform !== 'win32' ? 'touch' : 'notepad';
-    execSync(`${createCmd} ${fileName}`);
+    // Create a solution file corresponding to the current task
+    fs.writeFileSync(fileName, `// Write your solution in this file`);
   }
 };
 
