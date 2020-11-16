@@ -8,6 +8,8 @@ const didYouMean = require('didyoumean');
 
 const { version } = require('../package');
 
+const logger = require('../src/utils/logger');
+
 const initTasks = require('../src/commands/init');
 const fetchTask = require('../src/commands/tasks');
 const showKeys = require('../src/commands/keys');
@@ -45,14 +47,15 @@ const suggestCommands = cmd => {
   // Get a suggestion from didyoumean.js based on the input.
   const suggestion = didYouMean(cmd, availableCommands);
   if (suggestion) {
-    console.log(`  ` + chalk.red(`Did you mean ${chalk.yellow(suggestion)}?`));
+    logger.info(`  Did you mean ${chalk.yellow(suggestion)}?`);
   }
 };
 
 // Validates any random command fired in
 program.arguments('<command>').action(cmd => {
   program.outputHelp();
-  console.log(`  ` + chalk.red(`\n  Unknown command ${chalk.yellow(cmd)}.`));
+  console.log();
+  logger.error(`  Unknown command ${chalk.yellow(cmd)}.`);
   console.log();
   suggestCommands(cmd);
 });
