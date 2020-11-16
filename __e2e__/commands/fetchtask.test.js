@@ -84,7 +84,7 @@ test.serial('should be able to access a completed task', async t => {
     const userConfig = createUserConfig(trackName, fileExtension, 6, 5);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
 
-    const { code, stdout } = await run(['fetchtask', 'testKey2'], {
+    const { code, stderr, stdout } = await run(['fetchtask', 'testKey2'], {
       cwd: workDir,
     });
     const tasksDir =
@@ -93,7 +93,7 @@ test.serial('should be able to access a completed task', async t => {
 
     // Assertions
     t.is(code, 0);
-    t.true(stdout.trim().includes('This task is already completed'));
+    t.true(stderr.trim().includes('This task is already completed'));
     t.true(stdout.includes(tasks[1].task));
   }
 });
@@ -128,11 +128,11 @@ test.serial(
       const userConfig = createUserConfig(trackName, fileExtension, 30, 30);
       fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
 
-      const { code, stdout } = await run(['fetchtask'], { cwd: workDir });
+      const { code, stderr } = await run(['fetchtask'], { cwd: workDir });
 
       // Assertions
       t.is(code, 0);
-      t.true(stdout.includes('No more tasks available!'));
+      t.true(stderr.trim().includes('No more tasks available!'));
     }
   },
 );

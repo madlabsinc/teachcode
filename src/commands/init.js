@@ -1,14 +1,14 @@
 'use strict';
 
-const chalk = require('chalk');
-const { shellSync } = require('execa');
 const fs = require('fs');
 const inquirer = require('inquirer');
 const showBanner = require('node-banner');
 const open = require('open');
 const ora = require('ora');
 
-// GitHub workflow helper methods.
+const logger = require('../utils/logger');
+
+// GitHub workflow helpers.
 const {
   checkIfRepositoryExists,
   cloneRepository,
@@ -39,10 +39,10 @@ let userConfig = {
 
 const showInstructions = () => {
   console.log();
-  console.log(chalk.green.bold(' Perform the following steps:-'));
+  logger.success(' Perform the following steps:-');
   console.log();
-  console.log(chalk.cyan.bold(' 1. cd teachcode-solutions'));
-  console.log(chalk.cyan.bold(` 2. teachcode fetchtask`));
+  logger.info(' 1. cd teachcode-solutions');
+  logger.info(` 2. teachcode fetchtask`);
 };
 
 /**
@@ -54,12 +54,12 @@ const showInstructions = () => {
 const promptAccessTokenCreation = async () => {
   const instructionsUrl =
     'https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line';
+
   console.log();
-  console.log(
-    chalk.greenBright(
-      'You are required to have a personal access token for consuming the GitHub API.\nIf you do not have one, please follow these instructions.\n',
-    ),
+  logger.success(
+    'You are required to have a personal access token for consuming the GitHub API.\nIf you do not have one, please follow these instructions.\n',
   );
+
   const { openInBrowser } = await inquirer.prompt([
     {
       name: 'openInBrowser',
@@ -87,35 +87,29 @@ const initTasks = async () => {
   console.log();
 
   if (
-    fs.existsSync(`${process.cwd()}/teachcode-solutions`) ||
-    fs.existsSync(`${process.cwd()}/config.json`)
+    ['./config.json', './teachcode-solutions'].some(path => fs.existsSync(path))
   ) {
     console.log();
-    console.log(
-      chalk.redBright(
-        `  It seems that there is already a ${chalk.yellow.bold(
-          'teachcode-solutions',
-        )} directory or ${chalk.yellow.bold(
-          'config.json',
-        )} file existing in path`,
-      ),
+    logger.error(
+      `  It seems that there is already a ${logger.warn(
+        'teachcode-solutions',
+      )} directory or ${logger.warn('config.json')} file existing in path`,
     );
     process.exit(1);
   }
 
   console.log();
-  console.log(
-    chalk.greenBright(
-      ` Welcome to teachcode${`\n`.repeat(2)}${`\t`.repeat(
-        2,
-      )} Points to ponder ${`\n`.repeat(
-        4,
-      )} 1. Solution files are auto-created\n 2. Print out exactly what is required as given in the task\n 3. You have the provision to view previously submitted tasks ${`\n`.repeat(
-        4,
-      )}`,
-    ),
+  logger.success(
+    ` Welcome to teachcode${`\n`.repeat(2)}${`\t`.repeat(
+      2,
+    )} Points to ponder ${`\n`.repeat(
+      4,
+    )} 1. Solution files are auto-created\n 2. Print out exactly what is required as given in the task\n 3. You have the provision to view previously submitted tasks ${`\n`.repeat(
+      4,
+    )}`,
   );
 
+  // Prompt asking to choose between the available learning tracks
   const { learningTrackOfChoice } = await inquirer.prompt([
     {
       name: 'learningTrackOfChoice',
@@ -125,6 +119,7 @@ const initTasks = async () => {
     },
   ]);
 
+  // Prompt asking for the username
   const { userName } = await inquirer.prompt([
     {
       name: 'userName',
@@ -153,7 +148,7 @@ const initTasks = async () => {
     await promptAccessTokenCreation();
     await createRepository();
 
-    shellSync(`mkdir teachcode-solutions`);
+    fs.mkdirSync('teachcode-solutions');
     fs.writeFileSync(
       'teachcode-solutions/config.json',
       JSON.stringify(userConfig, null, 2),

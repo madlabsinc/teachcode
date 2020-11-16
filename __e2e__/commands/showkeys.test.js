@@ -27,29 +27,37 @@ test.serial('no config file in the current path should error', async t => {
   t.true(stderr.includes(' Could not find config.json in the current path!'));
 });
 
-test.serial('shows up an appropriate log if the user is getting started', async t => {
-  const configWithoutKeys = {
-    userName: 'configWithoutKeys',
-    taskCount: 0,
-    keys: [],
-  };
+test.serial(
+  'shows up an appropriate log if the user is getting started',
+  async t => {
+    const configWithoutKeys = {
+      userName: 'configWithoutKeys',
+      taskCount: 0,
+      keys: [],
+    };
 
-  // Create config.json
-  fs.writeFileSync(configFilePath, JSON.stringify(configWithoutKeys, null, 2));
-  const { code, stdout } = await run(['showkeys'], { cwd: workDir });
+    // Create config.json
+    fs.writeFileSync(
+      configFilePath,
+      JSON.stringify(configWithoutKeys, null, 2),
+    );
+    const { code, stdout } = await run(['showkeys'], {
+      cwd: workDir,
+    });
 
-  // Assertions
-  t.is(code, 0);
-  t.true(stdout.includes('User: configWithoutKeys'));
-  t.true(stdout.includes('Progress: 1/30'));
-  t.true(
-    stdout
-      .trim()
-      .includes(
-        'Looks like this is your very first task. Type in teachcode fetchtask to get started!',
-      ),
-  );
-});
+    // Assertions
+    t.is(code, 0);
+    t.true(stdout.includes('User: configWithoutKeys'));
+    t.true(stdout.includes('Progress: 1/30'));
+    t.true(
+      stdout
+        .trim()
+        .includes(
+          'Looks like this is your very first task. Type in teachcode fetchtask to get started!',
+        ),
+    );
+  },
+);
 
 test.serial('displays the respective keys for the submitted tasks', async t => {
   const configWithMultipleKeys = {

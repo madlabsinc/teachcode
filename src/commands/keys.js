@@ -1,8 +1,10 @@
 'use strict';
 
-const fs = require('fs');
 const chalk = require('chalk');
+const fs = require('fs');
 const showBanner = require('node-banner');
+
+const logger = require('../utils/logger');
 
 /**
  * Shows a list of keys that the user has hold of
@@ -18,9 +20,7 @@ const showKeys = async () => {
   console.log();
 
   if (!fs.existsSync(`./config.json`)) {
-    console.error(
-      chalk.red(' Could not find config.json in the current path!'),
-    );
+    logger.error(' Could not find config.json in the current path!');
     console.log();
     process.exit(1);
   }
@@ -29,24 +29,22 @@ const showKeys = async () => {
   const { keys, userName, taskCount } = JSON.parse(userConfig);
 
   console.log();
-  console.log(
-    chalk.green(
-      `User: ${userName}${`\t`.repeat(6)}Progress: ${taskCount + 1}/30`,
-    ),
+  logger.success(
+    `User: ${userName}${`\t`.repeat(6)}Progress: ${taskCount + 1}/30`,
   );
 
   if (keys.length === 0) {
     console.log();
-    console.log(
-      chalk.magentaBright(
-        '  Looks like this is your very first task. Type in teachcode fetchtask to get started!',
-      ),
+    logger.info(
+      `  Looks like this is your very first task. Type in ${chalk.yellow.bold(
+        'teachcode fetchtask',
+      )} to get started!`,
     );
     console.log();
   } else {
-    keys.map((item, key) => {
+    keys.map((key, idx) => {
       console.log();
-      console.log(chalk.green(` Task-${key + 1}: ${item}`));
+      logger.success(` Task-${idx + 1}: ${key}`);
     });
   }
 };
