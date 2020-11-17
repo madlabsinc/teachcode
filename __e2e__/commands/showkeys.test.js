@@ -23,12 +23,15 @@ test.serial('no config file in the current path should error', async t => {
   });
 
   // Assertions
+  // Exit code
   t.is(code, 1);
+
+  // Assert for the expected error message
   t.true(stderr.includes(' Could not find config.json in the current path!'));
 });
 
 test.serial(
-  'shows up an appropriate log if the user is getting started',
+  'shows up an appropriate message if the user is getting started',
   async t => {
     const configWithoutKeys = {
       userName: 'configWithoutKeys',
@@ -46,9 +49,14 @@ test.serial(
     });
 
     // Assertions
+    // Exit code
     t.is(code, 0);
+
+    // Displays user name and progress information
     t.true(stdout.includes('User: configWithoutKeys'));
     t.true(stdout.includes('Progress: 1/30'));
+
+    // Assert for the expected message
     t.true(
       stdout
         .trim()
@@ -74,9 +82,14 @@ test.serial('displays the respective keys for the submitted tasks', async t => {
   const { code, stdout } = await run(['showkeys'], { cwd: workDir });
 
   // Assertions
+  // Exit code
   t.is(code, 0);
+
+  // Displays completed tasks and the corresponding keys
   t.true(stdout.includes('Task-1: testkey1'));
   t.true(stdout.includes('Task-2: testkey2'));
+
+  // Displays user name and progress information
   t.true(stdout.includes('User: configWithMultipleKeys'));
   t.true(stdout.includes('Progress: 3/30'));
 });
