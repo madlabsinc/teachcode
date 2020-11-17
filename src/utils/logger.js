@@ -1,3 +1,5 @@
+'use strict';
+
 const chalk = require('chalk');
 
 const error = msg => console.error(chalk.red.bold(msg));

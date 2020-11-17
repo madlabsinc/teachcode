@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const showBanner = require('node-banner');
 
+const fileExtensionMap = require('../utils/constants');
 const logger = require('../utils/logger');
 
 /**
@@ -40,12 +41,6 @@ const fetchTask = async key => {
     keys,
     userSubmittedFiles,
   } = userConfig;
-
-  // Holds a reference to the file extensions corresponding to the learning track
-  const fileExtensionMap = {
-    Python: 'py',
-    JavaScript: 'js',
-  };
 
   // For eg: task1.py
   const fileName = `task${taskCount + 1}.${fileExtensionMap[learningTrack]}`;

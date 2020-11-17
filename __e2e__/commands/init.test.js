@@ -4,7 +4,7 @@ const path = require('path');
 const test = require('ava');
 const fs = require('fs');
 
-const { createUserConfig, run } = require('./helpers');
+const { createUserConfig, run } = require('../helpers/test-utils');
 
 // All files for testing purpose are generated within the teachcode-solutions directory
 const workDir = path.join(__dirname, 'teachcode-solutions');
@@ -15,7 +15,7 @@ const configFilePath = path.join(workDir, 'config.json');
 // Create the teachcode-solutions directory
 test.before(() => {
   fs.mkdirSync(workDir);
-  const userConfig = createUserConfig('Python', 'py', 6);
+  const userConfig = createUserConfig('Python', 6);
   fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
 });
 

@@ -4,7 +4,7 @@ const path = require('path');
 const test = require('ava');
 const fs = require('fs');
 
-const { run } = require('./helpers');
+const { run } = require('../helpers/test-utils');
 
 const workDir = path.join(__dirname, 'teachcode-solutions');
 const configFilePath = path.join(workDir, 'config.json');
@@ -27,7 +27,7 @@ test.serial('no config file in the current path should error', async t => {
   t.is(code, 1);
 
   // Assert for the expected error message
-  t.true(stderr.includes(' Could not find config.json in the current path!'));
+  t.is(stderr.trim(), 'Could not find config.json in the current path!');
 });
 
 test.serial(

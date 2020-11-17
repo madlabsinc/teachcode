@@ -4,9 +4,10 @@ const path = require('path');
 const test = require('ava');
 const fs = require('fs');
 
-const workspacePath = path.join(__dirname, '..', '..', 'src', 'workspace');
+const { createUserConfig, run } = require('../helpers/test-utils');
+const fileExtensionMap = require('../../src/utils/constants');
 
-const { createUserConfig, run } = require('./helpers');
+const workspacePath = path.join(__dirname, '..', '..', 'src', 'workspace');
 
 // All files for testing purpose are generated within the teachcode-solutions directory
 const workDir = path.join(__dirname, 'teachcode-solutions');
@@ -14,10 +15,7 @@ const workDir = path.join(__dirname, 'teachcode-solutions');
 // Path to config.json
 const configFilePath = path.join(workDir, 'config.json');
 
-const learningTracksInfo = [
-  { trackName: 'Python', fileExtension: 'py' },
-  { trackName: 'JavaScript', fileExtension: 'js' },
-];
+const learningTracks = Object.keys(fileExtensionMap);
 
 // Create the teachcode-solutions directory
 test.before(() => fs.mkdirSync(workDir));
@@ -40,12 +38,12 @@ test.serial('no config file in the current path should error', async t => {
 });
 
 test.serial('supplying an invalid key should error', async t => {
-  for (const track of learningTracksInfo) {
-    // Grab the keys using object destructuring
-    const { trackName, fileExtension } = track;
+  for (const track of learningTracks) {
+    // Fetch the corresponding file extension
+    const fileExtension = fileExtensionMap[track];
 
     // Create config.json
-    const userConfig = createUserConfig(trackName, fileExtension, 6);
+    const userConfig = createUserConfig(track, 6);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
 
     const { code, stderr, stdout } = await run(
@@ -73,19 +71,18 @@ test.serial('supplying an invalid key should error', async t => {
 });
 
 test.serial('should be able to access a completed task', async t => {
-  for (const track of learningTracksInfo) {
-    // Grab the keys using object destructuring
-    const { trackName, fileExtension } = track;
+  for (const track of learningTracks) {
+    // Fetch the corresponding file extension
+    const fileExtension = fileExtensionMap[track];
 
     // Create config.json
-    const userConfig = createUserConfig(trackName, fileExtension, 6);
+    const userConfig = createUserConfig(track, 6);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
 
     const { code, stderr, stdout } = await run(['fetchtask', 'testKey2'], {
       cwd: workDir,
     });
-    const tasksDir =
-      trackName !== 'Python' ? fileExtension : trackName.toLowerCase();
+    const tasksDir = track !== 'Python' ? fileExtension : track.toLowerCase();
     const tasks = require(path.join(workspacePath, tasksDir, 'tasks.json'));
 
     // Assertions
@@ -96,7 +93,7 @@ test.serial('should be able to access a completed task', async t => {
     t.false(fs.existsSync(path.join(workDir, `task6.${fileExtension}`)));
 
     // Assert for the expected error message
-    t.true(stderr.trim().includes('This task is already completed'));
+    t.is(stderr.trim(), 'This task is already completed!');
 
     // Displays user name and progress information
     t.true(stdout.includes('User: testConfig'));
@@ -108,17 +105,18 @@ test.serial('should be able to access a completed task', async t => {
 });
 
 test.serial('access the current task with the respective key', async t => {
-  for (const track of learningTracksInfo) {
-    // Grab the keys using object destructuring
-    const { trackName, fileExtension } = track;
-    const userConfig = createUserConfig(trackName, fileExtension, 6);
+  for (const track of learningTracks) {
+    // Fetch the corresponding file extension
+    const fileExtension = fileExtensionMap[track];
+
+    // Create config.json
+    const userConfig = createUserConfig(track, 6);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
 
     const { code, stdout } = await run(['fetchtask', 'testKey6'], {
       cwd: workDir,
     });
-    const tasksDir =
-      trackName !== 'Python' ? fileExtension : trackName.toLowerCase();
+    const tasksDir = track !== 'Python' ? fileExtension : track.toLowerCase();
     const tasks = require(path.join(workspacePath, tasksDir, 'tasks.json'));
 
     // Assertions
@@ -141,15 +139,16 @@ test.serial('access the current task with the respective key', async t => {
 });
 
 test.serial('not supplying a key fetches the next task', async t => {
-  for (const track of learningTracksInfo) {
-    // Grab the keys using object destructuring
-    const { trackName, fileExtension } = track;
-    const userConfig = createUserConfig(trackName, fileExtension, 6, 5);
+  for (const track of learningTracks) {
+    // Fetch the corresponding file extension
+    const fileExtension = fileExtensionMap[track];
+
+    // Create config.json
+    const userConfig = createUserConfig(track, 6, 5);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
 
     const { code, stdout } = await run(['fetchtask'], { cwd: workDir });
-    const tasksDir =
-      trackName !== 'Python' ? fileExtension : trackName.toLowerCase();
+    const tasksDir = track !== 'Python' ? fileExtension : track.toLowerCase();
     const tasks = require(path.join(workspacePath, tasksDir, 'tasks.json'));
 
     // Assertions
@@ -174,10 +173,9 @@ test.serial('not supplying a key fetches the next task', async t => {
 test.serial(
   'displays an appropriate message if no more tasks are available',
   async t => {
-    for (const track of learningTracksInfo) {
-      // Grab the keys using object destructuring
-      const { trackName, fileExtension } = track;
-      const userConfig = createUserConfig(trackName, fileExtension, 30);
+    for (const track of learningTracks) {
+      // Create config.json
+      const userConfig = createUserConfig(track, 30);
       fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
 
       const { code, stderr, stdout } = await run(['fetchtask'], {
@@ -193,7 +191,7 @@ test.serial(
       t.false(stdout.includes('Progress'));
 
       // Assert for the expected message
-      t.true(stderr.trim().includes('No more tasks available!'));
+      t.is(stderr.trim(), 'No more tasks available!');
     }
   },
 );
