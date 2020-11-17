@@ -4,7 +4,7 @@ const path = require('path');
 const test = require('ava');
 const fs = require('fs');
 
-const run = require('./helpers');
+const { run } = require('./helpers');
 
 const workDir = path.join(__dirname, 'teachcode-solutions');
 const configFilePath = path.join(workDir, 'config.json');

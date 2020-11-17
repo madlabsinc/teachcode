@@ -1,5 +1,6 @@
 'use strict';
 
+const chalk = require('chalk');
 const fs = require('fs');
 const inquirer = require('inquirer');
 const showBanner = require('node-banner');
@@ -91,9 +92,11 @@ const initTasks = async () => {
   ) {
     console.log();
     logger.error(
-      `  It seems that there is already a ${logger.warn(
+      `  It seems that there is already a ${chalk.yellow.bold(
         'teachcode-solutions',
-      )} directory or ${logger.warn('config.json')} file existing in path`,
+      )} directory or ${chalk.yellow.bold(
+        'config.json',
+      )} file existing in path`,
     );
     process.exit(1);
   }
@@ -104,12 +107,12 @@ const initTasks = async () => {
       2,
     )} Points to ponder ${`\n`.repeat(
       4,
-    )} 1. Solution files are auto-created\n 2. Print out exactly what is required as given in the task\n 3. You have the provision to view previously submitted tasks ${`\n`.repeat(
+    )} 1. The files to submit the solutions are auto-created\n 2. Please pay attention to the desired output as specified in the task.\n 3. You have the provision to view previously submitted tasks ${`\n`.repeat(
       4,
     )}`,
   );
 
-  // Prompt asking to choose between the available learning tracks
+  // Prompt the user to choose between the available learning tracks
   const { learningTrackOfChoice } = await inquirer.prompt([
     {
       name: 'learningTrackOfChoice',
@@ -119,7 +122,7 @@ const initTasks = async () => {
     },
   ]);
 
-  // Prompt asking for the username
+  // Prompt the user asking for his/her name
   const { userName } = await inquirer.prompt([
     {
       name: 'userName',
@@ -129,7 +132,7 @@ const initTasks = async () => {
     },
   ]);
 
-  // Setting up initial user-data config.
+  // Setting up initial user-data config
   userConfig = {
     ...userConfig,
     learningTrack: learningTrackOfChoice,

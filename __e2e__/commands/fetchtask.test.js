@@ -6,7 +6,7 @@ const fs = require('fs');
 
 const workspacePath = path.join(__dirname, '..', '..', 'src', 'workspace');
 
-const run = require('./helpers');
+const { createUserConfig, run } = require('./helpers');
 
 // All files for testing purpose are generated within the teachcode-solutions directory
 const workDir = path.join(__dirname, 'teachcode-solutions');
@@ -18,30 +18,6 @@ const learningTracksInfo = [
   { trackName: 'Python', fileExtension: 'py' },
   { trackName: 'JavaScript', fileExtension: 'js' },
 ];
-
-const createUserConfig = (trackName, fileExtension, keysCount) => {
-  // config.json
-  const userConfig = {
-    learningTrack: '',
-    userName: 'testConfig',
-    taskCount: 0,
-    keys: [],
-    userSubmittedFiles: [],
-  };
-  userConfig['learningTrack'] = trackName;
-
-  const filesCount = keysCount === 30 ? 30 : keysCount - 1;
-
-  for (let i = 0; i < keysCount; i++) {
-    userConfig['keys'].push(`testKey${i + 1}`);
-  }
-  for (let i = 0; i < filesCount; i++) {
-    userConfig['userSubmittedFiles'].push(`task${i + 1}.${fileExtension}`);
-  }
-  userConfig['taskCount'] = filesCount;
-
-  return userConfig;
-};
 
 // Create the teachcode-solutions directory
 test.before(() => fs.mkdirSync(workDir));

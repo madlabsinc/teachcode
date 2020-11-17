@@ -2,7 +2,7 @@
 
 const test = require('ava');
 
-const run = require('./commands/helpers');
+const { run } = require('./commands/helpers');
 
 test('supplying an unknown command errors', async t => {
   const { stderr } = await run(['create'], { reject: false });
