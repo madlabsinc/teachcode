@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const showBanner = require('node-banner');
 
+const fileExtensionMap = require('../utils/constants');
 const logger = require('../utils/logger');
 
 /**
@@ -40,12 +41,6 @@ const fetchTask = async key => {
     keys,
     userSubmittedFiles,
   } = userConfig;
-
-  // Holds a reference to the file extensions corresponding to the learning track
-  const fileExtensionMap = {
-    Python: 'py',
-    JavaScript: 'js',
-  };
 
   // For eg: task1.py
   const fileName = `task${taskCount + 1}.${fileExtensionMap[learningTrack]}`;
@@ -124,8 +119,12 @@ const fetchTask = async key => {
     logger.success(exercises[taskCount].task);
     console.log();
 
-    // Create a solution file corresponding to the current task
-    fs.writeFileSync(fileName, `// Write your solution in this file`);
+    // Create a file to submit the solution corresponding to the current task
+    const commentChar = learningTrack === 'Python' ? '#' : '//';
+    fs.writeFileSync(
+      fileName,
+      `${commentChar} Write your solution in this file`,
+    );
   }
 };
 

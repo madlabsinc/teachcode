@@ -19,7 +19,9 @@
     "docs:build": "vuepress build docs"
   },
   "ava": {
-    "snapshotDir": "__e2e__/__snapshots__"
+    "files": [
+			"__e2e__/**/*.test.js"
+		]
   },
   "husky": {
     "hooks": {
