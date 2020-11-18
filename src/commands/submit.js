@@ -74,6 +74,11 @@ const checkSolution = async (
   let { learningTrack, taskCount, keys } = userConfig;
   try {
     if (submittedFileContent.toString() === solutionFileContent.toString()) {
+      if (taskCount === totalTasks) {
+        logger.info(' Info: No more tasks are available!');
+        process.exit(0);
+      }
+
       // Updating config.json information.
       taskCount++;
 
@@ -82,7 +87,7 @@ const checkSolution = async (
 
       userConfig = {
         ...userConfig,
-        taskCount,
+        taskCount: Math.min(taskCount, totalTasks),
         keys,
       };
 
@@ -106,9 +111,9 @@ const checkSolution = async (
       logger.success(` Hurray you've done it!`);
       console.log();
 
-      // All tasks completed
+      // All tasks are completed
       if (taskCount === totalTasks) {
-        logger.info(' Info: No more tasks available!');
+        logger.info(' Info: No more tasks are available!');
         process.exit(0);
       }
 
@@ -151,7 +156,7 @@ const validateSolution = solutionFile => {
       if (!fileContent.includes(validationKeys[taskCount - 2])) {
         console.log();
         logger.error(
-          ' Make sure that you use the required constructs as provided',
+          ' Please make sure that you use the required constructs as provided',
         );
         process.exit(1);
       }
@@ -188,13 +193,13 @@ const submitTask = async () => {
   const tasksDir = learningTrack === 'Python' ? 'python' : fileExtension;
 
   // Path to the tasks and their solutions
-  const workSpacePath = path.join(__dirname, '..', 'workspace');
-  const exercises = require(path.join(workSpacePath, tasksDir, 'tasks'));
+  const workSpacePath = path.join(__dirname, '..', 'workspace', tasksDir);
+  const exercises = require(path.join(workSpacePath, 'tasks'));
 
   const solutionFile = path.join(
     workSpacePath,
     'solutions',
-    `${taskCount + 1}.${fileExtension}`,
+    `task${taskCount + 1}.${fileExtension}`,
   );
 
   if (taskCount !== exercises.length) {
@@ -209,7 +214,7 @@ const submitTask = async () => {
     logger.success(` Congrats ${userName} you've made it through!`);
     console.log();
 
-    logger.success(' All tasks completed!');
+    logger.success(' All tasks are completed!');
     console.log();
     process.exit(0);
   }
@@ -239,9 +244,7 @@ const submitTask = async () => {
 
   if (!submittedFileContent.length) {
     console.log();
-    logger.error(
-      ` Solution file task${taskCount + 1}.${fileExtension} is empty!`,
-    );
+    logger.error(` The file task${taskCount + 1}.${fileExtension} is empty!`);
     console.log();
     process.exit(1);
   }
@@ -250,7 +253,7 @@ const submitTask = async () => {
     PythonShell.run(submittedFile, null, (err, result) => {
       if (err) {
         console.log();
-        logger.error(' Oops there is something wrong with the syntax part!');
+        logger.error(' Oops, there is something wrong with the syntax part!');
         console.log();
         logger.error(err.toString());
         process.exit(1);

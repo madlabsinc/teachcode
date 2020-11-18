@@ -119,8 +119,12 @@ const fetchTask = async key => {
     logger.success(exercises[taskCount].task);
     console.log();
 
-    // Create a solution file corresponding to the current task
-    fs.writeFileSync(fileName, `// Write your solution in this file`);
+    // Create a file to submit the solution corresponding to the current task
+    const commentChar = learningTrack === 'Python' ? '#' : '//';
+    fs.writeFileSync(
+      fileName,
+      `${commentChar} Write your solution in this file`,
+    );
   }
 };
 

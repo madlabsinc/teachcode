@@ -144,7 +144,7 @@ test.serial('not supplying a key fetches the next task', async t => {
     const fileExtension = fileExtensionMap[track];
 
     // Create config.json
-    const userConfig = createUserConfig(track, 6, 5);
+    const userConfig = createUserConfig(track, 6);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
 
     const { code, stdout } = await run(['fetchtask'], { cwd: workDir });

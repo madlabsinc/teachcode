@@ -21,7 +21,7 @@ const {
 const validate = require('../utils/validate');
 
 // Key for the very first task
-let key = '5e06b81de9ac43218a974785ffce8146';
+const key = '5e06b81de9ac43218a974785ffce8146';
 
 let userConfig = {
   learningTrack: '',
@@ -145,7 +145,7 @@ const initTasks = async () => {
   await initializeGHWorkFlow();
 
   // Check if the remote repository already exists.
-  let shouldCreateRepository = await checkIfRepositoryExists();
+  const shouldCreateRepository = await checkIfRepositoryExists();
 
   if (shouldCreateRepository) {
     await promptAccessTokenCreation();

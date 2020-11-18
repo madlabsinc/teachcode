@@ -38,7 +38,7 @@ test.serial(
   'displays an appropriate message if the user is just starting out',
   async t => {
     // Create config.json
-    const userConfig = createUserConfig('Python', 0);
+    const userConfig = createUserConfig('Python', 0, true);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
 
     const { code, stdout } = await run(['submit'], {
@@ -56,5 +56,103 @@ test.serial(
         'Please use teachcode fetchtask to fetch your very first task',
       ),
     );
+  },
+);
+
+test.serial(
+  'displays an error message if an empty file is submitted',
+  async t => {
+    // Create config.json
+    const userConfig = createUserConfig('Python', 6, true);
+    fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
+
+    const fileName = 'task6.py';
+    fs.writeFileSync(path.join(workDir, fileName), '');
+
+    const { code, stderr } = await run(['submit'], {
+      cwd: workDir,
+      reject: false,
+    });
+
+    // Assertions
+    // Exit code
+    t.is(code, 1);
+
+    // Assert for the expected error message
+    t.is(stderr.trim(), `The file ${fileName} is empty!`);
+  },
+);
+
+test.serial(
+  'displays an error message if the expected constructs are not used',
+  async t => {
+    // Create config.json
+    const userConfig = createUserConfig('Python', 3, true);
+    fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
+
+    const fileName = 'task3.py';
+    fs.writeFileSync(path.join(workDir, fileName), `print('HELLO WORLD')\n11`);
+
+    const { code, stderr } = await run(['submit'], {
+      cwd: workDir,
+      reject: false,
+    });
+
+    // Assertions
+    // Exit code
+    t.is(code, 1);
+
+    // Assert for the expected error message
+    t.is(
+      stderr.trim(),
+      'Please make sure that you use the required constructs as provided',
+    );
+  },
+);
+
+test.serial(
+  'displays an error message if there is an issue with the syntax for the submitted file',
+  async t => {
+    // Create config.json
+    const userConfig = createUserConfig('Python', 3, true);
+    fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
+
+    const fileName = 'task3.py';
+    fs.writeFileSync(path.join(workDir, fileName), `//`);
+
+    const { code, stderr } = await run(['submit'], {
+      cwd: workDir,
+      reject: false,
+    });
+
+    // Assertions
+    // Exit code
+    t.is(code, 1);
+
+    // Assert for the expected error message
+    t.true(
+      stderr.includes('Oops, there is something wrong with the syntax part!'),
+    );
+  },
+);
+
+test.serial(
+  'displays an appropriate message if all the tasks are completed',
+  async t => {
+    // Create config.json
+    const userConfig = createUserConfig('Python', 30, true);
+    fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
+
+    const { code, stdout } = await run(['submit'], {
+      cwd: workDir,
+      reject: false,
+    });
+
+    // Assertions
+    // Exit code
+    t.is(code, 0);
+
+    // Assert for the expected error message
+    t.true(stdout.trim().includes('All tasks are completed'));
   },
 );

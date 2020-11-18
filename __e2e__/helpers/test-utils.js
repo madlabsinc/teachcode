@@ -6,7 +6,7 @@ const fileExtensionMap = require('../../src/utils/constants');
 const CLI_PATH = join(__dirname, '..', '..', 'bin');
 
 // Create config.json for testing purpose
-const createUserConfig = (trackName, keysCount) => {
+const createUserConfig = (trackName, keysCount, isSubmit = false) => {
   const userConfig = {
     learningTrack: '',
     userName: 'testConfig',
@@ -21,7 +21,9 @@ const createUserConfig = (trackName, keysCount) => {
     return userConfig;
   }
 
-  const filesCount = keysCount === 30 ? 30 : keysCount - 1;
+  // For the submit command the keys and submitted files count would be the same
+  const filesCount =
+    keysCount === 30 ? 30 : isSubmit ? keysCount : keysCount - 1;
 
   for (let i = 0; i < keysCount; i++) {
     userConfig['keys'].push(`testKey${i + 1}`);
@@ -31,7 +33,7 @@ const createUserConfig = (trackName, keysCount) => {
       `task${i + 1}.${fileExtensionMap[trackName]}`,
     );
   }
-  userConfig['taskCount'] = filesCount;
+  userConfig['taskCount'] = keysCount === 30 ? keysCount : keysCount - 1;
 
   return userConfig;
 };
