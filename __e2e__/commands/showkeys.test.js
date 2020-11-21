@@ -17,14 +17,14 @@ test.after(() => fs.rmdirSync(workDir, { recursive: true }));
 
 // Execute tests serially as we are creating different temp config files for each test
 test.serial('no config file in the current path should error', async t => {
-  const { code, stderr } = await run(['showkeys'], {
+  const { exitCode, stderr } = await run(['showkeys'], {
     cwd: workDir,
     reject: false,
   });
 
   // Assertions
   // Exit code
-  t.is(code, 1);
+  t.is(exitCode, 1);
 
   // Assert for the expected error message
   t.is(stderr.trim(), 'Could not find config.json in the current path!');
@@ -44,13 +44,13 @@ test.serial(
       configFilePath,
       JSON.stringify(configWithoutKeys, null, 2),
     );
-    const { code, stdout } = await run(['showkeys'], {
+    const { exitCode, stdout } = await run(['showkeys'], {
       cwd: workDir,
     });
 
     // Assertions
     // Exit code
-    t.is(code, 0);
+    t.is(exitCode, 0);
 
     // Displays user name and progress information
     t.true(stdout.includes('User: configWithoutKeys'));
@@ -79,11 +79,11 @@ test.serial('displays the respective keys for the submitted tasks', async t => {
     configFilePath,
     JSON.stringify(configWithMultipleKeys, null, 2),
   );
-  const { code, stdout } = await run(['showkeys'], { cwd: workDir });
+  const { exitCode, stdout } = await run(['showkeys'], { cwd: workDir });
 
   // Assertions
   // Exit code
-  t.is(code, 0);
+  t.is(exitCode, 0);
 
   // Displays completed tasks and the corresponding keys
   t.true(stdout.includes('Task-1: testkey1'));

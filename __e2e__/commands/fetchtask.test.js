@@ -24,14 +24,14 @@ test.before(() => fs.mkdirSync(workDir));
 test.after(() => fs.rmdirSync(workDir, { recursive: true }));
 
 test.serial('no config file in the current path should error', async t => {
-  const { code, stderr } = await run(['fetchtask'], {
+  const { exitCode, stderr } = await run(['fetchtask'], {
     cwd: workDir,
     reject: false,
   });
 
   // Assertions
   // Exit code
-  t.is(code, 1);
+  t.is(exitCode, 1);
 
   // Assert for the expected error message
   t.is(stderr.trim(), 'Could not find config.json in the current path!');
@@ -46,7 +46,7 @@ test.serial('supplying an invalid key should error', async t => {
     const userConfig = createUserConfig(track, 6);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
 
-    const { code, stderr, stdout } = await run(
+    const { exitCode, stderr, stdout } = await run(
       ['fetchtask', 'incorrectTestKey'],
       {
         cwd: workDir,
@@ -56,7 +56,7 @@ test.serial('supplying an invalid key should error', async t => {
 
     // Assertions
     // Exit code
-    t.is(code, 1);
+    t.is(exitCode, 1);
 
     // The file shouldn't be created
     t.false(fs.existsSync(path.join(workDir, `task6.${fileExtension}`)));
@@ -79,7 +79,7 @@ test.serial('should be able to access a completed task', async t => {
     const userConfig = createUserConfig(track, 6);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
 
-    const { code, stderr, stdout } = await run(['fetchtask', 'testKey2'], {
+    const { exitCode, stderr, stdout } = await run(['fetchtask', 'testKey2'], {
       cwd: workDir,
     });
     const tasksDir = track !== 'Python' ? fileExtension : track.toLowerCase();
@@ -87,7 +87,7 @@ test.serial('should be able to access a completed task', async t => {
 
     // Assertions
     // Exit code
-    t.is(code, 0);
+    t.is(exitCode, 0);
 
     // The file shouldn't be created
     t.false(fs.existsSync(path.join(workDir, `task6.${fileExtension}`)));
@@ -113,7 +113,7 @@ test.serial('access the current task with the respective key', async t => {
     const userConfig = createUserConfig(track, 6);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
 
-    const { code, stdout } = await run(['fetchtask', 'testKey6'], {
+    const { exitCode, stdout } = await run(['fetchtask', 'testKey6'], {
       cwd: workDir,
     });
     const tasksDir = track !== 'Python' ? fileExtension : track.toLowerCase();
@@ -121,7 +121,7 @@ test.serial('access the current task with the respective key', async t => {
 
     // Assertions
     // Exit code
-    t.is(code, 0);
+    t.is(exitCode, 0);
 
     // Assert for the existence of the solution file
     t.true(fs.existsSync(path.join(workDir, `task6.${fileExtension}`)));
@@ -147,13 +147,13 @@ test.serial('not supplying a key fetches the next task', async t => {
     const userConfig = createUserConfig(track, 6);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
 
-    const { code, stdout } = await run(['fetchtask'], { cwd: workDir });
+    const { exitCode, stdout } = await run(['fetchtask'], { cwd: workDir });
     const tasksDir = track !== 'Python' ? fileExtension : track.toLowerCase();
     const tasks = require(path.join(workspacePath, tasksDir, 'tasks.json'));
 
     // Assertions
     // Exit code
-    t.is(code, 0);
+    t.is(exitCode, 0);
 
     // Assert for the existence of the solution file
     t.true(fs.existsSync(path.join(workDir, `task6.${fileExtension}`)));
@@ -178,13 +178,13 @@ test.serial(
       const userConfig = createUserConfig(track, 30);
       fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
 
-      const { code, stderr, stdout } = await run(['fetchtask'], {
+      const { exitCode, stderr, stdout } = await run(['fetchtask'], {
         cwd: workDir,
       });
 
       // Assertions
       // Exit code
-      t.is(code, 0);
+      t.is(exitCode, 0);
 
       // Won't display user name and progress information
       t.false(stdout.includes('User: testConfig'));
