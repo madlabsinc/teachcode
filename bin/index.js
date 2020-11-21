@@ -47,22 +47,17 @@ const suggestCommands = cmd => {
   // Get a suggestion from didyoumean.js based on the input.
   const suggestion = didYouMean(cmd, availableCommands);
   if (suggestion) {
-    logger.info(`  Did you mean ${chalk.yellow(suggestion)}?`);
+    logger.info(` Did you mean ${chalk.yellow(suggestion)}?`);
   }
 };
 
-// Validates any random command fired in
-program.arguments('<command>').action(cmd => {
+// Validation for unknown commands
+program.on('command:*', ([cmd]) => {
   program.outputHelp();
   console.log();
-  logger.error(`  Unknown command ${chalk.yellow(cmd)}.`);
+  logger.error(` Unknown command ${chalk.yellow(cmd)}.`);
   console.log();
   suggestCommands(cmd);
 });
 
 program.parse(process.argv);
-
-// Outputs help if no argument is provided
-if (!program.args.length) {
-  program.help();
-}
