@@ -25,14 +25,14 @@ test.after(() => fs.rmdirSync(workDir, { recursive: true }));
 test.serial(
   'displays an appropriate message if the teachcode-solutions directory exists in path',
   async t => {
-    const { code, stderr } = await run(['init'], {
+    const { exitCode, stderr } = await run(['init'], {
       cwd: __dirname,
       reject: false,
     });
 
     // Assertions
     // Exit code
-    t.is(code, 1);
+    t.is(exitCode, 1);
 
     // Assert for the expected error message
     t.true(
@@ -48,14 +48,14 @@ test.serial(
 test.serial(
   'displays an appropriate message if the config.json file exists in path',
   async t => {
-    const { code, stderr } = await run(['init'], {
+    const { exitCode, stderr } = await run(['init'], {
       cwd: workDir,
       reject: false,
     });
 
     // Assertions
     // Exit code
-    t.is(code, 1);
+    t.is(exitCode, 1);
 
     // Assert for the expected error message
     t.true(

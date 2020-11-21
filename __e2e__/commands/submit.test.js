@@ -21,14 +21,14 @@ test.before(() => fs.mkdirSync(workDir));
 test.after(() => fs.rmdirSync(workDir, { recursive: true }));
 
 test.serial('no config file in the current path should error', async t => {
-  const { code, stderr } = await run(['submit'], {
+  const { exitCode, stderr } = await run(['submit'], {
     cwd: workDir,
     reject: false,
   });
 
   // Assertions
   // Exit code
-  t.is(code, 1);
+  t.is(exitCode, 1);
 
   // Assert for the expected error message
   t.is(stderr.trim(), 'Could not find config.json in the current path!');
@@ -41,14 +41,14 @@ test.serial(
     const userConfig = createUserConfig('Python', 0, true);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
 
-    const { code, stdout } = await run(['submit'], {
+    const { exitCode, stdout } = await run(['submit'], {
       cwd: workDir,
       reject: false,
     });
 
     // Assertions
     // Exit code
-    t.is(code, 0);
+    t.is(exitCode, 0);
 
     // Assert for the expected error message
     t.true(
@@ -69,14 +69,14 @@ test.serial(
     const fileName = 'task6.py';
     fs.writeFileSync(path.join(workDir, fileName), '');
 
-    const { code, stderr } = await run(['submit'], {
+    const { exitCode, stderr } = await run(['submit'], {
       cwd: workDir,
       reject: false,
     });
 
     // Assertions
     // Exit code
-    t.is(code, 1);
+    t.is(exitCode, 1);
 
     // Assert for the expected error message
     t.is(stderr.trim(), `The file ${fileName} is empty!`);
@@ -93,14 +93,14 @@ test.serial(
     const fileName = 'task3.py';
     fs.writeFileSync(path.join(workDir, fileName), `print('HELLO WORLD')\n11`);
 
-    const { code, stderr } = await run(['submit'], {
+    const { exitCode, stderr } = await run(['submit'], {
       cwd: workDir,
       reject: false,
     });
 
     // Assertions
     // Exit code
-    t.is(code, 1);
+    t.is(exitCode, 1);
 
     // Assert for the expected error message
     t.is(
@@ -120,14 +120,14 @@ test.serial(
     const fileName = 'task3.py';
     fs.writeFileSync(path.join(workDir, fileName), `//`);
 
-    const { code, stderr } = await run(['submit'], {
+    const { exitCode, stderr } = await run(['submit'], {
       cwd: workDir,
       reject: false,
     });
 
     // Assertions
     // Exit code
-    t.is(code, 1);
+    t.is(exitCode, 1);
 
     // Assert for the expected error message
     t.true(
@@ -143,14 +143,14 @@ test.serial(
     const userConfig = createUserConfig('Python', 30, true);
     fs.writeFileSync(configFilePath, JSON.stringify(userConfig, null, 2));
 
-    const { code, stdout } = await run(['submit'], {
+    const { exitCode, stdout } = await run(['submit'], {
       cwd: workDir,
       reject: false,
     });
 
     // Assertions
     // Exit code
-    t.is(code, 0);
+    t.is(exitCode, 0);
 
     // Assert for the expected error message
     t.true(stdout.trim().includes('All tasks are completed'));

@@ -79,7 +79,7 @@ const checkIfRepositoryExists = async () => {
 
 const cloneRepository = async () => {
   const repoUrl = `https://github.com/${GHUserName}/teachcode-solutions`;
-  await execa.shell(`git clone ${repoUrl}`);
+  await execa.command(`git clone ${repoUrl}`);
 };
 
 /**
@@ -117,10 +117,10 @@ const configureLocalRepo = async () => {
   const repoUrl = `https://github.com/${GHUserName}/teachcode-solutions`;
 
   // Initialize an empty git repo.
-  await execa.shell('git init', { cwd: 'teachcode-solutions' });
+  await execa.command('git init', { cwd: 'teachcode-solutions' });
 
   // Set the remote url.
-  await execa.shell(`git remote add origin ${repoUrl}`, {
+  await execa.command(`git remote add origin ${repoUrl}`, {
     cwd: 'teachcode-solutions',
   });
 };
@@ -133,8 +133,8 @@ const configureLocalRepo = async () => {
  */
 
 const makeLocalCommit = async taskCount => {
-  await execa.shell('git add .');
-  await execa.shell(`git commit -m "solution for task-${taskCount}"`);
+  await execa.command('git add .');
+  await execa.command(`git commit -m "solution for task-${taskCount}"`);
 };
 
 /**
@@ -145,7 +145,7 @@ const makeLocalCommit = async taskCount => {
 
 const pushToRemote = async () => {
   console.log();
-  await execa.shell('git push origin master', { stdio: 'inherit' });
+  await execa.command('git push origin master', { stdio: 'inherit' });
 };
 
 module.exports = {
