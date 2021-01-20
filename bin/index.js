@@ -4,7 +4,7 @@
 
 const chalk = require('chalk');
 const program = require('commander');
-const didYouMean = require('didyoumean');
+const leven = require('leven');
 
 const { version } = require('../package');
 
@@ -44,8 +44,7 @@ program
 const suggestCommands = cmd => {
   const availableCommands = program.commands.map(c => c._name);
 
-  // Get a suggestion from didyoumean.js based on the input.
-  const suggestion = didYouMean(cmd, availableCommands);
+  const suggestion = availableCommands.find(c => leven(c, cmd) < 3);
   if (suggestion) {
     logger.info(` Did you mean ${chalk.yellow(suggestion)}?`);
   }
