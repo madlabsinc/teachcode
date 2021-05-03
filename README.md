@@ -35,14 +35,14 @@ Users are required to solve 30 tasks that take them through the basic constructs
 
 -   `teachcode` expects you to have a GitHub account. Make sure that you create one if you don't have one. [Learn more - Github Signup](https://docs.github.com/en/github/getting-started-with-github/signing-up-for-a-new-github-account)
 -   Navigate to the directory of your choice and type in `teachcode init`.
--   Choose your track. Currently we provide two tracks, Python and Javascript
+-   Choose your track. Currently, we provide two tracks, Python and Javascript
 -   Enter your name. We ask for your name mainly for greeting purpose.
--   Enter your Github username.
--   Enter your Github personal token with repo access. [Learn more - Github Personal Token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
+-   Enter your GitHub username.
+-   Enter your GitHub personal token with repo access. [Learn more - GitHub Personal Token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
 -   Now type in `cd teachcode-solutions`.
 -   Type in `teachcode fetchtask`.
 -   Hurray :tada: you've got your first task.
--   Type in your solution for the task in the file `task1.py` using any code editor of your choice. We recommend using [VS Code](https://code.visualstudio.com/)
+-   Type in your solution for the task in the file `task1.py` (opted learning track) using any code editor of choice. We recommend using [VS Code](https://code.visualstudio.com/)
 -   Now type in `teachcode submit` to submit your solution.
 -   Enter your Git credentials when prompted. [Learn more - Git Credentials](https://docs.github.com/en/github/getting-started-with-github/getting-started-with-git)
 -   Fetch the next task with `teachcode fetchtask`.
@@ -65,7 +65,6 @@ Contributions of any kind are welcomed. Make sure that you go through these [gui
 This project uses [Commitlint](https://github.com/conventional-changelog/commitlint/#what-is-commitlint) to check if the commit messages meet the [conventional commit format](https://www.conventionalcommits.org/en/v1.0.0/).
 
 The full pattern is:
-
 ```sh
 type(scope?): subject #scope is optional
 
@@ -75,7 +74,6 @@ footer? #footer is optional
 ```
 
 Following that pattern, your commit messages should look like these:
-
 ```sh
 feat: activate open collective
 ```
