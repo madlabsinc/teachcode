@@ -1,6 +1,6 @@
 let person = {
   age: 75,
-  gender: 'female',
+  gender: "female",
 };
 
 let yyyy = 2019 - person.age;

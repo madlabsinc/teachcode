@@ -1,23 +1,23 @@
-'use strict';
+"use strict";
 
-const chalk = require('chalk');
-const { exec } = require('child_process');
-const fs = require('fs');
-const { PythonShell } = require('python-shell');
-const showBanner = require('node-banner');
-const path = require('path');
+const chalk = require("chalk");
+const { exec } = require("child_process");
+const fs = require("fs");
+const { PythonShell } = require("python-shell");
+const showBanner = require("node-banner");
+const path = require("path");
 
-const fileExtensionMap = require('../utils/constants');
-const logger = require('../utils/logger');
-const { makeLocalCommit, pushToRemote } = require('../utils/github');
+const fileExtensionMap = require("../utils/constants");
+const logger = require("../utils/logger");
+const { makeLocalCommit, pushToRemote } = require("../utils/github");
 
-const keyStore = '123456789abcedefghijklmnopqrstuvwxyz';
+const keyStore = "123456789abcedefghijklmnopqrstuvwxyz";
 
 let userConfig = {};
 
 // Generate a random key that maps to a task
 const generateKey = () => {
-  let key = '';
+  let key = "";
   for (let i = 0; i < 36; i++) {
     key += keyStore.charAt(Math.floor(Math.random() * keyStore.length));
   }
@@ -26,34 +26,34 @@ const generateKey = () => {
 
 // Keywords for validating solutions
 const validationKeys = [
-  'len',
-  '/3',
-  'if',
-  'for',
-  'while',
-  'for',
-  'if',
-  '/3',
-  '/2',
-  'strip',
-  ':',
-  ':',
-  'def',
-  'if',
-  'return',
-  'asctime',
-  'math.sqrt',
-  '[',
-  '[',
-  'append',
-  'else',
-  '{',
-  'except',
-  'return',
-  'range',
-  'for',
-  '%',
-  '[::',
+  "len",
+  "/3",
+  "if",
+  "for",
+  "while",
+  "for",
+  "if",
+  "/3",
+  "/2",
+  "strip",
+  ":",
+  ":",
+  "def",
+  "if",
+  "return",
+  "asctime",
+  "math.sqrt",
+  "[",
+  "[",
+  "append",
+  "else",
+  "{",
+  "except",
+  "return",
+  "range",
+  "for",
+  "%",
+  "[::",
 ];
 
 /**
@@ -69,13 +69,13 @@ const validationKeys = [
 const checkSolution = async (
   submittedFileContent,
   solutionFileContent,
-  totalTasks,
+  totalTasks
 ) => {
   let { learningTrack, taskCount, keys } = userConfig;
   try {
     if (submittedFileContent.toString() === solutionFileContent.toString()) {
       if (taskCount === totalTasks) {
-        logger.info(' Info: No more tasks are available!');
+        logger.info(" Info: No more tasks are available!");
         process.exit(0);
       }
 
@@ -92,7 +92,7 @@ const checkSolution = async (
       };
 
       // Write back the updated config
-      fs.writeFileSync('./config.json', JSON.stringify(userConfig, null, 2));
+      fs.writeFileSync("./config.json", JSON.stringify(userConfig, null, 2));
 
       await makeLocalCommit(taskCount);
 
@@ -102,7 +102,7 @@ const checkSolution = async (
           await pushToRemote();
           break;
         } catch (err) {
-          logger.error('Error: Invalid credentials');
+          logger.error("Error: Invalid credentials");
         }
       } while (true); // eslint-disable-line
 
@@ -113,19 +113,17 @@ const checkSolution = async (
 
       // All tasks are completed
       if (taskCount === totalTasks) {
-        logger.info(' Info: No more tasks are available!');
+        logger.info(" Info: No more tasks are available!");
         process.exit(0);
       }
 
       logger.success(
-        `Move to the next task with ${chalk.yellow.bold(
-          'teachcode fetchtask',
-        )}`,
+        `Move to the next task with ${chalk.yellow.bold("teachcode fetchtask")}`
       );
     } else {
       console.log();
       logger.warn(
-        ` The solution doesn't meet all the output requirements. Please have a look again!`,
+        ` The solution doesn't meet all the output requirements. Please have a look again!`
       );
       console.log();
     }
@@ -134,7 +132,7 @@ const checkSolution = async (
     logger.error(
       ` There is something wrong with task${taskCount + 1}.${
         fileExtensionMap[learningTrack]
-      }`,
+      }`
     );
   }
 };
@@ -146,17 +144,17 @@ const checkSolution = async (
  * @returns {Void}
  */
 
-const validateSolution = solutionFile => {
-  const fileContent = fs.readFileSync(solutionFile, 'utf8').toString();
+const validateSolution = (solutionFile) => {
+  const fileContent = fs.readFileSync(solutionFile, "utf8").toString();
   const { learningTrack, taskCount } = userConfig;
 
   // Validation for the submitted solution
-  if (learningTrack === 'Python') {
+  if (learningTrack === "Python") {
     if (taskCount >= 2) {
       if (!fileContent.includes(validationKeys[taskCount - 2])) {
         console.log();
         logger.error(
-          ' Please make sure that you use the required constructs as provided',
+          " Please make sure that you use the required constructs as provided"
         );
         process.exit(1);
       }
@@ -174,39 +172,39 @@ const validateSolution = solutionFile => {
 
 const submitTask = async () => {
   await showBanner(
-    'teachcode',
-    ` Learn to code effectively ${`\t`.repeat(4)} Powered by MadHacks`,
+    "teachcode",
+    ` Learn to code effectively ${`\t`.repeat(4)} Powered by MadHacks`
   );
   console.log();
 
-  if (!fs.existsSync('./config.json')) {
-    logger.error(' Could not find config.json in the current path!');
+  if (!fs.existsSync("./config.json")) {
+    logger.error(" Could not find config.json in the current path!");
     console.log();
     process.exit(1);
   }
 
   // Read from config.json
-  userConfig = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+  userConfig = JSON.parse(fs.readFileSync("./config.json", "utf8"));
   const { userName, userSubmittedFiles, learningTrack, taskCount } = userConfig;
 
   const fileExtension = fileExtensionMap[learningTrack];
-  const tasksDir = learningTrack === 'Python' ? 'python' : fileExtension;
+  const tasksDir = learningTrack === "Python" ? "python" : fileExtension;
 
   // Path to the tasks and their solutions
-  const workSpacePath = path.join(__dirname, '..', 'workspace', tasksDir);
-  const exercises = require(path.join(workSpacePath, 'tasks'));
+  const workSpacePath = path.join(__dirname, "..", "workspace", tasksDir);
+  const exercises = require(path.join(workSpacePath, "tasks"));
 
   const solutionFile = path.join(
     workSpacePath,
-    'solutions',
-    `task${taskCount + 1}.${fileExtension}`,
+    "solutions",
+    `task${taskCount + 1}.${fileExtension}`
   );
 
   if (taskCount !== exercises.length) {
     console.log();
     const progressInfo = `${taskCount + 1}/${exercises.length}`;
     logger.success(
-      `User: ${userName}${`\t`.repeat(6)}Progress: ${progressInfo}`,
+      `User: ${userName}${`\t`.repeat(6)}Progress: ${progressInfo}`
     );
   } else {
     console.log();
@@ -214,7 +212,7 @@ const submitTask = async () => {
     logger.success(` Congrats ${userName} you've made it through!`);
     console.log();
 
-    logger.success(' All tasks are completed!');
+    logger.success(" All tasks are completed!");
     console.log();
     process.exit(0);
   }
@@ -223,24 +221,24 @@ const submitTask = async () => {
     console.log();
     logger.info(
       ` Please use ${chalk.yellow.bold(
-        'teachcode fetchtask',
-      )} to fetch your very first task`,
+        "teachcode fetchtask"
+      )} to fetch your very first task`
     );
     process.exit(0);
   }
 
   if (taskCount === userSubmittedFiles.length) {
     console.log();
-    logger.info(' Info: Task already submitted!');
+    logger.info(" Info: Task already submitted!");
     console.log();
     process.exit(0);
   }
 
   const submittedFile = userSubmittedFiles.slice(-1).pop();
   const submittedFileContent = fs
-    .readFileSync(submittedFile, 'utf8')
+    .readFileSync(submittedFile, "utf8")
     .toString()
-    .split('');
+    .split("");
 
   if (!submittedFileContent.length) {
     console.log();
@@ -249,11 +247,11 @@ const submitTask = async () => {
     process.exit(1);
   }
 
-  if (learningTrack === 'Python') {
+  if (learningTrack === "Python") {
     PythonShell.run(submittedFile, null, (err, result) => {
       if (err) {
         console.log();
-        logger.error(' Oops, there is something wrong with the syntax part!');
+        logger.error(" Oops, there is something wrong with the syntax part!");
         console.log();
         logger.error(err.toString());
         process.exit(1);
@@ -261,14 +259,14 @@ const submitTask = async () => {
 
       PythonShell.run(solutionFile, null, (err, solution) => {
         if (err) {
-          logger.error(' ' + err.toString());
+          logger.error(" " + err.toString());
           process.exit(1);
         }
 
-        if (typeof result === 'undefined' || typeof solution === 'undefined') {
+        if (typeof result === "undefined" || typeof solution === "undefined") {
           console.log();
           logger.error(
-            ` Please take a look at task${taskCount}.${fileExtension}`,
+            ` Please take a look at task${taskCount}.${fileExtension}`
           );
           process.exit(1);
         }
@@ -279,7 +277,7 @@ const submitTask = async () => {
   } else {
     exec(`node ${submittedFile}`, (err, result) => {
       if (err) {
-        logger.error(' Oops there is something wrong with the syntax part!');
+        logger.error(" Oops there is something wrong with the syntax part!");
         process.exit(1);
       }
       exec(`node ${solutionFile}`, (err, solution) => {

@@ -47,12 +47,9 @@ Users are required to solve 30 tasks that take them through the basic constructs
 - Now type in `teachcode submit`.
 - Enter your Git credentials when prompted.
 - If the current solution satisfies all test cases, you'll get the key to proceed farther.
-- Now type in `teachcode fetchtask`.  
-- Solve all 30 question, to complete the task 
+- Now type in `teachcode fetchtask`.
+- Solve all 30 question, to complete the task
 
+_In case you want to revisit any of the previously submitted tasks, grab the associated key by typing in `teachcode showkeys` followed by `teachcode fetchtask <key>`_
 
-*In case you want to revisit any of the previously submitted tasks, grab the associated key by typing in `teachcode showkeys` followed by `teachcode fetchtask <key>`*
 - That's all folks, good luck :+1:
-
-
-

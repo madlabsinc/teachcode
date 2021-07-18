@@ -47,12 +47,12 @@ Users are required to solve 30 tasks that take them through the basic constructs
 
 ## Available Commands
 
-| command | description |
-| -------------- |  ---------------- |
-| teachcode init | Initializes all the tasks |
+| command                   | description                                                                           |
+| ------------------------- | ------------------------------------------------------------------------------------- |
+| teachcode init            | Initializes all the tasks                                                             |
 | teachcode fetchtask [key] | Fetches the task correponding to the key if provided (defaults to the very next task) |
-| teachcode submit | Submits the current task |
-| teachcode showkeys | Lists all the keys associated with the submitted tasks |
+| teachcode submit          | Submits the current task                                                              |
+| teachcode showkeys        | Lists all the keys associated with the submitted tasks                                |
 
 ## Contributing
 
@@ -63,6 +63,7 @@ Contributions of any kind are welcomed. Make sure that you go through these [gui
 This project uses [Commitlint](https://github.com/conventional-changelog/commitlint/#what-is-commitlint) to check if the commit messages meet the [conventional commit format](https://www.conventionalcommits.org/en/v1.0.0/).
 
 The full pattern is:
+
 ```sh
 type(scope?): subject #scope is optional
 
@@ -72,6 +73,7 @@ footer? #footer is optional
 ```
 
 Following that pattern, your commit messages should look like these:
+
 ```sh
 feat: activate open collective
 ```

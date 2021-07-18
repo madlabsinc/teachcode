@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
-const fs = require('fs');
-const path = require('path');
-const showBanner = require('node-banner');
+const fs = require("fs");
+const path = require("path");
+const showBanner = require("node-banner");
 
-const fileExtensionMap = require('../utils/constants');
-const logger = require('../utils/logger');
+const fileExtensionMap = require("../utils/constants");
+const logger = require("../utils/logger");
 
 /**
  * Fetch the respective task corresponding to the supplied key
@@ -14,45 +14,40 @@ const logger = require('../utils/logger');
  * @returns {Promise<void>}
  */
 
-const fetchTask = async key => {
+const fetchTask = async (key) => {
   await showBanner(
-    'teachcode',
-    ` Learn to code effectively ${`\t`.repeat(4)} Powered by MadHacks`,
+    "teachcode",
+    ` Learn to code effectively ${`\t`.repeat(4)} Powered by MadHacks`
   );
   console.log();
 
-  if (!fs.existsSync('./config.json')) {
-    logger.error(' Could not find config.json in the current path!');
+  if (!fs.existsSync("./config.json")) {
+    logger.error(" Could not find config.json in the current path!");
     console.log();
     logger.info(
-      ' Make sure that you are within the teachcode-solutions directory!',
+      " Make sure that you are within the teachcode-solutions directory!"
     );
     console.log();
     process.exit(1);
   }
 
   // Reading the user-config information.
-  const userConfig = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
+  const userConfig = JSON.parse(fs.readFileSync("./config.json", "utf8"));
 
-  const {
-    learningTrack,
-    userName,
-    taskCount,
-    keys,
-    userSubmittedFiles,
-  } = userConfig;
+  const { learningTrack, userName, taskCount, keys, userSubmittedFiles } =
+    userConfig;
 
   // For eg: task1.py
   const fileName = `task${taskCount + 1}.${fileExtensionMap[learningTrack]}`;
 
   const tasksDir =
-    learningTrack === 'Python' ? 'python' : fileExtensionMap[learningTrack];
+    learningTrack === "Python" ? "python" : fileExtensionMap[learningTrack];
   const exercises = require(path.join(
     __dirname,
-    '..',
-    'workspace',
+    "..",
+    "workspace",
     tasksDir,
-    'tasks',
+    "tasks"
   ));
 
   // Progress information
@@ -60,7 +55,7 @@ const fetchTask = async key => {
 
   if (key && !keys.includes(key)) {
     console.log();
-    logger.error('Make sure that you have grabbed the key correctly!');
+    logger.error("Make sure that you have grabbed the key correctly!");
     console.log();
     process.exit(1);
   }
@@ -68,7 +63,7 @@ const fetchTask = async key => {
   // Check if no more tasks are available (no key provided)
   if (!key && taskCount === exercises.length) {
     console.log();
-    logger.warn(' No more tasks available!');
+    logger.warn(" No more tasks available!");
     process.exit(0);
   }
 
@@ -82,14 +77,14 @@ const fetchTask = async key => {
 
   if (taskIdx !== -1) {
     console.log();
-    logger.warn(' This task is already completed!');
+    logger.warn(" This task is already completed!");
 
     console.log();
     console.log();
 
     // Display user name and progress information
     logger.success(
-      `User: ${userName}${`\t`.repeat(4)}Progress: ${progressInfo}`,
+      `User: ${userName}${`\t`.repeat(4)}Progress: ${progressInfo}`
     );
     console.log();
 
@@ -106,12 +101,12 @@ const fetchTask = async key => {
     }
 
     // Write back the updated config
-    fs.writeFileSync('./config.json', JSON.stringify(userConfig, null, 2));
+    fs.writeFileSync("./config.json", JSON.stringify(userConfig, null, 2));
 
     // Display user name and progress information
     console.log();
     logger.success(
-      `User: ${userName}${`\t`.repeat(6)}Progress: ${progressInfo}`,
+      `User: ${userName}${`\t`.repeat(6)}Progress: ${progressInfo}`
     );
 
     // Display the task
@@ -120,10 +115,10 @@ const fetchTask = async key => {
     console.log();
 
     // Create a file to submit the solution corresponding to the current task
-    const commentChar = learningTrack === 'Python' ? '#' : '//';
+    const commentChar = learningTrack === "Python" ? "#" : "//";
     fs.writeFileSync(
       fileName,
-      `${commentChar} Write your solution in this file`,
+      `${commentChar} Write your solution in this file`
     );
   }
 };

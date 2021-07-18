@@ -1,5 +1,5 @@
 ---
-title: 'Installation'
+title: "Installation"
 ---
 
 # Installation
@@ -12,7 +12,7 @@ title: 'Installation'
 
 ## Quickstart
 
-``` bash
+```bash
 npm install -g teach-code
 teachcode init
 ```

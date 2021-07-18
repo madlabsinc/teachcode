@@ -1,11 +1,11 @@
-'use strict';
+"use strict";
 
-const axios = require('axios');
-const chalk = require('chalk');
-const execa = require('execa');
-const inquirer = require('inquirer');
+const axios = require("axios");
+const chalk = require("chalk");
+const execa = require("execa");
+const inquirer = require("inquirer");
 
-const validate = require('./validate');
+const validate = require("./validate");
 
 // Global reference to the GitHub username.
 let GHUserName;
@@ -18,9 +18,9 @@ let GHUserName;
 
 const initializeGHWorkFlow = async () => {
   const { userName } = await inquirer.prompt({
-    name: 'userName',
-    message: 'GitHub username:-',
-    type: 'input',
+    name: "userName",
+    message: "GitHub username:-",
+    type: "input",
     validate,
   });
 
@@ -90,19 +90,19 @@ const cloneRepository = async () => {
 
 const createRepository = async () => {
   const { userToken } = await inquirer.prompt({
-    name: 'userToken',
-    message: 'GitHub user token:-',
-    type: 'password',
+    name: "userToken",
+    message: "GitHub user token:-",
+    type: "password",
     validate,
   });
 
   const API_URL = `https://api.github.com/user/repos`;
-  axios.defaults.headers.common['Authorization'] = `token ${userToken}`;
+  axios.defaults.headers.common["Authorization"] = `token ${userToken}`;
   // Create a new repository.
   try {
-    await axios.post(API_URL, { name: 'teachcode-solutions' });
+    await axios.post(API_URL, { name: "teachcode-solutions" });
   } catch (err) {
-    console.log(chalk.red.bold('Error: Invalid credentials'));
+    console.log(chalk.red.bold("Error: Invalid credentials"));
     console.log();
     await createRepository();
   }
@@ -117,11 +117,11 @@ const configureLocalRepo = async () => {
   const repoUrl = `https://github.com/${GHUserName}/teachcode-solutions`;
 
   // Initialize an empty git repo.
-  await execa.command('git init', { cwd: 'teachcode-solutions' });
+  await execa.command("git init", { cwd: "teachcode-solutions" });
 
   // Set the remote url.
   await execa.command(`git remote add origin ${repoUrl}`, {
-    cwd: 'teachcode-solutions',
+    cwd: "teachcode-solutions",
   });
 };
 
@@ -132,8 +132,8 @@ const configureLocalRepo = async () => {
  * @returns {Promise<void>}
  */
 
-const makeLocalCommit = async taskCount => {
-  await execa.command('git add .');
+const makeLocalCommit = async (taskCount) => {
+  await execa.command("git add .");
   await execa.command(`git commit -m "solution for task-${taskCount}"`);
 };
 
@@ -145,7 +145,7 @@ const makeLocalCommit = async taskCount => {
 
 const pushToRemote = async () => {
   console.log();
-  await execa.command('git push origin master', { stdio: 'inherit' });
+  await execa.command("git push origin master", { stdio: "inherit" });
 };
 
 module.exports = {

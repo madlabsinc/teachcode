@@ -1,5 +1,5 @@
 ---
-title: 'Contributing'
+title: "Contributing"
 ---
 
 # Contributing
@@ -14,7 +14,6 @@ title: 'Contributing'
 6. Ensure that your code is free from linting errors and is as per prettier conventions by typing in `npm run lint`.
 7. We use [commitlint conventional naming rules](https://www.npmjs.com/package/@commitlint/config-conventional#rules) for our commits, make sure that you follow them.
 8. Now you may push it to the remote repository by switching over to another branch and finally proposing a Pull Request to the base fork.
-
 
 ## Points to ponder
 

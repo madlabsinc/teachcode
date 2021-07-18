@@ -1,6 +1,6 @@
-const array1 = ['abc', 'bcd', 'cde'];
+const array1 = ["abc", "bcd", "cde"];
 
-array1.forEach(item => console.log(item));
+array1.forEach((item) => console.log(item));
 for (const element of array1) {
   console.log(element);
 }
