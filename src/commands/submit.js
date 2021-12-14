@@ -104,7 +104,7 @@ const checkSolution = async (
         } catch (err) {
           logger.error('Error: Invalid credentials');
         }
-      } while (true); // eslint-disable-line
+      } while (true) // eslint-disable-line
 
       // Successfully completed the task
       console.log();
@@ -276,13 +276,25 @@ const submitTask = async () => {
         checkSolution(result, solution, exercises.length);
       });
     });
-  } else {
+  } else if (learningTrack === 'Javascript') {
     exec(`node ${submittedFile}`, (err, result) => {
       if (err) {
         logger.error(' Oops there is something wrong with the syntax part!');
         process.exit(1);
       }
       exec(`node ${solutionFile}`, (err, solution) => {
+        if (err) throw err;
+        validateSolution(submittedFile);
+        checkSolution(result, solution, exercises.length);
+      });
+    });
+  } else {
+    exec(`dart run ${submittedFile}`, (err, result) => {
+      if (err) {
+        logger.error(' Oops there is something wrong with the syntax part!');
+        process.exit(1);
+      }
+      exec(`dart run ${solutionFile}`, (err, solution) => {
         if (err) throw err;
         validateSolution(submittedFile);
         checkSolution(result, solution, exercises.length);

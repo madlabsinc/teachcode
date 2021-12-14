@@ -17,6 +17,7 @@ module.exports = {
     },
     rules: {
       "no-console": 0,
+      "--no-semi": true,
       'prettier/prettier': [ // customizing prettier rules (unfortunately not many of them are customizable)
         'error',
         {
