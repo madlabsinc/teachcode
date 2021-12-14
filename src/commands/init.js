@@ -1,13 +1,13 @@
-'use strict';
+'use strict'
 
-const chalk = require('chalk');
-const fs = require('fs');
-const inquirer = require('inquirer');
-const showBanner = require('node-banner');
-const open = require('open');
-const ora = require('ora');
+const chalk = require('chalk')
+const fs = require('fs')
+const inquirer = require('inquirer')
+const showBanner = require('node-banner')
+const open = require('open')
+const ora = require('ora')
 
-const logger = require('../utils/logger');
+const logger = require('../utils/logger')
 
 // GitHub workflow helpers.
 const {
@@ -16,12 +16,12 @@ const {
   createRepository,
   configureLocalRepo,
   initializeGHWorkFlow,
-} = require('../utils/github');
+} = require('../utils/github')
 
-const validate = require('../utils/validate');
+const validate = require('../utils/validate')
 
 // Key for the very first task
-const key = '5e06b81de9ac43218a974785ffce8146';
+const key = '5e06b81de9ac43218a974785ffce8146'
 
 let userConfig = {
   learningTrack: '',
@@ -29,7 +29,7 @@ let userConfig = {
   taskCount: 0,
   keys: [],
   userSubmittedFiles: [],
-};
+}
 
 /**
  * Displays the initial instructions
@@ -39,12 +39,12 @@ let userConfig = {
  */
 
 const showInstructions = () => {
-  console.log();
-  logger.success(' Perform the following steps:-');
-  console.log();
-  logger.info(' 1. cd teachcode-solutions');
-  logger.info(` 2. teachcode fetchtask`);
-};
+  console.log()
+  logger.success(' Perform the following steps:-')
+  console.log()
+  logger.info(' 1. cd teachcode-solutions')
+  logger.info(` 2. teachcode fetchtask`)
+}
 
 /**
  * Opens up the default browser with information concerning
@@ -54,12 +54,12 @@ const showInstructions = () => {
 
 const promptAccessTokenCreation = async () => {
   const instructionsUrl =
-    'https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line';
+    'https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line'
 
-  console.log();
+  console.log()
   logger.success(
     'You are required to have a personal access token for consuming the GitHub API.\nIf you do not have one, please follow these instructions.\n',
-  );
+  )
 
   const { openInBrowser } = await inquirer.prompt([
     {
@@ -67,12 +67,12 @@ const promptAccessTokenCreation = async () => {
       type: 'confirm',
       message: 'Open browser to read instructions?',
     },
-  ]);
+  ])
   if (openInBrowser) {
     // open link in the default browser
-    await open(instructionsUrl);
+    await open(instructionsUrl)
   }
-};
+}
 
 /**
  * Initialize all the tasks
@@ -84,24 +84,26 @@ const initTasks = async () => {
   await showBanner(
     'teachcode',
     ` Learn to code effectively ${`\t`.repeat(4)} Powered by MadHacks`,
-  );
-  console.log();
+  )
+  console.log()
 
   if (
-    ['./config.json', './teachcode-solutions'].some(path => fs.existsSync(path))
+    ['./config.json', './teachcode-solutions'].some((path) =>
+      fs.existsSync(path),
+    )
   ) {
-    console.log();
+    console.log()
     logger.error(
       `  It seems that there is already a ${chalk.yellow.bold(
         'teachcode-solutions',
       )} directory or ${chalk.yellow.bold(
         'config.json',
       )} file existing in path`,
-    );
-    process.exit(1);
+    )
+    process.exit(1)
   }
 
-  console.log();
+  console.log()
   logger.success(
     ` Welcome to teachcode${`\n`.repeat(2)}${`\t`.repeat(
       2,
@@ -110,7 +112,7 @@ const initTasks = async () => {
     )} 1. The files to submit the solutions are auto-created\n 2. Please pay attention to the desired output as specified in the task.\n 3. You have the provision to view previously submitted tasks ${`\n`.repeat(
       4,
     )}`,
-  );
+  )
 
   // Prompt the user to choose between the available learning tracks
   const { learningTrackOfChoice } = await inquirer.prompt([
@@ -118,9 +120,9 @@ const initTasks = async () => {
       name: 'learningTrackOfChoice',
       type: 'list',
       message: 'Choose your track',
-      choices: ['Python', 'JavaScript'],
+      choices: ['Python', 'JavaScript', 'Dart'],
     },
-  ]);
+  ])
 
   // Prompt the user asking for his/her name
   const { userName } = await inquirer.prompt([
@@ -130,45 +132,45 @@ const initTasks = async () => {
       message: "What's your name:-",
       validate,
     },
-  ]);
+  ])
 
   // Setting up initial user-data config
   userConfig = {
     ...userConfig,
     learningTrack: learningTrackOfChoice,
     userName,
-  };
+  }
 
-  userConfig.keys.push(key);
+  userConfig.keys.push(key)
 
   // Prompt for GitHub username.
-  await initializeGHWorkFlow();
+  await initializeGHWorkFlow()
 
   // Check if the remote repository already exists.
-  const shouldCreateRepository = await checkIfRepositoryExists();
+  const shouldCreateRepository = await checkIfRepositoryExists()
 
   if (shouldCreateRepository) {
-    await promptAccessTokenCreation();
-    await createRepository();
+    await promptAccessTokenCreation()
+    await createRepository()
 
-    fs.mkdirSync('teachcode-solutions');
+    fs.mkdirSync('teachcode-solutions')
     fs.writeFileSync(
       'teachcode-solutions/config.json',
       JSON.stringify(userConfig, null, 2),
-    );
-    await configureLocalRepo();
+    )
+    await configureLocalRepo()
   } else {
-    const spinner = ora('Fetching user progress').start();
+    const spinner = ora('Fetching user progress').start()
     try {
       // Clone the remote repository
-      await cloneRepository();
+      await cloneRepository()
     } catch (err) {
-      spinner.fail('Something went wrong');
-      throw err;
+      spinner.fail('Something went wrong')
+      throw err
     }
-    spinner.stop();
+    spinner.stop()
   }
-  showInstructions();
-};
+  showInstructions()
+}
 
-module.exports = initTasks;
+module.exports = initTasks
