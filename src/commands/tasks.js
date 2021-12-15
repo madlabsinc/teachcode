@@ -121,10 +121,17 @@ const fetchTask = async key => {
 
     // Create a file to submit the solution corresponding to the current task
     const commentChar = learningTrack === 'Python' ? '#' : '//';
-    fs.writeFileSync(
-      fileName,
-      `${commentChar} Write your solution in this file`,
-    );
+    if (learningTrack === 'Dart') {
+      fs.writeFileSync(
+        fileName,
+        `void main(){\n${commentChar} Write your solution in this file\n}`,
+      );
+    } else {
+      fs.writeFileSync(
+        fileName,
+        `${commentChar} Write your solution in this file`,
+      );
+    }
   }
 };
 
