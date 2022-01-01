@@ -124,7 +124,7 @@ const fetchTask = async key => {
     if (learningTrack === 'Dart') {
       fs.writeFileSync(
         fileName,
-        `void main(){\n${commentChar} Write your solution in this file\n}`,
+        `void main(){\n ${commentChar} Write your solution in this file \n}`,
       );
     } else {
       fs.writeFileSync(

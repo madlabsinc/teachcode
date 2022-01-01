@@ -1,8 +1,11 @@
 [
-    {
-      "task": "Hey there folks, you have chosen Dart Path! \n\nHere's your first task! All the best...\n\n * A Dart script needs the main() method for execution.\n\n\tFor example: \n\n\t void main() {\n\n\t print('Hello World');\n\n\t} \n\n * The main() function is a predefined method in Dart. \n * This method acts as the entry point to the application.\n\n Task 1:-\n Print Hello World to the console using the pre-built print function. "
-    },
-    {
-      "task": "\n Now lets focus on variables, A variable is “a named space in the memory” that stores values. \n In dart a variable must be declared before it is used. \n\n * Dart uses the var keyword to achieve the same. \n\n\tvar name = 'Dart';\n\n\tThe variable called [name] contains a reference to a String object with a value of 'Dart'. \n\n * Dart supports type-checking by prefixing the variable name with the data type.\n\n\tfor example: \n\n\tString name = 'Smith'; \n\tint num = 10; \n\tdouble val = 22.0;\n\nTask 2:- \n\nDeclare variables of types [int] and [string]. \nAssign 12 to the integer variable and 'John' to the string variable and print both variables. "
-    }
-  ]
+  {
+    "task": "Hey there folks, you have chosen Dart Path! \n\nHere's your first task! All the best...\n\n * A Dart script needs the main() method for execution.\n\n\tFor example: \n\n\t void main() {\n\n\t print('Hello World');\n\n\t} \n\n * The main() function is a predefined method in Dart. \n * This method acts as the entry point to the application.\n\n Task 1:-\n Print Hello World to the console using the pre-built print function. "
+  },
+  {
+    "task": "\n Now lets focus on variables, A variable is “a named space in the memory” that stores values. \n In dart a variable must be declared before it is used. \n\n * Dart uses the var keyword to achieve the same. \n\n\tvar name = 'Dart';\n\n\tThe variable called [name] contains a reference to a String object with a value of 'Dart'. \n\n * Dart supports type-checking by prefixing the variable name with the data type.\n\n\tfor example: \n\n\tString name = 'Smith'; \n\tint num = 10; \n\tdouble val = 22.0;\n\t boolean isBoolean = false;\n\tList<String> listOfStrings = [\"hello\", \"Hai\"];\n\nTask 2:- \n\nDeclare variables of types [int] and [string]. \nAssign 12 to the integer variable and 'John' to the string variable and print both variables. "
+  },
+  {
+    "task": "\nKeep it up!\n\nStrings represent a group of characters. String literals in dart are surrounded by either single quotation marks, or double quotation marks. \nDart provides various prebuilt functions to deal with strings, say to find the length of a string, convert it to lower case etc.\n\nTask-3\n\nDeclare a variable str and initialize it with hello world Print it in upper case and also the length in order"
+  }
+]

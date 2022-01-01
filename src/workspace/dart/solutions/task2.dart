@@ -1,6 +1,6 @@
 void main() {
-  int v = 12;
-  String k = 'John';
-  print(v);
-  print(k);
+  int number = 12;
+  String name = 'John';
+  print(number);
+  print(name);
 }
