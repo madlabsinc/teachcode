@@ -104,7 +104,7 @@ const checkSolution = async (
         } catch (err) {
           logger.error('Error: Invalid credentials');
         }
-      } while (true) // eslint-disable-line
+      } while (true); // eslint-disable-line
 
       // Successfully completed the task
       console.log();
@@ -130,6 +130,7 @@ const checkSolution = async (
       console.log();
     }
   } catch (err) {
+    console.log(err);
     console.log();
     logger.error(
       ` There is something wrong with task${taskCount + 1}.${
@@ -249,58 +250,103 @@ const submitTask = async () => {
     process.exit(1);
   }
 
-  if (learningTrack === 'Python') {
-    PythonShell.run(submittedFile, null, (err, result) => {
-      if (err) {
-        console.log();
-        logger.error(' Oops, there is something wrong with the syntax part!');
-        console.log();
-        logger.error(err.toString());
-        process.exit(1);
-      }
-
-      PythonShell.run(solutionFile, null, (err, solution) => {
-        if (err) {
-          logger.error(' ' + err.toString());
-          process.exit(1);
-        }
-
-        if (typeof result === 'undefined' || typeof solution === 'undefined') {
-          console.log();
-          logger.error(
-            ` Please take a look at task${taskCount}.${fileExtension}`,
-          );
-          process.exit(1);
-        }
-        validateSolution(submittedFile);
-        checkSolution(result, solution, exercises.length);
+  switch (learningTrack) {
+    case 'Python':
+      checkPythonSolution({
+        submittedFile: submittedFile,
+        solutionFile: solutionFile,
+        taskCount: taskCount,
+        fileExtension: fileExtension,
+        exercises: exercises,
       });
-    });
-  } else if (learningTrack === 'Javascript') {
-    exec(`node ${submittedFile}`, (err, result) => {
-      if (err) {
-        logger.error(' Oops there is something wrong with the syntax part!');
-        process.exit(1);
-      }
-      exec(`node ${solutionFile}`, (err, solution) => {
-        if (err) throw err;
-        validateSolution(submittedFile);
-        checkSolution(result, solution, exercises.length);
+      break;
+    case 'Javascript':
+      checkJavascriptSolution({
+        submittedFile: submittedFile,
+        solutionFile: solutionFile,
+        exercises: exercises,
       });
-    });
-  } else {
-    exec(`dart run ${submittedFile}`, (err, result) => {
-      if (err) {
-        logger.error(' Oops there is something wrong with the syntax part!');
-        process.exit(1);
-      }
-      exec(`dart run ${solutionFile}`, (err, solution) => {
-        if (err) throw err;
-        validateSolution(submittedFile);
-        checkSolution(result, solution, exercises.length);
+      break;
+    case 'Dart':
+      checkDartSolution({
+        submittedFile: submittedFile,
+        solutionFile: submittedFile,
+        exercises: exercises,
       });
-    });
+      break;
+    default:
+      break;
   }
+};
+
+// checks the dart solution
+const checkDartSolution = ({ submittedFile, solutionFile, exercises }) => {
+  exec(`dart run ${submittedFile}`, (err, result) => {
+    if (err) {
+      logger.error(' Oops there is something wrong with the syntax part!');
+      process.exit(1);
+    }
+    exec(`dart run ${solutionFile}`, (err, solution) => {
+      if (err) throw err;
+      validateSolution(submittedFile);
+      checkSolution(result, solution, exercises.length);
+    });
+  });
+};
+
+// Checks javascript solution
+const checkJavascriptSolution = ({
+  submittedFile,
+  solutionFile,
+  exercises,
+}) => {
+  exec(`node ${submittedFile}`, (err, result) => {
+    if (err) {
+      logger.error(' Oops there is something wrong with the syntax part!');
+      process.exit(1);
+    }
+    exec(`node ${solutionFile}`, (err, solution) => {
+      if (err) throw err;
+      validateSolution(submittedFile);
+      checkSolution(result, solution, exercises.length);
+    });
+  });
+};
+
+// Checks python solution
+const checkPythonSolution = ({
+  submittedFile,
+  solutionFile,
+  taskCount,
+  fileExtension,
+  exercises,
+}) => {
+  PythonShell.run(submittedFile, null, (err, result) => {
+    if (err) {
+      console.log();
+      logger.error(' Oops, there is something wrong with the syntax part!');
+      console.log();
+      logger.error(err.toString());
+      process.exit(1);
+    }
+
+    PythonShell.run(solutionFile, null, (err, solution) => {
+      if (err) {
+        logger.error(' ' + err.toString());
+        process.exit(1);
+      }
+
+      if (typeof result === 'undefined' || typeof solution === 'undefined') {
+        console.log();
+        logger.error(
+          ` Please take a look at task${taskCount}.${fileExtension}`,
+        );
+        process.exit(1);
+      }
+      validateSolution(submittedFile);
+      checkSolution(result, solution, exercises.length);
+    });
+  });
 };
 
 module.exports = submitTask;
