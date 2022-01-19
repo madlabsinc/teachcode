@@ -104,7 +104,7 @@ const checkSolution = async (
         } catch (err) {
           logger.error('Error: Invalid credentials');
         }
-      } while (true); // eslint-disable-line
+      } while (true) // eslint-disable-line
 
       // Successfully completed the task
       console.log();
@@ -130,7 +130,6 @@ const checkSolution = async (
       console.log();
     }
   } catch (err) {
-    console.log(err);
     console.log();
     logger.error(
       ` There is something wrong with task${taskCount + 1}.${
@@ -332,7 +331,7 @@ const checkPythonSolution = ({
 
     PythonShell.run(solutionFile, null, (err, solution) => {
       if (err) {
-        logger.error(' ' + err.toString());
+        logger.error(' Oops there is something wrong with the syntax part!');
         process.exit(1);
       }
 

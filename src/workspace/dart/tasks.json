@@ -10,5 +10,11 @@
   },
   {
     "task": "Let's learn more on String methods. There are a variety of methods for string manipulation in Dart. Some of them are: \n 1. length - To find the length of the string. \n 2. indexOf() - Returns the first occurence of a specified text in a string. \n 3. substring() - extracts a part of a string and returns the extracted part. \n 4. replaceAll() - replaces a specified value with another value in a string. \n 6. split() - Splits the string at matches of the specified delimiter and returns a list of substrings. \n\n Task 4:-\n\n Obtain the following output for the string 'Hey, this is Task 4 of Dart Path!' \n\n Output: \n Length of the string \n Display the index of first occurence of 'Task' \n Replace Dart with Python  \n Split the string based on space."
+  },
+  {
+    "task": "\nGreat work! Let's move on .... \n Operators are used to perform operations on variables and values. \n There are many types of operators: \n 1. Arithmetic Operator \n 2. Relational Operators \n 3. Type Test Operators \n 4. Bitwise Operators \n 5. Assignment Operators \n 6. Logical Operators \n 7. Conditional Operator \n 8. Cascade Notation Operator \n Enough talk, let's do the task. \n\n Task 4 \n Initialize three variables a, b,c with values 35, 30, 20 respectively. \n Your task is to print the sum and average of these three numbers. Round the average to atmost two digit using `toStringAsFixed` method."
+  },
+  {
+    "task": "\nCool let's .... \n learn more about Type Test Operators. These operators are used to perform comparison on the operands. `is` and `is!` are two different types of type test operators. Hope you got an understanding of type test operator, Now let's move on to the task 5 \n\n Task 5 \n Intialize a string variable with your name and print if the variable is of type string \n\n Hint: Use `is` Operator and the result will be a boolean."
   }
 ]
