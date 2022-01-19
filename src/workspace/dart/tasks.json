@@ -15,6 +15,6 @@
     "task": "\nGreat work! Let's move on .... \n Operators are used to perform operations on variables and values. \n There are many types of operators: \n 1. Arithmetic Operator \n 2. Relational Operators \n 3. Type Test Operators \n 4. Bitwise Operators \n 5. Assignment Operators \n 6. Logical Operators \n 7. Conditional Operator \n 8. Cascade Notation Operator \n Enough talk, let's do the task. \n\n Task 5 \n Initialize three variables a, b,c with values 35, 30, 20 respectively. \n Your task is to print the sum and average of these three numbers. Round the average to atmost two digit using `toStringAsFixed` method."
   },
   {
-    "task": "\nCool let's .... \n learn more about Type Test Operators. These operators are used to perform comparison on the operands. `is` and `is!` are two different types of type test operators. Hope you got an understanding of type test operator, Now let's move on to the task 6 \n\n Task 6 \n Intialize a variable str with string as `Hello World` and print if the variable is of type string \n\n Hint: Use `is` Operator and the result will be a boolean."
+    "task": "\nCool, Now let's \n learn more about Type Test Operators. These operators are used to perform comparison on the operands. `is` and `is!` are two different types of type test operators. Hope you got an understanding of type test operator, Now let's move on to the task 6 \n\n Task 6 \n Intialize a variable str with string as `Hello World` and print if the variable is of type string \n\n Hint: Use `is` Operator and the result will be a boolean."
   }
 ]
